@@ -1,6 +1,6 @@
 ## MVC
 
-- Modelo: Datos y lógica de negocio. Clases de entidad [Documento, Libro, Ponencia, ArticuloCientifico, Usuario, etc ]
+- Modelo: Datos y lógica de negocio. Clases de entidad [Documento, Libro, Ponencia, ArticuloCientífico, Usuario, etc ]
 - Vista
 - Controlador: Gestiona la interacción entre la vista y el modelo. Procesar las solicitudes del usuario, llamar a la lógica de negocio y devolver respuestas
 
@@ -14,7 +14,7 @@ Ejemplo Implementación:
 
 ### Factory Method
 
-Se usa en la creación de diferentes tipos de documentos [Libro, Ponencia, ArticuloCientifico]
+Se usa en la creación de diferentes tipos de documentos [Libro, Ponencia, ArticuloCientífico]
 
 ### Singleton
 
@@ -30,11 +30,21 @@ En la capa de acceso a datos, para separar la lógica de acceso a la BD del rest
 
 Para transferir datos entre capas sin exponer directamente las entidades
 
+### Facade
+
+Para reservas:
+#### Verifica Estado
+
+**SI**
+   1. llena los datos
+   2. realiza la reserva
+   3. actualizar HistorialCambios
+   
+**Si no**
+  1. cancelar transacción
+  2. desplegar mensaje
+
 ## Patrones de Comportamiento
-
-### Observer
-
-Para notificar a los usuarios cuando se modifica un documento o cambia su estado de reserva
 
 ### Command
 
