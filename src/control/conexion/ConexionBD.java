@@ -21,23 +21,18 @@ public class ConexionBD {
         return instancia;
     }
     
-    static {
-    	
-    	try {
-    		Class.forName(Controlador);
-    		System.out.println("Controlador Cargado");
-    	}catch(ClassNotFoundException e){
-    		e.printStackTrace();
-    		System.out.println("Controlador no cargado");
-    	}
-    }
-    
     public static Connection getConexion() {
+    	
         try {
+        	Class.forName(Controlador);
+    		System.out.println("Controlador Cargado");
+    		
             cn = DriverManager.getConnection(url, username, password);
-            } catch (SQLException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
+            	
             ex.printStackTrace();
             }
+        
          return cn;
    
     } public static void desconectar() {
