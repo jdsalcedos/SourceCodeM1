@@ -62,11 +62,11 @@ public class ConexionBD {
 //                return;
 //            }
 //
-//            pst = cn.prepareStatement("SELECT * FROM usuario");
+//            pst = cn.prepareStatement("SELECT * FROM autor");
 //            rs = pst.executeQuery();
 //
 //            while (rs.next()) {
-//                System.out.println("Usuario: " + rs.getString("nombre")); // Ajusta el campo según tu tabla
+//                System.out.println("Usuario: " + rs.getString("telefono")); // Nombre de la columna sobre la que se quiere consultar
 //            }
 //
 //        } catch (Exception ex) {
