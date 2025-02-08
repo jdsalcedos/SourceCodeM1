@@ -1,7 +1,5 @@
 package control.conexion;
 
-import java.sql.*;
-
 public class ConexionBD {
 	
     private static ConexionBD instancia = null;
@@ -38,5 +36,5 @@ public class ConexionBD {
     } public static void desconectar() {
         cn = null;
     }
-    
+
 }
