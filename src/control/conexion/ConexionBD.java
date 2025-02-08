@@ -2,6 +2,8 @@ package control.conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConexionBD {
@@ -12,6 +14,9 @@ public class ConexionBD {
     private static final String url = "jdbc:mysql://127.0.0.1:3306/biblioteca"; 
     private static final String username = "root";
     private static final String password = "";
+    
+    private static PreparedStatement pst;
+    private static ResultSet rs;
     
     private ConexionBD() {}
 
@@ -41,4 +46,32 @@ public class ConexionBD {
         cn = null;
     }
 
+    
+// ACA ESTA EL CODIGO EJEMPLO PARA LAS CONSULTAS, ESTO DEBE IR EN LAS CLASES DAO
+    
+    
+//    public static void main(String[] args) {
+//    	Connection cn = null;
+//        PreparedStatement pst = null;
+//        ResultSet rs = null;
+//
+//        try {
+//            cn = ConexionBD.getConexion();
+//            if (cn == null) {
+//                System.out.println("No se pudo establecer la conexión.");
+//                return;
+//            }
+//
+//            pst = cn.prepareStatement("SELECT * FROM usuario");
+//            rs = pst.executeQuery();
+//
+//            while (rs.next()) {
+//                System.out.println("Usuario: " + rs.getString("nombre")); // Ajusta el campo según tu tabla
+//            }
+//
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//    }
 }
+
