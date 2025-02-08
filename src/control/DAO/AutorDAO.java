@@ -1,8 +1,9 @@
 package control.DAO;
 
-public class UsuarioDAO implements InterfaceDAO {
+public class AutorDAO implements InterfaceDAO{
 
 	// toca reescribir todos los metodos para que funcionen con Usuarios
+	
 	@Override
 	public String getAll() {
 		// TODO Auto-generated method stub

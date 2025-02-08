@@ -1,4 +1,4 @@
-package modelo.autores;
+package modelo.autor;
 
 public class Autor {
 	private int idAutor;
