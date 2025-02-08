@@ -1,5 +1,9 @@
 package control.conexion;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class ConexionBD {
 	
     private static ConexionBD instancia = null;
