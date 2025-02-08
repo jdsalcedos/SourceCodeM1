@@ -1,10 +1,8 @@
 package modelo.abstracto;
 
 import java.time.LocalDate;
+import modelo.documento.*;
 
-import modelo.ArticuloCientifico;
-import modelo.Libro;
-import modelo.Ponencia;
 
 public interface DocumentoFactory {
 	public default Documento crearLibro(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion, String isbn,

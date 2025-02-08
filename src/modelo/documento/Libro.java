@@ -1,7 +1,6 @@
-package modelo;
+package modelo.documento;
 
 import java.time.LocalDate;
-
 import modelo.abstracto.Documento;
 
 public class Libro extends Documento{
