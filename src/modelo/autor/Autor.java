@@ -1,6 +1,6 @@
 package modelo.autor;
 
-public class Usuario {
+public class Autor {
 	private int idAutor;
 	private String nombre;
 	private String correo;
@@ -8,13 +8,16 @@ public class Usuario {
 	private String direccion;
 	private String telefono;
 	
-	public Usuario(int idAutor, String nombre, String correo, String contrasena, String direccion, String telefono) {
+	public Autor(int idAutor, String nombre, String correo, String contrasena, String direccion, String telefono) {
 		this.idAutor = idAutor;
 		this.nombre = nombre;
 		this.correo = correo;
 		this.contrasena = contrasena;
 		this.direccion = direccion;
 		this.telefono = telefono;
+	}
+	public Autor() {
+		
 	}
 
 	public int getIdAutor() {

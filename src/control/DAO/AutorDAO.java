@@ -1,86 +1,110 @@
 package control.DAO;
 
-import modelo.autor.Usuario;
+import java.sql.*;
 import java.util.ArrayList;
 
-public class AutorDAO implements InterfaceDAO<Usuario>{
+import control.conexion.ConexionBD;
+import modelo.autor.Autor;
 
-	
-	//esta es la lista que va a tener los datos de todos los Autores de la base de datos
-	private ArrayList<Usuario> datos;
-	
+public class AutorDAO implements InterfaceDAO<Autor> {
+
+	private Connection cn;
+	private PreparedStatement pst;
+	private ResultSet rs;
+	// gestor
+
 	public AutorDAO() {
-		datos = new ArrayList<Usuario>();
+		// gestor
+		cn = null;
+		pst = null;
+		rs = null;
 	}
 
 	@Override
-	public String getAll() {
-		String rta = "";
-		if(!datos.isEmpty()) {
-			for (Usuario aut : datos) {
-				rta += aut + "\n"; //esto es porque la clase Autor debe tener un metodo toString y por eso guarda bien el String
+	public ArrayList<Autor> getAll() {
+		ArrayList<Autor> autores = new ArrayList<Autor>();
+		try {
+			cn = ConexionBD.getConexion();
+			pst = (PreparedStatement) cn.prepareStatement("select * from autor");
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Autor aut = new Autor();
+				aut.setIdAutor(rs.getInt("id_autor"));
+				aut.setNombre(rs.getString("nombre"));
+				aut.setCorreo(rs.getString("correo"));
+				aut.setContrasena(rs.getString("contrasena"));
+				aut.setDireccion(rs.getString("direccion"));
+				aut.setTelefono(rs.getString("telefono"));
+				autores.add(aut);
 			}
+			pst.close();
+			ConexionBD.desconectar();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
 		}
-		return rta;
+		System.out.println(autores);
+		return autores;
 	}
 
 	@Override
-	public Usuario getOne(int id) {
-		Usuario rta = null;
-		if(!datos.isEmpty()) {
-			for(Usuario aut : datos) {
-				rta = aut;
+	public Autor getOne(int id) {
+		Autor aut = null;
+		try {
+			cn = (Connection) ConexionBD.getConexion();
+			pst = (PreparedStatement) cn.prepareStatement("select * from autor where id_autor=?");
+			pst.setInt(1, id);
+			rs = pst.executeQuery();
+			if (rs.next()) {
+				aut = new Autor();
+				aut.setIdAutor(id);
+				aut.setNombre(rs.getString("nombre"));
+				aut.setCorreo(rs.getString("correo"));
+				aut.setDireccion(rs.getString("direccion"));
+				aut.setTelefono(rs.getString("telefono"));
 			}
+			pst.close();
+			ConexionBD.desconectar();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			;
 		}
-		return rta;
+		System.out.println(aut);
+		return aut;
 	}
 
 	@Override
-	public boolean add(Usuario aut) {
-		if(find(aut) == null) {
-			datos.add(aut);
-			return true;
+	public void add(Autor aut) {
+
+		try {
+			cn = ConexionBD.getConexion();
+
+			pst = (PreparedStatement) cn.prepareStatement("insert into autor values(?,?,?,?,?,?)");
+			pst.setInt(1, aut.getIdAutor());
+			pst.setString(2, aut.getNombre().trim());
+			pst.setString(3, aut.getCorreo().trim());
+			pst.setString(4, aut.getContrasena().trim());
+			pst.setString(5, aut.getDireccion().trim());
+			pst.setString(6, aut.getTelefono().trim());
+
+			pst.executeUpdate();
+			pst.close();
+			ConexionBD.desconectar();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+
 		}
+	}
+
+	@Override
+	public boolean update(Autor antiguo, Autor nuevo) {
+
 		return false;
 	}
 
 	@Override
-	public boolean update(Usuario antiguo, Usuario nuevo) {
-		Usuario aut = find(antiguo);
-		if(aut != null) {
-			datos.remove(aut);
-			aut.setIdAutor(nuevo.getIdAutor());
-			aut.setNombre(nuevo.getNombre());
-			aut.setCorreo(nuevo.getCorreo());
-			aut.setDireccion(nuevo.getDireccion());
-			aut.setTelefono(nuevo.getTelefono());
-			datos.add(aut);
-			return true;
-		}
+	public boolean delete(Autor autDelete) {
+
 		return false;
 	}
 
-	@Override
-	public boolean delete(Usuario autDelete) {
-		Usuario aut = find(autDelete);
-		if(aut != null) {
-			datos.remove(aut);
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public Usuario find(Usuario x) {
-		Usuario encontrado = null;
-		if(!datos.isEmpty()) {
-			for (Usuario aut : datos) {
-				if(aut.getIdAutor() == x.getIdAutor()) {
-					encontrado = aut;
-				}
-			}
-		}
-		return encontrado;
-	}
-	
 }

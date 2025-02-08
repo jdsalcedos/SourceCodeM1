@@ -28,7 +28,9 @@ y decidir cual tipo de documento es el que se quiere crear.*/
 		}
 	}
 	
-
+//Main que simula la creacion de documentos la cual debe ser realizada con los datos de la Vista y el DAO
+	
+	
 //	public static void main(String[] args) {
 		//Crea la fábrica que implementa el método 
 //		CreadorDocumento fabrica = new CreadorDocumento();

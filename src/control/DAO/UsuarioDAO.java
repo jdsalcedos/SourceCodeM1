@@ -1,89 +1,112 @@
 package control.DAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import control.conexion.ConexionBD;
 import modelo.usuario.Usuario;
 
-public class UsuarioDAO implements InterfaceDAO<Usuario>{
+public class UsuarioDAO implements InterfaceDAO<Usuario> {
 
-	//esta es la lista que va a tener los datos de todos los Usuarios de la base de datos
-	private ArrayList<Usuario> datos;
-	
+	private Connection cn;
+	private PreparedStatement pst;
+	private ResultSet rs;
+	// gestor
+
 	public UsuarioDAO() {
-		datos = new ArrayList<Usuario>();
+		// gestor
+		cn = null;
+		pst = null;
+		rs = null;
 	}
-	
-	
-	// toca reescribir todos los metodos para que funcionen con Documentos
-	
+
 	@Override
-	public String getAll() {
-		String rta = "";
-		if(!datos.isEmpty()) {
-			for (Usuario user : datos) {
-				rta += user + "\n"; //esto es porque la clase Autor debe tener un metodo toString y por eso guarda bien el String
+	public ArrayList<Usuario> getAll() {
+		ArrayList<Usuario> users = new ArrayList<Usuario>();
+		try {
+			cn = ConexionBD.getConexion();
+			pst = (PreparedStatement) cn.prepareStatement("select * from usuario");
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Usuario user = new Usuario();
+				user.setIdUsuario(rs.getInt("id_usuario"));
+				user.setNombre(rs.getString("nombre"));
+				user.setCorreo(rs.getString("correo"));
+				user.setContrasena(rs.getString("contrasena"));
+				user.setDireccion(rs.getString("direccion"));
+				user.setTelefono(rs.getString("telefono"));
+				users.add(user);
 			}
+			pst.close();
+			ConexionBD.desconectar();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
 		}
-		return rta;
+		System.out.println(users);
+		return users;
 	}
 
 	@Override
 	public Usuario getOne(int id) {
-		Usuario rta = null;
-		if(!datos.isEmpty()) {
-			for(Usuario user : datos) {
-				rta = user;
+		Usuario user = null;
+		try {
+			cn = (Connection) ConexionBD.getConexion();
+			pst = (PreparedStatement) cn.prepareStatement("select * from usuario where id_usuario=?");
+			pst.setInt(1, id);
+			rs = pst.executeQuery();
+			if (rs.next()) {
+				user = new Usuario();
+				user.setIdUsuario(id);
+				user.setNombre(rs.getString("nombre"));
+				user.setCorreo(rs.getString("correo"));
+				user.setDireccion(rs.getString("direccion"));
+				user.setTelefono(rs.getString("telefono"));
 			}
+			pst.close();
+			ConexionBD.desconectar();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			;
 		}
-		return rta;
+		System.out.println(user);
+		return user;
 	}
 
 	@Override
-	public boolean add(Usuario aut) {
-		if(find(aut) == null) {
-			datos.add(aut);
-			return true;
+	public void add(Usuario user) {
+		try {
+			cn = ConexionBD.getConexion();
+
+			pst = (PreparedStatement) cn.prepareStatement("insert into usuario values(?,?,?,?,?,?)");
+			pst.setInt(1, user.getIdUsuario());
+			pst.setString(2, user.getNombre().trim());
+			pst.setString(3, user.getCorreo().trim());
+			pst.setString(4, user.getContrasena().trim());
+			pst.setString(5, user.getDireccion().trim());
+			pst.setString(6, user.getTelefono().trim());
+
+			pst.executeUpdate();
+			pst.close();
+			ConexionBD.desconectar();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+
 		}
-		return false;
 	}
 
 	@Override
 	public boolean update(Usuario antiguo, Usuario nuevo) {
-		Usuario user = find(antiguo);
-		if(user != null) {
-			datos.remove(user);
-			user.setIdUsuario(nuevo.getIdUsuario());
-			user.setNombre(nuevo.getNombre());
-			user.setCorreo(nuevo.getCorreo());
-			user.setDireccion(nuevo.getDireccion());
-			user.setTelefono(nuevo.getTelefono());
-			datos.add(user);
-			return true;
-		}
+
 		return false;
 	}
 
 	@Override
 	public boolean delete(Usuario userDelete) {
-		Usuario user = find(userDelete);
-		if(user != null) {
-			datos.remove(user);
-			return true;
-		}
-		return false;
-	}
 
-	@Override
-	public Usuario find(Usuario x) {
-		Usuario encontrado = null;
-		if(!datos.isEmpty()) {
-			for (Usuario aut : datos) {
-				if(aut.getIdUsuario() == x.getIdUsuario()) {
-					encontrado = aut;
-				}
-			}
-		}
-		return encontrado;
+		return false;
 	}
 
 }

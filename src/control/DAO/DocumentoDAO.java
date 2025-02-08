@@ -2,7 +2,7 @@ package control.DAO;
 
 import java.util.ArrayList;
 
-import modelo.usuario.Usuario;
+import modelo.factory.abstracto.Documento;
 
 
 public class DocumentoDAO implements InterfaceDAO<Documento>{
@@ -15,43 +15,82 @@ public class DocumentoDAO implements InterfaceDAO<Documento>{
 		
 		// toca reescribir todos los metodos para que funcionen con Documentos
 
+		
+		//Este metodo toca revisarlo ya que toca preguntar que es mejor, traer Strings para la visualizacion
+		//o mejor traer los objetos 
+		
 		@Override
 		public String getAll() {
-			// TODO Auto-generated method stub
-			return null;
+			String rta = "";
+			if(!datos.isEmpty()) {
+				for (Documento doc : datos) {
+					rta += doc + "\n"; //esto es porque la clase Autor debe tener un metodo toString y por eso guarda bien el String
+				}
+			}
+			return rta;
 		}
 
 		@Override
-		public Documento getOne(String id) {
-			// TODO Auto-generated method stub
-			return null;
+		public Documento getOne(int id) {
+			Documento rta = null;
+			if(!datos.isEmpty()) {
+				for(Documento doc : datos) {
+					rta = doc;
+				}
+			}
+			return rta;
 		}
 
 		@Override
-		public boolean add() {
-			// TODO Auto-generated method stub
+		public boolean add(Documento doc) {
+			if(find(doc) == null) {
+				datos.add(doc);
+				return true;
+			}
 			return false;
 		}
 
 		@Override
-		public boolean update(Documento x, Documento y) {
-			// TODO Auto-generated method stub
+		public boolean update(Documento antiguo, Documento nuevo) {
+			Documento doc = find(antiguo);
+			if(doc != null) {
+				datos.remove(doc);
+				doc.setIdAutor(nuevo.getIdDocumento());
+				doc.setIdEditorial(nuevo.getIdEditorial());
+				doc.setIdAutor(nuevo.getIdAutor());
+				doc.setTitulo(nuevo.getTitulo());
+				doc.setFechaPublicacion(nuevo.getFechaPublicacion());
+				doc.setIsbn(nuevo.getIsbn());
+				doc.setTipoDocumento(nuevo.getTipoDocumento());
+				doc.setEstadoVisualizacion(nuevo.getEstadoVisualizacion());
+				datos.add(doc);
+				return true;
+			}
 			return false;
 		}
 
 		@Override
-		public boolean delete() {
-			// TODO Auto-generated method stub
+		public boolean delete(Documento docDelete) {
+			Documento doc = find(docDelete);
+			if(doc != null) {
+				datos.remove(doc);
+				return true;
+			}
 			return false;
 		}
 
 		@Override
 		public Documento find(Documento x) {
-			// TODO Auto-generated method stub
-			return null;
+			Documento encontrado = null;
+			if(!datos.isEmpty()) {
+				for (Documento doc : datos) {
+					if(doc.getIdDocumento() == x.getIdDocumento()) {
+						encontrado = doc;
+					}
+				}
+			}
+			return encontrado;
 		}
-	
-	
 }
 
 
