@@ -12,4 +12,25 @@ public class Ponencia extends Documento{
 		this.congreso=congreso;
 	}
 	
+	@Override
+	public String toString() {
+	    return "Ponencia{" +
+	            "idDocumento=" + idDocumento +
+	            ", idEditorial=" + idEditorial +
+	            ", idAutor=" + idAutor +
+	            ", titulo='" + titulo + '\'' +
+	            ", fechaPublicacion=" + fechaPublicacion +
+	            ", isbn='" + isbn + '\'' +
+	            ", congreso='" + congreso + '\'' +
+	            '}';
+	}
+
+	public String getCongreso() {
+		return congreso;
+	}
+
+	public void setCongreso(String congreso) {
+		this.congreso = congreso;
+	}
+	
 }

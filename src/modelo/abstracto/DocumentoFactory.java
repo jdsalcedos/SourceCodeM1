@@ -6,7 +6,7 @@ import modelo.documento.*;
 
 public interface DocumentoFactory {
 	public default Documento crearLibro(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion, String isbn,
-			String tipoDocumento, int numPaginas) {
+			String tipoDocumento, String numPaginas) {
 		return new Libro(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn,
 				tipoDocumento, numPaginas);
 	};

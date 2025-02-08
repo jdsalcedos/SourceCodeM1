@@ -25,5 +25,68 @@ public abstract class Documento {
 		this.tipoDocumento = tipoDocumento;
 	}
 	
+	public void setIdDocumento(int idDocumento) {
+		this.idDocumento = idDocumento;
+	}
 
+	public void setIdEditorial(int idEditorial) {
+		this.idEditorial = idEditorial;
+	}
+
+	public void setIdAutor(int idAutor) {
+		this.idAutor = idAutor;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public void setFechaPublicacion(LocalDate fechaPublicacion) {
+		this.fechaPublicacion = fechaPublicacion;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
+
+	public void setEstadoVisualizacion(String estadoVisualizacion) {
+		this.estadoVisualizacion = estadoVisualizacion;
+	}
+
+	public int getIdDocumento() {
+		return idDocumento;
+	}
+
+	public int getIdEditorial() {
+		return idEditorial;
+	}
+
+	public int getIdAutor() {
+		return idAutor;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public LocalDate getFechaPublicacion() {
+		return fechaPublicacion;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public String getTipoDocumento() {
+		return tipoDocumento;
+	}
+
+	public String getEstadoVisualizacion() {
+		return estadoVisualizacion;
+	}
+	
 }

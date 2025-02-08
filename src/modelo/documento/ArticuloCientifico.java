@@ -11,5 +11,23 @@ public class ArticuloCientifico extends Documento{
 		super(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento);
 		this.ssn = ssn;
 	}
+	@Override
+	public String toString() {
+	    return "ArticuloCientifico{" +
+	            "idDocumento=" + idDocumento +
+	            ", idEditorial=" + idEditorial +
+	            ", idAutor=" + idAutor +
+	            ", titulo='" + titulo + '\'' +
+	            ", fechaPublicacion=" + fechaPublicacion +
+	            ", isbn='" + isbn + '\'' +
+	            ", ssn='" + ssn + '\'' +
+	            '}';
+	}
+	public String getSsn() {
+		return ssn;
+	}
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
 	
 }
