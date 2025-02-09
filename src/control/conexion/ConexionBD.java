@@ -61,15 +61,18 @@ public class ConexionBD {
 		try {
 			cn = ConexionBD.getConexion();
 
-			ArticuloCientificoDAO acDao = new ArticuloCientificoDAO();
+			//ArticuloCientificoDAO acDao = new ArticuloCientificoDAO();
 ////			LibroDAO daolibro = new LibroDAO();
-			CreadorDocumento fabrica = new CreadorDocumento();
-			DocumentoDAO dao = new DocumentoDAO();
-//			
+//			CreadorDocumento fabrica = new CreadorDocumento();
+//			DocumentoDAO dao = new DocumentoDAO();
 			//Documento ac1 = fabrica.creadorDocumento(2, 101, 1, "Articulo C 1", LocalDate.of(2012, 8, 2),"632144", "Articulo cientifico", "dado de alta");
 			//acDao.add((ArticuloCientifico) ac1);
-			Documento doc = dao.getOne(2);
-			dao.delete(doc);
+			//Documento doc = dao.getOne(2);
+			//dao.updateEstado(doc);
+			//Documento ac1 = fabrica.creadorDocumento(2, 101, 1, "Articulo C 1", LocalDate.of(2012, 8, 2),"632144", "Articulo cientifico", "dado de alta");
+			//acDao.add((ArticuloCientifico) ac1);
+			//Documento doc = dao.getOne(2);
+			//dao.delete(doc);
 			//Documento docNew = fabrica.creadorDocumento(2, 101, 1, "Ponencia Cambiada", LocalDate.of(2014, 1, 1),"555555", "Libro", "dado de baja");
 			//dao.update(doc, docNew);
 //			dao.delete(doc);
