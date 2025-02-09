@@ -7,15 +7,15 @@ public abstract class Documento {
 	protected int idEditorial;
 	protected int idAutor;
 	protected String titulo;
-	//atributo tipo fecha
 	protected LocalDate fechaPublicacion;
 	protected String isbn;
 	protected String tipoDocumento;
 	protected String estadoVisualizacion;
 	
-	public Documento(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion, String isbn,
-			String tipoDocumento) {
-		super();
+	
+	
+	public Documento(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion,
+			String isbn, String tipoDocumento, String estadoVisualizacion) {
 		this.idDocumento = idDocumento;
 		this.idEditorial = idEditorial;
 		this.idAutor = idAutor;
@@ -23,8 +23,11 @@ public abstract class Documento {
 		this.fechaPublicacion = fechaPublicacion;
 		this.isbn = isbn;
 		this.tipoDocumento = tipoDocumento;
+		this.estadoVisualizacion = estadoVisualizacion;
 	}
-	
+	public Documento() {
+	}
+
 	public void setIdDocumento(int idDocumento) {
 		this.idDocumento = idDocumento;
 	}

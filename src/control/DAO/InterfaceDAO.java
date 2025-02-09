@@ -1,5 +1,6 @@
 package control.DAO;
 
+
 import java.util.ArrayList;
 
 public interface InterfaceDAO <T> {
