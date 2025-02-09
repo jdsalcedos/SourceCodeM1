@@ -12,20 +12,6 @@ public class Libro extends Documento{
 		super(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion);
 		this.numPaginas=numPaginas;
 	}
-
-
-	@Override
-	public String toString() {
-	    return "Libro{" +
-	            "idDocumento=" + idDocumento +
-	            ", idEditorial=" + idEditorial +
-	            ", idAutor=" + idAutor +
-	            ", titulo='" + titulo + '\'' +
-	            ", fechaPublicacion=" + fechaPublicacion +
-	            ", isbn='" + isbn + '\'' +
-	            ", numPaginas=" + numPaginas +
-	            '}';
-	}
 	
 	public String getNumPaginas() {
 		return numPaginas;

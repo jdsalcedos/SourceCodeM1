@@ -5,11 +5,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import control.DAO.documentos.ArticuloCientificoDAO;
 import control.DAO.documentos.DocumentoDAO;
 import control.DAO.documentos.LibroDAO;
+import control.DAO.documentos.PonenciaDAO;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.creadorConcreto.CreadorDocumento;
+import modelo.factory.documento.ArticuloCientifico;
 import modelo.factory.documento.Libro;
+import modelo.factory.documento.Ponencia;
 
 public class ConexionBD {
 
@@ -57,12 +61,19 @@ public class ConexionBD {
 		try {
 			cn = ConexionBD.getConexion();
 
-//			LibroDAO daolibro = new LibroDAO();
-//			CreadorDocumento fabrica = new CreadorDocumento();
-//			DocumentoDAO dao = new DocumentoDAO();
+			ArticuloCientificoDAO acDao = new ArticuloCientificoDAO();
+////			LibroDAO daolibro = new LibroDAO();
+			CreadorDocumento fabrica = new CreadorDocumento();
+			DocumentoDAO dao = new DocumentoDAO();
 //			
-//			Documento libro1 = fabrica.creadorDocumento(2, 101, 1, "Sexy", LocalDate.of(2004, 10, 22),"123000000", "Libro", "dado de alta");
-//			//daolibro.add((Libro) libro1);
+			//Documento ac1 = fabrica.creadorDocumento(2, 101, 1, "Articulo C 1", LocalDate.of(2012, 8, 2),"632144", "Articulo cientifico", "dado de alta");
+			//acDao.add((ArticuloCientifico) ac1);
+			Documento doc = dao.getOne(2);
+			dao.delete(doc);
+			//Documento docNew = fabrica.creadorDocumento(2, 101, 1, "Ponencia Cambiada", LocalDate.of(2014, 1, 1),"555555", "Libro", "dado de baja");
+			//dao.update(doc, docNew);
+//			dao.delete(doc);
+			//daolibro.add((Libro) libro1);
 //			//dao.getOne(2);
 //			//dao.getAll();
 //			dao.delete(libro1);

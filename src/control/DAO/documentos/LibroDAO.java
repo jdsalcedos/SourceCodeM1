@@ -2,28 +2,23 @@ package control.DAO.documentos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import control.DAO.InterfaceDAO;
 import control.conexion.ConexionBD;
-import modelo.factory.abstracto.Documento;
 import modelo.factory.documento.Libro;
-import modelo.usuario.Usuario;
 
 public class LibroDAO implements InterfaceDAO<Libro> {
 
 	private Connection cn;
 	private PreparedStatement pst;
-	private ResultSet rs;
 	// gestor
 
 	public LibroDAO() {
 		// gestor
 		cn = null;
 		pst = null;
-		rs = null;
 	}
 
 	@Override

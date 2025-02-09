@@ -12,19 +12,6 @@ public class Ponencia extends Documento{
 		super(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion);
 		this.congreso=congreso;
 	}
-	
-	@Override
-	public String toString() {
-	    return "Ponencia{" +
-	            "idDocumento=" + idDocumento +
-	            ", idEditorial=" + idEditorial +
-	            ", idAutor=" + idAutor +
-	            ", titulo='" + titulo + '\'' +
-	            ", fechaPublicacion=" + fechaPublicacion +
-	            ", isbn='" + isbn + '\'' +
-	            ", congreso='" + congreso + '\'' +
-	            '}';
-	}
 
 	public String getCongreso() {
 		return congreso;
