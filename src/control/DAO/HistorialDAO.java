@@ -187,7 +187,6 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 	        ConexionBD.desconectar();
 	        return true;
 	    } catch (SQLException ex) {
-	        ex.printStackTrace();
 	    }
 	    return false;
 	}

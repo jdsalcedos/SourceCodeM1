@@ -8,11 +8,13 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import control.DAO.AutorDAO;
+import control.DAO.HistorialDAO;
 import control.DAO.ReservaDAO;
 import control.DAO.UsuarioDAO;
 import control.DAO.documentos.ArticuloCientificoDAO;
 import control.DAO.documentos.DocumentoDAO;
 import modelo.autor.Autor;
+import modelo.facade.historial.HistorialCambio;
 import modelo.facade.reserva.Reserva;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.creadorConcreto.CreadorDocumento;
