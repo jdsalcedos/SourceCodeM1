@@ -2,9 +2,6 @@ package modelo.factory.abstracto;
 
 import java.time.LocalDate;
 
-import modelo.state.EstadoVisible;
-import modelo.state.VisualizacionState;
-
 public abstract class Documento {
 	protected int idDocumento;
 	protected int idEditorial;
@@ -13,12 +10,12 @@ public abstract class Documento {
 	protected LocalDate fechaPublicacion;
 	protected String isbn;
 	protected String tipoDocumento;
-	protected VisualizacionState estadoVisualizacion;
+	protected String estadoVisualizacion;
 	
 	
 	
 	public Documento(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion,
-			String isbn, String tipoDocumento, VisualizacionState estadoVisualizacion) {
+			String isbn, String tipoDocumento, String estadoVisualizacion) {
 		this.idDocumento = idDocumento;
 		this.idEditorial = idEditorial;
 		this.idAutor = idAutor;
@@ -26,7 +23,7 @@ public abstract class Documento {
 		this.fechaPublicacion = fechaPublicacion;
 		this.isbn = isbn;
 		this.tipoDocumento = tipoDocumento;
-		this.estadoVisualizacion = new EstadoVisible();
+		this.estadoVisualizacion = estadoVisualizacion;
 	}
 	public Documento() {
 	}
@@ -59,7 +56,7 @@ public abstract class Documento {
 		this.tipoDocumento = tipoDocumento;
 	}
 
-	public void setEstadoVisualizacion(VisualizacionState estadoVisualizacion) {
+	public void setEstadoVisualizacion(String estadoVisualizacion) {
 		this.estadoVisualizacion = estadoVisualizacion;
 	}
 
@@ -91,7 +88,7 @@ public abstract class Documento {
 		return tipoDocumento;
 	}
 
-	public VisualizacionState getEstaVisualizacion() {
+	public String getEstadoVisualizacion() {
 		return estadoVisualizacion;
 	}
 	
