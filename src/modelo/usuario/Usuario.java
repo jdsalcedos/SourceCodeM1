@@ -18,6 +18,10 @@ public class Usuario {
 		this.telefono = telefono;
 	}
 
+	public Usuario() {
+	
+	}
+
 
 	public int getIdUsuario() {
 		return idUsuario;
@@ -78,5 +82,9 @@ public class Usuario {
 		this.telefono = telefono;
 	}
 	
+	@Override
+	public String toString() {
+		return "Usuario: \nid: "+idUsuario+"\nnombre: "+nombre+"\ncorreo: "+correo+"\ndireccion: "+direccion+"\ntelefono: "+telefono;
+	}
 	
 }
