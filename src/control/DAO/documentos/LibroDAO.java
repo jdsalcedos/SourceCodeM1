@@ -44,7 +44,7 @@ public class LibroDAO implements InterfaceDAO<Libro> {
 			pst.setInt(4, lib.getIdEditorial());
 			pst.setString(5, lib.getIsbn().trim());
 			pst.setString(6, lib.getTipoDocumento().trim());
-			pst.setString(7, lib.getEstadoVisualizacion().trim());
+			pst.setString(7, lib.getEstadoVisualizacion().getEstado());
 			pst.executeUpdate();
 
 			pst = (PreparedStatement) cn.prepareStatement("insert into libro values(?,?)");

@@ -3,6 +3,8 @@ package modelo.factory.creadorConcreto;
 import java.time.LocalDate;
 
 import modelo.factory.abstracto.*;
+import modelo.state.EstadoVisible;
+import modelo.state.VisualizacionState;
 
 public class CreadorDocumento implements DocumentoFactory{
 /*El dato que va a ser el parámetro de los if vendrá de la vista, 
@@ -12,7 +14,12 @@ y decidir cual tipo de documento es el que se quiere crear.*/
 	
 	
 	public Documento creadorDocumento(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion,
-			String isbn, String tipoDocumento, String estadoVisualizacion) {
+			String isbn, String tipoDocumento, VisualizacionState estadoVisualizacion) {
+		
+		if (estadoVisualizacion == null) {
+	        estadoVisualizacion = new EstadoVisible(); // Estado predeterminado
+	    }
+		
 		switch (tipoDocumento) {
 			case "Libro":
 				String numPaginas = "15";

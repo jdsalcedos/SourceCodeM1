@@ -45,7 +45,7 @@ public class PonenciaDAO implements InterfaceDAO<Ponencia> {
 			pst.setInt(4, pon.getIdEditorial());
 			pst.setString(5, pon.getIsbn().trim());
 			pst.setString(6, pon.getTipoDocumento().trim());
-			pst.setString(7, pon.getEstadoVisualizacion().trim());
+			pst.setString(7, pon.getEstadoVisualizacion().getEstado());
 			pst.executeUpdate();
 
 			pst = (PreparedStatement) cn.prepareStatement("insert into ponencia values(?,?)");

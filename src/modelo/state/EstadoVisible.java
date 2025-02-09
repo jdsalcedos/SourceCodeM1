@@ -6,19 +6,19 @@ import modelo.factory.abstracto.Documento;
 public class EstadoVisible extends VisualizacionState{
 
 
-	public String nuevoEstado = "Dado de alta";
+	public static final String ESTADO = "Dado de alta";
 		
 	
 	@Override
 	public
 	void actualizarEstado(DocumentoDAO dao, Documento doc) {
 		
-		dao.actualizarEstadoEnBD(doc, nuevoEstado);
+		dao.actualizarEstadoEnBD(doc, ESTADO);
 	}
 	
 	public @Override
 	String getEstado() {
-		return this.nuevoEstado;
+		return ESTADO;
 	}
 
 }

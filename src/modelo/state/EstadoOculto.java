@@ -5,18 +5,18 @@ import modelo.factory.abstracto.Documento;
 
 public class EstadoOculto extends VisualizacionState{
 
-	public String nuevoEstado = "Dado de baja";
+	public static final  String ESTADO = "Dado de baja";
 	
 	@Override
 	public
 	void actualizarEstado(DocumentoDAO dao, Documento doc) {
 		
-		dao.actualizarEstadoEnBD(doc, nuevoEstado);
+		dao.actualizarEstadoEnBD(doc, ESTADO);
 	}
 	
 	@Override
 	public String getEstado() {
-		return this.nuevoEstado;
+		return ESTADO;
 	}
 	
 }

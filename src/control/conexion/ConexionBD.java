@@ -13,12 +13,12 @@ import control.DAO.ReservaDAO;
 import control.DAO.UsuarioDAO;
 import control.DAO.documentos.ArticuloCientificoDAO;
 import control.DAO.documentos.DocumentoDAO;
-import modelo.autor.Autor;
-import modelo.facade.historial.HistorialCambio;
-import modelo.facade.reserva.Reserva;
+import control.DAO.documentos.LibroDAO;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.creadorConcreto.CreadorDocumento;
-import modelo.usuario.Usuario;
+import modelo.factory.documento.ArticuloCientifico;
+import modelo.factory.documento.Libro;
+import modelo.state.*;
 
 public class ConexionBD {
 
@@ -64,39 +64,74 @@ public class ConexionBD {
 	public static void main(String[] args) {
 
 		try {
-			cn = ConexionBD.getConexion();
+			//cn = ConexionBD.getConexion();
 
-			ArticuloCientificoDAO acDao = new ArticuloCientificoDAO();
-////			LibroDAO daolibro = new LibroDAO();
-			CreadorDocumento fabrica = new CreadorDocumento();
-			DocumentoDAO dao = new DocumentoDAO();
-			
-			VisualizacionState visible = new EstadoVisible();
-			VisualizacionState novisible = new EstadoOculto();
-			
-			Documento ac1 = fabrica.creadorDocumento(1, 101, 2, "Cientifico 34", LocalDate.of(2022, 10, 23),"0963294", "Articulo cientifico", visible.getEstado());
-			//acDao.add((ArticuloCientifico) ac1);
-			dao.getOne(1);
-			
-			visible.actualizarEstado(dao, dao.getOne(1));
-			//acDao.add((ArticuloCientifico) ac1);
-			//Documento doc = dao.getOne(2);
-			//dao.updateEstado(doc);
-			//Documento ac1 = fabrica.creadorDocumento(2, 101, 1, "Articulo C 1", LocalDate.of(2012, 8, 2),"632144", "Articulo cientifico", "dado de alta");
-			//acDao.add((ArticuloCientifico) ac1);
-			//Documento doc = dao.getOne(2);
-			//dao.delete(doc);
-			//Documento docNew = fabrica.creadorDocumento(2, 101, 1, "Ponencia Cambiada", LocalDate.of(2014, 1, 1),"555555", "Libro", "dado de baja");
-			//dao.update(doc, docNew);
+			// ArticuloCientificoDAO acDao = new ArticuloCientificoDAO();
+
+			//DocumentoDAO dao = new DocumentoDAO();
+			//CreadorDocumento fabrica = new CreadorDocumento();
+			//LibroDAO daolibro = new LibroDAO();
+
+//			Documento lib1 = fabrica.creadorDocumento(4, 101, 1, "Don Quijote", LocalDate.of(2015, 1, 2), "0971089273",
+//					"Libro", null);
+//			Documento lib2 = fabrica.creadorDocumento(5555, 101, 2, "Don Pancote", LocalDate.of(2035, 5, 22), "97309999999",
+//					"Ponencia", null);
+//
+//			daolibro.add((Libro) lib1);
+//
+//			Documento doc = dao.getOne(4);
+//			
+//			dao.getAll();
+//			
+//			dao.update(doc, lib2);
+//			
+//			Documento docModificado = dao.getOne(3);
+//
+//			if (docModificado != null) {
+//				System.out.println("Estado actual: " + docModificado.getEstadoVisualizacion().getEstado());
+//
+//				// 2. Cambiar el estado (de Visible a NoVisible o viceversa)
+//				if (docModificado.getEstadoVisualizacion() instanceof EstadoVisible) {
+//					docModificado.cambiarEstado(new EstadoOculto(), dao);
+//				} else {
+//					docModificado.cambiarEstado(new EstadoVisible(), dao);
+//				}
+//
+//				// 3. Verificar el cambio
+//				System.out.println("Nuevo estado: " + docModificado.getEstadoVisualizacion().getEstado());
+//			} else {
+//				System.out.println("Documento no encontrado.");
+//			}
+//			
+//			
+//			dao.getOne(3);
+//			
+//			dao.delete(docModificado);
+//			
+//			dao.getAll();
+//			
+//			System.out.println(dao.getOne(4));
+
+			// acDao.add((ArticuloCientifico) ac1);
+			// Documento doc = dao.getOne(2);
+			// dao.updateEstado(doc);
+			// Documento ac1 = fabrica.creadorDocumento(2, 101, 1, "Articulo C 1",
+			// LocalDate.of(2012, 8, 2),"632144", "Articulo cientifico", "dado de alta");
+			// acDao.add((ArticuloCientifico) ac1);
+			// Documento doc = dao.getOne(2);
+			// dao.delete(doc);
+			// Documento docNew = fabrica.creadorDocumento(2, 101, 1, "Ponencia Cambiada",
+			// LocalDate.of(2014, 1, 1),"555555", "Libro", "dado de baja");
+			// dao.update(doc, docNew);
 //			dao.delete(doc);
-			//daolibro.add((Libro) libro1);
+			// daolibro.add((Libro) libro1);
 //			//dao.getOne(2);
 //			//dao.getAll();
 //			dao.delete(libro1);
 //			Documento nuevoDocumento = fabrica.creadorDocumento(2, 101, 1, "Sexy", LocalDate.of(2004, 10, 22),
 //					"123000000", "Ponencia", "dado de alta");
-			//Documento doc = dao.getOne(2);
-			//dao.delete(doc);
+			// Documento doc = dao.getOne(2);
+			// dao.delete(doc);
 //			Documento nuevoDocumentoModificado = fabrica.creadorDocumento(4, 101, 2, "Feo", LocalDate.of(2011, 9, 11),
 //					"15462340", "Ponencia", "dado de baja");
 //
