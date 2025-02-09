@@ -121,7 +121,6 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 
 	@Override
 	public void add(Documento doc) {
-		//logica para mandar al DAO correspondiente para que se cree en la BD
 	}
 
 	@Override
