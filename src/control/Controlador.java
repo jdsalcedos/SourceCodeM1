@@ -1,0 +1,220 @@
+package control;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import vista.VentanaBiblioteca;
+import vista.VentanaLogin;
+import vista.VentanaRegistro;
+import vista.VentanaElegirDoc;
+import vista.VentanaInfoDoc;
+import vista.VentanaModDoc;
+import vista.VentanaSubirDoc;
+
+public class Controlador implements ActionListener{
+	private VentanaLogin login;
+	private VentanaRegistro registro;
+	private VentanaBiblioteca biblioteca;
+	private VentanaSubirDoc subirDocumento;
+	private VentanaElegirDoc elegirDocumento;
+	private VentanaModDoc modificarDocumento;
+	private VentanaInfoDoc infoDocumento;
+	private int user=0;
+	private String doc="";
+	
+	public Controlador() {
+		login = new VentanaLogin();
+		registro = new VentanaRegistro();
+		biblioteca = new VentanaBiblioteca();
+		subirDocumento = new VentanaSubirDoc();
+		elegirDocumento = new VentanaElegirDoc();
+		modificarDocumento = new VentanaModDoc();
+		infoDocumento = new VentanaInfoDoc();
+		asignarOyentes();
+	}
+	
+	public void asignarOyentes () {
+		login.getBtnCerrar().addActionListener(this);
+		login.getBtnIngresarAutor().addActionListener(this);
+		login.getBtnIngresarLector().addActionListener(this);
+		login.getBtnRegister().addActionListener(this);
+		
+		registro.getBtnCerrar().addActionListener(this);
+		registro.getBtnRegistrarse().addActionListener(this);
+		registro.getBtnVolver().addActionListener(this);
+		registro.getRdBtnAutor().addActionListener(this);
+		registro.getRdBtnLector().addActionListener(this);
+		
+		biblioteca.getBtnCerrar().addActionListener(this);
+		biblioteca.getBtnSubirDoc().addActionListener(this);
+		biblioteca.getBtnModificarDoc1().addActionListener(this);
+		biblioteca.getBtnInfoDoc1().addActionListener(this);
+		
+		subirDocumento.getBtnCerrar().addActionListener(this);
+		subirDocumento.getBtnSubir().addActionListener(this);
+		subirDocumento.getBtnVolver().addActionListener(this);
+		
+		elegirDocumento.getBtnCerrar().addActionListener(this);
+		elegirDocumento.getBtnVolver().addActionListener(this);
+		elegirDocumento.getBtnLibro().addActionListener(this);
+		elegirDocumento.getBtnPonencia().addActionListener(this);
+		elegirDocumento.getBtnArticulo().addActionListener(this);
+		
+		modificarDocumento.getBtnCerrar().addActionListener(this);
+		modificarDocumento.getBtnModificar().addActionListener(this);
+		modificarDocumento.getBtnEliminar().addActionListener(this);
+		modificarDocumento.getBtnVolver().addActionListener(this);
+		
+		infoDocumento.getBtnCerrar().addActionListener(this);
+		infoDocumento.getBtnReservar().addActionListener(this);
+		infoDocumento.getBtnDevolver().addActionListener(this);
+		infoDocumento.getBtnVolver().addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String comando = e.getActionCommand();
+		System.out.println(comando);
+		//Ventana login
+		if (comando.equals("CERRAR") ) {
+			System.exit(0);
+			
+		}else if (comando.equals("REGISTER") ) {
+			registro.setVisible(true);
+			login.dispose();
+			
+		}else if (comando.equals("INGRESAR_AUTOR") ) {
+			if(login.verifyAutor()) {
+				biblioteca.setVisible(true);
+				login.dispose();
+				user=2;
+			}
+			
+		}else if (comando.equals("INGRESAR_LECTOR") ) {
+			if(login.verifyLector()) {
+				biblioteca.setVisible(true);
+				login.dispose();
+				user=1;
+			}
+		}
+		
+		//Ventana registro
+		if (comando.equals("REGISTRARSE") ) {
+			if(registro.verify()) {
+				login.setVisible(true);
+				registro.dispose();
+			}
+			
+		}else if (comando.equals("VOLVER1") ) {
+			login.setVisible(true);
+			registro.dispose();
+			
+		}else if (comando.equals("REG_LECTOR") ) {
+			
+			
+		}else if (comando.equals("REG_AUTOR") ) {
+			
+		}
+		
+		//Ventana biblioteca
+		if(user==1) {
+			biblioteca.getBtnModificarDoc1().setVisible(false);
+			biblioteca.getBtnModificarDoc2().setVisible(false);
+			biblioteca.getBtnModificarDoc3().setVisible(false);
+			biblioteca.getBtnModificarDoc4().setVisible(false);
+			biblioteca.getBtnModificarDoc5().setVisible(false);
+			biblioteca.getBtnModificarDoc6().setVisible(false);
+			biblioteca.getBtnModificarDoc7().setVisible(false);
+			biblioteca.getBtnModificarDoc8().setVisible(false);
+			biblioteca.getBtnModificarDoc9().setVisible(false);
+			biblioteca.getLblModificarDoc1().setVisible(false);
+			biblioteca.getLblModificarDoc2().setVisible(false);
+			biblioteca.getLblModificarDoc3().setVisible(false);
+			biblioteca.getLblModificarDoc4().setVisible(false);
+			biblioteca.getLblModificarDoc5().setVisible(false);
+			biblioteca.getLblModificarDoc6().setVisible(false);
+			biblioteca.getLblModificarDoc7().setVisible(false);
+			biblioteca.getLblModificarDoc8().setVisible(false);
+			biblioteca.getLblModificarDoc9().setVisible(false);
+			biblioteca.getBtnSubirDoc().setVisible(false);
+		}
+		if (comando.equals("SUBIR_DOCUMENTO")) {
+			elegirDocumento.setVisible(true);
+			biblioteca.dispose();
+		}if(comando.equals("MOD_LIBRO1")) {
+			modificarDocumento.setVisible(true);
+			modificarDocumento.clear();
+			biblioteca.dispose();
+		}else if(comando.equals("INFO_DOC1")) {
+			infoDocumento.setVisible(true);
+			biblioteca.dispose();
+		}
+		
+		//Ventana elegirdocumento
+		if (comando.equals("VOLVER2") ) {
+			biblioteca.setVisible(true);
+			elegirDocumento.dispose();
+		}else if (comando.equals("ARTICULO") ) {
+			doc="articulo";
+			subirDocumento.setVisible(true);
+			subirDocumento.clear();
+			elegirDocumento.dispose();
+		}else if (comando.equals("PONENCIA") ) {
+			doc="ponencia";
+			subirDocumento.setVisible(true);
+			subirDocumento.clear();
+			elegirDocumento.dispose();
+		}else if (comando.equals("LIBRO") ) {
+			doc="libro";
+			subirDocumento.setVisible(true);
+			subirDocumento.clear();
+			elegirDocumento.dispose();
+		}
+		
+		//Ventana subirdocumento
+		if (comando.equals("SUBIR") ) {
+			if(subirDocumento.verify()) {
+				biblioteca.setVisible(true);
+				subirDocumento.dispose();
+			}
+		}else if (comando.equals("VOLVER3") ) {
+			elegirDocumento.setVisible(true);
+			subirDocumento.dispose();
+		}
+		subirDocumento.getLblCampo4().setText("ISBN");
+		subirDocumento.getLblBordeTxt6().setVisible(true);
+		subirDocumento.getTxtCampo6().setVisible(true);
+		if(doc.equals("libro")) {
+			subirDocumento.getLblCampo6().setText("Número de páginas");
+		}
+		if(doc.equals("ponencia")){
+			subirDocumento.getLblCampo6().setText("Congreso");
+		}
+		if(doc.equals("articulo")){
+			subirDocumento.getLblCampo4().setText("SSN");
+			subirDocumento.getLblBordeTxt6().setVisible(false);
+			subirDocumento.getTxtCampo6().setVisible(false);
+			subirDocumento.getLblCampo6().setText("");
+		}
+
+		//Ventana modificadocumento
+		if (comando.equals("ELIMINAR") ) {
+			
+		}else if (comando.equals("MODIFICAR") ) {
+			
+		}else if (comando.equals("VOLVER4") ) {
+			biblioteca.setVisible(true);
+			modificarDocumento.dispose();
+		}
+		
+		//Ventana infodocumento
+		if (comando.equals("RESERVAR") ) {
+			
+		}else if (comando.equals("VOLVER5") ) {
+			biblioteca.setVisible(true);
+			infoDocumento.dispose();
+		}else if (comando.equals("DEVOLVER") ) {
+
+		}
+
+	}
+}
