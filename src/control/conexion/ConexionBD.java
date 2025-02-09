@@ -7,15 +7,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import control.DAO.AutorDAO;
+import control.DAO.ReservaDAO;
+import control.DAO.UsuarioDAO;
 import control.DAO.documentos.ArticuloCientificoDAO;
 import control.DAO.documentos.DocumentoDAO;
-import control.DAO.documentos.LibroDAO;
-import control.DAO.documentos.PonenciaDAO;
+import modelo.autor.Autor;
+import modelo.facade.reserva.Reserva;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.creadorConcreto.CreadorDocumento;
-import modelo.factory.documento.ArticuloCientifico;
-import modelo.factory.documento.Libro;
-import modelo.factory.documento.Ponencia;
+import modelo.usuario.Usuario;
 
 public class ConexionBD {
 
