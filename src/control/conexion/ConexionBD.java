@@ -66,11 +66,19 @@ public class ConexionBD {
 		try {
 			cn = ConexionBD.getConexion();
 
-			//ArticuloCientificoDAO acDao = new ArticuloCientificoDAO();
+			ArticuloCientificoDAO acDao = new ArticuloCientificoDAO();
 ////			LibroDAO daolibro = new LibroDAO();
-//			CreadorDocumento fabrica = new CreadorDocumento();
-//			DocumentoDAO dao = new DocumentoDAO();
-			//Documento ac1 = fabrica.creadorDocumento(2, 101, 1, "Articulo C 1", LocalDate.of(2012, 8, 2),"632144", "Articulo cientifico", "dado de alta");
+			CreadorDocumento fabrica = new CreadorDocumento();
+			DocumentoDAO dao = new DocumentoDAO();
+			
+			VisualizacionState visible = new EstadoVisible();
+			VisualizacionState novisible = new EstadoOculto();
+			
+			Documento ac1 = fabrica.creadorDocumento(1, 101, 2, "Cientifico 34", LocalDate.of(2022, 10, 23),"0963294", "Articulo cientifico", visible.getEstado());
+			//acDao.add((ArticuloCientifico) ac1);
+			dao.getOne(1);
+			
+			visible.actualizarEstado(dao, dao.getOne(1));
 			//acDao.add((ArticuloCientifico) ac1);
 			//Documento doc = dao.getOne(2);
 			//dao.updateEstado(doc);

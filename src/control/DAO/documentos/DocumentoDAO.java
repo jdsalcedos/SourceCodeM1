@@ -195,6 +195,7 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 	        pst.executeUpdate();
 	        pst.close();
 	        ConexionBD.desconectar();
+	        System.out.println("SE CAMBIO EL ESTADO");
 	    } catch (SQLException ex) {
 	        ex.printStackTrace();
 	    }

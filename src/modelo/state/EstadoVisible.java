@@ -3,13 +3,22 @@ package modelo.state;
 import control.DAO.documentos.DocumentoDAO;
 import modelo.factory.abstracto.Documento;
 
-public class EstadoVisible implements VisualizacionState{
+public class EstadoVisible extends VisualizacionState{
 
 
-	@Override
-	public void actualizarEstadoBD(DocumentoDAO dao, Documento doc) {
-		dao.actualizarEstadoEnBD(doc, "Dado de alta");
+	public String nuevoEstado = "Dado de alta";
 		
+	
+	@Override
+	public
+	void actualizarEstado(DocumentoDAO dao, Documento doc) {
+		
+		dao.actualizarEstadoEnBD(doc, nuevoEstado);
+	}
+	
+	public @Override
+	String getEstado() {
+		return this.nuevoEstado;
 	}
 
 }
