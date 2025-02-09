@@ -146,8 +146,8 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			ConexionBD.desconectar();
 			System.out.println("documento modificado con exito");
 
-			return filasAfectadas > 0; // Devuelve true si al menos una fila fue afectada en
-																// ambas tablas
+			return filasAfectadas > 0; 
+			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
