@@ -7,8 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import control.DAO.AutorDAO;
+import control.DAO.ReservaDAO;
 import control.DAO.UsuarioDAO;
 import modelo.autor.Autor;
+import modelo.facade.reserva.Reserva;
 import modelo.usuario.Usuario;
 
 public class ConexionBD {
@@ -51,25 +53,29 @@ public class ConexionBD {
 		cn = null;
 		System.out.println("desconectado con exito");
 	}
+	
 
-	/*
-	 * public static void main(String[] args) {
-	 * 
-	 * try { cn = ConexionBD.getConexion();
-	 * 
-	 * 
-	 * UsuarioDAO dao = new UsuarioDAO(); Usuario nuevoUsuario = new Usuario(3,
-	 * "juan", "jdalsceod@3", "576357", "calle 43", "222222"); Usuario nuevoUsuario2
-	 * = new Usuario(4, "johan", "johan@21", "75742", "calle 1", "333333333");
-	 * 
-	 * dao.add(nuevoUsuario); dao.add(nuevoUsuario2);
-	 * 
-	 * dao.getAll();
-	 * 
-	 * dao.getOne(4);
-	 * 
-	 * 
-	 * 
-	 * } catch (Exception ex) { ex.printStackTrace(); } }
-	 */
+	
+	  public static void main(String[] args) {
+	  try { 
+		  cn = ConexionBD.getConexion();
+		  ReservaDAO reserva=new ReservaDAO();
+//		  Reserva res= new Reserva();
+//		  res.setIdReserva(3);  // Suponiendo que este ID es único
+//	      res.setIdDocumento(1);
+//	      res.setIdUsuario(1);
+//	      res.setEstadoReserva("Reservado");
+	      
+//	      reserva.add(res);
+//	      System.out.println("---- Obteniendo la reserva agregada ----");
+	      Reserva reservaRecuperada = reserva.getOne(3);
+//	      System.out.println("Reserva recuperada: " + reservaRecuperada.toString());
+	      reserva.update(reservaRecuperada, null);
+	      System.out.println("Reserva actualizada: " + reservaRecuperada.getEstadoReserva());
+//	      reserva.delete(res);
+	  } catch (Exception ex) { 
+		  ex.printStackTrace(); 
+	  	} 
+	  }
+	 
 }

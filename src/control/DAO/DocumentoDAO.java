@@ -79,18 +79,6 @@ public class DocumentoDAO implements InterfaceDAO<Documento>{
 			return false;
 		}
 
-		@Override
-		public Documento find(Documento x) {
-			Documento encontrado = null;
-			if(!datos.isEmpty()) {
-				for (Documento doc : datos) {
-					if(doc.getIdDocumento() == x.getIdDocumento()) {
-						encontrado = doc;
-					}
-				}
-			}
-			return encontrado;
-		}
 }
 
 
