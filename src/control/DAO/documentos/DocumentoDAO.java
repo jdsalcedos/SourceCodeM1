@@ -185,5 +185,19 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 	    }
 	    return false;
 	}
+	
+	public void actualizarEstadoEnBD(Documento doc, String nuevoEstado) {
+	    try {
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("UPDATE documento SET estado_visualizacion = ? WHERE id_documento = ?");
+	        pst.setString(1, nuevoEstado);
+	        pst.setInt(2, doc.getIdDocumento());
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	    }
+	}
 
 }
