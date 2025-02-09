@@ -6,20 +6,30 @@ public class HistorialCambio {
 	private int idHistorial;
 	private int idUsuario;
 	private int idDocumento;
+	private int idAutor;
 	private String accion;
 	private LocalDate fechaModificacion;
 	
 	public HistorialCambio() {
 	}
 	
-	public HistorialCambio(int idHistorial, int idUsuario, int idDocumento, String accion,
+	public HistorialCambio(int idHistorial, int idUsuario, int idDocumento, int idAutor, String accion,
 			LocalDate fechaModificacion) {
 		super();
 		this.idHistorial = idHistorial;
 		this.idUsuario = idUsuario;
 		this.idDocumento = idDocumento;
+		this.idAutor = idAutor;
 		this.accion = accion;
 		this.fechaModificacion = fechaModificacion;
+	}
+	
+	public int getIdAutor() {
+		return idAutor;
+	}
+
+	public void setIdAutor(int idAutor) {
+		this.idAutor = idAutor;
 	}
 
 	public int getIdHistorial() {

@@ -17,12 +17,14 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 	private Connection cn;
 	private PreparedStatement pst;
 	private ResultSet rs;
+	private String accion;
 	
 	public HistorialDAO() {
 		// gestor
 		cn = null;
 		pst = null;
 		rs = null;
+		accion = null;
 	}
 
 	@Override
@@ -45,6 +47,7 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 				cambio.setIdDocumento(rs.getInt("id_documento"));
 				cambio.setAccion(rs.getString("accion"));
 				cambio.setFechaModificacion(rs.getDate("fecha_modificacion").toLocalDate());
+				cambio.setIdAutor(rs.getInt("id_autor"));
 			}
 			pst.close();
 			ConexionBD.desconectar();
@@ -56,33 +59,113 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 
 	@Override
 	public void add(HistorialCambio x) {
+		//Crear
 		try {
+			accion="Crear";
 			cn = ConexionBD.getConexion();
-			pst = (PreparedStatement) cn.prepareStatement("insert into historial_cambio values(?,?,?,?,?)");
+			pst = (PreparedStatement) cn.prepareStatement("insert into historial_cambio values(?,?,?,?,?,?)");
 			pst.setInt(1, x.getIdHistorial());
 			pst.setInt(2, x.getIdDocumento());
 			pst.setInt(3, x.getIdUsuario());
-			pst.setString(4, "Crear".trim());
-			pst.setDate(5, Date.valueOf(LocalDate.now()));
+			pst.setInt(4, x.getIdAutor());
+			pst.setString(5, accion.trim());
+			pst.setDate(6, Date.valueOf(LocalDate.now()));
 			pst.executeUpdate();
 			pst.close();
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-	}
+		}
 		
 	}
 
+
 	@Override
 	public boolean update(HistorialCambio x, HistorialCambio y) {
-		//crear, eliminar, modificar, reservar, devolver
-		
+		//modificar
+		try {
+			accion="Modificar";
+			cn = ConexionBD.getConexion();
+			pst = (PreparedStatement) cn.prepareStatement("insert into historial_cambio values(?,?,?,?,?,?)");
+			pst.setInt(1, x.getIdHistorial());
+			pst.setInt(2, x.getIdDocumento());
+			pst.setInt(3, x.getIdUsuario());
+			pst.setInt(4, x.getIdAutor());
+			pst.setString(5, accion.trim());
+			pst.setDate(6, Date.valueOf(LocalDate.now()));
+			pst.executeUpdate();
+			pst.close();
+			ConexionBD.desconectar();
+			return true;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean reservado(HistorialCambio x) {
+		//modificar, reservar, devolver
+		try {
+			accion="Reservar";
+			cn = ConexionBD.getConexion();
+			pst = (PreparedStatement) cn.prepareStatement("insert into historial_cambio values(?,?,?,?,?,?)");
+			pst.setInt(1, x.getIdHistorial());
+			pst.setInt(2, x.getIdDocumento());
+			pst.setInt(3, x.getIdUsuario());
+			pst.setInt(4, x.getIdAutor());
+			pst.setString(5, accion.trim());
+			pst.setDate(6, Date.valueOf(LocalDate.now()));
+			pst.executeUpdate();
+			pst.close();
+			ConexionBD.desconectar();
+			return true;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean devolver(HistorialCambio x) {
+		//modificar, reservar, devolver
+		try {
+			accion="Devolver";
+			cn = ConexionBD.getConexion();
+			pst = (PreparedStatement) cn.prepareStatement("insert into historial_cambio values(?,?,?,?,?,?)");
+			pst.setInt(1, x.getIdHistorial());
+			pst.setInt(2, x.getIdDocumento());
+			pst.setInt(3, x.getIdUsuario());
+			pst.setInt(4, x.getIdAutor());
+			pst.setString(5, accion.trim());
+			pst.setDate(6, Date.valueOf(LocalDate.now()));
+			pst.executeUpdate();
+			pst.close();
+			ConexionBD.desconectar();
+			return true;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean delete(HistorialCambio x) {
-		// TODO Auto-generated method stub
+		try {
+			accion="Eliminar";
+			cn = ConexionBD.getConexion();
+			pst = (PreparedStatement) cn.prepareStatement("insert into historial_cambio values(?,?,?,?,?,?)");
+			pst.setInt(1, x.getIdHistorial());
+			pst.setInt(2, x.getIdDocumento());
+			pst.setInt(3, x.getIdUsuario());
+			pst.setInt(4, x.getIdAutor());
+			pst.setString(5, accion.trim());
+			pst.setDate(6, Date.valueOf(LocalDate.now()));
+			pst.executeUpdate();
+			pst.close();
+			ConexionBD.desconectar();
+			return true;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
 		return false;
 	}
 
