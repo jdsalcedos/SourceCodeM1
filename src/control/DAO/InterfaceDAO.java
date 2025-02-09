@@ -1,10 +1,11 @@
 package control.DAO;
 
+import java.util.ArrayList;
+
 public interface InterfaceDAO <T> {
-	 String getAll();
+	 ArrayList<T> getAll();
 	 T getOne(int id);
-	 boolean add(T x);
+	 void add(T x);
 	 boolean update(T x, T y);
 	 boolean delete(T x);
-	 T find(T x);
 }

@@ -8,22 +8,9 @@ public class Libro extends Documento{
 	private String numPaginas;
 
 	public Libro(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion, String isbn,
-			String tipoDocumento, String numPaginas) {
-		super(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento);
+			String tipoDocumento, String estadoVisualizacion, String numPaginas) {
+		super(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion);
 		this.numPaginas=numPaginas;
-	}
-
-	@Override
-	public String toString() {
-	    return "Libro{" +
-	            "idDocumento=" + idDocumento +
-	            ", idEditorial=" + idEditorial +
-	            ", idAutor=" + idAutor +
-	            ", titulo='" + titulo + '\'' +
-	            ", fechaPublicacion=" + fechaPublicacion +
-	            ", isbn='" + isbn + '\'' +
-	            ", numPaginas=" + numPaginas +
-	            '}';
 	}
 	
 	public String getNumPaginas() {

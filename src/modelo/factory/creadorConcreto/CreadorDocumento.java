@@ -12,23 +12,25 @@ y decidir cual tipo de documento es el que se quiere crear.*/
 	
 	
 	public Documento creadorDocumento(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion,
-			String isbn, String tipoDocumento) {
+			String isbn, String tipoDocumento, String estadoVisualizacion) {
 		switch (tipoDocumento) {
 			case "Libro":
 				String numPaginas = "15";
-				return crearLibro(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, numPaginas);
+				return crearLibro(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion, numPaginas);
 			case "Ponencia":
 				String congreso = "COP16";
-				return crearPonencia(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, congreso);
+				return crearPonencia(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion, congreso);
 			case "Articulo cientifico":
 				String ssn = "1234684";
-				return crearArticulo(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, ssn);
+				return crearArticulo(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion, ssn);
 			default:
 				throw new IllegalArgumentException("Tipo de documento no válido: "+ tipoDocumento);
 		}
 	}
 	
-
+//Main que simula la creacion de documentos la cual debe ser realizada con los datos de la Vista y el DAO
+	
+	
 //	public static void main(String[] args) {
 		//Crea la fábrica que implementa el método 
 //		CreadorDocumento fabrica = new CreadorDocumento();

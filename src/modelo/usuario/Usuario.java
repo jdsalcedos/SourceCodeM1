@@ -17,6 +17,9 @@ public class Usuario {
 		this.direccion = direccion;
 		this.telefono = telefono;
 	}
+	public Usuario() {
+	
+	}
 
 
 	public int getIdUsuario() {

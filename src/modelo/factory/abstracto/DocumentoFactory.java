@@ -7,18 +7,18 @@ import modelo.factory.documento.*;
 
 public interface DocumentoFactory {
 	public default Documento crearLibro(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion, String isbn,
-			String tipoDocumento, String numPaginas) {
+			String tipoDocumento, String estadoVisualizacion, String numPaginas) {
 		return new Libro(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn,
-				tipoDocumento, numPaginas);
+				tipoDocumento, estadoVisualizacion, numPaginas);
 	};
 	public default Documento crearPonencia(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion, String isbn,
-			String tipoDocumento, String congreso) {
+			String tipoDocumento, String estadoVisualizacion, String congreso) {
 		return new Ponencia(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn,
-			tipoDocumento, congreso);
+			tipoDocumento,estadoVisualizacion, congreso);
 	};
 	public default Documento crearArticulo(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion, String isbn,
-			String tipoDocumento, String ssn) {
+			String tipoDocumento, String estadoVisualizacion, String ssn) {
 		return new ArticuloCientifico(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn,
-			tipoDocumento, ssn);
+			tipoDocumento,estadoVisualizacion, ssn);
 	};
 }
