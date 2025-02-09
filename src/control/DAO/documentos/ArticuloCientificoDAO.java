@@ -45,7 +45,7 @@ public class ArticuloCientificoDAO implements InterfaceDAO<ArticuloCientifico>{
 			pst.setInt(4, ac.getIdEditorial());
 			pst.setString(5, ac.getIsbn().trim());
 			pst.setString(6, ac.getTipoDocumento().trim());
-			pst.setString(7, ac.getEstadoVisualizacion().trim());
+			pst.setString(7, ac.getEstadoVisualizacion().getEstado());
 			pst.executeUpdate();
 
 			pst = (PreparedStatement) cn.prepareStatement("insert into articulo_cientifico values(?,?)");

@@ -3,12 +3,13 @@ package modelo.factory.documento;
 import java.time.LocalDate;
 
 import modelo.factory.abstracto.Documento;
+import modelo.state.VisualizacionState;
 
 public class Libro extends Documento{
 	private String numPaginas;
 
 	public Libro(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion, String isbn,
-			String tipoDocumento, String estadoVisualizacion, String numPaginas) {
+			String tipoDocumento, VisualizacionState estadoVisualizacion, String numPaginas) {
 		super(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion);
 		this.numPaginas=numPaginas;
 	}

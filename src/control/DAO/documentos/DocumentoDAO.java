@@ -11,6 +11,9 @@ import control.DAO.InterfaceDAO;
 import control.conexion.ConexionBD;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.creadorConcreto.CreadorDocumento;
+import modelo.state.EstadoOculto;
+import modelo.state.EstadoVisible;
+import modelo.state.VisualizacionState;
 
 public class DocumentoDAO implements InterfaceDAO<Documento> {
 
@@ -54,7 +57,9 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 				LocalDate fechaPublicacion = rs.getDate("fecha_publicacion").toLocalDate();
 				String isbn = rs.getString("ISBN");
 				String tipoDocumento = rs.getString("tipo_documento");
-				String estadoVisualizacion = rs.getString("estado_visualizacion");
+				String estadoVisualizacionStr = rs.getString("estado_visualizacion");
+				
+				VisualizacionState estadoVisualizacion = estadoVisualizacionStr.equals("Dado de alta") ? new EstadoVisible() : new EstadoOculto();
 
 				// Usar el Factory Method para crear el documento correcto
 				Documento doc = creador.creadorDocumento(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion,
@@ -63,13 +68,13 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 				docs.add(doc);
 			}
 			
-
+			System.out.println("MOSTRANDO LOS DOCUMENTOS....");
+			System.out.println(docs.toString());
 			pst.close();
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		System.out.println(docs);
 		return docs;
 	}
 
@@ -95,13 +100,16 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 				LocalDate fechaPublicacion = rs.getDate("fecha_publicacion").toLocalDate();
 				String isbn = rs.getString("isbn");
 				String tipoDocumento = rs.getString("tipo_documento");
-				String estadoVisualizacion = rs.getString("estado_visualizacion");
+				String estadoVisualizacionStr = rs.getString("estado_visualizacion");
+
+				VisualizacionState estadoVisualizacion = estadoVisualizacionStr.equals("Dado de alta") ? new EstadoVisible() : new EstadoOculto();
 
 				// Usar el Factory Method para crear el documento correcto
 				doc = creador.creadorDocumento(id, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento,
 						estadoVisualizacion);
 			}
-			System.out.println(doc);
+			System.out.println("MOSTRANDO SOLO 1");
+			System.out.println(doc.toString());
 
 			pst.close();
 			ConexionBD.desconectar();
@@ -133,7 +141,7 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 
 
 			int filasAfectadas = pst.executeUpdate();
-
+			System.out.println("# filas modificadas: "+filasAfectadas);
 			pst.close();
 			ConexionBD.desconectar();
 			System.out.println("documento modificado con exito");
