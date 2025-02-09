@@ -48,7 +48,7 @@ public class ReservaDAO implements InterfaceDAO<Reserva>{
 		return null;
 	}
 
-	//Función para obtener uno directamente por el ID
+	//Función para obtener uno directamente por el ID de la reserva
 	@Override
 	public Reserva getOne(int id) {
 		//Se instancia el objeto
@@ -73,6 +73,39 @@ public class ReservaDAO implements InterfaceDAO<Reserva>{
 			}
 			//Imprime el resultado desde la base de datos
 			System.out.println("Estado: "+res.getEstadoReserva());
+			//Cierra la query 
+			pst.close();
+			//Se desconecta de la DB de forma segura
+			ConexionBD.desconectar();
+			//Excepción por si acaso
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		//Retorna el objeto específico que coincida con esa id 
+		return res;
+	}
+	
+	public Reserva getOneByUsuario(int id) {
+		//Se instancia el objeto
+		Reserva res = null;
+		try {
+			//Se hace la conexión y se crea el statement(query en SQL)
+			cn = (Connection) ConexionBD.getConexion();
+			pst = (PreparedStatement) cn.prepareStatement("select * from reserva where =?");
+			//dentro del primer ? vamos a meter un parámetro
+			pst.setInt(1, id);
+			//result set es el resultado de ejecutar la query
+			rs = pst.executeQuery();
+			//Se itera sobre el result set
+			if (rs.next()) {
+				//Se crea el objeto
+				res= new Reserva();
+				//Se ponen los parámetros de acuerdo al rs y al valor en la columna
+				res.setIdUsuario(id);
+				res.setIdReserva(rs.getInt("id_reserva"));
+				res.setIdDocumento(rs.getInt("id_documento"));
+				res.setEstadoReserva(rs.getString("estado_reserva"));
+			}
 			//Cierra la query 
 			pst.close();
 			//Se desconecta de la DB de forma segura

@@ -64,31 +64,29 @@ public class ConexionBD {
 		  //conexión con la db
 		  cn = ConexionBD.getConexion();
 		  //se trae el objeto del DAO
-			/*
-			 * ReservaDAO reserva=new ReservaDAO(); //Se crea un objeto de reserva Reserva
-			 * res= new Reserva(); //Se le añaden parámetros res.setIdReserva(3); //
-			 * Suponiendo que este ID es único res.setIdDocumento(1); res.setIdUsuario(1);
-			 * //Se añade el objeto a la base de datos reserva.add(res); //se trae el objeto
-			 * y se imprimen sus valores
-			 * System.out.println("---- Obteniendo la reserva agregada ----"); Reserva
-			 * reservaRecuperada = reserva.getOne(3);
-			 * System.out.println("Reserva recuperada: " + reservaRecuperada.toString());
-			 * System.out.println(reservaRecuperada.getEstadoReserva()); //Se usa el objeto
-			 * anterior para actualizar datos en la DB reserva.update(reservaRecuperada,
-			 * null); //Se traen los nuevos datos de la DB Reserva reservaActual =
-			 * reserva.getOne(3); //Se muestran al usuario
-			 * System.out.println("Reserva actualizada: " +
-			 * reservaActual.getEstadoReserva()); //Se eleimina el objeto de la DB
-			 * reserva.delete(reservaActual);
-			 */
+//			 ReservaDAO reserva=new ReservaDAO();
+//			 Reserva res = new Reserva();
+//			 res.setIdDocumento(1); 
+//			 res.setIdUsuario(1);
+//			 reserva.add(res);
+			 //System.out.println("---- Obteniendo la reserva agregada ----"); Reserva
+			 //reservaRecuperada = reserva.getOne(3);
+			 //System.out.println("Reserva recuperada: " + reservaRecuperada.toString());
+			 //System.out.println(reservaRecuperada.getEstadoReserva()); 
+			 //reserva.update(reservaRecuperada,null);
+			 //Reserva reservaActual =reserva.getOne(3);
+			 //System.out.println("Reserva actualizada: " + reservaActual.getEstadoReserva());
+			 //reserva.delete(reservaActual);
+			 
 	      
 	      HistorialDAO historial=new HistorialDAO();
 	      HistorialCambio cambio=new HistorialCambio();
-	      cambio.setIdUsuario(1);
+	      cambio.setIdAutor(1);
 	      cambio.setIdDocumento(1);
-	      cambio.setIdHistorial(3);
 	      cambio.setFechaModificacion(LocalDate.now());
-	      historial.add(cambio);
+	      //historial.add(cambio);
+	      //cambio.setIdAutor(null);
+	      historial.delete(cambio);
 	  } catch (Exception ex) { 
 		  ex.printStackTrace(); 
 	  	} 

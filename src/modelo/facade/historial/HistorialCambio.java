@@ -4,9 +4,9 @@ import java.time.LocalDate;
 
 public class HistorialCambio {
 	private int idHistorial;
-	private int idUsuario;
+	private Integer idUsuario;
 	private int idDocumento;
-	private int idAutor;
+	private Integer idAutor;
 	private String accion;
 	private LocalDate fechaModificacion;
 	
@@ -24,11 +24,19 @@ public class HistorialCambio {
 		this.fechaModificacion = fechaModificacion;
 	}
 	
-	public int getIdAutor() {
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public Integer getIdAutor() {
 		return idAutor;
 	}
 
-	public void setIdAutor(int idAutor) {
+	public void setIdAutor(Integer idAutor) {
 		this.idAutor = idAutor;
 	}
 
@@ -37,12 +45,6 @@ public class HistorialCambio {
 	}
 	public void setIdHistorial(int idHistorial) {
 		this.idHistorial = idHistorial;
-	}
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
 	}
 	public int getIdDocumento() {
 		return idDocumento;

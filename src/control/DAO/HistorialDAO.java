@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -59,114 +60,138 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 
 	@Override
 	public void add(HistorialCambio x) {
-		//Crear
-		try {
-			accion="Crear";
-			cn = ConexionBD.getConexion();
-			pst = (PreparedStatement) cn.prepareStatement("insert into historial_cambio values(?,?,?,?,?,?)");
-			pst.setInt(1, x.getIdHistorial());
-			pst.setInt(2, x.getIdDocumento());
-			pst.setInt(3, x.getIdUsuario());
-			pst.setInt(4, x.getIdAutor());
-			pst.setString(5, accion.trim());
-			pst.setDate(6, Date.valueOf(LocalDate.now()));
-			pst.executeUpdate();
-			pst.close();
-			ConexionBD.desconectar();
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		
+	    // Validar que solo uno de los dos IDs tenga valor
+	    if ((x.getIdAutor() != null && x.getIdUsuario() != null) || 
+	        (x.getIdAutor() == null && x.getIdUsuario() == null)) {
+	        throw new IllegalArgumentException("Debe haber exactamente un ID entre id_autor o id_usuario.");
+	    }
+	    try {
+	        accion = "Crear";
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("INSERT INTO historial_cambio VALUES (?, ?, ?, ?, ?, ?)");
+	        pst.setInt(1, x.getIdHistorial());
+	        pst.setInt(2, x.getIdDocumento());
+	        pst.setObject(3, x.getIdUsuario(), Types.INTEGER); // Permite NULL
+	        pst.setObject(4, x.getIdAutor(), Types.INTEGER);   // Permite NULL
+	        pst.setString(5, accion.trim());
+	        pst.setDate(6, Date.valueOf(LocalDate.now()));
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	    }
 	}
+
 
 
 	@Override
 	public boolean update(HistorialCambio x, HistorialCambio y) {
 		//modificar
-		try {
-			accion="Modificar";
-			cn = ConexionBD.getConexion();
-			pst = (PreparedStatement) cn.prepareStatement("insert into historial_cambio values(?,?,?,?,?,?)");
-			pst.setInt(1, x.getIdHistorial());
-			pst.setInt(2, x.getIdDocumento());
-			pst.setInt(3, x.getIdUsuario());
-			pst.setInt(4, x.getIdAutor());
-			pst.setString(5, accion.trim());
-			pst.setDate(6, Date.valueOf(LocalDate.now()));
-			pst.executeUpdate();
-			pst.close();
-			ConexionBD.desconectar();
-			return true;
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		return false;
+		// Validar que solo uno de los dos IDs tenga valor
+	    if ((x.getIdAutor() != null && x.getIdUsuario() != null) || 
+	        (x.getIdAutor() == null && x.getIdUsuario() == null)) {
+	        throw new IllegalArgumentException("Debe haber exactamente un ID entre id_autor o id_usuario.");
+	    }
+	    try {
+	        accion = "Modificar";
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("INSERT INTO historial_cambio VALUES (?, ?, ?, ?, ?, ?)");
+	        pst.setInt(1, x.getIdHistorial());
+	        pst.setInt(2, x.getIdDocumento());
+	        pst.setObject(3, x.getIdUsuario(), Types.INTEGER); // Permite NULL
+	        pst.setObject(4, x.getIdAutor(), Types.INTEGER);   // Permite NULL
+	        pst.setString(5, accion.trim());
+	        pst.setDate(6, Date.valueOf(LocalDate.now()));
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	        return true;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	    }
+	    return false;
 	}
 	
 	public boolean reservado(HistorialCambio x) {
 		//modificar, reservar, devolver
-		try {
-			accion="Reservar";
-			cn = ConexionBD.getConexion();
-			pst = (PreparedStatement) cn.prepareStatement("insert into historial_cambio values(?,?,?,?,?,?)");
-			pst.setInt(1, x.getIdHistorial());
-			pst.setInt(2, x.getIdDocumento());
-			pst.setInt(3, x.getIdUsuario());
-			pst.setInt(4, x.getIdAutor());
-			pst.setString(5, accion.trim());
-			pst.setDate(6, Date.valueOf(LocalDate.now()));
-			pst.executeUpdate();
-			pst.close();
-			ConexionBD.desconectar();
-			return true;
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		return false;
+		// Validar que solo uno de los dos IDs tenga valor
+	    if ((x.getIdAutor() != null && x.getIdUsuario() != null) || 
+	        (x.getIdAutor() == null && x.getIdUsuario() == null)) {
+	        throw new IllegalArgumentException("Debe haber exactamente un ID entre id_autor o id_usuario.");
+	    }
+	    try {
+	        accion = "Reservar";
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("INSERT INTO historial_cambio VALUES (?, ?, ?, ?, ?, ?)");
+	        pst.setInt(1, x.getIdHistorial());
+	        pst.setInt(2, x.getIdDocumento());
+	        pst.setObject(3, x.getIdUsuario(), Types.INTEGER); // Permite NULL
+	        pst.setObject(4, x.getIdAutor(), Types.INTEGER);   // Permite NULL
+	        pst.setString(5, accion.trim());
+	        pst.setDate(6, Date.valueOf(LocalDate.now()));
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	        return true;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	    }
+	    return false;
 	}
 	
 	public boolean devolver(HistorialCambio x) {
 		//modificar, reservar, devolver
-		try {
-			accion="Devolver";
-			cn = ConexionBD.getConexion();
-			pst = (PreparedStatement) cn.prepareStatement("insert into historial_cambio values(?,?,?,?,?,?)");
-			pst.setInt(1, x.getIdHistorial());
-			pst.setInt(2, x.getIdDocumento());
-			pst.setInt(3, x.getIdUsuario());
-			pst.setInt(4, x.getIdAutor());
-			pst.setString(5, accion.trim());
-			pst.setDate(6, Date.valueOf(LocalDate.now()));
-			pst.executeUpdate();
-			pst.close();
-			ConexionBD.desconectar();
-			return true;
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		return false;
+		// Validar que solo uno de los dos IDs tenga valor
+	    if ((x.getIdAutor() != null && x.getIdUsuario() != null) || 
+	        (x.getIdAutor() == null && x.getIdUsuario() == null)) {
+	        throw new IllegalArgumentException("Debe haber exactamente un ID entre id_autor o id_usuario.");
+	    }
+	    try {
+	        accion = "Devolver";
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("INSERT INTO historial_cambio VALUES (?, ?, ?, ?, ?, ?)");
+	        pst.setInt(1, x.getIdHistorial());
+	        pst.setInt(2, x.getIdDocumento());
+	        pst.setObject(3, x.getIdUsuario(), Types.INTEGER); // Permite NULL
+	        pst.setObject(4, x.getIdAutor(), Types.INTEGER);   // Permite NULL
+	        pst.setString(5, accion.trim());
+	        pst.setDate(6, Date.valueOf(LocalDate.now()));
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	        return true;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	    }
+	    return false;
 	}
 
 	@Override
 	public boolean delete(HistorialCambio x) {
-		try {
-			accion="Eliminar";
-			cn = ConexionBD.getConexion();
-			pst = (PreparedStatement) cn.prepareStatement("insert into historial_cambio values(?,?,?,?,?,?)");
-			pst.setInt(1, x.getIdHistorial());
-			pst.setInt(2, x.getIdDocumento());
-			pst.setInt(3, x.getIdUsuario());
-			pst.setInt(4, x.getIdAutor());
-			pst.setString(5, accion.trim());
-			pst.setDate(6, Date.valueOf(LocalDate.now()));
-			pst.executeUpdate();
-			pst.close();
-			ConexionBD.desconectar();
-			return true;
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		return false;
+		// Validar que solo uno de los dos IDs tenga valor
+	    if ((x.getIdAutor() != null && x.getIdUsuario() != null) || 
+	        (x.getIdAutor() == null && x.getIdUsuario() == null)) {
+	        throw new IllegalArgumentException("Debe haber exactamente un ID entre id_autor o id_usuario.");
+	    }
+	    try {
+	        accion = "Eliminar";
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("INSERT INTO historial_cambio VALUES (?, ?, ?, ?, ?, ?)");
+	        pst.setInt(1, x.getIdHistorial());
+	        pst.setInt(2, x.getIdDocumento());
+	        pst.setObject(3, x.getIdUsuario(), Types.INTEGER); // Permite NULL
+	        pst.setObject(4, x.getIdAutor(), Types.INTEGER);   // Permite NULL
+	        pst.setString(5, accion.trim());
+	        pst.setDate(6, Date.valueOf(LocalDate.now()));
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	        return true;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	    }
+	    return false;
 	}
 
 }
