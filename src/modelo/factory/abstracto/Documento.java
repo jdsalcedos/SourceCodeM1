@@ -11,9 +11,7 @@ public abstract class Documento {
 	protected String isbn;
 	protected String tipoDocumento;
 	protected String estadoVisualizacion;
-	
-	
-	
+
 	public Documento(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion,
 			String isbn, String tipoDocumento, String estadoVisualizacion) {
 		this.idDocumento = idDocumento;
@@ -25,6 +23,7 @@ public abstract class Documento {
 		this.tipoDocumento = tipoDocumento;
 		this.estadoVisualizacion = estadoVisualizacion;
 	}
+
 	public Documento() {
 	}
 
@@ -91,5 +90,5 @@ public abstract class Documento {
 	public String getEstadoVisualizacion() {
 		return estadoVisualizacion;
 	}
-	
+
 }

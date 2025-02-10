@@ -13,10 +13,8 @@ public class LibroDAO implements InterfaceDAO<Libro> {
 
 	private Connection cn;
 	private PreparedStatement pst;
-	// gestor
 
 	public LibroDAO() {
-		// gestor
 		cn = null;
 		pst = null;
 	}
@@ -51,7 +49,7 @@ public class LibroDAO implements InterfaceDAO<Libro> {
 			pst.setInt(1, lib.getIdDocumento());
 			pst.setString(2, lib.getNumPaginas());
 			pst.executeUpdate();
-			
+
 			pst = (PreparedStatement) cn.prepareStatement("insert into documento_autor values(?,?)");
 			pst.setInt(1, lib.getIdDocumento());
 			pst.setInt(2, lib.getIdAutor());

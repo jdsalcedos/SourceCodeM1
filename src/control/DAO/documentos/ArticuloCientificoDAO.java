@@ -9,18 +9,16 @@ import control.DAO.InterfaceDAO;
 import control.conexion.ConexionBD;
 import modelo.factory.documento.ArticuloCientifico;
 
-public class ArticuloCientificoDAO implements InterfaceDAO<ArticuloCientifico>{
+public class ArticuloCientificoDAO implements InterfaceDAO<ArticuloCientifico> {
 
 	private Connection cn;
 	private PreparedStatement pst;
-	// gestor
-	
+
 	public ArticuloCientificoDAO() {
-		// gestor
 		cn = null;
 		pst = null;
 	}
-	
+
 	@Override
 	public ArrayList<ArticuloCientifico> getAll() {
 		// TODO Auto-generated method stub
@@ -52,7 +50,7 @@ public class ArticuloCientificoDAO implements InterfaceDAO<ArticuloCientifico>{
 			pst.setInt(1, ac.getIdDocumento());
 			pst.setString(2, ac.getSsn());
 			pst.executeUpdate();
-			
+
 			pst = (PreparedStatement) cn.prepareStatement("insert into documento_autor values(?,?)");
 			pst.setInt(1, ac.getIdDocumento());
 			pst.setInt(2, ac.getIdAutor());
