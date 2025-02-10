@@ -194,32 +194,32 @@ public class VentanaInfoDoc extends JFrame {
 		contentPane.add(txtInfo6);
 		
 		JLabel lblBordeTxt1 = new JLabel("");
-		lblBordeTxt1.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt1.setIcon(new ImageIcon(VentanaInfoDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt1.setBounds(261, 99, 270, 40);
 		contentPane.add(lblBordeTxt1);
 		
 		JLabel lblBordeTxt2 = new JLabel("");
-		lblBordeTxt2.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt2.setIcon(new ImageIcon(VentanaInfoDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt2.setBounds(261, 158, 270, 40);
 		contentPane.add(lblBordeTxt2);
 		
 		JLabel lblBordeTxt3 = new JLabel("");
-		lblBordeTxt3.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt3.setIcon(new ImageIcon(VentanaInfoDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt3.setBounds(261, 217, 270, 40);
 		contentPane.add(lblBordeTxt3);
 		
 		JLabel lblBordeTxt4 = new JLabel("");
-		lblBordeTxt4.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt4.setIcon(new ImageIcon(VentanaInfoDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt4.setBounds(261, 276, 270, 40);
 		contentPane.add(lblBordeTxt4);
 		
 		JLabel lblBordeTxt5 = new JLabel("");
-		lblBordeTxt5.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt5.setIcon(new ImageIcon(VentanaInfoDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt5.setBounds(261, 335, 270, 40);
 		contentPane.add(lblBordeTxt5);
 		
 		JLabel lblBordeTxt6 = new JLabel("");
-		lblBordeTxt6.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt6.setIcon(new ImageIcon(VentanaInfoDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt6.setBounds(261, 394, 270, 40);
 		contentPane.add(lblBordeTxt6);
 		

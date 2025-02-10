@@ -70,7 +70,7 @@ public class VentanaModDoc extends JFrame {
 		panelBarraSuperior.add(btnCerrar);
 		
 		JLabel lblImagenCerrar = new JLabel("");
-		lblImagenCerrar.setIcon(new ImageIcon(VentanaSubirDoc.class.getResource("/imagenes/cerrar.png")));
+		lblImagenCerrar.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/cerrar.png")));
 		lblImagenCerrar.setBounds(0, 0, 40, 40);
 		panelBarraSuperior.add(lblImagenCerrar);
 		
@@ -108,12 +108,12 @@ public class VentanaModDoc extends JFrame {
 		contentPane.add(btnEliminar);
 		
 		JLabel lblModificar = new JLabel("");
-		lblModificar.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/boton.png")));
+		lblModificar.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/boton.png")));
 		lblModificar.setBounds(310, 464, 125, 40);
 		contentPane.add(lblModificar);
 		
 		JLabel lblEliminar = new JLabel("");
-		lblEliminar.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/boton.png")));
+		lblEliminar.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/boton.png")));
 		lblEliminar.setBounds(465, 464, 125, 40);
 		contentPane.add(lblEliminar);
 		
@@ -212,37 +212,37 @@ public class VentanaModDoc extends JFrame {
 		contentPane.add(txtCampo6);
 		
 		JLabel lblBordeTxt1 = new JLabel("");
-		lblBordeTxt1.setIcon(new ImageIcon(VentanaSubirDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt1.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt1.setBounds(406, 99, 270, 40);
 		contentPane.add(lblBordeTxt1);
 		
 		JLabel lblBordeTxt2 = new JLabel("");
-		lblBordeTxt2.setIcon(new ImageIcon(VentanaSubirDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt2.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt2.setBounds(406, 158, 270, 40);
 		contentPane.add(lblBordeTxt2);
 		
 		JLabel lblBordeTxt3 = new JLabel("");
-		lblBordeTxt3.setIcon(new ImageIcon(VentanaSubirDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt3.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt3.setBounds(406, 217, 270, 40);
 		contentPane.add(lblBordeTxt3);
 		
 		JLabel lblBordeTxt4 = new JLabel("");
-		lblBordeTxt4.setIcon(new ImageIcon(VentanaSubirDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt4.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt4.setBounds(406, 276, 270, 40);
 		contentPane.add(lblBordeTxt4);
 		
 		JLabel lblBordeTxt5 = new JLabel("");
-		lblBordeTxt5.setIcon(new ImageIcon(VentanaSubirDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt5.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt5.setBounds(406, 335, 270, 40);
 		contentPane.add(lblBordeTxt5);
 		
 		lblBordeTxt6 = new JLabel("");
-		lblBordeTxt6.setIcon(new ImageIcon(VentanaSubirDoc.class.getResource("/imagenes/borde_modificar.png")));
+		lblBordeTxt6.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt6.setBounds(406, 394, 270, 40);
 		contentPane.add(lblBordeTxt6);
 		
 		JLabel lblFondoModificar = new JLabel("");
-		lblFondoModificar.setIcon(new ImageIcon(VentanaSubirDoc.class.getResource("/imagenes/fondo_modificar.png")));
+		lblFondoModificar.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/fondo_modificar.png")));
 		lblFondoModificar.setBounds(205, 75, 490, 450);
 		contentPane.add(lblFondoModificar);
 	}

@@ -104,17 +104,17 @@ public class VentanaElegirDoc extends JFrame {
 		contentPane.add(btnArticulo);
 		
 		JLabel lblLibro = new JLabel("");
-		lblLibro.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/boton.png")));
+		lblLibro.setIcon(new ImageIcon(VentanaElegirDoc.class.getResource("/imagenes/boton.png")));
 		lblLibro.setBounds(388, 252, 125, 40);
 		contentPane.add(lblLibro);
 		
 		JLabel lblPonencia = new JLabel("");
-		lblPonencia.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/boton.png")));
+		lblPonencia.setIcon(new ImageIcon(VentanaElegirDoc.class.getResource("/imagenes/boton.png")));
 		lblPonencia.setBounds(388, 309, 125, 40);
 		contentPane.add(lblPonencia);
 
 		JLabel lblArticulo = new JLabel("");
-		lblArticulo.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/boton.png")));
+		lblArticulo.setIcon(new ImageIcon(VentanaElegirDoc.class.getResource("/imagenes/boton.png")));
 		lblArticulo.setBounds(388, 365, 125, 40);
 		contentPane.add(lblArticulo);
 		
