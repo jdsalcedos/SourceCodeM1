@@ -91,4 +91,11 @@ public abstract class Documento {
 		return estadoVisualizacion;
 	}
 
+	@Override
+	public String toString() {
+		return "Documento [idDocumento=" + idDocumento + ", idEditorial=" + idEditorial + ", idAutor=" + idAutor
+				+ ", titulo=" + titulo + ", fechaPublicacion=" + fechaPublicacion + ", isbn=" + isbn
+				+ ", tipoDocumento=" + tipoDocumento + ", estadoVisualizacion=" + estadoVisualizacion + "]";
+	}
+
 }

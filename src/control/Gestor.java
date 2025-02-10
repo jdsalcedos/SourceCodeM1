@@ -2,9 +2,11 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import control.DTO.AutorDTO;
 import control.DTO.UsuarioDTO;
+import modelo.factory.abstracto.Documento;
 import vista.VentanaBiblioteca;
 import vista.VentanaLogin;
 import vista.VentanaRegistro;
@@ -228,20 +230,27 @@ public class Gestor implements ActionListener {
 			biblioteca.getLblModificarDoc8().setVisible(false);
 			biblioteca.getLblModificarDoc9().setVisible(false);
 			biblioteca.getBtnSubirDoc().setVisible(false);
+		}else {
+			controler.mostrarDocumento();
+//			for(Documento doc : docs) {
+//				biblioteca.getTxtDoc1().setText(doc.getTitulo());
+//				System.out.println("titulooooooooooo2: ");
+//			}
+			
+			if (comando.equals("SUBIR_DOCUMENTO")) {
+				elegirDocumento.setVisible(true);
+				biblioteca.dispose();
+			}
+			if (comando.equals("MOD_LIBRO1")) {
+				modificarDocumento.setVisible(true);
+				modificarDocumento.clear();
+				biblioteca.dispose();
+			} else if (comando.equals("INFO_DOC1")) {
+				infoDocumento.setVisible(true);
+				biblioteca.dispose();
+			}
 		}
-		if (comando.equals("SUBIR_DOCUMENTO")) {
-			elegirDocumento.setVisible(true);
-			biblioteca.dispose();
-		}
-		if (comando.equals("MOD_LIBRO1")) {
-			modificarDocumento.setVisible(true);
-			modificarDocumento.clear();
-			biblioteca.dispose();
-		} else if (comando.equals("INFO_DOC1")) {
-			infoDocumento.setVisible(true);
-			biblioteca.dispose();
-		}
-
+		
 		// Ventana elegirdocumento
 		if (comando.equals("VOLVER2")) {
 			biblioteca.setVisible(true);

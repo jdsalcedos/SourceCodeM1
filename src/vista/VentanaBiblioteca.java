@@ -15,7 +15,17 @@ public class VentanaBiblioteca extends JFrame {
 
 	private JButton btnCerrar;
 	private JButton btnSubirDoc;
-	
+
+	private JTextField txtDoc1;
+	private JTextField txtDoc2;
+	private JTextField txtDoc3;
+	private JTextField txtDoc4;
+	private JTextField txtDoc5;
+	private JTextField txtDoc6;
+	private JTextField txtDoc7;
+	private JTextField txtDoc8;
+	private JTextField txtDoc9;
+
 	private JLabel lblModificarDoc1;
 	private JLabel lblModificarDoc2;
 	private JLabel lblModificarDoc3;
@@ -25,7 +35,7 @@ public class VentanaBiblioteca extends JFrame {
 	private JLabel lblModificarDoc7;
 	private JLabel lblModificarDoc8;
 	private JLabel lblModificarDoc9;
-	
+
 	private JButton btnInfoDoc1;
 	private JButton btnInfoDoc2;
 	private JButton btnInfoDoc3;
@@ -35,7 +45,7 @@ public class VentanaBiblioteca extends JFrame {
 	private JButton btnInfoDoc7;
 	private JButton btnInfoDoc8;
 	private JButton btnInfoDoc9;
-	
+
 	private JButton btnModificarDoc1;
 	private JButton btnModificarDoc2;
 	private JButton btnModificarDoc3;
@@ -54,26 +64,26 @@ public class VentanaBiblioteca extends JFrame {
 		setBounds(100, 100, 900, 600);
 		inicializarComponentes();
 	}
-	
+
 	public void inicializarComponentes() {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JPanel panelBarraSuperior = new JPanel();
 		panelBarraSuperior.setLayout(null);
 		panelBarraSuperior.setBackground(new Color(255, 189, 89));
 		panelBarraSuperior.setBounds(0, 0, 900, 40);
 		contentPane.add(panelBarraSuperior);
-		
+
 		JLabel lblTitulo = new JLabel("Libreria Distrital");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setForeground(Color.WHITE);
 		lblTitulo.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		lblTitulo.setBounds(375, 0, 158, 40);
 		panelBarraSuperior.add(lblTitulo);
-		
+
 		btnCerrar = new JButton("");
 		btnCerrar.setBounds(0, 0, 40, 40);
 		btnCerrar.setOpaque(false);
@@ -81,12 +91,12 @@ public class VentanaBiblioteca extends JFrame {
 		btnCerrar.setBorderPainted(false);
 		btnCerrar.setActionCommand("CERRAR");
 		panelBarraSuperior.add(btnCerrar);
-		
+
 		JLabel lblImagenCerrar = new JLabel("");
 		lblImagenCerrar.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/cerrar.png")));
 		lblImagenCerrar.setBounds(0, 0, 40, 40);
 		panelBarraSuperior.add(lblImagenCerrar);
-		
+
 		btnSubirDoc = new JButton("Subir documento");
 		btnSubirDoc.setOpaque(false);
 		btnSubirDoc.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -97,8 +107,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnSubirDoc.setBounds(742, 0, 158, 40);
 		btnSubirDoc.setActionCommand("SUBIR_DOCUMENTO");
 		panelBarraSuperior.add(btnSubirDoc);
-		
-		
+
 		btnInfoDoc1 = new JButton("");
 		btnInfoDoc1.setBounds(225, 70, 450, 40);
 		btnInfoDoc1.setOpaque(false);
@@ -106,7 +115,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnInfoDoc1.setContentAreaFilled(false);
 		btnInfoDoc1.setActionCommand("INFO_DOC1");
 		contentPane.add(btnInfoDoc1);
-		
+
 		btnInfoDoc2 = new JButton("");
 		btnInfoDoc2.setBounds(225, 128, 450, 40);
 		btnInfoDoc2.setOpaque(false);
@@ -114,7 +123,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnInfoDoc2.setContentAreaFilled(false);
 		btnInfoDoc2.setActionCommand("INFO_DOC2");
 		contentPane.add(btnInfoDoc2);
-		
+
 		btnInfoDoc3 = new JButton("");
 		btnInfoDoc3.setBounds(225, 184, 450, 40);
 		btnInfoDoc3.setOpaque(false);
@@ -122,7 +131,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnInfoDoc3.setContentAreaFilled(false);
 		btnInfoDoc3.setActionCommand("INFO_DOC3");
 		contentPane.add(btnInfoDoc3);
-		
+
 		btnInfoDoc4 = new JButton("");
 		btnInfoDoc4.setBounds(225, 240, 450, 40);
 		btnInfoDoc4.setOpaque(false);
@@ -130,7 +139,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnInfoDoc4.setContentAreaFilled(false);
 		btnInfoDoc4.setActionCommand("INFO_DOC4");
 		contentPane.add(btnInfoDoc4);
-		
+
 		btnInfoDoc5 = new JButton("");
 		btnInfoDoc5.setBounds(225, 296, 450, 40);
 		btnInfoDoc5.setOpaque(false);
@@ -138,7 +147,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnInfoDoc5.setContentAreaFilled(false);
 		btnInfoDoc5.setActionCommand("INFO_DOC5");
 		contentPane.add(btnInfoDoc5);
-		
+
 		btnInfoDoc6 = new JButton("");
 		btnInfoDoc6.setBounds(225, 353, 450, 40);
 		btnInfoDoc6.setOpaque(false);
@@ -146,7 +155,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnInfoDoc6.setContentAreaFilled(false);
 		btnInfoDoc6.setActionCommand("INFO_DOC6");
 		contentPane.add(btnInfoDoc6);
-		
+
 		btnInfoDoc7 = new JButton("");
 		btnInfoDoc7.setBounds(225, 409, 450, 40);
 		btnInfoDoc7.setOpaque(false);
@@ -154,7 +163,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnInfoDoc7.setContentAreaFilled(false);
 		btnInfoDoc7.setActionCommand("INFO_DOC7");
 		contentPane.add(btnInfoDoc7);
-		
+
 		btnInfoDoc8 = new JButton("");
 		btnInfoDoc8.setBounds(225, 465, 450, 40);
 		btnInfoDoc8.setOpaque(false);
@@ -162,7 +171,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnInfoDoc8.setContentAreaFilled(false);
 		btnInfoDoc8.setActionCommand("INFO_DOC8");
 		contentPane.add(btnInfoDoc8);
-		
+
 		btnInfoDoc9 = new JButton("");
 		btnInfoDoc9.setBounds(225, 521, 450, 40);
 		btnInfoDoc9.setOpaque(false);
@@ -170,9 +179,8 @@ public class VentanaBiblioteca extends JFrame {
 		btnInfoDoc9.setContentAreaFilled(false);
 		btnInfoDoc9.setActionCommand("INFO_DOC9");
 		contentPane.add(btnInfoDoc9);
-		
-		
-		JTextField txtDoc1 = new JTextField();
+
+		txtDoc1 = new JTextField();
 		txtDoc1.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtDoc1.setEnabled(false);
 		txtDoc1.setDisabledTextColor(Color.BLACK);
@@ -181,8 +189,8 @@ public class VentanaBiblioteca extends JFrame {
 		txtDoc1.setBorder(null);
 		txtDoc1.setBounds(240, 70, 435, 40);
 		contentPane.add(txtDoc1);
-		
-		JTextField txtDoc2 = new JTextField();
+
+		txtDoc2 = new JTextField();
 		txtDoc2.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtDoc2.setEnabled(false);
 		txtDoc2.setDisabledTextColor(Color.BLACK);
@@ -191,8 +199,8 @@ public class VentanaBiblioteca extends JFrame {
 		txtDoc2.setBorder(null);
 		txtDoc2.setBounds(240, 128, 435, 40);
 		contentPane.add(txtDoc2);
-		
-		JTextField txtDoc3 = new JTextField();
+
+		txtDoc3 = new JTextField();
 		txtDoc3.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtDoc3.setEnabled(false);
 		txtDoc3.setDisabledTextColor(Color.BLACK);
@@ -201,8 +209,8 @@ public class VentanaBiblioteca extends JFrame {
 		txtDoc3.setBorder(null);
 		txtDoc3.setBounds(240, 184, 435, 40);
 		contentPane.add(txtDoc3);
-		
-		JTextField txtDoc4 = new JTextField();
+
+		txtDoc4 = new JTextField();
 		txtDoc4.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtDoc4.setEnabled(false);
 		txtDoc4.setDisabledTextColor(Color.BLACK);
@@ -211,8 +219,8 @@ public class VentanaBiblioteca extends JFrame {
 		txtDoc4.setBorder(null);
 		txtDoc4.setBounds(240, 240, 435, 40);
 		contentPane.add(txtDoc4);
-		
-		JTextField txtDoc5 = new JTextField();
+
+		txtDoc5 = new JTextField();
 		txtDoc5.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtDoc5.setEnabled(false);
 		txtDoc5.setDisabledTextColor(Color.BLACK);
@@ -221,8 +229,8 @@ public class VentanaBiblioteca extends JFrame {
 		txtDoc5.setBorder(null);
 		txtDoc5.setBounds(240, 296, 435, 40);
 		contentPane.add(txtDoc5);
-		
-		JTextField txtDoc6 = new JTextField();
+
+		txtDoc6 = new JTextField();
 		txtDoc6.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtDoc6.setEnabled(false);
 		txtDoc6.setDisabledTextColor(Color.BLACK);
@@ -231,8 +239,8 @@ public class VentanaBiblioteca extends JFrame {
 		txtDoc6.setBorder(null);
 		txtDoc6.setBounds(240, 353, 435, 40);
 		contentPane.add(txtDoc6);
-		
-		JTextField txtDoc7 = new JTextField();
+
+		txtDoc7 = new JTextField();
 		txtDoc7.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtDoc7.setEnabled(false);
 		txtDoc7.setDisabledTextColor(Color.BLACK);
@@ -241,8 +249,8 @@ public class VentanaBiblioteca extends JFrame {
 		txtDoc7.setBorder(null);
 		txtDoc7.setBounds(240, 409, 435, 40);
 		contentPane.add(txtDoc7);
-		
-		JTextField txtDoc8 = new JTextField();
+
+		txtDoc8 = new JTextField();
 		txtDoc8.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtDoc8.setEnabled(false);
 		txtDoc8.setDisabledTextColor(Color.BLACK);
@@ -251,8 +259,8 @@ public class VentanaBiblioteca extends JFrame {
 		txtDoc8.setBorder(null);
 		txtDoc8.setBounds(240, 465, 435, 40);
 		contentPane.add(txtDoc8);
-		
-		JTextField txtDoc9 = new JTextField();
+
+		txtDoc9 = new JTextField();
 		txtDoc9.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtDoc9.setEnabled(false);
 		txtDoc9.setDisabledTextColor(Color.BLACK);
@@ -261,52 +269,52 @@ public class VentanaBiblioteca extends JFrame {
 		txtDoc9.setBorder(null);
 		txtDoc9.setBounds(240, 521, 435, 40);
 		contentPane.add(txtDoc9);
-		
+
 		JLabel lblBordeDoc1 = new JLabel("");
 		lblBordeDoc1.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/borde_libros.png")));
 		lblBordeDoc1.setBounds(225, 70, 450, 40);
 		contentPane.add(lblBordeDoc1);
-		
+
 		JLabel lblBordeDoc2 = new JLabel("");
 		lblBordeDoc2.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/borde_libros.png")));
 		lblBordeDoc2.setBounds(225, 128, 450, 40);
 		contentPane.add(lblBordeDoc2);
-		
+
 		JLabel lblBordeDoc3 = new JLabel("");
 		lblBordeDoc3.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/borde_libros.png")));
 		lblBordeDoc3.setBounds(225, 184, 450, 40);
 		contentPane.add(lblBordeDoc3);
-		
+
 		JLabel lblBordeDoc4 = new JLabel("");
 		lblBordeDoc4.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/borde_libros.png")));
 		lblBordeDoc4.setBounds(225, 240, 450, 40);
 		contentPane.add(lblBordeDoc4);
-		
+
 		JLabel lblBordeDoc5 = new JLabel("");
 		lblBordeDoc5.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/borde_libros.png")));
 		lblBordeDoc5.setBounds(225, 296, 450, 40);
 		contentPane.add(lblBordeDoc5);
-		
+
 		JLabel lblBordeDoc6 = new JLabel("");
 		lblBordeDoc6.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/borde_libros.png")));
 		lblBordeDoc6.setBounds(225, 353, 450, 40);
 		contentPane.add(lblBordeDoc6);
-		
+
 		JLabel lblBordeDoc7 = new JLabel("");
 		lblBordeDoc7.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/borde_libros.png")));
 		lblBordeDoc7.setBounds(225, 409, 450, 40);
 		contentPane.add(lblBordeDoc7);
-		
+
 		JLabel lblBordeDoc8 = new JLabel("");
 		lblBordeDoc8.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/borde_libros.png")));
 		lblBordeDoc8.setBounds(225, 465, 450, 40);
 		contentPane.add(lblBordeDoc8);
-		
+
 		JLabel lblBordeDoc9 = new JLabel("");
 		lblBordeDoc9.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/borde_libros.png")));
 		lblBordeDoc9.setBounds(225, 521, 450, 40);
 		contentPane.add(lblBordeDoc9);
-		
+
 		btnModificarDoc1 = new JButton("");
 		btnModificarDoc1.setBounds(176, 70, 40, 40);
 		btnModificarDoc1.setOpaque(false);
@@ -314,7 +322,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnModificarDoc1.setContentAreaFilled(false);
 		btnModificarDoc1.setActionCommand("MOD_LIBRO1");
 		contentPane.add(btnModificarDoc1);
-		
+
 		btnModificarDoc2 = new JButton("");
 		btnModificarDoc2.setBounds(176, 128, 40, 40);
 		btnModificarDoc2.setOpaque(false);
@@ -322,7 +330,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnModificarDoc2.setContentAreaFilled(false);
 		btnModificarDoc2.setActionCommand("MOD_LIBRO2");
 		contentPane.add(btnModificarDoc2);
-		
+
 		btnModificarDoc3 = new JButton("");
 		btnModificarDoc3.setBounds(176, 184, 40, 40);
 		btnModificarDoc3.setOpaque(false);
@@ -330,7 +338,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnModificarDoc3.setContentAreaFilled(false);
 		btnModificarDoc3.setActionCommand("MOD_LIBRO3");
 		contentPane.add(btnModificarDoc3);
-		
+
 		btnModificarDoc4 = new JButton("");
 		btnModificarDoc4.setBounds(176, 240, 40, 40);
 		btnModificarDoc4.setOpaque(false);
@@ -338,7 +346,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnModificarDoc4.setContentAreaFilled(false);
 		btnModificarDoc4.setActionCommand("MOD_LIBRO4");
 		contentPane.add(btnModificarDoc4);
-		
+
 		btnModificarDoc5 = new JButton("");
 		btnModificarDoc5.setBounds(176, 296, 40, 40);
 		btnModificarDoc5.setOpaque(false);
@@ -346,7 +354,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnModificarDoc5.setContentAreaFilled(false);
 		btnModificarDoc5.setActionCommand("MOD_LIBRO5");
 		contentPane.add(btnModificarDoc5);
-		
+
 		btnModificarDoc6 = new JButton("");
 		btnModificarDoc6.setBounds(176, 353, 40, 40);
 		btnModificarDoc6.setOpaque(false);
@@ -354,7 +362,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnModificarDoc6.setContentAreaFilled(false);
 		btnModificarDoc6.setActionCommand("MOD_LIBRO6");
 		contentPane.add(btnModificarDoc6);
-		
+
 		btnModificarDoc7 = new JButton("");
 		btnModificarDoc7.setBounds(176, 409, 40, 40);
 		btnModificarDoc7.setOpaque(false);
@@ -362,7 +370,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnModificarDoc7.setContentAreaFilled(false);
 		btnModificarDoc7.setActionCommand("MOD_LIBRO7");
 		contentPane.add(btnModificarDoc7);
-		
+
 		btnModificarDoc8 = new JButton("");
 		btnModificarDoc8.setBounds(176, 465, 40, 40);
 		btnModificarDoc8.setOpaque(false);
@@ -370,7 +378,7 @@ public class VentanaBiblioteca extends JFrame {
 		btnModificarDoc8.setContentAreaFilled(false);
 		btnModificarDoc8.setActionCommand("MOD_LIBRO8");
 		contentPane.add(btnModificarDoc8);
-		
+
 		btnModificarDoc9 = new JButton("");
 		btnModificarDoc9.setBounds(176, 521, 40, 40);
 		btnModificarDoc9.setOpaque(false);
@@ -378,47 +386,47 @@ public class VentanaBiblioteca extends JFrame {
 		btnModificarDoc9.setContentAreaFilled(false);
 		btnModificarDoc9.setActionCommand("MOD_LIBRO9");
 		contentPane.add(btnModificarDoc9);
-		
+
 		lblModificarDoc1 = new JLabel("");
 		lblModificarDoc1.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/modificar.png")));
 		lblModificarDoc1.setBounds(176, 70, 40, 40);
 		contentPane.add(lblModificarDoc1);
-		
+
 		lblModificarDoc2 = new JLabel("");
 		lblModificarDoc2.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/modificar.png")));
 		lblModificarDoc2.setBounds(176, 128, 40, 40);
 		contentPane.add(lblModificarDoc2);
-		
+
 		lblModificarDoc3 = new JLabel("");
 		lblModificarDoc3.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/modificar.png")));
 		lblModificarDoc3.setBounds(176, 184, 40, 40);
 		contentPane.add(lblModificarDoc3);
-		
+
 		lblModificarDoc4 = new JLabel("");
 		lblModificarDoc4.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/modificar.png")));
 		lblModificarDoc4.setBounds(176, 240, 40, 40);
 		contentPane.add(lblModificarDoc4);
-		
+
 		lblModificarDoc5 = new JLabel("");
 		lblModificarDoc5.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/modificar.png")));
 		lblModificarDoc5.setBounds(176, 296, 40, 40);
 		contentPane.add(lblModificarDoc5);
-		
+
 		lblModificarDoc6 = new JLabel("");
 		lblModificarDoc6.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/modificar.png")));
 		lblModificarDoc6.setBounds(176, 353, 40, 40);
 		contentPane.add(lblModificarDoc6);
-		
+
 		lblModificarDoc7 = new JLabel("");
 		lblModificarDoc7.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/modificar.png")));
 		lblModificarDoc7.setBounds(176, 409, 40, 40);
 		contentPane.add(lblModificarDoc7);
-		
+
 		lblModificarDoc8 = new JLabel("");
 		lblModificarDoc8.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/modificar.png")));
 		lblModificarDoc8.setBounds(176, 465, 40, 40);
 		contentPane.add(lblModificarDoc8);
-		
+
 		lblModificarDoc9 = new JLabel("");
 		lblModificarDoc9.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/modificar.png")));
 		lblModificarDoc9.setBounds(176, 521, 40, 40);
@@ -656,4 +664,77 @@ public class VentanaBiblioteca extends JFrame {
 	public void setLblModificarDoc9(JLabel lblModificarDoc9) {
 		this.lblModificarDoc9 = lblModificarDoc9;
 	}
+
+	public JTextField getTxtDoc1() {
+		return txtDoc1;
+	}
+
+	public void setTxtDoc1(JTextField txtDoc1) {
+		this.txtDoc1 = txtDoc1;
+	}
+
+	public JTextField getTxtDoc2() {
+		return txtDoc2;
+	}
+
+	public void setTxtDoc2(JTextField txtDoc2) {
+		this.txtDoc2 = txtDoc2;
+	}
+
+	public JTextField getTxtDoc3() {
+		return txtDoc3;
+	}
+
+	public void setTxtDoc3(JTextField txtDoc3) {
+		this.txtDoc3 = txtDoc3;
+	}
+
+	public JTextField getTxtDoc4() {
+		return txtDoc4;
+	}
+
+	public void setTxtDoc4(JTextField txtDoc4) {
+		this.txtDoc4 = txtDoc4;
+	}
+
+	public JTextField getTxtDoc5() {
+		return txtDoc5;
+	}
+
+	public void setTxtDoc5(JTextField txtDoc5) {
+		this.txtDoc5 = txtDoc5;
+	}
+
+	public JTextField getTxtDoc6() {
+		return txtDoc6;
+	}
+
+	public void setTxtDoc6(JTextField txtDoc6) {
+		this.txtDoc6 = txtDoc6;
+	}
+
+	public JTextField getTxtDoc7() {
+		return txtDoc7;
+	}
+
+	public void setTxtDoc7(JTextField txtDoc7) {
+		this.txtDoc7 = txtDoc7;
+	}
+
+	public JTextField getTxtDoc8() {
+		return txtDoc8;
+	}
+
+	public void setTxtDoc8(JTextField txtDoc8) {
+		this.txtDoc8 = txtDoc8;
+	}
+
+	public JTextField getTxtDoc9() {
+		return txtDoc9;
+	}
+
+	public void setTxtDoc9(JTextField txtDoc9) {
+		this.txtDoc9 = txtDoc9;
+	}
+
 }

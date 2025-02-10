@@ -13,6 +13,10 @@ public class Libro extends Documento{
 		this.numPaginas=numPaginas;
 	}
 	
+	public Libro() {
+		
+	}
+	
 	public String getNumPaginas() {
 		return numPaginas;
 	}
