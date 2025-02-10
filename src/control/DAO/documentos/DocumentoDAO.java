@@ -29,7 +29,6 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 	private ResultSet rs2;
 
 	public DocumentoDAO() {
-		// gestor
 		cn = null;
 		pst = null;
 		pst2 = null;
@@ -37,8 +36,6 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 		rs = null;
 		rs2 = null;
 	}
-
-	
 
 	@Override
 	public ArrayList<Documento> getAll() {
@@ -125,6 +122,7 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 
 	@Override
 	public void add(Documento doc) {
+		// logica para mandar al DAO correspondiente para que se cree en la BD
 	}
 
 	@Override
@@ -151,8 +149,8 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			ConexionBD.desconectar();
 			System.out.println("documento modificado con exito");
 
-			return filasAfectadas > 0; 
-			
+			return filasAfectadas > 0; // Devuelve true si al menos una fila fue afectada en
+										// ambas tablas
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
@@ -162,41 +160,41 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 	@Override
 	public boolean delete(Documento docDelete) {
 		try {
-	        cn = ConexionBD.getConexion();
+			cn = ConexionBD.getConexion();
 
-	        // 1. Eliminar de las tablas específicas según el tipo de documento
-	        if (docDelete.getTipoDocumento().equals("Libro")) {
-	            pst = cn.prepareStatement("DELETE FROM libro WHERE id_documento = ?");
-	        } else if (docDelete.getTipoDocumento().equals("Ponencia")) {
-	            pst = cn.prepareStatement("DELETE FROM ponencia WHERE id_documento = ?");
-	        } else if (docDelete.getTipoDocumento().equals("Articulo cientifico")) {
-	            pst = cn.prepareStatement("DELETE FROM articulo_cientifico WHERE id_documento = ?");
-	        }
-	        
-	        pst.setInt(1, docDelete.getIdDocumento());
-	        pst.executeUpdate();
-	        pst.close();
+			// 1. Eliminar de las tablas específicas según el tipo de documento
+			if (docDelete.getTipoDocumento().equals("Libro")) {
+				pst = cn.prepareStatement("DELETE FROM libro WHERE id_documento = ?");
+			} else if (docDelete.getTipoDocumento().equals("Ponencia")) {
+				pst = cn.prepareStatement("DELETE FROM ponencia WHERE id_documento = ?");
+			} else if (docDelete.getTipoDocumento().equals("Articulo cientifico")) {
+				pst = cn.prepareStatement("DELETE FROM articulo_cientifico WHERE id_documento = ?");
+			}
 
-	        // 2. Eliminar de la tabla intermedia documento_autor
-	        pst2 = cn.prepareStatement("DELETE FROM documento_autor WHERE id_documento = ?");
-	        pst2.setInt(1, docDelete.getIdDocumento());
-	        pst2.executeUpdate();
-	        pst2.close();
+			pst.setInt(1, docDelete.getIdDocumento());
+			pst.executeUpdate();
+			pst.close();
 
-	        // 3. Finalmente, eliminar de la tabla documento
-	        pst3 = cn.prepareStatement("DELETE FROM documento WHERE id_documento = ?");
-	        pst3.setInt(1, docDelete.getIdDocumento());
-	        int filasAfectadas = pst3.executeUpdate();
-	        pst3.close();
+			// 2. Eliminar de la tabla intermedia documento_autor
+			pst2 = cn.prepareStatement("DELETE FROM documento_autor WHERE id_documento = ?");
+			pst2.setInt(1, docDelete.getIdDocumento());
+			pst2.executeUpdate();
+			pst2.close();
 
-	        ConexionBD.desconectar();
-	        System.out.println("documento eliminado con exito");
-	        
-	        return filasAfectadas > 0; // Devuelve true si el documento se eliminó correctamente
-	    } catch (SQLException ex) {
-	        ex.printStackTrace();
-	    }
-	    return false;
+			// 3. Finalmente, eliminar de la tabla documento
+			pst3 = cn.prepareStatement("DELETE FROM documento WHERE id_documento = ?");
+			pst3.setInt(1, docDelete.getIdDocumento());
+			int filasAfectadas = pst3.executeUpdate();
+			pst3.close();
+
+			ConexionBD.desconectar();
+			System.out.println("documento eliminado con exito");
+
+			return filasAfectadas > 0; // Devuelve true si el documento se eliminó correctamente
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return false;
 	}
 	
 	public void actualizarEstadoEnBD(Documento doc, String nuevoEstado) {

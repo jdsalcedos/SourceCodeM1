@@ -11,10 +11,8 @@ public class AutorDAO implements InterfaceDAO<Autor> {
 	private Connection cn;
 	private PreparedStatement pst;
 	private ResultSet rs;
-	// gestor
 
 	public AutorDAO() {
-		// gestor
 		cn = null;
 		pst = null;
 		rs = null;

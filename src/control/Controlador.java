@@ -41,14 +41,18 @@ public class Controlador {
 		}
 	}
 	
-	public void agregarAutor(AutorDTO dto) {
+	public void registrarAutor(AutorDTO dto) {
 		Autor aut = Mapper.convertirToAutor(dto);
 		autorDao.add(aut);
 	}
 
-	public void agregarUsuario(UsuarioDTO dto) {
+	public void registrarUsuario(UsuarioDTO dto) {
 		Usuario us = Mapper.convertirToUsuario(dto);
 		usuarioDao.add(us);
+	}
+	
+	public void mostrarDocumento() {
+		
 	}
 
 //	public void consultar () {

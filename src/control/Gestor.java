@@ -146,7 +146,6 @@ public class Gestor implements ActionListener {
 			}
 		}
 
-		// TOCA HACER AUTOINCREMENTABLE EL ID TANTO DE USUARIO COMO DE AUTOR
 		// Ventana registro
 		if (comando.equals("REGISTRARSE")) {
 			if (registro.verify()) {
@@ -172,7 +171,7 @@ public class Gestor implements ActionListener {
 						registro.clear();
 					} else {
 						registro.avisoExito();
-						controler.agregarUsuario(user);
+						controler.registrarUsuario(user);
 
 						login.setVisible(true);
 						registro.dispose();
@@ -194,7 +193,7 @@ public class Gestor implements ActionListener {
 						registro.clear();
 					} else {
 						registro.avisoExito();
-						controler.agregarAutor(autor);
+						controler.registrarAutor(autor);
 
 						login.setVisible(true);
 						registro.dispose();
@@ -203,11 +202,9 @@ public class Gestor implements ActionListener {
 				}
 
 			}
-
 		} else if (comando.equals("VOLVER1")) {
 			login.setVisible(true);
 			registro.dispose();
-
 		}
 
 		// Ventana biblioteca

@@ -13,10 +13,8 @@ public class PonenciaDAO implements InterfaceDAO<Ponencia> {
 
 	private Connection cn;
 	private PreparedStatement pst;
-	// gestor
 
 	public PonenciaDAO() {
-		// gestor
 		cn = null;
 		pst = null;
 	}
