@@ -16,6 +16,8 @@ public class VentanaInfoDoc extends JFrame {
 
 	private JButton btnCerrar;
 	private JButton btnVolver;
+	private JButton btnDarDeBaja;
+	private JButton btnDarDeAlta;
 	private JButton btnReservar;
 	private JButton btnDevolver;
 	private JPanel contentPane;
@@ -71,6 +73,38 @@ public class VentanaInfoDoc extends JFrame {
 		btnVolver.setActionCommand("VOLVER5");
 		panelBarraSuperior.add(btnVolver);
 		
+		btnDarDeBaja = new JButton("Dar de baja");
+		btnDarDeBaja.setOpaque(false);
+		btnDarDeBaja.setHorizontalAlignment(SwingConstants.CENTER);
+		btnDarDeBaja.setForeground(Color.WHITE);
+		btnDarDeBaja.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
+		btnDarDeBaja.setContentAreaFilled(false);
+		btnDarDeBaja.setBorderPainted(false);
+		btnDarDeBaja.setBounds(300, 513, 125, 40);
+		btnDarDeBaja.setActionCommand("DARDEBAJA");
+		contentPane.add(btnDarDeBaja);
+		
+		JLabel lblDarDeBaja = new JLabel("");
+		lblDarDeBaja.setIcon(new ImageIcon(VentanaInfoDoc.class.getResource("/imagenes/boton.png")));
+		lblDarDeBaja.setBounds(300, 513, 125, 40);
+		contentPane.add(lblDarDeBaja);
+		
+		btnDarDeAlta = new JButton("Dar de alta");
+		btnDarDeAlta.setOpaque(false);
+		btnDarDeAlta.setHorizontalAlignment(SwingConstants.CENTER);
+		btnDarDeAlta.setForeground(Color.WHITE);
+		btnDarDeAlta.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
+		btnDarDeAlta.setContentAreaFilled(false);
+		btnDarDeAlta.setBorderPainted(false);
+		btnDarDeAlta.setBounds(425, 513, 125, 40);
+		btnDarDeAlta.setActionCommand("DARDEALTA");
+		contentPane.add(btnDarDeAlta);
+		
+		JLabel btnDarDeAlta = new JLabel("");
+		btnDarDeAlta.setIcon(new ImageIcon(VentanaInfoDoc.class.getResource("/imagenes/boton.png")));
+		btnDarDeAlta.setBounds(425, 513, 125, 40);
+		contentPane.add(btnDarDeAlta);
+		
 		btnReservar = new JButton("Reservar");
 		btnReservar.setOpaque(false);
 		btnReservar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -78,13 +112,13 @@ public class VentanaInfoDoc extends JFrame {
 		btnReservar.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		btnReservar.setContentAreaFilled(false);
 		btnReservar.setBorderPainted(false);
-		btnReservar.setBounds(310, 486, 125, 40);
+		btnReservar.setBounds(300, 473, 125, 40);
 		btnReservar.setActionCommand("RESERVAR");
 		contentPane.add(btnReservar);
 		
 		JLabel lblReservar = new JLabel("");
 		lblReservar.setIcon(new ImageIcon(VentanaInfoDoc.class.getResource("/imagenes/boton.png")));
-		lblReservar.setBounds(310, 486, 125, 40);
+		lblReservar.setBounds(300, 473, 125, 40);
 		contentPane.add(lblReservar);
 		
 		btnDevolver = new JButton("Devolver");
@@ -94,13 +128,13 @@ public class VentanaInfoDoc extends JFrame {
 		btnDevolver.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		btnDevolver.setContentAreaFilled(false);
 		btnDevolver.setBorderPainted(false);
-		btnDevolver.setBounds(465, 486, 125, 40);
+		btnDevolver.setBounds(425, 473, 125, 40);
 		btnDevolver.setActionCommand("DEVOLVER");
 		contentPane.add(btnDevolver);
 		
 		JLabel btnDevolver = new JLabel("");
 		btnDevolver.setIcon(new ImageIcon(VentanaInfoDoc.class.getResource("/imagenes/boton.png")));
-		btnDevolver.setBounds(465, 486, 125, 40);
+		btnDevolver.setBounds(425, 473, 125, 40);
 		contentPane.add(btnDevolver);
 		
 		JLabel lblModificar1 = new JLabel("Título");
@@ -311,5 +345,19 @@ public class VentanaInfoDoc extends JFrame {
 		this.btnReservar = btnReservar;
 	}
 	
-	
+	public JButton getBtnDarDeBaja() {
+		return btnDarDeBaja;
+	}
+
+	public void setBtnDarDeBaja(JButton btnDarDeBaja) {
+		this.btnDarDeBaja = btnDarDeBaja;
+	}
+		
+	public JButton getBtnDarDeAlta() {
+		return btnDarDeAlta;
+	}
+
+	public void setBtnDarDeAlta(JButton btnDarDeAlta) {
+		this.btnDarDeAlta = btnDarDeAlta;
+	}
 }
