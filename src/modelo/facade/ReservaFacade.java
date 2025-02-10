@@ -19,7 +19,7 @@ public class ReservaFacade {
 	
 	public ReservaFacade() {
 		reserva = new Reserva();
-		historial = new HistorialCambio();
+		historial = HistorialCambio.getInstance();
 		resDAO = new ReservaDAO();
 		histDAO = new HistorialDAO();
 		usuario = new Usuario();

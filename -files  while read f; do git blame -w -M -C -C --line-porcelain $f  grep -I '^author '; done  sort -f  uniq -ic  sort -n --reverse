@@ -1,0 +1,513 @@
+[33mcommit f5d23849c8c099d975e6bc32ec307902307a4ac8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: a18eb24 d66f1ca
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sun Feb 9 17:02:32 2025 -0500
+
+    Merge branch 'State_EstadoVisualizacion' of https://github.com/jdsalcedos/SourceCodeM1 into State_EstadoVisualizacion
+
+[33mcommit a18eb24af8c7f7d0a43c5851af0a67c7eec4b762[m
+Author: Juan Salcedo <juandavidsalcedo85@gmail.com>
+Date:   Sun Feb 9 14:04:10 2025 -0500
+
+    Cambio de correo Juan Salcedo
+
+ 1 file changed, 1 deletion(-)
+
+[33mcommit 8531fc00a4e655c7ab4b4e368b00cb130ca49f89[m
+Author: jdsalcedos <jdsalcedodv@gmail.com>
+Date:   Sun Feb 9 14:02:03 2025 -0500
+
+    cambio de perfil Juan Salcedo
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+[33mcommit 0ea5ebb8f301ab971b80ae543f212fb7d84842d0[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sun Feb 9 13:43:48 2025 -0500
+
+    test APROBADO patron State, cambios necesarios y clases patron State
+
+ 13 files changed, 123 insertions(+), 66 deletions(-)
+
+[33mcommit 428aee9727e4d452ff6cd07f75e9af5cb85c3e98[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sun Feb 9 11:34:48 2025 -0500
+
+    El codigo sirve pero no se cree que se este implementando el patron
+    correctamente
+
+ 6 files changed, 49 insertions(+), 21 deletions(-)
+
+[33mcommit ac2edbe2e255414a15b213e7cd3abd2bfc159ab4[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sun Feb 9 01:22:03 2025 -0500
+
+    implementacion parcial de la logica del patron state
+
+ 6 files changed, 69 insertions(+), 11 deletions(-)
+
+[33mcommit eb2ffb5148a5e493a500934f4e885b0c1c4a4b15[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sun Feb 9 01:22:39 2025 -0500
+
+    DAO historial cambio funcional
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+[33mcommit 7e4c0320e56027ec65ebacf2e60b28cf210e3477[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sat Feb 8 22:51:39 2025 -0500
+
+    DAO de reserva para el patrón
+
+ 3 files changed, 17 insertions(+), 7 deletions(-)
+
+[33mcommit 1f7c928675d3db574afb338ae49d031ac1c8e175[m
+Merge: 1f52f95 2b2a513
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sun Feb 9 16:17:56 2025 -0500
+
+    solución errores pull
+
+[33mcommit 1f52f9557e3d2a932db5acebf0cf02f3690da763[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sun Feb 9 15:34:46 2025 -0500
+
+    Merge de la rama facade a la master
+
+ 5 files changed, 438 insertions(+), 85 deletions(-)
+
+[33mcommit 77a28edb52acd1361976f41f4287b0f584e8b2e4[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sun Feb 9 14:12:27 2025 -0500
+
+    Patrón facade completo y funcional
+
+ 5 files changed, 234 insertions(+), 121 deletions(-)
+
+[33mcommit d66f1cad22cf7ca16157b4e97fc14f6305e3ad68[m
+Author: Juan Salcedo <juandavidsalcedo85@gmail.com>
+Date:   Sun Feb 9 14:04:10 2025 -0500
+
+    Cambio de correo Juan Salcedo
+
+ 1 file changed, 1 deletion(-)
+
+[33mcommit f6da95f8c1e22f9d2da03b203eb50ad11d7857de[m
+Author: jdsalcedos <jdsalcedodv@gmail.com>
+Date:   Sun Feb 9 14:02:03 2025 -0500
+
+    cambio de perfil Juan Salcedo
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+[33mcommit f4c72e6e6d68f9b6112ae873eb82be52eb61c3cb[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sun Feb 9 13:43:48 2025 -0500
+
+    test APROBADO patron State, cambios necesarios y clases patron State
+
+ 13 files changed, 121 insertions(+), 62 deletions(-)
+
+[33mcommit 7d39309807975eeea64f89b0d24ef76050e6ee63[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sun Feb 9 11:34:48 2025 -0500
+
+    El codigo sirve pero no se cree que se este implementando el patron
+    correctamente
+
+ 6 files changed, 50 insertions(+), 25 deletions(-)
+
+[33mcommit 54f37f18e6c82f86006767b95c33baac5b7a3fbb[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sun Feb 9 01:22:39 2025 -0500
+
+    DAO historial cambio funcional
+
+ 4 files changed, 160 insertions(+), 28 deletions(-)
+
+[33mcommit eb4a0371858aa833ce000e4a84637c84a8016ea3[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sun Feb 9 01:22:03 2025 -0500
+
+    implementacion parcial de la logica del patron state
+
+ 6 files changed, 69 insertions(+), 11 deletions(-)
+
+[33mcommit 2b2a513859af32494f2790df7e4079f9122ec0c9[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sat Feb 8 23:09:38 2025 -0500
+
+    clase duplicada eliminada
+
+ 1 file changed, 46 deletions(-)
+
+[33mcommit 095d1dfbcb352b791d4e1d5bdb8aa63b1d9e81c8[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sat Feb 8 22:51:39 2025 -0500
+
+    DAO de reserva para el patrón
+
+ 6 files changed, 342 insertions(+), 32 deletions(-)
+
+[33mcommit f6540aaa03eb99ce16b43a21f1d2230f06967ffa[m
+Merge: a76b707 37bed4f
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sat Feb 8 22:39:45 2025 -0500
+
+    Merge branch 'master' of https://github.com/jdsalcedos/SourceCodeM1.git
+
+[33mcommit 37bed4f0ba844c2becab224cf5090af59d4d8fce[m
+Merge: 87b208b a0c680c
+Author: Salcedo Sanchez Juan David <106636384+jdsalcedos@users.noreply.github.com>
+Date:   Sat Feb 8 22:32:12 2025 -0500
+
+    Merge pull request #7 from jdsalcedos/DAO
+    
+    Dao documentos
+
+[33mcommit a0c680c5cbc7231c4379a83ceb46811abcf67e45[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sat Feb 8 22:30:34 2025 -0500
+
+    todos los DAO de documentos completados y test exitoso
+
+ 7 files changed, 175 insertions(+), 51 deletions(-)
+
+[33mcommit 27b2daa00ca42ab7cb44b76fbfdd5a0c4b359ae6[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sat Feb 8 21:55:10 2025 -0500
+
+    LibroDAO y DocumentoDAO test exitoso y completados
+
+ 12 files changed, 361 insertions(+), 144 deletions(-)
+
+[33mcommit 733de5f40af03df21cf5e930a0903cc37ea36911[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sat Feb 8 17:30:15 2025 -0500
+
+    Clases de uso patrón facade
+
+ 2 files changed, 21 insertions(+)
+
+[33mcommit 48898b55c40f3097bc388ec0c5ba0fc0c4d3ea80[m[33m ([m[1;31morigin/DAO[m[33m)[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sat Feb 8 17:28:38 2025 -0500
+
+    test aprobado de los DAO usuario y autor, falta documento
+
+ 8 files changed, 288 insertions(+), 195 deletions(-)
+
+[33mcommit 87b208bd754134a8ab27cf840992d72ae7783c10[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sat Feb 8 15:44:54 2025 -0500
+
+    eliminacion de documentos duplicados de factory
+
+ 6 files changed, 266 deletions(-)
+
+[33mcommit e7b4706dedf829e05090267dfff70a462746114c[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sat Feb 8 15:29:03 2025 -0500
+
+    Logica de los DAO completa (falta prueba)
+
+ 7 files changed, 259 insertions(+), 89 deletions(-)
+
+[33mcommit 63bef4fcf0ae6025633303e61b8eb411d6ce33d8[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sat Feb 8 13:45:40 2025 -0500
+
+    Creacion clases DAO, falta implementar la logica
+
+ 6 files changed, 220 insertions(+), 2 deletions(-)
+
+[33mcommit b6c0fac494b5adb53b7d2ee9910e436931c979ab[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sat Feb 8 15:40:44 2025 -0500
+
+    Factory method funcional
+
+ 6 files changed, 271 insertions(+)
+
+[33mcommit 2fb98a22458e324efeaa0455675e855a0a8721ee[m
+Merge: 06fd1c4 a6ddf0d
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sat Feb 8 15:39:42 2025 -0500
+
+    Merge remote-tracking branch 'origin/Factory'
+
+[33mcommit a6ddf0d5f10ee0a95288a27a7a426a26cbc5f3d7[m[33m ([m[1;31morigin/Factory[m[33m)[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sat Feb 8 15:27:19 2025 -0500
+
+    Prueba aprobada Factory Method
+
+ 6 files changed, 158 insertions(+), 17 deletions(-)
+
+[33mcommit a76b707746ccfd85ba4d4e64588439a92831b18c[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sat Feb 8 13:45:40 2025 -0500
+
+    Creacion clases DAO, falta implementar la logica
+
+ 7 files changed, 220 insertions(+), 9 deletions(-)
+
+[33mcommit 06fd1c49d8e5ea8bba30c9f460974c1f8993f06d[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sat Feb 8 13:00:13 2025 -0500
+
+    confirmación conexión base de datos
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+[33mcommit ca65045a985c014941f1739fa3d97dce4e17b23a[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sat Feb 8 12:51:49 2025 -0500
+
+    Paquete autores y clase autor
+
+ 1 file changed, 10 insertions(+)
+
+[33mcommit b759062bdb02441a777ae443468ac190e2b3719f[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sat Feb 8 12:49:57 2025 -0500
+
+    test ConexionBD aprobado
+
+ 2 files changed, 34 insertions(+)
+
+[33mcommit fec1ddfb12cb923be18639bc640021141bd5ce20[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sat Feb 8 12:23:48 2025 -0500
+
+    Añadir .jar versión 9.2.0
+
+ 1 file changed, 5 insertions(+)
+
+[33mcommit 4bc68bfe1edd8fd6a201e440c49b35590ae525bd[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Sat Feb 8 12:15:49 2025 -0500
+
+    imports ConexionBD
+
+ 1 file changed, 4 insertions(+)
+
+[33mcommit 40246f6b13c911709e5acaec85e6e9cf5ef0ed35[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sat Feb 8 00:15:46 2025 -0500
+
+    Reorganización de paquetes
+
+ 5 files changed, 4 insertions(+), 16 deletions(-)
+
+[33mcommit cb4b6c654bf270e767de89330fa3bfae52c205e5[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Sat Feb 8 00:05:14 2025 -0500
+
+    Factory method implementado (a espera de la vista)
+
+ 5 files changed, 38 insertions(+), 43 deletions(-)
+
+[33mcommit f43b9e53deca1cd5f09a5ef4f92fcd206f87e9fb[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Fri Feb 7 23:04:27 2025 -0500
+
+    Cambio en la estructura del factory
+
+ 5 files changed, 53 insertions(+), 34 deletions(-)
+
+[33mcommit 3f3c4b218b6e8533e2522b7617bca2b81c82580e[m
+Merge: 0308337 ac0f710
+Author: Salcedo Sanchez Juan David <106636384+jdsalcedos@users.noreply.github.com>
+Date:   Fri Feb 7 22:55:21 2025 -0500
+
+    Merge pull request #6 from jdsalcedos/singleton
+    
+    Implementacion ConexionBD Singleton
+
+[33mcommit ac0f7101e4d8019df8358e7b05b00f87ef376145[m
+Merge: 31bf9f4 0308337
+Author: Salcedo Sanchez Juan David <106636384+jdsalcedos@users.noreply.github.com>
+Date:   Fri Feb 7 22:55:04 2025 -0500
+
+    Merge branch 'master' into singleton
+
+[33mcommit 47272e6c37c4de87ed30227a4a2940e99260f3e9[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Fri Feb 7 22:48:06 2025 -0500
+
+    patrón factory(a medias)
+
+ 6 files changed, 116 insertions(+)
+
+[33mcommit 31bf9f4bd218bccc98cfd2caba07c614f6b1c660[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Fri Feb 7 22:32:29 2025 -0500
+
+    optimizacion ConexionBD
+
+ 1 file changed, 7 insertions(+), 12 deletions(-)
+
+[33mcommit b5d1f15d44bbabd12c083cc7fab02f9a05cdadb4[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Fri Feb 7 22:11:04 2025 -0500
+
+    clase ConexionBD terminada (falta test)
+
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+[33mcommit 03083374bddae79a7d85fd4ef0efb56e007b4fcc[m
+Merge: c11e73d 60fddf7
+Author: Salcedo Sanchez Juan David <106636384+jdsalcedos@users.noreply.github.com>
+Date:   Fri Feb 7 21:58:14 2025 -0500
+
+    Merge pull request #5 from jdsalcedos/revert-4-singleton
+    
+    Revert "creacion Conexion BD Singleton. Revisar!"
+
+[33mcommit 60fddf7d130bafb6b9f4028d38b4c3eb74960940[m
+Author: Salcedo Sanchez Juan David <106636384+jdsalcedos@users.noreply.github.com>
+Date:   Fri Feb 7 21:57:51 2025 -0500
+
+    Revert "creacion Conexion BD Singleton. Revisar!"
+
+ 1 file changed, 30 deletions(-)
+
+[33mcommit c11e73d9553784f620b0bd6f3f52c6c116d2163b[m
+Merge: 5025a46 5a7bda4
+Author: Salcedo Sanchez Juan David <106636384+jdsalcedos@users.noreply.github.com>
+Date:   Fri Feb 7 21:34:56 2025 -0500
+
+    Merge pull request #4 from jdsalcedos/singleton
+    
+    creacion Conexion BD Singleton. Revisar!
+
+[33mcommit 5a7bda433348c92f5435ff3e35a58c524722b004[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Fri Feb 7 21:33:41 2025 -0500
+
+    creacion Conexion BD Singleton. Revisar!
+
+ 1 file changed, 30 insertions(+)
+
+[33mcommit 5025a465502d871654ca288bb807117c99cf7fad[m
+Author: JOHAN SEBASTIAN BELTRAN MERCHAN <sebas08beltran@gmail.com>
+Date:   Fri Feb 7 21:16:26 2025 -0500
+
+    Segunda versión del diagrama de clases
+
+ 1 file changed, 13128 insertions(+)
+
+[33mcommit 338c930c78746f15369b0f41653fd392860f0388[m
+Merge: 66692a9 092809b
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Fri Feb 7 19:16:14 2025 -0500
+
+    Merge branch 'master' of https://github.com/jdsalcedos/SourceCodeM1.git
+
+[33mcommit 092809bf760150d218de1322d5f55235a0601ac3[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Fri Feb 7 19:14:22 2025 -0500
+
+    hola
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+[33mcommit 66692a94fe018f936fb353f225b31f6d8dd14f13[m
+Author: Johan Sebastián Beltrán Merchán <sebas08beltran@gmail.com>
+Date:   Fri Feb 7 19:11:13 2025 -0500
+
+    rama de prueba
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+[33mcommit 5d1e399140ce823688ffa95ca9af66044c5868bf[m
+Merge: daf7105 60da0df
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Fri Feb 7 19:03:28 2025 -0500
+
+    Merge remote-tracking branch 'origin/modelo'
+
+[33mcommit 60da0dfd65f624ec197008a3ea9ad95f26b346fd[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Fri Feb 7 19:01:32 2025 -0500
+
+    cambio en clase
+
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+[33mcommit daf7105041b38254441a091d8ec5e927b94dd1e1[m
+Merge: 8da35b2 e31bae3
+Author: Salcedo Sanchez Juan David <106636384+jdsalcedos@users.noreply.github.com>
+Date:   Fri Feb 7 19:00:20 2025 -0500
+
+    Merge pull request #3 from jdsalcedos/modelo
+    
+    crear rama modelo
+
+[33mcommit e31bae38d0547317047f7c61f9f1503f85d76d95[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Fri Feb 7 18:59:42 2025 -0500
+
+    crear rama modelo
+
+ 1 file changed, 5 insertions(+)
+
+[33mcommit 8da35b2a1b634229d5f6d2e8a094f91341a3e824[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Fri Feb 7 18:53:41 2025 -0500
+
+    creacion prueba vista
+
+ 1 file changed, 5 insertions(+)
+
+[33mcommit bb3bf04002f5ffa330d6ec81b15012f496205f2d[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Fri Feb 7 18:52:19 2025 -0500
+
+    creacion clases prueba
+
+ 2 files changed, 10 insertions(+)
+
+[33mcommit 9f89e3a60b086a030c83d9fd5994e63b9ad7f504[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Fri Feb 7 18:46:14 2025 -0500
+
+    Revert "prueba creacion carpetas"
+    
+    This reverts commit bb223a9fa2ea43a39cd83d7db1b3355f2e62ddba.
+
+ 2 files changed, 10 deletions(-)
+
+[33mcommit c73c9df32f86587fcc0f0bc977ffbf9461ef8a20[m
+Author: Juan Salcedo <jdsalcedodv@gmail.com>
+Date:   Fri Feb 7 18:44:04 2025 -0500
+
+    prueba creacion carpetas
+
+ 2 files changed, 10 insertions(+)
+
+[33mcommit b136f8b81cb5a549cf863653b61b9364d195bcb1[m
+Author: PEREZSOLANODIEGOALEJ <PEREZSOLANODIEGOALEJ@LAPTOP-JMQPJLLO>
+Date:   Fri Feb 7 18:48:30 2025 -0500
+
+    prueba 3
+
+ 1 file changed, 2 deletions(-)
+
+[33mcommit 001c8e88d5cdb0e5970a03e4f620e14e3c64b0aa[m
+Author: PEREZSOLANODIEGOALEJ <PEREZSOLANODIEGOALEJ@LAPTOP-JMQPJLLO>
+Date:   Fri Feb 7 18:47:48 2025 -0500
+
+    prueba 2
+
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+[33mcommit 97d09daf45a507cf0cfacb2d422c131345eb12b3[m
+Author: PEREZSOLANODIEGOALEJ <PEREZSOLANODIEGOALEJ@LAPTOP-JMQPJLLO>
+Date:   Fri Feb 7 18:35:26 2025 -0500
+
+    CANCELAR PRUEBA
+
+ 1 file changed, 1 insertion(+), 3 deletions(-)

@@ -14,6 +14,7 @@ import control.DAO.UsuarioDAO;
 import control.DAO.documentos.ArticuloCientificoDAO;
 import control.DAO.documentos.DocumentoDAO;
 import control.DAO.documentos.LibroDAO;
+import modelo.facade.historial.HistorialCambio;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.creadorConcreto.CreadorDocumento;
 import modelo.factory.documento.ArticuloCientifico;
@@ -64,20 +65,27 @@ public class ConexionBD {
 	public static void main(String[] args) {
 
 		try {
+			cn = ConexionBD.getConexion();
+//			HistorialDAO dao=new HistorialDAO();
+//			HistorialCambio hc=HistorialCambio.getInstance();
+//			hc.setIdDocumento(1);
+//			hc.setIdUsuario(1);
+//			dao.reservado(hc);
+			//dao.add(hc);
 			//cn = ConexionBD.getConexion();
 
 			// ArticuloCientificoDAO acDao = new ArticuloCientificoDAO();
 
 			//DocumentoDAO dao = new DocumentoDAO();
-			//CreadorDocumento fabrica = new CreadorDocumento();
-			//LibroDAO daolibro = new LibroDAO();
+			CreadorDocumento fabrica = new CreadorDocumento();
+			LibroDAO daolibro = new LibroDAO();
 
-//			Documento lib1 = fabrica.creadorDocumento(4, 101, 1, "Don Quijote", LocalDate.of(2015, 1, 2), "0971089273",
-//					"Libro", null);
+			Documento lib1 = fabrica.creadorDocumento(1, 1, 1, "Don Quijote", LocalDate.of(2015, 1, 2), "0971089273",
+					"Libro", null);
 //			Documento lib2 = fabrica.creadorDocumento(5555, 101, 2, "Don Pancote", LocalDate.of(2035, 5, 22), "97309999999",
 //					"Ponencia", null);
 //
-//			daolibro.add((Libro) lib1);
+			daolibro.add((Libro) lib1);
 //
 //			Documento doc = dao.getOne(4);
 //			
