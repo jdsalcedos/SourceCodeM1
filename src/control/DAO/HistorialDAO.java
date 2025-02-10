@@ -115,7 +115,7 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 	
 	//SE ACTUALIZAN LOS VALORES DEL SINGLETON,
 	//se pone el parámetro en null y luego se ejecuta la función
-	public boolean reservado(HistorialCambio noseusa) {
+	public boolean reservado() {
 		//modificar, reservar, devolver
 		// Validar que solo uno de los dos IDs tenga valor
 	    if ((hc.getIdAutor() != null && hc.getIdUsuario() != null) || 
@@ -144,7 +144,7 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 	
 	//SE ACTUALIZAN LOS VALORES DEL SINGLETON,
 	//se pone el parámetro en null y luego se ejecuta la función
-	public boolean devolver(HistorialCambio noseusa) {
+	public boolean devolver() {
 		//modificar, reservar, devolver
 		// Validar que solo uno de los dos IDs tenga valor
 	    if ((hc.getIdAutor() != null && hc.getIdUsuario() != null) || 
