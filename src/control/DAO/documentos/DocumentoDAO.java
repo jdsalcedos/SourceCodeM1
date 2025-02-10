@@ -11,9 +11,13 @@ import control.DAO.InterfaceDAO;
 import control.conexion.ConexionBD;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.creadorConcreto.CreadorDocumento;
+import modelo.factory.documento.ArticuloCientifico;
+import modelo.factory.documento.Libro;
+import modelo.factory.documento.Ponencia;
 import modelo.state.EstadoOculto;
 import modelo.state.EstadoVisible;
 import modelo.state.VisualizacionState;
+import modelo.visitor.UpdateDocumentoVisitor;
 
 public class DocumentoDAO implements InterfaceDAO<Documento> {
 
@@ -140,6 +144,10 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			int filasAfectadas = pst.executeUpdate();
 
 			pst.close();
+			
+			UpdateDocumentoVisitor visitor = new UpdateDocumentoVisitor(this);
+			nuevo.aceptar(visitor);
+			
 			ConexionBD.desconectar();
 			System.out.println("documento modificado con exito");
 
@@ -247,6 +255,66 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			ex.printStackTrace();
 		}
 		return docs;
+	}
+
+
+
+	public boolean actualizarLibro(Libro libro) {
+		try {
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("UPDATE libro SET num_paginas = ? WHERE id_documento = ?");
+	        pst.setString(1, libro.getNumPaginas());
+	        pst.setInt(2, libro.getIdDocumento());
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	        System.out.println("SE CAMBIO EL ESTADO de un libro");
+	        return true;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	        return true;
+	    }
+		
+	}
+
+
+
+	public boolean actualizarPonencia(Ponencia ponencia) {
+		try {
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("UPDATE ponencia SET congreso = ? WHERE id_documento = ?");
+	        pst.setString(1, ponencia.getCongreso());
+	        pst.setInt(2, ponencia.getIdDocumento());
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	        System.out.println("SE CAMBIO EL ESTADO de una ponencia");
+	        return true;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	        return true;
+	    }
+		
+	}
+
+
+
+	public boolean actualizarArticulo(ArticuloCientifico ac) {
+		try {
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("UPDATE articulo_cientifico SET SSN = ? WHERE id_documento = ?");
+	        pst.setString(1, ac.getSsn());
+	        pst.setInt(2, ac.getIdDocumento());
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	        System.out.println("SE CAMBIO EL ESTADO de un articulo cientifico");
+	        return true;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	        return true;
+	    }
+		
 	}
 
 }

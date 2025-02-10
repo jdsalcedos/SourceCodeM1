@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import modelo.factory.abstracto.Documento;
 import modelo.state.VisualizacionState;
+import modelo.visitor.DocumentoVisitor;
 
 public class ArticuloCientifico extends Documento{
 	private String ssn;
@@ -21,4 +22,9 @@ public class ArticuloCientifico extends Documento{
 		this.ssn = ssn;
 	}
 	
+	@Override
+	public void aceptar(DocumentoVisitor visitor) {
+		visitor.visit(this);
+		
+	}
 }

@@ -79,11 +79,17 @@ public class ConexionBD {
 			DocumentoDAO dao = new DocumentoDAO();
 			CreadorDocumento fabrica = new CreadorDocumento();
 			LibroDAO daolibro = new LibroDAO();
-
-			Documento lib1 = fabrica.creadorDocumento(4, 101, 1, "Don Quijote", LocalDate.of(2015, 1, 2), "0971089273",
+//
+//			Documento lib1 = fabrica.creadorDocumento(5, 101, 1, "Don Quijote", LocalDate.of(2015, 1, 2), "0971089273",
+//					"Libro", null);
+			
+			Documento doc = dao.getOne(4);
+			
+			// ESTA ES LA LOGICA QUE DEBE TENER LA CREACION DEL OBJETO QUE TENDRA LOS DATOS NUEVOS 
+			// DEBE RECOGER EL id_documento DE ESTA MANERA
+			Documento lib2 = fabrica.creadorDocumento(doc.getIdDocumento(), 101, 2, "Don Maybe 3", LocalDate.of(2000, 10, 20), "00000000000",
 					"Libro", null);
-			Documento lib2 = fabrica.creadorDocumento(5555, 101, 2, "Don Pancote", LocalDate.of(2004, 10, 22), "747478374",
-					"Ponencia", null);
+			
 //			daolibro.add((Libro) lib1);
 //
 //			dao.getAll();
@@ -92,11 +98,12 @@ public class ConexionBD {
 //			Documento docModificado = dao.getOne(2);
 //			dao.getAllVisible();
 //
-//			Documento doc = dao.getOne(4);
 //			
+			
 //			
 //			dao.delete(dao.getOne(4));
-			dao.update(lib1, lib2);
+			
+			dao.update(doc, lib2);
 //			
 //			Documento docModificado = dao.getOne(3);
 //

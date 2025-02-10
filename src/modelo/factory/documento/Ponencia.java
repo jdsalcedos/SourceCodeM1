@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import modelo.factory.abstracto.Documento;
 import modelo.state.VisualizacionState;
+import modelo.visitor.DocumentoVisitor;
 
 public class Ponencia extends Documento{
 	private String congreso;
@@ -20,6 +21,12 @@ public class Ponencia extends Documento{
 
 	public void setCongreso(String congreso) {
 		this.congreso = congreso;
+	}
+
+	@Override
+	public void aceptar(DocumentoVisitor visitor) {
+		visitor.visit(this);
+		
 	}
 	
 }

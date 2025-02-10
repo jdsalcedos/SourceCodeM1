@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import control.DAO.documentos.DocumentoDAO;
 import modelo.state.EstadoVisible;
 import modelo.state.VisualizacionState;
+import modelo.visitor.DocumentoVisitor;
 
 public abstract class Documento {
 	protected int idDocumento;
@@ -31,6 +32,9 @@ public abstract class Documento {
 	public Documento() {
 	}
 
+	abstract public void aceptar(DocumentoVisitor visitor);
+	
+	
 	public void setIdDocumento(int idDocumento) {
 		this.idDocumento = idDocumento;
 	}
