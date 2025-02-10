@@ -21,7 +21,8 @@ public class VentanaRegistro extends JFrame {
 	private JButton btnCerrar;
 	private JButton btnVolver;
 	private JButton btnRegistrarse;
-	private JTextField txtUsuario;
+	private JTextField txtNombre;
+	private JTextField txtIdentificacion;
 	private JPasswordField passwordRegistro;
 	private JTextField txtTelefono;
 	private JTextField txtCorreo;
@@ -88,14 +89,14 @@ public class VentanaRegistro extends JFrame {
 		btnRegistrarse.setContentAreaFilled(false);
 		btnRegistrarse.setBorderPainted(false);
 		btnRegistrarse.setBorder(null);
-		btnRegistrarse.setBounds(387, 451, 125, 40);
+		btnRegistrarse.setBounds(387, 461, 125, 40);
 		btnRegistrarse.setActionCommand("REGISTRARSE");
 		contentPane.add(btnRegistrarse);
 		
 		passwordRegistro = new JPasswordField();
 		passwordRegistro.setOpaque(false);
 		passwordRegistro.setBorder(null);
-		passwordRegistro.setBounds(441, 226, 128, 40);
+		passwordRegistro.setBounds(441, 181, 128, 40);
 		contentPane.add(passwordRegistro);
 		
 		txtDireccion = new JTextField();
@@ -103,7 +104,7 @@ public class VentanaRegistro extends JFrame {
 		txtDireccion.setForeground(Color.BLACK);
 		txtDireccion.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtDireccion.setBorder(null);
-		txtDireccion.setBounds(441, 394, 128, 40);
+		txtDireccion.setBounds(441, 404, 128, 40);
 		contentPane.add(txtDireccion);
 		
 		txtCorreo = new JTextField();
@@ -111,7 +112,7 @@ public class VentanaRegistro extends JFrame {
 		txtCorreo.setForeground(Color.BLACK);
 		txtCorreo.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtCorreo.setBorder(null);
-		txtCorreo.setBounds(441, 338, 128, 40);
+		txtCorreo.setBounds(441, 348, 128, 40);
 		contentPane.add(txtCorreo);
 		
 		txtTelefono = new JTextField();
@@ -119,28 +120,36 @@ public class VentanaRegistro extends JFrame {
 		txtTelefono.setForeground(Color.BLACK);
 		txtTelefono.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtTelefono.setBorder(null);
-		txtTelefono.setBounds(441, 282, 128, 40);
+		txtTelefono.setBounds(441, 292, 128, 40);
 		contentPane.add(txtTelefono);
 		
-		txtUsuario = new JTextField();
-		txtUsuario.setOpaque(false);
-		txtUsuario.setForeground(Color.BLACK);
-		txtUsuario.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
-		txtUsuario.setBorder(null);
-		txtUsuario.setBounds(441, 172, 128, 40);
-		contentPane.add(txtUsuario);
+		txtNombre = new JTextField();
+		txtNombre.setOpaque(false);
+		txtNombre.setForeground(Color.BLACK);
+		txtNombre.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
+		txtNombre.setBorder(null);
+		txtNombre.setBounds(441, 236, 128, 40);
+		contentPane.add(txtNombre);
+		
+		txtIdentificacion = new JTextField();
+		txtIdentificacion.setOpaque(false);
+		txtIdentificacion.setForeground(Color.BLACK);
+		txtIdentificacion.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
+		txtIdentificacion.setBorder(null);
+		txtIdentificacion.setBounds(441, 126, 128, 40);
+		contentPane.add(txtIdentificacion);
 		
 		rdBtnAutor = new JRadioButton("Autor");
 		rdBtnAutor.setHorizontalAlignment(SwingConstants.CENTER);
 		rdBtnAutor.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
-		rdBtnAutor.setBounds(407, 135, 88, 23);
+		rdBtnAutor.setBounds(451, 97, 88, 23);
 		rdBtnAutor.setOpaque(false);
 		contentPane.add(rdBtnAutor);
 		
 		rdBtnLector = new JRadioButton("Lector");
 		rdBtnLector.setHorizontalAlignment(SwingConstants.CENTER);
 		rdBtnLector.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
-		rdBtnLector.setBounds(407, 109, 88, 23);
+		rdBtnLector.setBounds(361, 97, 88, 23);
 		rdBtnLector.setOpaque(false);
 		contentPane.add(rdBtnLector);
 		
@@ -150,63 +159,74 @@ public class VentanaRegistro extends JFrame {
 		
 		JLabel lblRegistrarse = new JLabel("");
 		lblRegistrarse.setIcon(new ImageIcon(VentanaRegistro.class.getResource("/imagenes/boton.png")));
-		lblRegistrarse.setBounds(388, 451, 124, 40);
+		lblRegistrarse.setBounds(388, 461, 124, 40);
 		contentPane.add(lblRegistrarse);
 		
 		JLabel lblDireccion = new JLabel("Dirección");
 		lblDireccion.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDireccion.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
-		lblDireccion.setBounds(325, 394, 88, 40);
+		lblDireccion.setBounds(309, 404, 104, 40);
 		contentPane.add(lblDireccion);
 		
 		JLabel lblCorreo = new JLabel("Correo");
 		lblCorreo.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCorreo.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
-		lblCorreo.setBounds(325, 338, 88, 40);
+		lblCorreo.setBounds(309, 348, 104, 40);
 		contentPane.add(lblCorreo);
 		
 		JLabel lblTelefono = new JLabel("Teléfono");
 		lblTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelefono.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
-		lblTelefono.setBounds(325, 282, 88, 40);
+		lblTelefono.setBounds(309, 292, 104, 40);
 		contentPane.add(lblTelefono);
+		
+		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNombre.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
+		lblNombre.setBounds(309, 236, 104, 40);
+		contentPane.add(lblNombre);
 		
 		JLabel lblContrasena = new JLabel("Contraseña");
 		lblContrasena.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasena.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
-		lblContrasena.setBounds(325, 226, 88, 40);
+		lblContrasena.setBounds(309, 181, 104, 40);
 		contentPane.add(lblContrasena);
 		
-		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblUsuario.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
-		lblUsuario.setBounds(325, 171, 88, 40);
-		contentPane.add(lblUsuario);
+		JLabel lblIdentificacion = new JLabel("Identificacion");
+		lblIdentificacion.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblIdentificacion.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
+		lblIdentificacion.setBounds(309, 126, 104, 40);
+		contentPane.add(lblIdentificacion);
 		
 		JLabel lblBordeDireccion = new JLabel("");
 		lblBordeDireccion.setIcon(new ImageIcon(VentanaRegistro.class.getResource("/imagenes/borde_texto.png")));
-		lblBordeDireccion.setBounds(423, 394, 146, 40);
+		lblBordeDireccion.setBounds(423, 404, 146, 40);
 		contentPane.add(lblBordeDireccion);
 		
 		JLabel lblBordeCorreo = new JLabel("");
 		lblBordeCorreo.setIcon(new ImageIcon(VentanaRegistro.class.getResource("/imagenes/borde_texto.png")));
-		lblBordeCorreo.setBounds(423, 338, 146, 40);
+		lblBordeCorreo.setBounds(423, 348, 146, 40);
 		contentPane.add(lblBordeCorreo);
 		
 		JLabel lblBordeTelefono = new JLabel("");
 		lblBordeTelefono.setIcon(new ImageIcon(VentanaRegistro.class.getResource("/imagenes/borde_texto.png")));
-		lblBordeTelefono.setBounds(423, 282, 146, 40);
+		lblBordeTelefono.setBounds(423, 292, 146, 40);
 		contentPane.add(lblBordeTelefono);
+		
+		JLabel lblBordeNombre = new JLabel("");
+		lblBordeNombre.setIcon(new ImageIcon(VentanaRegistro.class.getResource("/imagenes/borde_texto.png")));
+		lblBordeNombre.setBounds(423, 236, 146, 40);
+		contentPane.add(lblBordeNombre);
 		
 		JLabel lblBordeContrasena = new JLabel("");
 		lblBordeContrasena.setIcon(new ImageIcon(VentanaRegistro.class.getResource("/imagenes/borde_texto.png")));
-		lblBordeContrasena.setBounds(423, 226, 146, 40);
+		lblBordeContrasena.setBounds(423, 181, 146, 40);
 		contentPane.add(lblBordeContrasena);
 		
-		JLabel lblBordeUsuario = new JLabel("");
-		lblBordeUsuario.setIcon(new ImageIcon(VentanaRegistro.class.getResource("/imagenes/borde_texto.png")));
-		lblBordeUsuario.setBounds(423, 171, 146, 40);
-		contentPane.add(lblBordeUsuario);
+		JLabel lblBordeIdentificacion = new JLabel("");
+		lblBordeIdentificacion.setIcon(new ImageIcon(VentanaRegistro.class.getResource("/imagenes/borde_texto.png")));
+		lblBordeIdentificacion.setBounds(423, 126, 146, 40);
+		contentPane.add(lblBordeIdentificacion);
 		
 		JLabel lblFondoRegistro = new JLabel("");
 		lblFondoRegistro.setIcon(new ImageIcon(VentanaRegistro.class.getResource("/imagenes/fondo_registro.png")));
@@ -216,8 +236,14 @@ public class VentanaRegistro extends JFrame {
 
 	public boolean verify() {
 		String password = new String(passwordRegistro.getPassword()).trim();
-		if(txtUsuario.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de usuario"
+		if(txtIdentificacion.getText().trim().isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de identificacion"
+					, "Advertencia", JOptionPane.WARNING_MESSAGE);
+			return false;
+		} 
+		
+		if(txtNombre.getText().trim().isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de nombre"
 					, "Advertencia", JOptionPane.WARNING_MESSAGE);
 			return false;
 		} 
@@ -303,13 +329,21 @@ public class VentanaRegistro extends JFrame {
 	public void setRdBtnLector(JRadioButton rdBtnLector) {
 		this.rdBtnLector = rdBtnLector;
 	}
-
-	public JTextField getTxtUsuario() {
-		return txtUsuario;
+	
+	public JTextField getTxtIdentificacion() {
+		return txtNombre;
 	}
 
-	public void setTxtUsuario(JTextField txtUsuario) {
-		this.txtUsuario = txtUsuario;
+	public void setTxtIdentificacion(JTextField txtIdentificacion) {
+		this.txtIdentificacion = txtIdentificacion;
+	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
 	}
 
 	public JPasswordField getPasswordRegistro() {
