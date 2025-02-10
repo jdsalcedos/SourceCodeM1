@@ -76,15 +76,15 @@ public class ConexionBD {
 
 			// ArticuloCientificoDAO acDao = new ArticuloCientificoDAO();
 
-//			DocumentoDAO dao = new DocumentoDAO();
-//			CreadorDocumento fabrica = new CreadorDocumento();
-//			LibroDAO daolibro = new LibroDAO();
+			DocumentoDAO dao = new DocumentoDAO();
+			CreadorDocumento fabrica = new CreadorDocumento();
+			LibroDAO daolibro = new LibroDAO();
 
-//			Documento lib1 = fabrica.creadorDocumento(4, 101, 1, "Don Quijote", LocalDate.of(2015, 1, 2), "0971089273",
-//					"Libro", null);
+			Documento lib1 = fabrica.creadorDocumento(4, 101, 1, "Don Quijote", LocalDate.of(2015, 1, 2), "0971089273",
+					"Libro", null);
+			Documento lib2 = fabrica.creadorDocumento(5555, 101, 2, "Don Pancote", LocalDate.of(2004, 10, 22), "747478374",
+					"Ponencia", null);
 //			daolibro.add((Libro) lib1);
-//			Documento lib2 = fabrica.creadorDocumento(5555, 101, 2, "Don Pancote", LocalDate.of(2035, 5, 22), "97309999999",
-//					"Ponencia", null);
 //
 //			dao.getAll();
 
@@ -95,7 +95,8 @@ public class ConexionBD {
 //			Documento doc = dao.getOne(4);
 //			
 //			
-//			dao.update(doc, lib2);
+//			dao.delete(dao.getOne(4));
+			dao.update(lib1, lib2);
 //			
 //			Documento docModificado = dao.getOne(3);
 //

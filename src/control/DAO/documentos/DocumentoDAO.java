@@ -129,18 +129,16 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			cn = ConexionBD.getConexion();
 
 			// Actualización en la tabla "documento"
-			pst = cn.prepareStatement("UPDATE documento SET id_editorial = ?, titulo = ?, "
-					+ "ISBN = ? WHERE id_documento = ?");
+			pst = cn.prepareStatement("UPDATE documento SET id_editorial = ?, titulo = ?, fecha_publicacion = ?, ISBN = ? WHERE id_documento = ?");
 
-			
 			pst.setInt(1, nuevo.getIdEditorial());
-			pst.setString(2, nuevo.getTitulo()); // Conversión LocalDate → java.sql.Date
-			pst.setString(3, nuevo.getIsbn());
-			pst.setInt(4, antiguo.getIdDocumento()); // Cláusula WHERE para actualizar solo el documento correcto
-
+			pst.setString(2, nuevo.getTitulo()); 
+			pst.setDate(3, java.sql.Date.valueOf(nuevo.getFechaPublicacion()));
+			pst.setString(4, nuevo.getIsbn());
+			pst.setInt(5, antiguo.getIdDocumento()); 
 
 			int filasAfectadas = pst.executeUpdate();
-			System.out.println("# filas modificadas: "+filasAfectadas);
+
 			pst.close();
 			ConexionBD.desconectar();
 			System.out.println("documento modificado con exito");
