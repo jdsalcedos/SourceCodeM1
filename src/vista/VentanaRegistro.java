@@ -135,7 +135,6 @@ public class VentanaRegistro extends JFrame {
 		rdBtnAutor.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		rdBtnAutor.setBounds(407, 135, 88, 23);
 		rdBtnAutor.setOpaque(false);
-		rdBtnAutor.setActionCommand("REG_AUTOR");
 		contentPane.add(rdBtnAutor);
 		
 		rdBtnLector = new JRadioButton("Lector");
@@ -143,7 +142,6 @@ public class VentanaRegistro extends JFrame {
 		rdBtnLector.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		rdBtnLector.setBounds(407, 109, 88, 23);
 		rdBtnLector.setOpaque(false);
-		rdBtnLector.setActionCommand("REG_LECTOR");
 		contentPane.add(rdBtnLector);
 		
 		ButtonGroup grupo1 = new ButtonGroup();
@@ -254,10 +252,17 @@ public class VentanaRegistro extends JFrame {
 			return false;
 		}
 		
-		JOptionPane.showMessageDialog(this, "Registro exitoso"
-				, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+//		JOptionPane.showMessageDialog(this, "Registro exitoso"
+//				, "Éxito", JOptionPane.INFORMATION_MESSAGE);
 		return true;
     }
+	
+	public int prueba() {
+		if (rdBtnAutor.isSelected()) {
+			return 2;
+		}
+		return 1;
+	}
 	
 	public JButton getBtnCerrar() {
 		return btnCerrar;
@@ -298,5 +303,44 @@ public class VentanaRegistro extends JFrame {
 	public void setRdBtnLector(JRadioButton rdBtnLector) {
 		this.rdBtnLector = rdBtnLector;
 	}
-	
+
+	public JTextField getTxtUsuario() {
+		return txtUsuario;
+	}
+
+	public void setTxtUsuario(JTextField txtUsuario) {
+		this.txtUsuario = txtUsuario;
+	}
+
+	public JPasswordField getPasswordRegistro() {
+		return passwordRegistro;
+	}
+
+	public void setPasswordRegistro(JPasswordField passwordRegistro) {
+		this.passwordRegistro = passwordRegistro;
+	}
+
+	public JTextField getTxtTelefono() {
+		return txtTelefono;
+	}
+
+	public void setTxtTelefono(JTextField txtTelefono) {
+		this.txtTelefono = txtTelefono;
+	}
+
+	public JTextField getTxtCorreo() {
+		return txtCorreo;
+	}
+
+	public void setTxtCorreo(JTextField txtCorreo) {
+		this.txtCorreo = txtCorreo;
+	}
+
+	public JTextField getTxtDireccion() {
+		return txtDireccion;
+	}
+
+	public void setTxtDireccion(JTextField txtDireccion) {
+		this.txtDireccion = txtDireccion;
+	}
 }

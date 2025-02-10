@@ -79,7 +79,7 @@ public class VentanaLogin extends JFrame {
 		btnRegister.setActionCommand("REGISTER");
 		panelBarraSuperior.add(btnRegister);
 		
-		JLabel lblUsuarioAutor = new JLabel("Usuario");
+		JLabel lblUsuarioAutor = new JLabel("Número de identificación");
 		lblUsuarioAutor.setForeground(Color.GRAY);
 		lblUsuarioAutor.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsuarioAutor.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
@@ -249,6 +249,38 @@ public class VentanaLogin extends JFrame {
 		this.btnCerrar = btnCerrar;
 	}
 
+	public JTextField getTxtUsuarioLector() {
+		return txtUsuarioLector;
+	}
+
+	public void setTxtUsuarioLector(JTextField txtUsuarioLector) {
+		this.txtUsuarioLector = txtUsuarioLector;
+	}
+
+	public JTextField getTxtUsuarioAutor() {
+		return txtUsuarioAutor;
+	}
+
+	public void setTxtUsuarioAutor(JTextField txtUsuarioAutor) {
+		this.txtUsuarioAutor = txtUsuarioAutor;
+	}
+
+	public JPasswordField getPasswordLector() {
+		return passwordLector;
+	}
+
+	public void setPasswordLector(JPasswordField passwordLector) {
+		this.passwordLector = passwordLector;
+	}
+
+	public JPasswordField getPasswordAutor() {
+		return passwordAutor;
+	}
+
+	public void setPasswordAutor(JPasswordField passwordAutor) {
+		this.passwordAutor = passwordAutor;
+	}
+
 	public boolean verifyAutor() {
 		String password = new String(passwordAutor.getPassword()).trim();
 		if(txtUsuarioAutor.getText().trim().isEmpty()) {
@@ -263,8 +295,8 @@ public class VentanaLogin extends JFrame {
             return false;
         }
 		
-		JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso"
-				, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+//		JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso"
+//				, "Éxito", JOptionPane.INFORMATION_MESSAGE);
 		return true;
     }
 	
