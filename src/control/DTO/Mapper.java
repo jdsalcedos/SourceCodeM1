@@ -7,15 +7,13 @@ public class Mapper {
 
 	public static AutorDTO convertirToAutorDto(Autor autor) {
 		AutorDTO dto = new AutorDTO();
-//		AutorDTO dto;
-//		dto = new AutorDTO(autor.getIdAutor(), autor.getNombre(), autor.getCorreo(), 
-//				autor.getContrasena(), autor.getDireccion(), autor.getTelefono());
 		dto.setIdAutor(autor.getIdAutor());
 		dto.setNombre(autor.getNombre());
 		dto.setCorreo(autor.getCorreo());
 		dto.setContrasena(autor.getContrasena());
 		dto.setDireccion(autor.getDireccion());
 		dto.setTelefono(autor.getTelefono());
+		System.out.println("Mapper: autordto: " + dto);
 		return dto;
 	}
 
@@ -38,6 +36,7 @@ public class Mapper {
 		dto.setContrasena(usuario.getContrasena());
 		dto.setDireccion(usuario.getDireccion());
 		dto.setTelefono(usuario.getTelefono());
+		System.out.println("Mapper: userdto: " + dto);
 		return dto;
 	}
 

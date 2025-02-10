@@ -16,22 +16,33 @@ public class Controlador {
 	private AutorDAO autorDao;
 	private UsuarioDAO usuarioDao;
 	private Connection cone;
-//	private Gestor gestor;
 
 	public Controlador() {
-//		gestor = new Gestor();
 		cone = ConexionBD.getInstancia().getConexion();
 		autorDao = new AutorDAO();
 		usuarioDao = new UsuarioDAO();
-//		consultar();
 	}
 
 	public AutorDTO buscarAutor(int id) {
-		Autor autor = (Autor) autorDao.getOne(id);
-		return Mapper.convertirToAutorDto(autor);
+		Autor autor = autorDao.getOne(id);
+		if(autor==null) {
+			return null;
+		}else {
+			return Mapper.convertirToAutorDto(autor);
+		}
+	}
+	
+	public UsuarioDTO buscarUsuario(int id) {
+		Usuario usuario = usuarioDao.getOne(id);
+		if(usuario==null) {
+			return null;
+		}else {
+			return Mapper.convertirToUsuarioDto(usuario);
+		}
 	}
 	
 	public void agregarAutor(AutorDTO dto) {
+		System.out.println("eeeeeeeeeeeee" + dto);
 		Autor aut = Mapper.convertirToAutor(dto);
 		autorDao.add(aut);
 	}

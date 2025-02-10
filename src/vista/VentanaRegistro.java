@@ -288,11 +288,18 @@ public class VentanaRegistro extends JFrame {
             		, "Advertencia", JOptionPane.WARNING_MESSAGE);
 			return false;
 		}
-		
-//		JOptionPane.showMessageDialog(this, "Registro exitoso"
-//				, "Éxito", JOptionPane.INFORMATION_MESSAGE);
 		return true;
     }
+	
+	public void avisoError() {
+		JOptionPane.showMessageDialog(this, "Ya existe alguien con ese ID, digite otro."
+				, "Error", JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void avisoExito() {
+		JOptionPane.showMessageDialog(this, "Registro exitoso"
+				, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+	}
 	
 	public int prueba() {
 		if (rdBtnAutor.isSelected()) {

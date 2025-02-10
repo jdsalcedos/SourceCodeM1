@@ -137,23 +137,43 @@ public class Gestor implements ActionListener {
 					user.setTelefono(telefono);
 					user.setCorreo(correo);
 					user.setDireccion(direccion);
-					controler.agregarUsuario(user);
-
+					
+					if(controler.buscarUsuario(id)!=null) {
+						registro.avisoError();
+						System.out.println("⚠ Error: Ya existe un usuario con ese ID.");
+						registro.clear();
+					}else {
+						registro.avisoExito();
+						controler.agregarUsuario(user);
+						
+						login.setVisible(true);
+						registro.dispose();
+						registro.clear();
+					}
+					
 				} else if (registro.prueba() == 2) {
-					AutorDTO user = new AutorDTO();
-					user.setIdAutor(id);
-					user.setNombre(nombre);
-					user.setContrasena(contrasena);
-					user.setTelefono(telefono);
-					user.setCorreo(correo);
-					user.setDireccion(direccion);
-					controler.agregarAutor(user);
-//					System.out.println(user);
+					AutorDTO autor = new AutorDTO();
+					autor.setIdAutor(id);
+					autor.setNombre(nombre);
+					autor.setContrasena(contrasena);
+					autor.setTelefono(telefono);
+					autor.setCorreo(correo);
+					autor.setDireccion(direccion);
+					
+					if(controler.buscarAutor(id)!=null) {
+						registro.avisoError();
+						System.out.println("⚠ Error: Ya existe un autor con ese ID.");
+						registro.clear();
+					}else{
+						registro.avisoExito();
+						controler.agregarAutor(autor);
+						
+						login.setVisible(true);
+						registro.dispose();
+						registro.clear();
+					}
 				}
 
-				login.setVisible(true);
-				registro.dispose();
-				registro.clear();
 			}
 
 		} else if (comando.equals("VOLVER1")) {
