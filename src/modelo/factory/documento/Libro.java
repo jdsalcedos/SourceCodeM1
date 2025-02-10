@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import modelo.factory.abstracto.Documento;
 import modelo.state.VisualizacionState;
+import modelo.visitor.DocumentoVisitor;
 
 public class Libro extends Documento{
 	private String numPaginas;
@@ -20,6 +21,12 @@ public class Libro extends Documento{
 
 	public void setNumPaginas(String numPaginas) {
 		this.numPaginas = numPaginas;
+	}
+	
+	@Override
+	public void aceptar(DocumentoVisitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

@@ -61,7 +61,7 @@ public class ConexionBD {
 		cn = null;
 		System.out.println("desconectado con exito");
 	}
-	
+
 	public static void main(String[] args) {
 
 		try {
@@ -71,27 +71,39 @@ public class ConexionBD {
 //			hc.setIdDocumento(1);
 //			hc.setIdUsuario(1);
 //			dao.reservado(hc);
-			//dao.add(hc);
-			//cn = ConexionBD.getConexion();
+			// dao.add(hc);
+			// cn = ConexionBD.getConexion();
 
 			// ArticuloCientificoDAO acDao = new ArticuloCientificoDAO();
 
-			//DocumentoDAO dao = new DocumentoDAO();
+			DocumentoDAO dao = new DocumentoDAO();
 			CreadorDocumento fabrica = new CreadorDocumento();
 			LibroDAO daolibro = new LibroDAO();
-
-			Documento lib1 = fabrica.creadorDocumento(1, 1, 1, "Don Quijote", LocalDate.of(2015, 1, 2), "0971089273",
+//
+//			Documento lib1 = fabrica.creadorDocumento(5, 101, 1, "Don Quijote", LocalDate.of(2015, 1, 2), "0971089273",
+//					"Libro", null);
+			
+			Documento doc = dao.getOne(4);
+			
+			// ESTA ES LA LOGICA QUE DEBE TENER LA CREACION DEL OBJETO QUE TENDRA LOS DATOS NUEVOS 
+			// DEBE RECOGER EL id_documento DE ESTA MANERA
+			Documento lib2 = fabrica.creadorDocumento(doc.getIdDocumento(), 101, 2, "Don Maybe 3", LocalDate.of(2000, 10, 20), "00000000000",
 					"Libro", null);
-//			Documento lib2 = fabrica.creadorDocumento(5555, 101, 2, "Don Pancote", LocalDate.of(2035, 5, 22), "97309999999",
-//					"Ponencia", null);
+			
+//			daolibro.add((Libro) lib1);
 //
-			daolibro.add((Libro) lib1);
-//
-//			Documento doc = dao.getOne(4);
-//			
 //			dao.getAll();
+
+//			System.out.println("\n\n\n");
+//			Documento docModificado = dao.getOne(2);
+//			dao.getAllVisible();
+//
 //			
-//			dao.update(doc, lib2);
+			
+//			
+//			dao.delete(dao.getOne(4));
+			
+			dao.update(doc, lib2);
 //			
 //			Documento docModificado = dao.getOne(3);
 //
@@ -99,11 +111,14 @@ public class ConexionBD {
 //				System.out.println("Estado actual: " + docModificado.getEstadoVisualizacion().getEstado());
 //
 //				// 2. Cambiar el estado (de Visible a NoVisible o viceversa)
-//				if (docModificado.getEstadoVisualizacion() instanceof EstadoVisible) {
-//					docModificado.cambiarEstado(new EstadoOculto(), dao);
-//				} else {
-//					docModificado.cambiarEstado(new EstadoVisible(), dao);
-//				}
+//			if (docModificado.getEstadoVisualizacion() instanceof EstadoVisible) {
+//				docModificado.cambiarEstado(new EstadoOculto(), dao);
+//			} else {
+//				docModificado.cambiarEstado(new EstadoVisible(), dao);
+//			}
+//			
+//			dao.getAllVisible();
+
 //
 //				// 3. Verificar el cambio
 //				System.out.println("Nuevo estado: " + docModificado.getEstadoVisualizacion().getEstado());

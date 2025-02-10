@@ -11,9 +11,13 @@ import control.DAO.InterfaceDAO;
 import control.conexion.ConexionBD;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.creadorConcreto.CreadorDocumento;
+import modelo.factory.documento.ArticuloCientifico;
+import modelo.factory.documento.Libro;
+import modelo.factory.documento.Ponencia;
 import modelo.state.EstadoOculto;
 import modelo.state.EstadoVisible;
 import modelo.state.VisualizacionState;
+import modelo.visitor.UpdateDocumentoVisitor;
 
 public class DocumentoDAO implements InterfaceDAO<Documento> {
 
@@ -129,19 +133,21 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			cn = ConexionBD.getConexion();
 
 			// Actualización en la tabla "documento"
-			pst = cn.prepareStatement("UPDATE documento SET id_editorial = ?, titulo = ?, "
-					+ "ISBN = ? WHERE id_documento = ?");
+			pst = cn.prepareStatement("UPDATE documento SET id_editorial = ?, titulo = ?, fecha_publicacion = ?, ISBN = ? WHERE id_documento = ?");
 
-			
 			pst.setInt(1, nuevo.getIdEditorial());
-			pst.setString(2, nuevo.getTitulo()); // Conversión LocalDate → java.sql.Date
-			pst.setString(3, nuevo.getIsbn());
-			pst.setInt(4, antiguo.getIdDocumento()); // Cláusula WHERE para actualizar solo el documento correcto
-
+			pst.setString(2, nuevo.getTitulo()); 
+			pst.setDate(3, java.sql.Date.valueOf(nuevo.getFechaPublicacion()));
+			pst.setString(4, nuevo.getIsbn());
+			pst.setInt(5, antiguo.getIdDocumento()); 
 
 			int filasAfectadas = pst.executeUpdate();
-			System.out.println("# filas modificadas: "+filasAfectadas);
+
 			pst.close();
+			
+			UpdateDocumentoVisitor visitor = new UpdateDocumentoVisitor(this);
+			nuevo.aceptar(visitor);
+			
 			ConexionBD.desconectar();
 			System.out.println("documento modificado con exito");
 
@@ -206,6 +212,109 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 	    } catch (SQLException ex) {
 	        ex.printStackTrace();
 	    }
+	}
+	
+	public ArrayList<Documento> getAllVisible() {
+		ArrayList<Documento> docs = new ArrayList<Documento>();
+		try {
+			cn = ConexionBD.getConexion();
+			pst = cn.prepareStatement("SELECT * FROM documento WHERE estado_visualizacion=?");
+			pst.setString(1, "Dado de alta");
+			rs = pst.executeQuery();
+
+			pst2 = cn.prepareStatement("SELECT * FROM documento_autor");
+			rs2 = pst2.executeQuery();
+
+			CreadorDocumento creador = new CreadorDocumento(); // Instancia del Factory
+
+			while (rs.next() && rs2.next()) {
+				int idDocumento = rs.getInt("id_documento");
+				int idEditorial = rs.getInt("id_editorial");
+				int idAutor = rs2.getInt("id_autor");
+				String titulo = rs.getString("titulo");
+				LocalDate fechaPublicacion = rs.getDate("fecha_publicacion").toLocalDate();
+				String isbn = rs.getString("ISBN");
+				String tipoDocumento = rs.getString("tipo_documento");
+				String estadoVisualizacionStr = rs.getString("estado_visualizacion");
+				
+				VisualizacionState estadoVisualizacion = estadoVisualizacionStr.equals("Dado de alta") ? new EstadoVisible() : new EstadoOculto();
+
+				// Usar el Factory Method para crear el documento correcto
+				Documento doc = creador.creadorDocumento(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion,
+						isbn, tipoDocumento, estadoVisualizacion);
+
+				docs.add(doc);
+				System.out.println(doc.getClass());
+			}
+			
+			System.out.println("MOSTRANDO LOS DOCUMENTOS VISIBLES....");
+			System.out.println(docs.toString());
+			pst.close();
+			ConexionBD.desconectar();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return docs;
+	}
+
+
+
+	public boolean actualizarLibro(Libro libro) {
+		try {
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("UPDATE libro SET num_paginas = ? WHERE id_documento = ?");
+	        pst.setString(1, libro.getNumPaginas());
+	        pst.setInt(2, libro.getIdDocumento());
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	        System.out.println("SE CAMBIO EL ESTADO de un libro");
+	        return true;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	        return true;
+	    }
+		
+	}
+
+
+
+	public boolean actualizarPonencia(Ponencia ponencia) {
+		try {
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("UPDATE ponencia SET congreso = ? WHERE id_documento = ?");
+	        pst.setString(1, ponencia.getCongreso());
+	        pst.setInt(2, ponencia.getIdDocumento());
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	        System.out.println("SE CAMBIO EL ESTADO de una ponencia");
+	        return true;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	        return true;
+	    }
+		
+	}
+
+
+
+	public boolean actualizarArticulo(ArticuloCientifico ac) {
+		try {
+	        cn = ConexionBD.getConexion();
+	        pst = cn.prepareStatement("UPDATE articulo_cientifico SET SSN = ? WHERE id_documento = ?");
+	        pst.setString(1, ac.getSsn());
+	        pst.setInt(2, ac.getIdDocumento());
+	        pst.executeUpdate();
+	        pst.close();
+	        ConexionBD.desconectar();
+	        System.out.println("SE CAMBIO EL ESTADO de un articulo cientifico");
+	        return true;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	        return true;
+	    }
+		
 	}
 
 }

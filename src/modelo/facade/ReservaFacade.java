@@ -10,20 +10,16 @@ import modelo.usuario.Usuario;
 
 public class ReservaFacade {
 	private Reserva reserva;
-	private Documento documento;
 	private HistorialCambio historial;
 	private ReservaDAO resDAO;
 	private HistorialDAO histDAO;
-	private Usuario usuario;
-	private Autor autor;
-	
 	public ReservaFacade() {
 		reserva = new Reserva();
 		historial = HistorialCambio.getInstance();
 		resDAO = new ReservaDAO();
 		histDAO = new HistorialDAO();
-		usuario = new Usuario();
-		autor = new Autor();
+		new Usuario();
+		new Autor();
 	}
 	
 	private boolean comprobarReserva(Usuario usuario) {
