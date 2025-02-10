@@ -129,11 +129,11 @@ public class Gestor implements ActionListener {
 				String telefono = registro.getTxtTelefono().getText();
 				String correo = registro.getTxtCorreo().getText();
 				String direccion = registro.getTxtDireccion().getText();
+				String nombre = registro.getTxtNombre().getText();
 
 				if (registro.prueba() == 1) {
-					String userLector = registro.getTxtUsuario().getText();
 					UsuarioDTO user = new UsuarioDTO();
-					user.setNombre(userLector);
+					user.setNombre(nombre);
 					user.setContrasena(contrasena);
 					user.setTelefono(telefono);
 					user.setCorreo(correo);
@@ -141,9 +141,8 @@ public class Gestor implements ActionListener {
 					controler.agregarUsuario(user);
 
 				} else if (registro.prueba() == 2) {
-					String userAutor = registro.getTxtUsuario().getText();
 					AutorDTO user = new AutorDTO();
-					user.setNombre(userAutor);
+					user.setNombre(nombre);
 					user.setContrasena(contrasena);
 					user.setTelefono(telefono);
 					user.setCorreo(correo);

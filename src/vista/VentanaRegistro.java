@@ -238,7 +238,7 @@ public class VentanaRegistro extends JFrame {
 		txtIdentificacion.setText("");
 		txtNombre.setText("");
 		txtCorreo.setText("");
-		txtTelefono	.setText("");
+		txtTelefono.setText("");
 		txtDireccion.setText("");
 		passwordRegistro.setText("");
 	}
