@@ -95,5 +95,10 @@ public abstract class Documento {
 		this.estadoVisualizacion = nuevoEstado;
 		nuevoEstado.actualizarEstado(dao, this);
 	}
+	
+	@Override
+	public String toString() {
+		return "nombre: " + titulo + " estado visualizacion: "+ estadoVisualizacion.getEstado() + " id autor: "+ idAutor +"\n";
+	}
 
 }

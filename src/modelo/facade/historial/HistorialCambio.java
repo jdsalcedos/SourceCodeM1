@@ -9,12 +9,15 @@ public class HistorialCambio {
 	private Integer idAutor;
 	private String accion;
 	private LocalDate fechaModificacion;
-	private static final HistorialCambio historia = new HistorialCambio();
+	private static HistorialCambio historia = null;
 	
 	private HistorialCambio() {
 	}
 	
 	public static HistorialCambio getInstance() {
+		if (historia == null) {
+			historia = new HistorialCambio();
+		}
 		return historia;
 	}
 

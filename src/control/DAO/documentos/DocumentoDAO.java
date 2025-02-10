@@ -207,5 +207,48 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 	        ex.printStackTrace();
 	    }
 	}
+	
+	public ArrayList<Documento> getAllVisible() {
+		ArrayList<Documento> docs = new ArrayList<Documento>();
+		try {
+			cn = ConexionBD.getConexion();
+			pst = cn.prepareStatement("SELECT * FROM documento WHERE estado_visualizacion=?");
+			pst.setString(1, "Dado de alta");
+			rs = pst.executeQuery();
+
+			pst2 = cn.prepareStatement("SELECT * FROM documento_autor");
+			rs2 = pst2.executeQuery();
+
+			CreadorDocumento creador = new CreadorDocumento(); // Instancia del Factory
+
+			while (rs.next() && rs2.next()) {
+				int idDocumento = rs.getInt("id_documento");
+				int idEditorial = rs.getInt("id_editorial");
+				int idAutor = rs2.getInt("id_autor");
+				String titulo = rs.getString("titulo");
+				LocalDate fechaPublicacion = rs.getDate("fecha_publicacion").toLocalDate();
+				String isbn = rs.getString("ISBN");
+				String tipoDocumento = rs.getString("tipo_documento");
+				String estadoVisualizacionStr = rs.getString("estado_visualizacion");
+				
+				VisualizacionState estadoVisualizacion = estadoVisualizacionStr.equals("Dado de alta") ? new EstadoVisible() : new EstadoOculto();
+
+				// Usar el Factory Method para crear el documento correcto
+				Documento doc = creador.creadorDocumento(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion,
+						isbn, tipoDocumento, estadoVisualizacion);
+
+				docs.add(doc);
+				System.out.println(doc.getClass());
+			}
+			
+			System.out.println("MOSTRANDO LOS DOCUMENTOS VISIBLES....");
+			System.out.println(docs.toString());
+			pst.close();
+			ConexionBD.desconectar();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return docs;
+	}
 
 }
