@@ -21,7 +21,6 @@ public class VentanaModDoc extends JFrame {
 	private JButton btnCerrar;
 	private JButton btnVolver;
 	private JButton btnModificar;
-	private JButton btnEliminar;
 	
 	private JTextField txtTituloDoc;
 	private JTextField txtNombreAutor;
@@ -92,30 +91,14 @@ public class VentanaModDoc extends JFrame {
 		btnModificar.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		btnModificar.setContentAreaFilled(false);
 		btnModificar.setBorderPainted(false);
-		btnModificar.setBounds(310, 464, 125, 40);
+		btnModificar.setBounds(388, 464, 125, 40);
 		btnModificar.setActionCommand("MODIFICAR");
 		contentPane.add(btnModificar);
 		
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setOpaque(false);
-		btnEliminar.setHorizontalAlignment(SwingConstants.CENTER);
-		btnEliminar.setForeground(Color.WHITE);
-		btnEliminar.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
-		btnEliminar.setContentAreaFilled(false);
-		btnEliminar.setBorderPainted(false);
-		btnEliminar.setBounds(465, 464, 125, 40);
-		btnEliminar.setActionCommand("ELIMINAR");
-		contentPane.add(btnEliminar);
-		
 		JLabel lblModificar = new JLabel("");
 		lblModificar.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/boton.png")));
-		lblModificar.setBounds(310, 464, 125, 40);
+		lblModificar.setBounds(388, 464, 125, 40);
 		contentPane.add(lblModificar);
-		
-		JLabel lblEliminar = new JLabel("");
-		lblEliminar.setIcon(new ImageIcon(VentanaModDoc.class.getResource("/imagenes/boton.png")));
-		lblEliminar.setBounds(465, 464, 125, 40);
-		contentPane.add(lblEliminar);
 		
 		JLabel lblTituloDoc = new JLabel("Título");
 		lblTituloDoc.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -324,13 +307,6 @@ public class VentanaModDoc extends JFrame {
 		this.btnModificar = btnModificar;
 	}
 
-	public JButton getBtnEliminar() {
-		return btnEliminar;
-	}
-
-	public void setBtnEliminar(JButton btnEliminar) {
-		this.btnEliminar = btnEliminar;
-	}
 
 	public JTextField getTxtTituloDoc() {
 		return txtTituloDoc;
