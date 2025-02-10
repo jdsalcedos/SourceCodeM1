@@ -87,6 +87,7 @@ public class Gestor implements ActionListener {
 			System.exit(0);
 
 		} else if (comando.equals("REGISTER")) {
+			registro.clear();
 			registro.setVisible(true);
 			login.dispose();
 
@@ -125,6 +126,7 @@ public class Gestor implements ActionListener {
 		// Ventana registro
 		if (comando.equals("REGISTRARSE")) {
 			if (registro.verify()) {
+				int id = Integer.parseInt(registro.getTxtIdentificacion().getText());
 				String contrasena = new String(registro.getPasswordRegistro().getPassword()).trim();
 				String telefono = registro.getTxtTelefono().getText();
 				String correo = registro.getTxtCorreo().getText();
@@ -133,6 +135,7 @@ public class Gestor implements ActionListener {
 
 				if (registro.prueba() == 1) {
 					UsuarioDTO user = new UsuarioDTO();
+					user.setIdUsuario(id);
 					user.setNombre(nombre);
 					user.setContrasena(contrasena);
 					user.setTelefono(telefono);
@@ -142,6 +145,7 @@ public class Gestor implements ActionListener {
 
 				} else if (registro.prueba() == 2) {
 					AutorDTO user = new AutorDTO();
+					user.setIdAutor(id);
 					user.setNombre(nombre);
 					user.setContrasena(contrasena);
 					user.setTelefono(telefono);

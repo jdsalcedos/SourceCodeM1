@@ -29,6 +29,7 @@ public class VentanaRegistro extends JFrame {
 	private JTextField txtDireccion;
 	private JRadioButton rdBtnAutor;
 	private JRadioButton rdBtnLector;
+	private ButtonGroup grupo1;
 	private JPanel contentPane;
 
 	public VentanaRegistro() {
@@ -153,7 +154,7 @@ public class VentanaRegistro extends JFrame {
 		rdBtnLector.setOpaque(false);
 		contentPane.add(rdBtnLector);
 		
-		ButtonGroup grupo1 = new ButtonGroup();
+		grupo1 = new ButtonGroup();
         grupo1.add(rdBtnAutor);
         grupo1.add(rdBtnLector);
 		
@@ -235,6 +236,7 @@ public class VentanaRegistro extends JFrame {
 	}
 
 	public void clear(){
+		grupo1.clearSelection();
 		txtIdentificacion.setText("");
 		txtNombre.setText("");
 		txtCorreo.setText("");
