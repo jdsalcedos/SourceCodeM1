@@ -46,17 +46,11 @@ Para reservas:
 
 ## Patrones de Comportamiento
 
-### Command
+### Visitor
 
-Para encapsular acciones como “Crear documento”, “Modificar documento” y “Eliminar documento”
+Permite utilizar una consulta diferente dependiendo del objeto (libro, ponencia, articulo) para añadir los datos a las respectivas tablas en la base de datos 
 
 ### State
 
 Permite que un objeto cambie su comportamiento cuando cambia su estado interno. En la gestión del estado de los documentos [Disponible, Reservado, Dado de baja]
 
-### Chain of Responsibility
-
-En el control de permisos cuando un usuario intenta modificar o eliminar un documento.  Se pueden definir reglas como:
-
-1. Verificar si el usuario es el creador del documento
-2. Si no lo es, rechazar la operación
