@@ -42,7 +42,6 @@ public class Controlador {
 	}
 	
 	public void agregarAutor(AutorDTO dto) {
-		System.out.println("eeeeeeeeeeeee" + dto);
 		Autor aut = Mapper.convertirToAutor(dto);
 		autorDao.add(aut);
 	}
