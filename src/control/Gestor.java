@@ -91,34 +91,62 @@ public class Gestor implements ActionListener {
 			if (login.verifyAutor()) {
 				int idAutor = 0;
 				try {
-					idAutor = Integer.parseInt(login.getTxtUsuarioAutor().getText()); 
-					System.out.println(idAutor);
+					idAutor = Integer.parseInt(login.getTxtUsuarioAutor().getText());
 				} catch (Exception e2) {
 					System.out.println("Error: La cadena no es un número válido.");
 				}
-				
-				String contrasena = new String(login.getPasswordAutor().getPassword()).trim();
-				
-				if(controler.buscarAutor(idAutor)==null) {
-					System.out.println("Autor no existe");
-				}else {
-					
-				}
 
-				biblioteca.setVisible(true);
-				login.dispose();
+				String contrasena = new String(login.getPasswordAutor().getPassword()).trim();
+
+				if (controler.buscarAutor(idAutor) == null) {
+					login.avisoError();
+					System.out.println("Autor no existe");
+				} else {
+					String contrasenaReal = controler.buscarAutor(idAutor).getContrasena();
+					if (contrasena.equals(contrasenaReal)) {
+						login.avisoExito();
+						System.out.println("Inicio de sesión exitoso");
+						biblioteca.setVisible(true);
+						login.dispose();
+					} else {
+						login.avisoError2();
+						System.out.println("Contraseña incorrecta, digitela otra vez.");
+					}
+				}
 				user = 2;
 			}
 
 		} else if (comando.equals("INGRESAR_LECTOR")) {
 			if (login.verifyLector()) {
-				biblioteca.setVisible(true);
-				login.dispose();
+				int idUser = 0;
+				try {
+					idUser = Integer.parseInt(login.getTxtUsuarioLector().getText());
+				} catch (Exception e2) {
+					System.out.println("Error: La cadena no es un número válido.");
+				}
+
+				String contrasena = new String(login.getPasswordLector().getPassword()).trim();
+
+				if (controler.buscarUsuario(idUser) == null) {
+					login.avisoError();
+					System.out.println("Usuario no existe");
+				} else {
+					String contrasenaReal = controler.buscarUsuario(idUser).getContrasena();
+					if (contrasena.equals(contrasenaReal)) {
+						login.avisoExito();
+						System.out.println("Inicio de sesión exitoso");
+						biblioteca.setVisible(true);
+						login.dispose();
+					} else {
+						login.avisoError2();
+						System.out.println("Contraseña incorrecta, digitela otra vez.");
+					}
+				}
 				user = 1;
 			}
 		}
 
-		//TOCA HACER AUTOINCREMENTABLE EL ID TANTO DE USUARIO COMO DE AUTOR
+		// TOCA HACER AUTOINCREMENTABLE EL ID TANTO DE USUARIO COMO DE AUTOR
 		// Ventana registro
 		if (comando.equals("REGISTRARSE")) {
 			if (registro.verify()) {
@@ -137,20 +165,20 @@ public class Gestor implements ActionListener {
 					user.setTelefono(telefono);
 					user.setCorreo(correo);
 					user.setDireccion(direccion);
-					
-					if(controler.buscarUsuario(id)!=null) {
+
+					if (controler.buscarUsuario(id) != null) {
 						registro.avisoError();
 						System.out.println("⚠ Error: Ya existe un usuario con ese ID.");
 						registro.clear();
-					}else {
+					} else {
 						registro.avisoExito();
 						controler.agregarUsuario(user);
-						
+
 						login.setVisible(true);
 						registro.dispose();
 						registro.clear();
 					}
-					
+
 				} else if (registro.prueba() == 2) {
 					AutorDTO autor = new AutorDTO();
 					autor.setIdAutor(id);
@@ -159,15 +187,15 @@ public class Gestor implements ActionListener {
 					autor.setTelefono(telefono);
 					autor.setCorreo(correo);
 					autor.setDireccion(direccion);
-					
-					if(controler.buscarAutor(id)!=null) {
+
+					if (controler.buscarAutor(id) != null) {
 						registro.avisoError();
 						System.out.println("⚠ Error: Ya existe un autor con ese ID.");
 						registro.clear();
-					}else{
+					} else {
 						registro.avisoExito();
 						controler.agregarAutor(autor);
-						
+
 						login.setVisible(true);
 						registro.dispose();
 						registro.clear();

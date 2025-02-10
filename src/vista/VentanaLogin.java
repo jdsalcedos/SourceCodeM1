@@ -25,7 +25,7 @@ public class VentanaLogin extends JFrame {
 	private JButton btnRegister;
 	private JButton btnCerrar;
 	private JPanel contentPane;
-	
+
 	public VentanaLogin() {
 		setResizable(false);
 		setUndecorated(true);
@@ -34,27 +34,27 @@ public class VentanaLogin extends JFrame {
 		inicializarComponentes();
 		setVisible(true);
 	}
-	
+
 	public void inicializarComponentes() {
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.controlHighlight);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JPanel panelBarraSuperior = new JPanel();
 		panelBarraSuperior.setBounds(0, 0, 900, 40);
 		panelBarraSuperior.setBackground(new Color(255, 189, 89));
 		contentPane.add(panelBarraSuperior);
 		panelBarraSuperior.setLayout(null);
-		
+
 		JLabel lblTitulo = new JLabel("Libreria Distrital");
 		lblTitulo.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		lblTitulo.setForeground(Color.WHITE);
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setBounds(375, 0, 158, 40);
 		panelBarraSuperior.add(lblTitulo);
-		
+
 		btnCerrar = new JButton("");
 		btnCerrar.setBounds(0, 0, 40, 40);
 		btnCerrar.setOpaque(false);
@@ -62,12 +62,12 @@ public class VentanaLogin extends JFrame {
 		btnCerrar.setBorderPainted(false);
 		btnCerrar.setActionCommand("CERRAR");
 		panelBarraSuperior.add(btnCerrar);
-				
+
 		JLabel lblImagenCerrar = new JLabel("");
 		lblImagenCerrar.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/cerrar.png")));
 		lblImagenCerrar.setBounds(0, 0, 40, 40);
 		panelBarraSuperior.add(lblImagenCerrar);
-		
+
 		btnRegister = new JButton("Registrarse");
 		btnRegister.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		btnRegister.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -78,35 +78,35 @@ public class VentanaLogin extends JFrame {
 		btnRegister.setBorderPainted(false);
 		btnRegister.setActionCommand("REGISTER");
 		panelBarraSuperior.add(btnRegister);
-		
+
 		JLabel lblUsuarioAutor = new JLabel("Identificación");
 		lblUsuarioAutor.setForeground(Color.GRAY);
 		lblUsuarioAutor.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsuarioAutor.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		lblUsuarioAutor.setBounds(378, 329, 107, 40);
 		contentPane.add(lblUsuarioAutor);
-		
+
 		JLabel lblContrasenaAutor = new JLabel("Contraseña");
 		lblContrasenaAutor.setForeground(Color.GRAY);
 		lblContrasenaAutor.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasenaAutor.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		lblContrasenaAutor.setBounds(397, 385, 88, 40);
 		contentPane.add(lblContrasenaAutor);
-		
+
 		JLabel lblUsuarioLector = new JLabel("Identificación");
 		lblUsuarioLector.setForeground(Color.GRAY);
 		lblUsuarioLector.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsuarioLector.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		lblUsuarioLector.setBounds(378, 112, 107, 40);
 		contentPane.add(lblUsuarioLector);
-		
+
 		JLabel lblContrasenaLector = new JLabel("Contraseña");
 		lblContrasenaLector.setForeground(Color.GRAY);
 		lblContrasenaLector.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasenaLector.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		lblContrasenaLector.setBounds(397, 167, 88, 40);
 		contentPane.add(lblContrasenaLector);
-		
+
 		btnIngresarAutor = new JButton("Ingresar");
 		btnIngresarAutor.setFont(new Font("Roboto Medium", Font.BOLD, 15));
 		btnIngresarAutor.setOpaque(false);
@@ -138,20 +138,21 @@ public class VentanaLogin extends JFrame {
 		lblIngresarLector.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/boton.png")));
 		lblIngresarLector.setBounds(459, 231, 125, 40);
 		contentPane.add(lblIngresarLector);
-		
+
 		passwordLector = new JPasswordField();
 		passwordLector.setBounds(513, 167, 128, 40);
 		passwordLector.setOpaque(false);
 		passwordLector.setBorder(null);
 		contentPane.add(passwordLector);
-		
+
 		passwordAutor = new JPasswordField();
 		passwordAutor.setOpaque(false);
 		passwordAutor.setBorder(null);
 		passwordAutor.setBounds(513, 385, 128, 40);
 		contentPane.add(passwordAutor);
 
-		txtIdentificacionAutor = new JTextField();;
+		txtIdentificacionAutor = new JTextField();
+		;
 		txtIdentificacionAutor.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtIdentificacionAutor.setOpaque(false);
 		txtIdentificacionAutor.setForeground(Color.BLACK);
@@ -178,7 +179,8 @@ public class VentanaLogin extends JFrame {
 		contentPane.add(lblBordeIdentificacionAutor);
 
 		JLabel lblBordeIdentificacionLector = new JLabel("");
-		lblBordeIdentificacionLector.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/borde_texto.png")));
+		lblBordeIdentificacionLector
+				.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/borde_texto.png")));
 		lblBordeIdentificacionLector.setBounds(495, 112, 146, 40);
 		contentPane.add(lblBordeIdentificacionLector);
 
@@ -193,19 +195,19 @@ public class VentanaLogin extends JFrame {
 		lblAutor.setFont(new Font("Roboto ExtraBold", Font.BOLD, 20));
 		lblAutor.setBounds(260, 329, 95, 40);
 		contentPane.add(lblAutor);
-		
+
 		JLabel lblLector = new JLabel("Lector");
 		lblLector.setForeground(new Color(0, 0, 0));
 		lblLector.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLector.setFont(new Font("Roboto ExtraBold", Font.BOLD, 20));
-		lblLector.setBounds(260, 111, 95, 40);	
+		lblLector.setBounds(260, 111, 95, 40);
 		contentPane.add(lblLector);
-		
-		JLabel lblIconoAutor =  new JLabel("");
+
+		JLabel lblIconoAutor = new JLabel("");
 		lblIconoAutor.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/autor.png")));
 		lblIconoAutor.setBounds(255, 369, 107, 90);
 		contentPane.add(lblIconoAutor);
-		
+
 		JLabel lblIconoLector = new JLabel("");
 		lblIconoLector.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/lector.png")));
 		lblIconoLector.setBounds(258, 155, 99, 95);
@@ -216,7 +218,53 @@ public class VentanaLogin extends JFrame {
 		lblFondoLogin.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/fondo_login.png")));
 		contentPane.add(lblFondoLogin);
 	}
-	
+
+	public boolean verifyAutor() {
+		String password = new String(passwordAutor.getPassword()).trim();
+		if (txtIdentificacionAutor.getText().trim().isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de usuario", "Advertencia",
+					JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
+
+		if (password.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de contraseña", "Advertencia",
+					JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
+		return true;
+	}
+
+	public boolean verifyLector() {
+		String password = new String(passwordLector.getPassword()).trim();
+		if (txtIdentificacionLector.getText().trim().isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de usuario", "Advertencia",
+					JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
+
+		if (password.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de contraseña", "Advertencia",
+					JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
+		return true;
+	}
+
+	public void avisoError() {
+		JOptionPane.showMessageDialog(this, "No existe alguien en la base de datos con esa identificación.", "Error",
+				JOptionPane.ERROR_MESSAGE);
+	}
+
+	public void avisoError2() {
+		JOptionPane.showMessageDialog(this, "Contraseña incorrecta, digitela de nuevo.", "Error",
+				JOptionPane.ERROR_MESSAGE);
+	}
+
+	public void avisoExito() {
+		JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+	}
+
 	public JButton getBtnIngresarAutor() {
 		return btnIngresarAutor;
 	}
@@ -281,42 +329,4 @@ public class VentanaLogin extends JFrame {
 		this.passwordAutor = passwordAutor;
 	}
 
-	public boolean verifyAutor() {
-		String password = new String(passwordAutor.getPassword()).trim();
-		if(txtIdentificacionAutor.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de usuario"
-					, "Advertencia", JOptionPane.WARNING_MESSAGE);
-			return false;
-		} 
-		
-		if (password.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de contraseña"
-            		, "Advertencia", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-		
-//		JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso"
-//				, "Éxito", JOptionPane.INFORMATION_MESSAGE);
-		return true;
-    }
-	
-	public boolean verifyLector() {
-		String password = new String(passwordLector.getPassword()).trim();
-		if(txtIdentificacionLector.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de usuario"
-					, "Advertencia", JOptionPane.WARNING_MESSAGE);
-			return false;
-		} 
-		
-		if (password.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de contraseña"
-            		, "Advertencia", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-		
-		JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso"
-				, "Éxito", JOptionPane.INFORMATION_MESSAGE);
-		return true;
-    }
-	
 }
