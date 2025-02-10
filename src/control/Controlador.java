@@ -26,11 +26,11 @@ public class Controlador {
 //		consultar();
 	}
 
-//	public AutorDTO buscarAutor(int id, String pass) {
-////		Autor autor = (Autor) autorDao.getOne(id, pass);
-//		return Mapper.convertirToAutorDto(autor);
-//	}
-
+	public AutorDTO buscarAutor(int id) {
+		Autor autor = (Autor) autorDao.getOne(id);
+		return Mapper.convertirToAutorDto(autor);
+	}
+	
 	public void agregarAutor(AutorDTO dto) {
 		Autor aut = Mapper.convertirToAutor(dto);
 		autorDao.add(aut);

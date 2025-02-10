@@ -92,19 +92,21 @@ public class Gestor implements ActionListener {
 
 		} else if (comando.equals("INGRESAR_AUTOR")) {
 			if (login.verifyAutor()) {
-//				int idAutor = 0;
-//				try {
-//					idAutor = Integer.parseInt(login.getTxtUsuarioAutor().getText()); 
-//					System.out.println(idAutor);
-//				} catch (Exception e2) {
-//					System.out.println("Error: La cadena no es un número válido.");
-//				}
-//				
-//				String contrasena = new String(login.getPasswordAutor().getPassword()).trim();
-//				
-//				if(controler.buscarAutor(idAutor, contrasena)==null) {
-//					System.out.println("Autor no existe o la contraseña esta mal.");
-//				}
+				int idAutor = 0;
+				try {
+					idAutor = Integer.parseInt(login.getTxtUsuarioAutor().getText()); 
+					System.out.println(idAutor);
+				} catch (Exception e2) {
+					System.out.println("Error: La cadena no es un número válido.");
+				}
+				
+				String contrasena = new String(login.getPasswordAutor().getPassword()).trim();
+				
+				if(controler.buscarAutor(idAutor)==null) {
+					System.out.println("Autor no existe");
+				}else {
+					
+				}
 
 				biblioteca.setVisible(true);
 				login.dispose();
@@ -152,6 +154,7 @@ public class Gestor implements ActionListener {
 
 				login.setVisible(true);
 				registro.dispose();
+				registro.clear();
 			}
 
 		} else if (comando.equals("VOLVER1")) {

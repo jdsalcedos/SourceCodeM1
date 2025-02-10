@@ -234,6 +234,14 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(lblFondoRegistro);
 	}
 
+	public void clear(){
+		txtUsuario.setText("");
+		txtCorreo.setText("");
+		txtTelefono.setText("");
+		txtDireccion.setText("");
+		passwordRegistro.setText("");
+	}
+	
 	public boolean verify() {
 		String password = new String(passwordRegistro.getPassword()).trim();
 		if(txtIdentificacion.getText().trim().isEmpty()) {
