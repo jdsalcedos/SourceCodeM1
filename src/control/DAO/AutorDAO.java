@@ -60,18 +60,16 @@ public class AutorDAO implements InterfaceDAO<Autor> {
 				aut.setNombre(rs.getString("nombre"));
 				aut.setCorreo(rs.getString("correo"));
 				aut.setContrasena(rs.getString("contrasena"));
-//				if(pass==rs.getString("contrasena")) {
-//					System.out.println("Si es igual la contraseña");
-//				}
 				aut.setDireccion(rs.getString("direccion"));
 				aut.setTelefono(rs.getString("telefono"));
 			}
+			System.out.println("Metodo getOne: " + aut);
 			pst.close();
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {
+			System.out.println("Entro a la excepcion en autorDAO");
 			ex.printStackTrace();
 		}
-		System.out.println(aut);
 		return aut;
 	}
 
