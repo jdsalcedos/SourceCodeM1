@@ -36,7 +36,7 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 		rs = null;
 		rs2 = null;
 	}
-
+	
 	@Override
 	public ArrayList<Documento> getAll() {
 		ArrayList<Documento> docs = new ArrayList<Documento>();
@@ -65,13 +65,21 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 				// Usar el Factory Method para crear el documento correcto
 				Documento doc = creador.creadorDocumento(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion,
 						isbn, tipoDocumento, estadoVisualizacion);
-
+				
 				docs.add(doc);
+				System.out.println("aaaaaaaaaaa" + doc);
+//				for(Documento docc : docs) {
+//					System.out.println("idautor " + docc.getIdAutor());
+//					System.out.println("tipo documento " + docc.getTipoDocumento());
+//					System.out.println("isbn " + docc.getIsbn());
+//					System.out.println("titulo " + docc.getTitulo());
+//				}
 			}
 			
 			System.out.println("MOSTRANDO LOS DOCUMENTOS....");
 			System.out.println(docs.toString());
 			pst.close();
+			
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
