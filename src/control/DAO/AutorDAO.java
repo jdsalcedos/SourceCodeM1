@@ -1,6 +1,5 @@
 package control.DAO;
 
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -60,6 +59,10 @@ public class AutorDAO implements InterfaceDAO<Autor> {
 				aut.setIdAutor(id);
 				aut.setNombre(rs.getString("nombre"));
 				aut.setCorreo(rs.getString("correo"));
+				aut.setContrasena(rs.getString("contrasena"));
+//				if(pass==rs.getString("contrasena")) {
+//					System.out.println("Si es igual la contraseña");
+//				}
 				aut.setDireccion(rs.getString("direccion"));
 				aut.setTelefono(rs.getString("telefono"));
 			}
@@ -67,7 +70,6 @@ public class AutorDAO implements InterfaceDAO<Autor> {
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			;
 		}
 		System.out.println(aut);
 		return aut;
@@ -90,6 +92,7 @@ public class AutorDAO implements InterfaceDAO<Autor> {
 			pst.executeUpdate();
 			pst.close();
 			ConexionBD.desconectar();
+			System.out.println("Agregado el autor. Este print es de la clase AutorDao");
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 

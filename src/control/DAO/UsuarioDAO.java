@@ -1,6 +1,5 @@
 package control.DAO;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -92,6 +91,7 @@ public class UsuarioDAO implements InterfaceDAO<Usuario> {
 			pst.executeUpdate();
 			pst.close();
 			ConexionBD.desconectar();
+			System.out.println("Agregado el usuario. Este print es de la clase UsuarioDao");
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 

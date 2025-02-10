@@ -26,7 +26,8 @@ public class ConexionBD {
 	private static ConexionBD instancia = null;
 	private static Connection cn = null;
 	private static final String Controlador = "com.mysql.cj.jdbc.Driver";
-	private static final String url = "jdbc:mysql://127.0.0.1:3306/biblioteca";
+//	private static final String url = "jdbc:mysql://127.0.0.1:3306/biblioteca";
+	private static final String url = "jdbc:mysql://localhost:3306/biblioteca?serverTimezone=UTC";
 	private static final String username = "root";
 	private static final String password = "";
 
@@ -46,10 +47,9 @@ public class ConexionBD {
 		try {
 			Class.forName(Controlador);
 			System.out.println("Controlador Cargado");
-
 			cn = DriverManager.getConnection(url, username, password);
+			System.out.println("✅ Conexión exitosa a la base de datos.");
 		} catch (SQLException | ClassNotFoundException ex) {
-
 			ex.printStackTrace();
 		}
 
