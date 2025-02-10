@@ -5,9 +5,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.SystemColor;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
@@ -19,8 +16,8 @@ import javax.swing.JPasswordField;
 
 public class VentanaLogin extends JFrame {
 
-	private JTextField txtNumeroIdLector;
-	private JTextField txtNumeroIdAutor;
+	private JTextField txtIdentificacionLector;
+	private JTextField txtIdentificacionAutor;
 	private JPasswordField passwordLector;
 	private JPasswordField passwordAutor;
 	private JButton btnIngresarAutor;
@@ -82,11 +79,11 @@ public class VentanaLogin extends JFrame {
 		btnRegister.setActionCommand("REGISTER");
 		panelBarraSuperior.add(btnRegister);
 		
-		JLabel lblUsuarioAutor = new JLabel("Número de identificación");
+		JLabel lblUsuarioAutor = new JLabel("Identificación");
 		lblUsuarioAutor.setForeground(Color.GRAY);
 		lblUsuarioAutor.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsuarioAutor.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
-		lblUsuarioAutor.setBounds(397, 329, 88, 40);
+		lblUsuarioAutor.setBounds(378, 329, 107, 40);
 		contentPane.add(lblUsuarioAutor);
 		
 		JLabel lblContrasenaAutor = new JLabel("Contraseña");
@@ -96,11 +93,11 @@ public class VentanaLogin extends JFrame {
 		lblContrasenaAutor.setBounds(397, 385, 88, 40);
 		contentPane.add(lblContrasenaAutor);
 		
-		JLabel lblUsuarioLector = new JLabel("Número de identificación");
+		JLabel lblUsuarioLector = new JLabel("Identificación");
 		lblUsuarioLector.setForeground(Color.GRAY);
 		lblUsuarioLector.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsuarioLector.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
-		lblUsuarioLector.setBounds(397, 112, 88, 40);
+		lblUsuarioLector.setBounds(378, 112, 107, 40);
 		contentPane.add(lblUsuarioLector);
 		
 		JLabel lblContrasenaLector = new JLabel("Contraseña");
@@ -154,57 +151,36 @@ public class VentanaLogin extends JFrame {
 		passwordAutor.setBounds(513, 385, 128, 40);
 		contentPane.add(passwordAutor);
 
-		txtNumeroIdAutor = new JTextField();
-		txtNumeroIdAutor = new JTextField();
-		//Mecanismo para que el JTextField solo deje ingresar valores numericos
-		txtNumeroIdAutor.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                char c = e.getKeyChar();
-                if (!Character.isDigit(c)) { // Solo números
-                    e.consume(); // Bloquea la tecla
-                }
-            }
-        });
-		txtNumeroIdAutor.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
-		txtNumeroIdAutor.setOpaque(false);
-		txtNumeroIdAutor.setForeground(Color.BLACK);
-		txtNumeroIdAutor.setBorder(null);
-		txtNumeroIdAutor.setBounds(513, 329, 128, 40);
-		contentPane.add(txtNumeroIdAutor);
+		txtIdentificacionAutor = new JTextField();;
+		txtIdentificacionAutor.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
+		txtIdentificacionAutor.setOpaque(false);
+		txtIdentificacionAutor.setForeground(Color.BLACK);
+		txtIdentificacionAutor.setBorder(null);
+		txtIdentificacionAutor.setBounds(513, 329, 128, 40);
+		contentPane.add(txtIdentificacionAutor);
 
-		txtNumeroIdLector = new JTextField();
-		//Mecanismo para que el JTextField solo deje ingresar valores numericos
-		txtNumeroIdLector.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                char c = e.getKeyChar();
-                if (!Character.isDigit(c)) { // Solo números
-                    e.consume(); // Bloquea la tecla
-                }
-            }
-        });
-		txtNumeroIdLector.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
-		txtNumeroIdLector.setForeground(Color.BLACK);
-		txtNumeroIdLector.setOpaque(false);
-		txtNumeroIdLector.setBounds(513, 112, 128, 40);
-		txtNumeroIdLector.setBorder(null);
-		contentPane.add(txtNumeroIdLector);
+		txtIdentificacionLector = new JTextField();
+		txtIdentificacionLector.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
+		txtIdentificacionLector.setForeground(Color.BLACK);
+		txtIdentificacionLector.setOpaque(false);
+		txtIdentificacionLector.setBounds(513, 112, 128, 40);
+		txtIdentificacionLector.setBorder(null);
+		contentPane.add(txtIdentificacionLector);
 
 		JLabel lblBordeContraAutor = new JLabel("");
 		lblBordeContraAutor.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/borde_texto.png")));
 		lblBordeContraAutor.setBounds(495, 385, 146, 40);
 		contentPane.add(lblBordeContraAutor);
 
-		JLabel lblBordeUsuarioAutor = new JLabel("");
-		lblBordeUsuarioAutor.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/borde_texto.png")));
-		lblBordeUsuarioAutor.setBounds(495, 329, 146, 40);
-		contentPane.add(lblBordeUsuarioAutor);
+		JLabel lblBordeIdentificacionAutor = new JLabel("");
+		lblBordeIdentificacionAutor.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/borde_texto.png")));
+		lblBordeIdentificacionAutor.setBounds(495, 329, 146, 40);
+		contentPane.add(lblBordeIdentificacionAutor);
 
-		JLabel lblBordeUsuarioLector = new JLabel("");
-		lblBordeUsuarioLector.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/borde_texto.png")));
-		lblBordeUsuarioLector.setBounds(495, 112, 146, 40);
-		contentPane.add(lblBordeUsuarioLector);
+		JLabel lblBordeIdentificacionLector = new JLabel("");
+		lblBordeIdentificacionLector.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/borde_texto.png")));
+		lblBordeIdentificacionLector.setBounds(495, 112, 146, 40);
+		contentPane.add(lblBordeIdentificacionLector);
 
 		JLabel lblBordeContraLector = new JLabel("");
 		lblBordeContraLector.setIcon(new ImageIcon(VentanaLogin.class.getResource("/imagenes/borde_texto.png")));
@@ -274,19 +250,19 @@ public class VentanaLogin extends JFrame {
 	}
 
 	public JTextField getTxtUsuarioLector() {
-		return txtNumeroIdLector;
+		return txtIdentificacionLector;
 	}
 
 	public void setTxtUsuarioLector(JTextField txtUsuarioLector) {
-		this.txtNumeroIdLector = txtUsuarioLector;
+		this.txtIdentificacionLector = txtUsuarioLector;
 	}
 
 	public JTextField getTxtUsuarioAutor() {
-		return txtNumeroIdAutor;
+		return txtIdentificacionAutor;
 	}
 
 	public void setTxtUsuarioAutor(JTextField txtUsuarioAutor) {
-		this.txtNumeroIdAutor = txtUsuarioAutor;
+		this.txtIdentificacionAutor = txtUsuarioAutor;
 	}
 
 	public JPasswordField getPasswordLector() {
@@ -304,10 +280,10 @@ public class VentanaLogin extends JFrame {
 	public void setPasswordAutor(JPasswordField passwordAutor) {
 		this.passwordAutor = passwordAutor;
 	}
-	
+
 	public boolean verifyAutor() {
 		String password = new String(passwordAutor.getPassword()).trim();
-		if(txtNumeroIdAutor.getText().trim().isEmpty()) {
+		if(txtIdentificacionAutor.getText().trim().isEmpty()) {
 			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de usuario"
 					, "Advertencia", JOptionPane.WARNING_MESSAGE);
 			return false;
@@ -326,7 +302,7 @@ public class VentanaLogin extends JFrame {
 	
 	public boolean verifyLector() {
 		String password = new String(passwordLector.getPassword()).trim();
-		if(txtNumeroIdLector.getText().trim().isEmpty()) {
+		if(txtIdentificacionLector.getText().trim().isEmpty()) {
 			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de usuario"
 					, "Advertencia", JOptionPane.WARNING_MESSAGE);
 			return false;
