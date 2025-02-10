@@ -235,9 +235,10 @@ public class VentanaRegistro extends JFrame {
 	}
 
 	public void clear(){
-		txtUsuario.setText("");
+		txtIdentificacion.setText("");
+		txtNombre.setText("");
 		txtCorreo.setText("");
-		txtTelefono.setText("");
+		txtTelefono	.setText("");
 		txtDireccion.setText("");
 		passwordRegistro.setText("");
 	}
