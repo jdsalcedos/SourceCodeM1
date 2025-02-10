@@ -3,11 +3,8 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import control.DAO.UsuarioDAO;
 import control.DTO.AutorDTO;
 import control.DTO.UsuarioDTO;
-import modelo.autor.Autor;
-import modelo.usuario.Usuario;
 import vista.VentanaBiblioteca;
 import vista.VentanaLogin;
 import vista.VentanaRegistro;
@@ -69,7 +66,6 @@ public class Gestor implements ActionListener {
 
 		modificarDocumento.getBtnCerrar().addActionListener(this);
 		modificarDocumento.getBtnModificar().addActionListener(this);
-		modificarDocumento.getBtnEliminar().addActionListener(this);
 		modificarDocumento.getBtnVolver().addActionListener(this);
 
 		infoDocumento.getBtnCerrar().addActionListener(this);
