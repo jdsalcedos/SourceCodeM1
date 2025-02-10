@@ -9,21 +9,15 @@ public class HistorialCambio {
 	private Integer idAutor;
 	private String accion;
 	private LocalDate fechaModificacion;
+	private static final HistorialCambio historia = new HistorialCambio();
 	
-	public HistorialCambio() {
+	private HistorialCambio() {
 	}
 	
-	public HistorialCambio(int idHistorial, int idUsuario, int idDocumento, int idAutor, String accion,
-			LocalDate fechaModificacion) {
-		super();
-		this.idHistorial = idHistorial;
-		this.idUsuario = idUsuario;
-		this.idDocumento = idDocumento;
-		this.idAutor = idAutor;
-		this.accion = accion;
-		this.fechaModificacion = fechaModificacion;
+	public static HistorialCambio getInstance() {
+		return historia;
 	}
-	
+
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}

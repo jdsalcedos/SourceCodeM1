@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import control.conexion.ConexionBD;
 import modelo.facade.historial.HistorialCambio;
-import modelo.facade.reserva.Reserva;
 
 public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 	
@@ -19,6 +18,7 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 	private PreparedStatement pst;
 	private ResultSet rs;
 	private String accion;
+	private HistorialCambio x = HistorialCambio.getInstance();
 	
 	public HistorialDAO() {
 		// gestor
@@ -33,31 +33,31 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 
 	@Override
 	public HistorialCambio getOne(int id) {
-		HistorialCambio cambio = null;
 		try {
 			cn = (Connection) ConexionBD.getConexion();
 			pst = (PreparedStatement) cn.prepareStatement("select * from historial_cambio where id_historial=?");
 			pst.setInt(1, id);
 			rs = pst.executeQuery();
 			if (rs.next()) {
-				cambio= new HistorialCambio();
-				cambio.setIdHistorial(id);
-				cambio.setIdUsuario(rs.getInt("id_usuario"));
-				cambio.setIdDocumento(rs.getInt("id_documento"));
-				cambio.setAccion(rs.getString("accion"));
-				cambio.setFechaModificacion(rs.getDate("fecha_modificacion").toLocalDate());
-				cambio.setIdAutor(rs.getInt("id_autor"));
+				x.setIdHistorial(id);
+				x.setIdUsuario(rs.getInt("id_usuario"));
+				x.setIdDocumento(rs.getInt("id_documento"));
+				x.setAccion(rs.getString("accion"));
+				x.setFechaModificacion(rs.getDate("fecha_modificacion").toLocalDate());
+				x.setIdAutor(rs.getInt("id_autor"));
 			}
 			pst.close();
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		return cambio;
+		return x;
 	}
 
 	@Override
-	public void add(HistorialCambio x) {
+	//SE ACTUALIZAN LOS VALORES DEL SINGLETON,
+	//se pone el parámetro en null y luego se ejecuta la función
+	public void add(HistorialCambio noseusa) {
 	    // Validar que solo uno de los dos IDs tenga valor
 	    if ((x.getIdAutor() != null && x.getIdUsuario() != null) || 
 	        (x.getIdAutor() == null && x.getIdUsuario() == null)) {
@@ -84,7 +84,9 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 
 
 	@Override
-	public boolean update(HistorialCambio x, HistorialCambio y) {
+	//SE ACTUALIZA EL VALOR DEL OBJETO SINGLETON,
+	//Se ponen los parámetros en null y se ejecuta la función
+	public boolean update(HistorialCambio noseusa, HistorialCambio tampocoseusa) {
 		//modificar
 		// Validar que solo uno de los dos IDs tenga valor
 	    if ((x.getIdAutor() != null && x.getIdUsuario() != null) || 
@@ -111,7 +113,9 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 	    return false;
 	}
 	
-	public boolean reservado(HistorialCambio x) {
+	//SE ACTUALIZAN LOS VALORES DEL SINGLETON,
+	//se pone el parámetro en null y luego se ejecuta la función
+	public boolean reservado(HistorialCambio noseusa) {
 		//modificar, reservar, devolver
 		// Validar que solo uno de los dos IDs tenga valor
 	    if ((x.getIdAutor() != null && x.getIdUsuario() != null) || 
@@ -138,7 +142,9 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 	    return false;
 	}
 	
-	public boolean devolver(HistorialCambio x) {
+	//SE ACTUALIZAN LOS VALORES DEL SINGLETON,
+	//se pone el parámetro en null y luego se ejecuta la función
+	public boolean devolver(HistorialCambio noseusa) {
 		//modificar, reservar, devolver
 		// Validar que solo uno de los dos IDs tenga valor
 	    if ((x.getIdAutor() != null && x.getIdUsuario() != null) || 
@@ -166,7 +172,9 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 	}
 
 	@Override
-	public boolean delete(HistorialCambio x) {
+	//SE ACTUALIZAN LOS VALORES DEL SINGLETON,
+	//se pone el parámetro en null y luego se ejecuta la función
+	public boolean delete(HistorialCambio noseusa) {
 		// Validar que solo uno de los dos IDs tenga valor
 	    if ((x.getIdAutor() != null && x.getIdUsuario() != null) || 
 	        (x.getIdAutor() == null && x.getIdUsuario() == null)) {
