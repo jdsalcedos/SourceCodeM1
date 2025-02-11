@@ -9,6 +9,8 @@ import control.DTO.AutorDTO;
 import control.DTO.UsuarioDTO;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.documento.ArticuloCientifico;
+import modelo.factory.documento.Libro;
+import modelo.factory.documento.Ponencia;
 import vista.VentanaBiblioteca;
 import vista.VentanaLogin;
 import vista.VentanaRegistro;
@@ -350,16 +352,20 @@ public class Gestor implements ActionListener {
 					System.out.println(tipoDoc + " entro al modlibro2");
 					if (tipoDoc.equals("Libro")) {
 						modificarDocumento.getLblCampo6().setText("Número de páginas");
+						Libro lib = (Libro) doc;
+						modificarDocumento.getTxtCampo6().setText(lib.getNumPaginas());
 						modificarDocumento.getTxtCampo4().setText(doc.getIsbn());
 						
 					}
 					if (tipoDoc.equals("Ponencia")) {
 						modificarDocumento.getLblCampo6().setText("Congreso");
+						Ponencia pon = (Ponencia) doc;
+						modificarDocumento.getTxtCampo6().setText(pon.getCongreso());
 						modificarDocumento.getTxtCampo4().setText(doc.getIsbn());
 					}
 					if (tipoDoc.equals("Articulo cientifico")) {
 						modificarDocumento.getLblCampo4().setText("SSN");
-						modificarDocumento.getLblBordeTxt6().setVisible(false);
+						modificarDocumento.getLblCampo6().setVisible(false);;
 						modificarDocumento.getLblBordeTxt6().setVisible(false);
 						modificarDocumento.getTxtCampo6().setVisible(false);
 						
@@ -396,10 +402,14 @@ public class Gestor implements ActionListener {
 					
 					if (tipoDoc.equals("Libro")) {
 						infoDocumento.getLblModificar6().setText("Número de páginas");
+						Libro lib = (Libro) doc;
+						infoDocumento.getTxtInfo6().setText(lib.getNumPaginas());
 						infoDocumento.getTxtInfo4().setText(doc.getIsbn());
 					}
 					if (tipoDoc.equals("Ponencia")) {
 						infoDocumento.getLblModificar6().setText("Congreso");
+						Ponencia pon = (Ponencia) doc;
+						infoDocumento.getTxtInfo6().setText(pon.getCongreso());
 						infoDocumento.getTxtInfo4().setText(doc.getIsbn());
 					}
 					if (tipoDoc.equals("Articulo cientifico")) {
