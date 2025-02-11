@@ -7,6 +7,7 @@ import java.util.Iterator;
 import control.DAO.AutorDAO;
 import control.DAO.UsuarioDAO;
 import control.DAO.documentos.DocumentoDAO;
+import control.DAO.documentos.LibroDAO;
 import control.DTO.AutorDTO;
 import control.DTO.LibroDTO;
 import control.DTO.Mapper;
@@ -78,32 +79,14 @@ public class Controlador {
 	}
 
 	public ArrayList<Documento> traerDocumento() {
-//		System.out.println("hola");
 		ArrayList<Documento> documentos = documentoDao.getAllVisible();
-//		documentoDao.getAllVisible();
-//		if(documentos==null) {
-//			System.out.println("es nulo");
-//		}else {
-//			System.out.println("tamaño: " + documentos.size());
-//		}
-//		if(!documentos.isEmpty()) {
-//			System.out.println("chao: " + documentos.toString());
-//			System.out.println("ok");
-//		}else {
-//			System.out.println("paila");
-//		}
-
-//		System.out.println("documentos: "+ documentos);
 		return documentos;
 	}
 
-	public LibroDTO buscaLibro(int id) {
-		Libro libro = (Libro) documentoDao.getOne(id);
-		if (libro == null) {
-			return null;
-		} else {
-			return Mapper.convertirToLibroDto(libro);
-		}
+	public void modificarLibro(LibroDTO dto) {
+		Libro libActual = Mapper.convertirToLibro(dto);
+		Libro libNuevo = Mapper.convertirToLibro(dto);
+		documentoDao.update(libActual, libNuevo);
 	}
 
 }
