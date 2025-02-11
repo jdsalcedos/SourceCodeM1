@@ -14,6 +14,10 @@ public class Ponencia extends Documento{
 		super(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion);
 		this.congreso=congreso;
 	}
+	
+	public Ponencia() {
+		
+	}
 
 	public String getCongreso() {
 		return congreso;

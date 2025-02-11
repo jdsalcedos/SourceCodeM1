@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import modelo.factory.documento.*;
 import modelo.state.VisualizacionState;
 
-
 public interface DocumentoFactory {
 	
 	public default Documento crearLibro(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion, String isbn,

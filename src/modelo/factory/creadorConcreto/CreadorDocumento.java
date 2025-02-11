@@ -22,6 +22,7 @@ y decidir cual tipo de documento es el que se quiere crear.*/
 		
 		switch (tipoDocumento) {
 			case "Libro":
+				//Ese 1400 toca traerlo de la vista
 				String numPaginas = "1400";
 				return crearLibro(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion, numPaginas);
 			case "Ponencia":
@@ -34,12 +35,11 @@ y decidir cual tipo de documento es el que se quiere crear.*/
 				throw new IllegalArgumentException("Tipo de documento no válido: "+ tipoDocumento);
 		}
 	}
-	
+
 //Main que simula la creacion de documentos la cual debe ser realizada con los datos de la Vista y el DAO
-	
-	
+
 //	public static void main(String[] args) {
-		//Crea la fábrica que implementa el método 
+	// Crea la fábrica que implementa el método
 //		CreadorDocumento fabrica = new CreadorDocumento();
 //      // Crear instancias de CreadorDocumento con diferentes tipos de documentos
 //      Documento libro = fabrica.creadorDocumento(1, 101, 201, "El Gran Libro", LocalDate.of(2022, 5, 10), "978-3-16-148410-0", "Libro");
@@ -51,6 +51,5 @@ y decidir cual tipo de documento es el que se quiere crear.*/
 //      System.out.println(articulo.toString());
 //      System.out.println(articulo.getIdAutor());
 //    }
-	
-	
+
 }

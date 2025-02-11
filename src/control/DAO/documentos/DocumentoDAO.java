@@ -29,7 +29,6 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 	private ResultSet rs2;
 
 	public DocumentoDAO() {
-		// gestor
 		cn = null;
 		pst = null;
 		pst2 = null;
@@ -37,10 +36,9 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 		rs = null;
 		rs2 = null;
 	}
-
 	
-
 	public ArrayList<Documento> getAllByAutor(int id) {
+
 		ArrayList<Documento> docs = new ArrayList<Documento>();
 		try {
 			cn = ConexionBD.getConexion();
@@ -70,14 +68,16 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 				// Usar el Factory Method para crear el documento correcto
 				Documento doc = creador.creadorDocumento(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion,
 						isbn, tipoDocumento, estadoVisualizacion);
-
+				
 				docs.add(doc);
 				System.out.println(doc.getIdAutor() +" nombre: " + doc.getTitulo());
+
 			}
 			
 			System.out.println("MOSTRANDO LOS DOCUMENTOS....");
 			System.out.println(docs.toString());
 			pst.close();
+			
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -129,6 +129,7 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 
 	@Override
 	public void add(Documento doc) {
+		// logica para mandar al DAO correspondiente para que se cree en la BD
 	}
 
 	@Override
@@ -155,8 +156,8 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			ConexionBD.desconectar();
 			System.out.println("documento modificado con exito");
 
-			return filasAfectadas > 0; 
-			
+			return filasAfectadas > 0; // Devuelve true si al menos una fila fue afectada en
+										// ambas tablas
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
@@ -166,41 +167,41 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 	@Override
 	public boolean delete(Documento docDelete) {
 		try {
-	        cn = ConexionBD.getConexion();
+			cn = ConexionBD.getConexion();
 
-	        // 1. Eliminar de las tablas específicas según el tipo de documento
-	        if (docDelete.getTipoDocumento().equals("Libro")) {
-	            pst = cn.prepareStatement("DELETE FROM libro WHERE id_documento = ?");
-	        } else if (docDelete.getTipoDocumento().equals("Ponencia")) {
-	            pst = cn.prepareStatement("DELETE FROM ponencia WHERE id_documento = ?");
-	        } else if (docDelete.getTipoDocumento().equals("Articulo cientifico")) {
-	            pst = cn.prepareStatement("DELETE FROM articulo_cientifico WHERE id_documento = ?");
-	        }
-	        
-	        pst.setInt(1, docDelete.getIdDocumento());
-	        pst.executeUpdate();
-	        pst.close();
+			// 1. Eliminar de las tablas específicas según el tipo de documento
+			if (docDelete.getTipoDocumento().equals("Libro")) {
+				pst = cn.prepareStatement("DELETE FROM libro WHERE id_documento = ?");
+			} else if (docDelete.getTipoDocumento().equals("Ponencia")) {
+				pst = cn.prepareStatement("DELETE FROM ponencia WHERE id_documento = ?");
+			} else if (docDelete.getTipoDocumento().equals("Articulo cientifico")) {
+				pst = cn.prepareStatement("DELETE FROM articulo_cientifico WHERE id_documento = ?");
+			}
 
-	        // 2. Eliminar de la tabla intermedia documento_autor
-	        pst2 = cn.prepareStatement("DELETE FROM documento_autor WHERE id_documento = ?");
-	        pst2.setInt(1, docDelete.getIdDocumento());
-	        pst2.executeUpdate();
-	        pst2.close();
+			pst.setInt(1, docDelete.getIdDocumento());
+			pst.executeUpdate();
+			pst.close();
 
-	        // 3. Finalmente, eliminar de la tabla documento
-	        pst3 = cn.prepareStatement("DELETE FROM documento WHERE id_documento = ?");
-	        pst3.setInt(1, docDelete.getIdDocumento());
-	        int filasAfectadas = pst3.executeUpdate();
-	        pst3.close();
+			// 2. Eliminar de la tabla intermedia documento_autor
+			pst2 = cn.prepareStatement("DELETE FROM documento_autor WHERE id_documento = ?");
+			pst2.setInt(1, docDelete.getIdDocumento());
+			pst2.executeUpdate();
+			pst2.close();
 
-	        ConexionBD.desconectar();
-	        System.out.println("documento eliminado con exito");
-	        
-	        return filasAfectadas > 0; // Devuelve true si el documento se eliminó correctamente
-	    } catch (SQLException ex) {
-	        ex.printStackTrace();
-	    }
-	    return false;
+			// 3. Finalmente, eliminar de la tabla documento
+			pst3 = cn.prepareStatement("DELETE FROM documento WHERE id_documento = ?");
+			pst3.setInt(1, docDelete.getIdDocumento());
+			int filasAfectadas = pst3.executeUpdate();
+			pst3.close();
+
+			ConexionBD.desconectar();
+			System.out.println("documento eliminado con exito");
+
+			return filasAfectadas > 0; // Devuelve true si el documento se eliminó correctamente
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return false;
 	}
 	
 	public void actualizarEstadoEnBD(Documento doc, String nuevoEstado) {
@@ -232,6 +233,10 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			CreadorDocumento creador = new CreadorDocumento(); // Instancia del Factory
 
 			while (rs.next() && rs2.next()) {
+//				System.out.println("ya entro al primer while");
+//				while(rs2.next()) {
+//					System.out.println("ya entro al segundo while");
+//				}
 				int idDocumento = rs.getInt("id_documento");
 				int idEditorial = rs.getInt("id_editorial");
 				int idAutor = rs2.getInt("id_autor");
@@ -248,11 +253,29 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 						isbn, tipoDocumento, estadoVisualizacion);
 
 				docs.add(doc);
-				System.out.println(doc.getClass());
+//				System.out.println("holaaaaaaaaaaaaaa");
+//				System.out.println(doc.getClass());
 			}
 			
 			System.out.println("MOSTRANDO LOS DOCUMENTOS VISIBLES....");
-			System.out.println(docs.toString());
+			System.out.println("TOSTRING" + docs.toString());
+			
+//			if(docs==null) {
+//				System.out.println("es nulo");
+//			}else {
+//				System.out.println("tamaño: " + docs.size());
+//			}
+//			
+//			if(!docs.isEmpty()) {
+//				System.out.println("chao: " + docs.toString());
+//				System.out.println("lista no vacia");
+//			}else {
+//				System.out.println("lista vacia");
+//			}
+//				
+//			for(Documento doc : docs) {
+//				System.out.println("titulo " + doc.getTitulo());
+//			}
 			pst.close();
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {
@@ -260,8 +283,6 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 		}
 		return docs;
 	}
-
-
 
 	public boolean actualizarLibro(Libro libro) {
 		try {
@@ -281,8 +302,6 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 		
 	}
 
-
-
 	public boolean actualizarPonencia(Ponencia ponencia) {
 		try {
 	        cn = ConexionBD.getConexion();
@@ -300,8 +319,6 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 	    }
 		
 	}
-
-
 
 	public boolean actualizarArticulo(ArticuloCientifico ac) {
 		try {

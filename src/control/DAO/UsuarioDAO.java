@@ -1,6 +1,5 @@
 package control.DAO;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,16 +37,17 @@ public class UsuarioDAO implements InterfaceDAO<Usuario> {
 				user.setIdUsuario(id);
 				user.setNombre(rs.getString("nombre"));
 				user.setCorreo(rs.getString("correo"));
+				user.setContrasena(rs.getString("contrasena"));
 				user.setDireccion(rs.getString("direccion"));
 				user.setTelefono(rs.getString("telefono"));
 			}
+			System.out.println("Metodo getOne: " + user);
 			pst.close();
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {
+			System.out.println("Entro a la excepcion en usuarioDAO");
 			ex.printStackTrace();
-			;
 		}
-		System.out.println(user);
 		return user;
 	}
 
@@ -67,6 +67,7 @@ public class UsuarioDAO implements InterfaceDAO<Usuario> {
 			pst.executeUpdate();
 			pst.close();
 			ConexionBD.desconectar();
+			System.out.println("Agregado el usuario. Este print es de la clase UsuarioDao");
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 

@@ -15,6 +15,10 @@ public class ArticuloCientifico extends Documento{
 		this.ssn = ssn;
 	}
 	
+	public ArticuloCientifico() {
+		
+	}
+	
 	public String getSsn() {
 		return ssn;
 	}

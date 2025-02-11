@@ -1,6 +1,5 @@
 package control.DAO;
 
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -12,10 +11,8 @@ public class AutorDAO implements InterfaceDAO<Autor> {
 	private Connection cn;
 	private PreparedStatement pst;
 	private ResultSet rs;
-	// gestor
 
 	public AutorDAO() {
-		// gestor
 		cn = null;
 		pst = null;
 		rs = null;
@@ -35,16 +32,17 @@ public class AutorDAO implements InterfaceDAO<Autor> {
 				aut.setIdAutor(id);
 				aut.setNombre(rs.getString("nombre"));
 				aut.setCorreo(rs.getString("correo"));
+				aut.setContrasena(rs.getString("contrasena"));
 				aut.setDireccion(rs.getString("direccion"));
 				aut.setTelefono(rs.getString("telefono"));
 			}
+			System.out.println("Metodo getOne: " + aut);
 			pst.close();
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {
+			System.out.println("Entro a la excepcion en autorDAO");
 			ex.printStackTrace();
-			;
 		}
-		System.out.println(aut);
 		return aut;
 	}
 
@@ -65,6 +63,7 @@ public class AutorDAO implements InterfaceDAO<Autor> {
 			pst.executeUpdate();
 			pst.close();
 			ConexionBD.desconectar();
+			System.out.println("Agregado el autor. Este print es de la clase AutorDao");
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 

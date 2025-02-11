@@ -94,6 +94,9 @@ public abstract class Documento {
 	public VisualizacionState getEstadoVisualizacion() {
 		return estadoVisualizacion;
 	}
+	public void setEstadoVisualizacion(VisualizacionState estadoVisualizacion) {
+		this.estadoVisualizacion = estadoVisualizacion;
+	}
 
 	public void cambiarEstado(VisualizacionState nuevoEstado, DocumentoDAO dao) {
 		this.estadoVisualizacion = nuevoEstado;
