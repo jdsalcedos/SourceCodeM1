@@ -8,6 +8,7 @@ import java.util.Iterator;
 import control.DTO.AutorDTO;
 import control.DTO.UsuarioDTO;
 import modelo.factory.abstracto.Documento;
+import modelo.factory.documento.ArticuloCientifico;
 import vista.VentanaBiblioteca;
 import vista.VentanaLogin;
 import vista.VentanaRegistro;
@@ -349,16 +350,21 @@ public class Gestor implements ActionListener {
 					System.out.println(tipoDoc + " entro al modlibro2");
 					if (tipoDoc.equals("Libro")) {
 						modificarDocumento.getLblCampo6().setText("Número de páginas");
+						modificarDocumento.getTxtCampo4().setText(doc.getIsbn());
 						
 					}
 					if (tipoDoc.equals("Ponencia")) {
 						modificarDocumento.getLblCampo6().setText("Congreso");
+						modificarDocumento.getTxtCampo4().setText(doc.getIsbn());
 					}
 					if (tipoDoc.equals("Articulo cientifico")) {
 						modificarDocumento.getLblCampo4().setText("SSN");
 						modificarDocumento.getLblBordeTxt6().setVisible(false);
+						modificarDocumento.getLblBordeTxt6().setVisible(false);
 						modificarDocumento.getTxtCampo6().setVisible(false);
-						modificarDocumento.getLblCampo6().setText("");
+						
+						ArticuloCientifico ac = (ArticuloCientifico) doc;
+						modificarDocumento.getTxtCampo4().setText(ac.getSsn());
 					}
 					System.out.println("AIUDAAAAAAAAAAAA");
 					modificarDocumento.getTxtTituloDoc().setText(documentos.get(j).getTitulo());
@@ -366,7 +372,7 @@ public class Gestor implements ActionListener {
 							.setText(documentos.get(j).getFechaPublicacion().toString());
 					AutorDTO autor = controler.autorEnSesion(identificacion);
 					modificarDocumento.getTxtNombreAutor().setText(autor.getNombre());
-					modificarDocumento.getTxtCampo4().setText(doc.getIsbn());
+					
 //					infoDocumento.getTxtInfo4().setText(doc.getIsbn());
 					
 					modificarDocumento.getTxtEditorial().setText(String.valueOf(documentos.get(j).getIdEditorial()));
@@ -386,24 +392,30 @@ public class Gestor implements ActionListener {
 					infoDocumento.clear();
 					infoDoc = 1;
 					String tipoDoc = documentos.get(j).getTipoDocumento();
+					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
+					
 					if (tipoDoc.equals("Libro")) {
 						infoDocumento.getLblModificar6().setText("Número de páginas");
+						infoDocumento.getTxtInfo4().setText(doc.getIsbn());
 					}
 					if (tipoDoc.equals("Ponencia")) {
 						infoDocumento.getLblModificar6().setText("Congreso");
+						infoDocumento.getTxtInfo4().setText(doc.getIsbn());
 					}
 					if (tipoDoc.equals("Articulo cientifico")) {
 						infoDocumento.getLblModificar4().setText("SSN");
 						infoDocumento.getLblBordeTxt6().setVisible(false);
 						infoDocumento.getTxtInfo6().setVisible(false);
-						infoDocumento.getLblModificar6().setText("");
+						ArticuloCientifico ac = (ArticuloCientifico) doc;
+						infoDocumento.getTxtInfo4().setText(ac.getSsn());
+//						infoDocumento.getLblModificar6().setText(ac.getSsn());
 					}
 					infoDocumento.getTxtInfo1().setText(documentos.get(j).getTitulo());
 					infoDocumento.getTxtInfo2().setText(documentos.get(j).getFechaPublicacion().toString());
 					AutorDTO autor = controler.autorEnSesion(identificacion);
 					infoDocumento.getTxtInfo3().setText(autor.getNombre());
 
-//					infoDocumento.getTxtInfo4().setText(documentos.get(0).get);
+					
 					infoDocumento.getTxtInfo5().setText(String.valueOf(documentos.get(j).getIdEditorial()));
 //					infoDocumento.getTxtInfo6().setText(documentos.get(0).get);
 //					controler.buscaLibro(documentos.get(0).getIdDocumento());
