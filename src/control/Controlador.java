@@ -71,6 +71,11 @@ public class Controlador {
 		ArrayList<Documento> documentos = documentoDao.getAllByAutor(id);
 		return documentos;
 	}
+	
+	public Documento traerDocumento(int id) {
+		Documento documento = documentoDao.getOne(id);
+		return documento;
+	}
 
 	public ArrayList<Documento> traerDocumento() {
 //		System.out.println("hola");

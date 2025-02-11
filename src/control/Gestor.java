@@ -299,8 +299,43 @@ public class Gestor implements ActionListener {
 				elegirDocumento.setVisible(true);
 				biblioteca.dispose();
 			}
-
+			//Ventana biblioteca, botones modificar
+//			documentos = controler.traerDocumento();
+//			modificarDocumento.getLblCampo4().setText("ISBN");
+//			modificarDocumento.getLblBordeTxt6().setVisible(true);
+//			modificarDocumento.getTxtCampo6().setVisible(true);
+//
+//			for (int j = 0; j < documentos.size(); j++) {
+//				if (comando.equals("MOD_LIBRO" + (j + 1))) {
+//					modDoc = j + 1;
+//					String tipoDoc = documentos.get(j).getTipoDocumento();
+//					System.out.println(tipoDoc + " entro al modlibro2");
+//					if (tipoDoc.equals("Libro")) {
+//						modificarDocumento.getLblCampo6().setText("Número de páginas");
+//					}
+//					if (tipoDoc.equals("Ponencia")) {
+//						modificarDocumento.getLblCampo6().setText("Congreso");
+//					}
+//					if (tipoDoc.equals("Articulo cientifico")) {
+//						modificarDocumento.getLblCampo4().setText("SSN");
+//						modificarDocumento.getLblBordeTxt6().setVisible(false);
+//						modificarDocumento.getTxtCampo6().setVisible(false);
+//						modificarDocumento.getLblCampo6().setText("");
+//					}
+//					modificarDocumento.getTxtTituloDoc().setText(documentos.get(j).getTitulo());
+//					modificarDocumento.getFmtTxtFechaPublicacion()
+//							.setText(documentos.get(j).getFechaPublicacion().toString());
+//					AutorDTO autor = controler.autorEnSesion(identificacion);
+//					modificarDocumento.getTxtNombreAutor().setText(autor.getNombre());
+////						infoDocumento.getTxtInfo4().setText(documentos.get(0).get);
+//					modificarDocumento.getTxtEditorial().setText(String.valueOf(documentos.get(j).getIdEditorial()));
+//
+//					modificarDocumento.setVisible(true);
+//					biblioteca.dispose();
+//				}
+//			}
 			documentos = controler.traerDocumentoAutor(identificacion);
+			
 			modificarDocumento.getLblCampo4().setText("ISBN");
 			modificarDocumento.getLblBordeTxt6().setVisible(true);
 			modificarDocumento.getTxtCampo6().setVisible(true);
@@ -309,9 +344,12 @@ public class Gestor implements ActionListener {
 				if (comando.equals("MOD_LIBRO" + (j + 1))) {
 					modDoc = j + 1;
 					String tipoDoc = documentos.get(j).getTipoDocumento();
+					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
+					
 					System.out.println(tipoDoc + " entro al modlibro2");
 					if (tipoDoc.equals("Libro")) {
 						modificarDocumento.getLblCampo6().setText("Número de páginas");
+						
 					}
 					if (tipoDoc.equals("Ponencia")) {
 						modificarDocumento.getLblCampo6().setText("Congreso");
@@ -328,7 +366,9 @@ public class Gestor implements ActionListener {
 							.setText(documentos.get(j).getFechaPublicacion().toString());
 					AutorDTO autor = controler.autorEnSesion(identificacion);
 					modificarDocumento.getTxtNombreAutor().setText(autor.getNombre());
-//						infoDocumento.getTxtInfo4().setText(documentos.get(0).get);
+					modificarDocumento.getTxtCampo4().setText(doc.getIsbn());
+//					infoDocumento.getTxtInfo4().setText(doc.getIsbn());
+					
 					modificarDocumento.getTxtEditorial().setText(String.valueOf(documentos.get(j).getIdEditorial()));
 
 					modificarDocumento.setVisible(true);
