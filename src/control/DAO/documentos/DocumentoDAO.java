@@ -257,8 +257,8 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 //				System.out.println(doc.getClass());
 			}
 			
-			System.out.println("MOSTRANDO LOS DOCUMENTOS VISIBLES....");
-			System.out.println("TOSTRING" + docs.toString());
+//			System.out.println("MOSTRANDO LOS DOCUMENTOS VISIBLES....");
+//			System.out.println("TOSTRING" + docs.toString());
 			
 //			if(docs==null) {
 //				System.out.println("es nulo");

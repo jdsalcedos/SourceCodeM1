@@ -124,7 +124,7 @@ public class VentanaRegistro extends JFrame {
 		txtTelefono.setBounds(441, 292, 128, 40);
 		contentPane.add(txtTelefono);
 		
-		txtNombre = new JTextField();
+		txtNombre = new JTextField("");
 		txtNombre.setOpaque(false);
 		txtNombre.setForeground(Color.BLACK);
 		txtNombre.setFont(new Font("Roboto Medium", Font.PLAIN, 13));

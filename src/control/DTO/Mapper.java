@@ -16,7 +16,7 @@ public class Mapper {
 		dto.setContrasena(autor.getContrasena());
 		dto.setDireccion(autor.getDireccion());
 		dto.setTelefono(autor.getTelefono());
-		System.out.println("Mapper: autordto: " + dto);
+//		System.out.println("Mapper: autordto: " + dto);
 		return dto;
 	}
 
@@ -39,7 +39,7 @@ public class Mapper {
 		dto.setContrasena(usuario.getContrasena());
 		dto.setDireccion(usuario.getDireccion());
 		dto.setTelefono(usuario.getTelefono());
-		System.out.println("Mapper: userdto: " + dto);
+//		System.out.println("Mapper: userdto: " + dto);
 		return dto;
 	}
 

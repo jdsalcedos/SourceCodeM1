@@ -112,7 +112,7 @@ public class VentanaModDoc extends JFrame {
 		lblFechaPublicacion.setBounds(205, 158, 179, 40);
 		contentPane.add(lblFechaPublicacion);
 		
-		JLabel lblNombreAutor = new JLabel("Autores");
+		JLabel lblNombreAutor = new JLabel("Autor");
 		lblNombreAutor.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNombreAutor.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		lblNombreAutor.setBounds(205, 217, 179, 40);
