@@ -2,10 +2,13 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import control.DAO.documentos.DocumentoDAO;
 import control.DTO.AutorDTO;
+import control.DTO.LibroDTO;
 import control.DTO.UsuarioDTO;
 import modelo.factory.abstracto.Documento;
 import vista.VentanaBiblioteca;
@@ -103,6 +106,7 @@ public class Gestor implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		System.out.println(comando);
+
 		// Ventana login
 		if (comando.equals("CERRAR")) {
 			System.exit(0);
@@ -275,7 +279,7 @@ public class Gestor implements ActionListener {
 
 			biblioteca.bloquearCampos();
 
-		} else {
+		} else if (user == 2) {
 
 			ArrayList<Documento> documentos = controler.traerDocumento();
 			System.out.println("tamaño documentos: " + documentos.size());
@@ -300,6 +304,7 @@ public class Gestor implements ActionListener {
 				biblioteca.dispose();
 			}
 
+			// Ventana biblioteca, botones modificar
 			documentos = controler.traerDocumento();
 			modificarDocumento.getLblCampo4().setText("ISBN");
 			modificarDocumento.getLblBordeTxt6().setVisible(true);
@@ -322,7 +327,6 @@ public class Gestor implements ActionListener {
 						modificarDocumento.getTxtCampo6().setVisible(false);
 						modificarDocumento.getLblCampo6().setText("");
 					}
-					System.out.println("AIUDAAAAAAAAAAAA");
 					modificarDocumento.getTxtTituloDoc().setText(documentos.get(j).getTitulo());
 					modificarDocumento.getFmtTxtFechaPublicacion()
 							.setText(documentos.get(j).getFechaPublicacion().toString());
@@ -336,6 +340,7 @@ public class Gestor implements ActionListener {
 				}
 			}
 
+			// Ventana biblioteca, botones INFORMACIÓN
 			documentos = controler.traerDocumento();
 			infoDocumento.getLblModificar4().setText("ISBN");
 			infoDocumento.getLblBordeTxt6().setVisible(true);
@@ -403,8 +408,53 @@ public class Gestor implements ActionListener {
 			// Ventana subirdocumento
 			if (comando.equals("SUBIR")) {
 				if (subirDocumento.verify()) {
-					biblioteca.setVisible(true);
-					subirDocumento.dispose();
+					String titulo1 = subirDocumento.getTxtTituloDoc().getText();
+					LocalDate fecha = LocalDate.parse(subirDocumento.getFmtTxtFechaPublicacion().getText());
+					int idEditorial = Integer.valueOf(subirDocumento.getTxtIdEditorial().getText());
+
+					if (registro.prueba() == 2) {
+						if (doc.equals("libro")) {
+
+							String isbn = subirDocumento.getTxtCampo4().getText();
+							String numPaginas = subirDocumento.getTxtCampo6().getText();
+
+							LibroDTO libro = new LibroDTO();
+							libro.setTitulo(titulo1);
+							libro.setFechaPublicacion(fecha);
+							libro.setIdAutor(identificacion);
+							libro.setIsbn(isbn);
+							libro.setIdEditorial(idEditorial);
+							libro.setNumPaginas(numPaginas);
+
+							controler.subirLibro(libro);
+//							biblioteca.setVisible(true);
+//							subirDocumento.dispose();
+							// para verificar si el libro ya existe
+//							if (controler.buscarAutor(id) != null) {
+//								registro.avisoError();
+//								System.out.println("⚠ Error: Ya existe un autor con ese ID.");
+//								registro.clear();
+//							} else {
+//								registro.avisoExito();
+//								controler.registrarAutor(autor);
+//
+//								login.setVisible(true);
+//								registro.dispose();
+//								registro.clear();
+//							}
+
+						}
+						if (doc.equals("ponencia")) {
+							subirDocumento.getLblCampo6().setText("Congreso");
+						}
+						if (doc.equals("articulo")) {
+							subirDocumento.getLblCampo6().setText("");
+						}
+
+					}
+
+//					biblioteca.setVisible(true);
+//					subirDocumento.dispose();
 				}
 			} else if (comando.equals("VOLVER3")) {
 				elegirDocumento.setVisible(true);
@@ -445,5 +495,9 @@ public class Gestor implements ActionListener {
 			}
 
 		}
+	}
+
+	public void traerDoc() {
+
 	}
 }

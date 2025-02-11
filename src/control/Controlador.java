@@ -6,7 +6,10 @@ import java.util.Iterator;
 
 import control.DAO.AutorDAO;
 import control.DAO.UsuarioDAO;
+import control.DAO.documentos.ArticuloCientificoDAO;
 import control.DAO.documentos.DocumentoDAO;
+import control.DAO.documentos.LibroDAO;
+import control.DAO.documentos.PonenciaDAO;
 import control.DTO.AutorDTO;
 import control.DTO.LibroDTO;
 import control.DTO.Mapper;
@@ -22,6 +25,9 @@ public class Controlador {
 	private AutorDAO autorDao;
 	private UsuarioDAO usuarioDao;
 	private DocumentoDAO documentoDao;
+	private LibroDAO libroDao;
+	private ArticuloCientificoDAO articuloDao;
+	private PonenciaDAO ponenciaDao;
 	private Connection cone;
 
 	public Controlador() {
@@ -29,6 +35,9 @@ public class Controlador {
 		autorDao = new AutorDAO();
 		usuarioDao = new UsuarioDAO();
 		documentoDao = new DocumentoDAO();
+		libroDao = new LibroDAO();
+		articuloDao = new ArticuloCientificoDAO();
+		ponenciaDao = new PonenciaDAO();
 	}
 
 	public AutorDTO buscarAutor(int id) {
@@ -68,9 +77,7 @@ public class Controlador {
 	}
 	
 	public ArrayList<Documento> traerDocumento() {
-//		System.out.println("hola");
 		ArrayList<Documento> documentos = documentoDao.getAllVisible();
-//		documentoDao.getAllVisible();
 //		if(documentos==null) {
 //			System.out.println("es nulo");
 //		}else {
@@ -87,14 +94,19 @@ public class Controlador {
 		return documentos;
 	}
 
-	public LibroDTO buscaLibro(int id) {
-		Libro libro = (Libro) documentoDao.getOne(id);
-		if(libro==null) {
-			return null;
-		}else {
-			return Mapper.convertirToLibroDto(libro);
-		}
+	public void subirLibro(LibroDTO dto) {
+		Libro libro = Mapper.convertirToLibro(dto);
+		libroDao.add(libro);
 	}
+	
+//	public LibroDTO buscaLibro(int id) {
+//		Libro libro = (Libro) documentoDao.getOne(id);
+//		if(libro==null) {
+//			return null;
+//		}else {
+//			return Mapper.convertirToLibroDto(libro);
+//		}
+//	}
 	
 
 }
