@@ -3,6 +3,8 @@ package control.DTO;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import modelo.state.VisualizacionState;
+
 public class LibroDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -13,21 +15,9 @@ public class LibroDTO implements Serializable{
     private LocalDate fechaPublicacion;
     private String isbn;
     private String tipoDocumento;
-    private String estadoVisualizacion;
+//    private String estadoVisualizacion;
+    private VisualizacionState estadoVisualizacion;
 	private String numPaginas;
-
-	public LibroDTO(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion,
-			String isbn, String tipoDocumento, String estadoVisualizacion, String numPaginas) {
-		this.idDocumento = idDocumento;
-		this.idEditorial = idEditorial;
-		this.idAutor = idAutor;
-		this.titulo = titulo;
-		this.fechaPublicacion = fechaPublicacion;
-		this.isbn = isbn;
-		this.tipoDocumento = tipoDocumento;
-		this.estadoVisualizacion = estadoVisualizacion;
-		this.numPaginas = numPaginas;
-	}
 
 	public LibroDTO() {
 		
@@ -89,16 +79,24 @@ public class LibroDTO implements Serializable{
 		this.tipoDocumento = tipoDocumento;
 	}
 
-	public String getEstadoVisualizacion() {
+//	public String getEstadoVisualizacion() {
+//		return estadoVisualizacion;
+//	}
+//
+//	public void setEstadoVisualizacion(String estadoVisualizacion) {
+//		this.estadoVisualizacion = estadoVisualizacion;
+//	}
+	
+	public String getNumPaginas() {
+		return numPaginas;
+	}
+
+	public VisualizacionState getEstadoVisualizacion() {
 		return estadoVisualizacion;
 	}
 
-	public void setEstadoVisualizacion(String estadoVisualizacion) {
+	public void setEstadoVisualizacion(VisualizacionState estadoVisualizacion) {
 		this.estadoVisualizacion = estadoVisualizacion;
-	}
-
-	public String getNumPaginas() {
-		return numPaginas;
 	}
 
 	public void setNumPaginas(String numPaginas) {

@@ -22,6 +22,7 @@ y decidir cual tipo de documento es el que se quiere crear.*/
 		
 		switch (tipoDocumento) {
 			case "Libro":
+				//Ese 1400 toca traerlo de la vista
 				String numPaginas = "1400";
 				return crearLibro(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion, numPaginas);
 			case "Ponencia":

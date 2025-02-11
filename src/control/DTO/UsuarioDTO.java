@@ -12,15 +12,6 @@ public class UsuarioDTO implements Serializable {
 	private String direccion;
 	private String telefono;
 	
-	public UsuarioDTO(int idUsuario, String nombre, String correo, String contrasena, String direccion, String telefono) {
-		this.idUsuario = idUsuario;
-		this.nombre = nombre;
-		this.correo = correo;
-		this.contrasena = contrasena;
-		this.direccion = direccion;
-		this.telefono = telefono;
-	}
-	
 	public UsuarioDTO() {
 		
 	}

@@ -12,15 +12,6 @@ public class AutorDTO implements Serializable {
 	private String direccion;
 	private String telefono;
 	
-	public AutorDTO(int idAutor, String nombre, String correo, String contrasena, String direccion, String telefono) {
-		this.idAutor = idAutor;
-		this.nombre = nombre;
-		this.correo = correo;
-		this.contrasena = contrasena;
-		this.direccion = direccion;
-		this.telefono = telefono;
-	}
-	
 	public AutorDTO() {
 		
 	}

@@ -20,6 +20,18 @@ public class VentanaInfoDoc extends JFrame {
 	private JButton btnDarDeAlta;
 	private JButton btnReservar;
 	private JButton btnDevolver;
+	private JTextField txtInfo1;
+	private JTextField txtInfo2;
+	private JTextField txtInfo3;
+	private JTextField txtInfo4;
+	private JTextField txtInfo5;
+	private JTextField txtInfo6;
+	private JTextField txtInfoTelefono;
+	private JTextField txtInfoCorreo;
+	private JTextField txtInfoDireccion;
+	private JLabel lblModificar4;
+	private JLabel lblModificar6;
+	private JLabel lblBordeTxt6;
 	private JPanel contentPane;
 
 	public VentanaInfoDoc() {
@@ -149,13 +161,13 @@ public class VentanaInfoDoc extends JFrame {
 		lblModificar2.setBounds(60, 158, 179, 40);
 		contentPane.add(lblModificar2);
 		
-		JLabel lblModificar3 = new JLabel("Autores");
+		JLabel lblModificar3 = new JLabel("Autor");
 		lblModificar3.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblModificar3.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		lblModificar3.setBounds(60, 217, 179, 40);
 		contentPane.add(lblModificar3);
 		
-		JLabel lblModificar4 = new JLabel("");
+		lblModificar4 = new JLabel("");
 		lblModificar4.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblModificar4.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		lblModificar4.setBounds(60, 276, 179, 40);
@@ -167,13 +179,13 @@ public class VentanaInfoDoc extends JFrame {
 		lblModificar5.setBounds(60, 335, 179, 40);
 		contentPane.add(lblModificar5);
 		
-		JLabel lblModificar6 = new JLabel("");
+		lblModificar6 = new JLabel("");
 		lblModificar6.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblModificar6.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		lblModificar6.setBounds(60, 394, 179, 40);
 		contentPane.add(lblModificar6);
 		
-		JTextField txtInfo1 = new JTextField();
+		txtInfo1 = new JTextField();
 		txtInfo1.setEditable(false);
 		txtInfo1.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtInfo1.setForeground(Color.BLACK);
@@ -182,7 +194,7 @@ public class VentanaInfoDoc extends JFrame {
 		txtInfo1.setBounds(278, 99, 253, 40);
 		contentPane.add(txtInfo1);
 		
-		JTextField txtInfo2 = new JTextField();
+		txtInfo2 = new JTextField();
 		txtInfo2.setEditable(false);
 		txtInfo2.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtInfo2.setForeground(Color.BLACK);
@@ -191,7 +203,7 @@ public class VentanaInfoDoc extends JFrame {
 		txtInfo2.setBounds(278, 158, 253, 40);
 		contentPane.add(txtInfo2);
 		
-		JTextField txtInfo3 = new JTextField();
+		txtInfo3 = new JTextField();
 		txtInfo3.setEditable(false);
 		txtInfo3.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtInfo3.setForeground(Color.BLACK);
@@ -200,7 +212,7 @@ public class VentanaInfoDoc extends JFrame {
 		txtInfo3.setBounds(278, 217, 253, 40);
 		contentPane.add(txtInfo3);
 		
-		JTextField txtInfo4 = new JTextField();
+		txtInfo4 = new JTextField();
 		txtInfo4.setEditable(false);
 		txtInfo4.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtInfo4.setForeground(Color.BLACK);
@@ -209,7 +221,7 @@ public class VentanaInfoDoc extends JFrame {
 		txtInfo4.setBounds(278, 276, 253, 40);
 		contentPane.add(txtInfo4);
 		
-		JTextField txtInfo5 = new JTextField();
+		txtInfo5 = new JTextField();
 		txtInfo5.setEditable(false);
 		txtInfo5.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtInfo5.setForeground(Color.BLACK);
@@ -218,7 +230,7 @@ public class VentanaInfoDoc extends JFrame {
 		txtInfo5.setBounds(278, 335, 253, 40);
 		contentPane.add(txtInfo5);
 
-		JTextField txtInfo6 = new JTextField();
+		txtInfo6 = new JTextField();
 		txtInfo6.setEditable(false);
 		txtInfo6.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtInfo6.setForeground(Color.BLACK);
@@ -252,7 +264,7 @@ public class VentanaInfoDoc extends JFrame {
 		lblBordeTxt5.setBounds(261, 335, 270, 40);
 		contentPane.add(lblBordeTxt5);
 		
-		JLabel lblBordeTxt6 = new JLabel("");
+		lblBordeTxt6 = new JLabel("");
 		lblBordeTxt6.setIcon(new ImageIcon(VentanaInfoDoc.class.getResource("/imagenes/borde_modificar.png")));
 		lblBordeTxt6.setBounds(261, 394, 270, 40);
 		contentPane.add(lblBordeTxt6);
@@ -262,7 +274,7 @@ public class VentanaInfoDoc extends JFrame {
 		lblFondoInfoDoc.setBounds(60, 74, 490, 385);
 		contentPane.add(lblFondoInfoDoc);
 		
-		JTextField txtInfoTelefono = new JTextField();
+		txtInfoTelefono = new JTextField();
 		txtInfoTelefono.setEditable(false);
 		txtInfoTelefono.setFont(new Font("Roboto Light", Font.PLAIN, 11));
 		txtInfoTelefono.setForeground(Color.BLACK);
@@ -271,23 +283,23 @@ public class VentanaInfoDoc extends JFrame {
 		txtInfoTelefono.setBounds(593, 114, 226, 20);
 		contentPane.add(txtInfoTelefono);
 		
-		JTextField textInfoCorreo = new JTextField();
-		textInfoCorreo.setEditable(false);
-		textInfoCorreo.setFont(new Font("Roboto Light", Font.PLAIN, 11));
-		textInfoCorreo.setForeground(Color.BLACK);
-		textInfoCorreo.setOpaque(false);
-		textInfoCorreo.setBorder(null);
-		textInfoCorreo.setBounds(593, 136, 226, 20);
-		contentPane.add(textInfoCorreo);
+		txtInfoCorreo = new JTextField();
+		txtInfoCorreo.setEditable(false);
+		txtInfoCorreo.setFont(new Font("Roboto Light", Font.PLAIN, 11));
+		txtInfoCorreo.setForeground(Color.BLACK);
+		txtInfoCorreo.setOpaque(false);
+		txtInfoCorreo.setBorder(null);
+		txtInfoCorreo.setBounds(593, 136, 226, 20);
+		contentPane.add(txtInfoCorreo);
 		
-		JTextField textInfoDireccion = new JTextField();
-		textInfoDireccion.setEditable(false);
-		textInfoDireccion.setFont(new Font("Roboto Light", Font.PLAIN, 11));
-		textInfoDireccion.setForeground(Color.BLACK);
-		textInfoDireccion.setOpaque(false);
-		textInfoDireccion.setBorder(null);
-		textInfoDireccion.setBounds(593, 158, 226, 20);
-		contentPane.add(textInfoDireccion);
+		txtInfoDireccion = new JTextField();
+		txtInfoDireccion.setEditable(false);
+		txtInfoDireccion.setFont(new Font("Roboto Light", Font.PLAIN, 11));
+		txtInfoDireccion.setForeground(Color.BLACK);
+		txtInfoDireccion.setOpaque(false);
+		txtInfoDireccion.setBorder(null);
+		txtInfoDireccion.setBounds(593, 158, 226, 20);
+		contentPane.add(txtInfoDireccion);
 		
 		JLabel lblNewLabel = new JLabel("Informacion de contacto");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -312,6 +324,17 @@ public class VentanaInfoDoc extends JFrame {
 		contentPane.add(lblFondoModificaciones);
 	}
 
+	public void clear(){
+		txtInfo1.setText("");
+		txtInfo2.setText("");
+		txtInfo3.setText("");
+		txtInfo4.setText("");
+		txtInfo5.setText("");
+		txtInfo6.setText("");
+		txtInfoTelefono.setText("");
+		txtInfoCorreo.setText("");
+		txtInfoDireccion.setText("");
+	}
 	
 	public JButton getBtnDevolver() {
 		return btnDevolver;
@@ -359,5 +382,77 @@ public class VentanaInfoDoc extends JFrame {
 
 	public void setBtnDarDeAlta(JButton btnDarDeAlta) {
 		this.btnDarDeAlta = btnDarDeAlta;
+	}
+
+	public JTextField getTxtInfo1() {
+		return txtInfo1;
+	}
+
+	public void setTxtInfo1(JTextField txtInfo1) {
+		this.txtInfo1 = txtInfo1;
+	}
+
+	public JTextField getTxtInfo2() {
+		return txtInfo2;
+	}
+
+	public void setTxtInfo2(JTextField txtInfo2) {
+		this.txtInfo2 = txtInfo2;
+	}
+
+	public JTextField getTxtInfo3() {
+		return txtInfo3;
+	}
+
+	public void setTxtInfo3(JTextField txtInfo3) {
+		this.txtInfo3 = txtInfo3;
+	}
+
+	public JTextField getTxtInfo4() {
+		return txtInfo4;
+	}
+
+	public void setTxtInfo4(JTextField txtInfo4) {
+		this.txtInfo4 = txtInfo4;
+	}
+
+	public JTextField getTxtInfo5() {
+		return txtInfo5;
+	}
+
+	public void setTxtInfo5(JTextField txtInfo5) {
+		this.txtInfo5 = txtInfo5;
+	}
+
+	public JTextField getTxtInfo6() {
+		return txtInfo6;
+	}
+
+	public void setTxtInfo6(JTextField txtInfo6) {
+		this.txtInfo6 = txtInfo6;
+	}
+
+	public JTextField getTxtInfoTelefono() {
+		return txtInfoTelefono;
+	}
+
+	public void setTxtInfoTelefono(JTextField txtInfoTelefono) {
+		this.txtInfoTelefono = txtInfoTelefono;
+	}
+
+	public JTextField getTextInfoCorreo() {
+		return txtInfoCorreo;
+	}
+
+	public void setTextInfoCorreo(JTextField textInfoCorreo) {
+		this.txtInfoCorreo = textInfoCorreo;
+	}
+
+	public JTextField getTextInfoDireccion() {
+		return txtInfoDireccion;
+	}
+
+	public void setTextInfoDireccion(JTextField textInfoDireccion) {
+		this.txtInfoDireccion = textInfoDireccion;
 	}
 }

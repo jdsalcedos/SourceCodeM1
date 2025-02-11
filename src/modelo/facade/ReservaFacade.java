@@ -40,7 +40,7 @@ public class ReservaFacade {
 			resDAO.add(reserva);
 			historial.setIdUsuario(usuario.getIdUsuario());
 			historial.setIdDocumento(doc.getIdDocumento());
-			histDAO.reservado(historial);
+			histDAO.reservado();
 		}else {
 			System.out.println("El documento ya se encuentra reservado");
 		}

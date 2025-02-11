@@ -234,7 +234,8 @@ public class VentanaSubirDoc extends JFrame {
 	public void clear(){
 		txtTituloDoc.setText("");
 		fmtTxtFechaPublicacion.setText("");
-		txtNombreAutor.setText("");
+		txtNombreAutor.setEditable(false);
+//		txtNombreAutor.setText("");
 		txtCampo4.setText("");
 		txtEditorial.setText("");
 		txtCampo6.setText("");

@@ -3,6 +3,8 @@ package control.DTO;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import modelo.state.VisualizacionState;
+
 public class ArticuloCientificoDTO implements Serializable{
 	
     private static final long serialVersionUID = 1L;
@@ -12,21 +14,10 @@ public class ArticuloCientificoDTO implements Serializable{
     private String titulo;
     private LocalDate fechaPublicacion;
     private String tipoDocumento;
-    private String estadoVisualizacion;
+//    private String estadoVisualizacion;
+    private VisualizacionState estadoVisualizacion;
     private String ssn;
 
-    public ArticuloCientificoDTO(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion,
-                                 String tipoDocumento, String estadoVisualizacion, String ssn) {
-        this.idDocumento = idDocumento;
-        this.idEditorial = idEditorial;
-        this.idAutor = idAutor;
-        this.titulo = titulo;
-        this.fechaPublicacion = fechaPublicacion;
-        this.tipoDocumento = tipoDocumento;
-        this.estadoVisualizacion = estadoVisualizacion;
-        this.ssn = ssn;
-    }
-    
     public ArticuloCientificoDTO() {
     	
     }
@@ -79,19 +70,28 @@ public class ArticuloCientificoDTO implements Serializable{
         this.tipoDocumento = tipoDocumento;
     }
 
-    public String getEstadoVisualizacion() {
-        return estadoVisualizacion;
-    }
+//    public String getEstadoVisualizacion() {
+//        return estadoVisualizacion;
+//    }
+//
+//    public void setEstadoVisualizacion(String estadoVisualizacion) {
+//        this.estadoVisualizacion = estadoVisualizacion;
+//    }
 
-    public void setEstadoVisualizacion(String estadoVisualizacion) {
-        this.estadoVisualizacion = estadoVisualizacion;
-    }
-
+    
     public String getSsn() {
         return ssn;
     }
 
-    public void setSsn(String ssn) {
+    public VisualizacionState getEstadoVisualizacion() {
+		return estadoVisualizacion;
+	}
+
+	public void setEstadoVisualizacion(VisualizacionState estadoVisualizacion) {
+		this.estadoVisualizacion = estadoVisualizacion;
+	}
+
+	public void setSsn(String ssn) {
         this.ssn = ssn;
     }
 }

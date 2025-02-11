@@ -24,6 +24,9 @@ public class Gestor implements ActionListener {
 	private VentanaModDoc modificarDocumento;
 	private VentanaInfoDoc infoDocumento;
 	private Controlador controler;
+	private int identificacion;
+	private int modDoc;
+	private int infoDoc;
 	private int user = 0;
 	private String doc = "";
 
@@ -53,8 +56,26 @@ public class Gestor implements ActionListener {
 
 		biblioteca.getBtnCerrar().addActionListener(this);
 		biblioteca.getBtnSubirDoc().addActionListener(this);
+
 		biblioteca.getBtnModificarDoc1().addActionListener(this);
+		biblioteca.getBtnModificarDoc2().addActionListener(this);
+		biblioteca.getBtnModificarDoc3().addActionListener(this);
+		biblioteca.getBtnModificarDoc4().addActionListener(this);
+		biblioteca.getBtnModificarDoc5().addActionListener(this);
+		biblioteca.getBtnModificarDoc6().addActionListener(this);
+		biblioteca.getBtnModificarDoc7().addActionListener(this);
+		biblioteca.getBtnModificarDoc8().addActionListener(this);
+		biblioteca.getBtnModificarDoc9().addActionListener(this);
+
 		biblioteca.getBtnInfoDoc1().addActionListener(this);
+		biblioteca.getBtnInfoDoc2().addActionListener(this);
+		biblioteca.getBtnInfoDoc3().addActionListener(this);
+		biblioteca.getBtnInfoDoc4().addActionListener(this);
+		biblioteca.getBtnInfoDoc5().addActionListener(this);
+		biblioteca.getBtnInfoDoc6().addActionListener(this);
+		biblioteca.getBtnInfoDoc7().addActionListener(this);
+		biblioteca.getBtnInfoDoc8().addActionListener(this);
+		biblioteca.getBtnInfoDoc9().addActionListener(this);
 
 		subirDocumento.getBtnCerrar().addActionListener(this);
 		subirDocumento.getBtnSubir().addActionListener(this);
@@ -106,6 +127,7 @@ public class Gestor implements ActionListener {
 				} else {
 					String contrasenaReal = controler.buscarAutor(idAutor).getContrasena();
 					if (contrasena.equals(contrasenaReal)) {
+						identificacion = idAutor;
 						login.avisoExito();
 						System.out.println("Inicio de sesión exitoso");
 						biblioteca.setVisible(true);
@@ -135,6 +157,7 @@ public class Gestor implements ActionListener {
 				} else {
 					String contrasenaReal = controler.buscarUsuario(idUser).getContrasena();
 					if (contrasena.equals(contrasenaReal)) {
+						identificacion = idUser;
 						login.avisoExito();
 						System.out.println("Inicio de sesión exitoso");
 						biblioteca.setVisible(true);
@@ -230,42 +253,202 @@ public class Gestor implements ActionListener {
 			biblioteca.getLblModificarDoc8().setVisible(false);
 			biblioteca.getLblModificarDoc9().setVisible(false);
 			biblioteca.getBtnSubirDoc().setVisible(false);
-		}else {
-			controler.mostrarDocumento();
-//			for(Documento doc : docs) {
-//				biblioteca.getTxtDoc1().setText(doc.getTitulo());
-//				System.out.println("titulooooooooooo2: ");
-//			}
+		} else {
+
+			ArrayList<Documento> documentos = controler.traerDocumento();
+
+			int i = 0;
+			String titulo;
+			for (Documento doc : documentos) {
+				titulo = doc.getTitulo();
+				if (i < biblioteca.getCampos().length) { // Para evitar IndexOutOfBoundsException
+					biblioteca.getCampos()[i].setText(titulo);
+					System.out.println("titulooooooooooo: " + titulo);
+					i++;
+				} else {
+					break; // Si hay más documentos que campos, evita errores
+				}
+			}
 			
+			biblioteca.bloquearCampos();
+//			String titulo;
+//			for(Documento doc : documentos) {
+//				titulo = doc.getTitulo();
+//				biblioteca.getTxtDoc1().setText(titulo);
+//				System.out.println("titulooooooooooo: "+titulo);
+//			}
+
 			if (comando.equals("SUBIR_DOCUMENTO")) {
 				elegirDocumento.setVisible(true);
 				biblioteca.dispose();
 			}
 			if (comando.equals("MOD_LIBRO1")) {
+				modDoc =1;
 				modificarDocumento.setVisible(true);
 				modificarDocumento.clear();
 				biblioteca.dispose();
-			} else if (comando.equals("INFO_DOC1")) {
+			} else if (comando.equals("MOD_LIBRO2")) {
+				modDoc =2;
+				modificarDocumento.setVisible(true);
+				modificarDocumento.clear();
+				biblioteca.dispose();
+			} else if (comando.equals("MOD_LIBRO3")) {
+				modDoc =3;
+				modificarDocumento.setVisible(true);
+				modificarDocumento.clear();
+				biblioteca.dispose();
+			} else if (comando.equals("MOD_LIBRO4")) {
+				modDoc =4;
+				modificarDocumento.setVisible(true);
+				modificarDocumento.clear();
+				biblioteca.dispose();
+			} else if (comando.equals("MOD_LIBRO5")) {
+				modDoc =5;
+				modificarDocumento.setVisible(true);
+				modificarDocumento.clear();
+				biblioteca.dispose();
+			} else if (comando.equals("MOD_LIBRO6")) {
+				modDoc =6;
+				modificarDocumento.setVisible(true);
+				modificarDocumento.clear();
+				biblioteca.dispose();
+			} else if (comando.equals("MOD_LIBRO7")) {
+				modDoc =7;
+				modificarDocumento.setVisible(true);
+				modificarDocumento.clear();
+				biblioteca.dispose();
+			} else if (comando.equals("MOD_LIBRO8")) {
+				modDoc =8;
+				modificarDocumento.setVisible(true);
+				modificarDocumento.clear();
+				biblioteca.dispose();
+			} else if (comando.equals("MOD_LIBRO9")) {
+				modDoc =9;
+				modificarDocumento.setVisible(true);
+				modificarDocumento.clear();
+				biblioteca.dispose();
+			}
+			
+//			documentos = controler.traerDocumento();
+//			infoDocumento.get().setText("ISBN");
+//			subirDocumento.getLblBordeTxt6().setVisible(true);
+//			subirDocumento.getTxtCampo6().setVisible(true);
+//			if (doc.equals("libro")) {
+//				subirDocumento.getLblCampo6().setText("Número de páginas");
+//			}
+//			if (doc.equals("ponencia")) {
+//				subirDocumento.getLblCampo6().setText("Congreso");
+//			}
+//			if (doc.equals("articulo")) {
+//				subirDocumento.getLblCampo4().setText("SSN");
+//				subirDocumento.getLblBordeTxt6().setVisible(false);
+//				subirDocumento.getTxtCampo6().setVisible(false);
+//				subirDocumento.getLblCampo6().setText("");
+//			}
+			
+			if (comando.equals("INFO_DOC1")) {
+				infoDocumento.clear();
+				infoDoc =1;
+				System.out.println("info documento 1 gestion");
+				documentos = controler.traerDocumento();
+				infoDocumento.getTxtInfo1().setText(documentos.get(0).getTitulo());
+				infoDocumento.getTxtInfo2().setText(documentos.get(0).getFechaPublicacion().toString());
+				AutorDTO autor = controler.autorEnSesion(identificacion);
+				infoDocumento.getTxtInfo3().setText(autor.getNombre());
+				infoDocumento.getTxtInfo5().setText(String.valueOf(documentos.get(0).getIdEditorial()));
+//				String tipoDoc = documentos.get(0).getTipoDocumento();
+//				if(tipoDoc=="libro") {
+//					
+//				}
+//				infoDocumento.getTxtInfo4().setText(documentos.get(0).get);
+//				infoDocumento.getTxtInfo5().setText(documentos.get(0).get);
+				infoDocumento.setVisible(true);
+				biblioteca.dispose();
+			} else if (comando.equals("INFO_DOC2")) {
+				infoDocumento.clear();
+				infoDoc =2;
+				documentos = controler.traerDocumento();
+				infoDocumento.getTxtInfo1().setText(documentos.get(1).getTitulo());
+				infoDocumento.getTxtInfo2().setText(documentos.get(1).getFechaPublicacion().toString());
+				AutorDTO autor = controler.autorEnSesion(identificacion);
+				infoDocumento.getTxtInfo3().setText(autor.getNombre());
+				infoDocumento.getTxtInfo5().setText(String.valueOf(documentos.get(1).getIdEditorial()));
+				infoDocumento.setVisible(true);
+				biblioteca.dispose();
+			} else if (comando.equals("INFO_DOC3")) {
+				infoDocumento.clear();
+				infoDoc =3;
+				documentos = controler.traerDocumento();
+				infoDocumento.getTxtInfo1().setText(documentos.get(2).getTitulo());
+				infoDocumento.setVisible(true);
+				biblioteca.dispose();
+			} else if (comando.equals("INFO_DOC4")) {
+				infoDocumento.clear();
+				infoDoc =4;
+				documentos = controler.traerDocumento();
+				infoDocumento.getTxtInfo1().setText(documentos.get(3).getTitulo());
+				infoDocumento.setVisible(true);
+				biblioteca.dispose();
+			} else if (comando.equals("INFO_DOC5")) {
+				infoDocumento.clear();
+				infoDoc =5;
+				documentos = controler.traerDocumento();
+				infoDocumento.getTxtInfo1().setText(documentos.get(4).getTitulo());
+				infoDocumento.setVisible(true);
+				biblioteca.dispose();
+			} else if (comando.equals("INFO_DOC6")) {
+				infoDocumento.clear();
+				infoDoc =6;
+				documentos = controler.traerDocumento();
+				infoDocumento.getTxtInfo1().setText(documentos.get(5).getTitulo());
+				infoDocumento.setVisible(true);
+				biblioteca.dispose();
+			} else if (comando.equals("INFO_DOC7")) {
+				infoDocumento.clear();
+				infoDoc =7;
+				documentos = controler.traerDocumento();
+				infoDocumento.getTxtInfo1().setText(documentos.get(6).getTitulo());
+				infoDocumento.setVisible(true);
+				biblioteca.dispose();
+			} else if (comando.equals("INFO_DOC8")) {
+				infoDocumento.clear();
+				infoDoc =8;
+				documentos = controler.traerDocumento();
+				infoDocumento.getTxtInfo1().setText(documentos.get(7).getTitulo());
+				infoDocumento.setVisible(true);
+				biblioteca.dispose();
+			} else if (comando.equals("INFO_DOC9")) {
+				infoDocumento.clear();
+				infoDoc =9;
+				documentos = controler.traerDocumento();
+				infoDocumento.getTxtInfo1().setText(documentos.get(8).getTitulo());
 				infoDocumento.setVisible(true);
 				biblioteca.dispose();
 			}
 		}
-		
+
 		// Ventana elegirdocumento
 		if (comando.equals("VOLVER2")) {
 			biblioteca.setVisible(true);
 			elegirDocumento.dispose();
 		} else if (comando.equals("ARTICULO")) {
+			System.out.println("articulo gestion");
+			AutorDTO autor = controler.autorEnSesion(identificacion);
+			subirDocumento.getTxtNombreAutor().setText(autor.getNombre());
 			doc = "articulo";
 			subirDocumento.setVisible(true);
 			subirDocumento.clear();
 			elegirDocumento.dispose();
 		} else if (comando.equals("PONENCIA")) {
+			AutorDTO autor = controler.autorEnSesion(identificacion);
+			subirDocumento.getTxtNombreAutor().setText(autor.getNombre());
 			doc = "ponencia";
 			subirDocumento.setVisible(true);
 			subirDocumento.clear();
 			elegirDocumento.dispose();
 		} else if (comando.equals("LIBRO")) {
+			AutorDTO autor = controler.autorEnSesion(identificacion);
+			subirDocumento.getTxtNombreAutor().setText(autor.getNombre());
 			doc = "libro";
 			subirDocumento.setVisible(true);
 			subirDocumento.clear();
@@ -299,9 +482,7 @@ public class Gestor implements ActionListener {
 		}
 
 		// Ventana modificadocumento
-		if (comando.equals("ELIMINAR")) {
-
-		} else if (comando.equals("MODIFICAR")) {
+		if (comando.equals("MODIFICAR")) {
 
 		} else if (comando.equals("VOLVER4")) {
 			biblioteca.setVisible(true);

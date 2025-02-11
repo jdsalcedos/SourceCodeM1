@@ -3,6 +3,8 @@ package control.DTO;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import modelo.state.VisualizacionState;
+
 public class PonenciaDTO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -13,22 +15,10 @@ public class PonenciaDTO implements Serializable{
     private LocalDate fechaPublicacion;
     private String isbn;
     private String tipoDocumento;
-    private String estadoVisualizacion;
+    private VisualizacionState estadoVisualizacion;
+//    private String estadoVisualizacion;
 	private String congreso;
 	
-	public PonenciaDTO(int idDocumento, int idEditorial, int idAutor, String titulo, LocalDate fechaPublicacion,
-			String isbn, String tipoDocumento, String estadoVisualizacion, String congreso) {
-		this.idDocumento = idDocumento;
-		this.idEditorial = idEditorial;
-		this.idAutor = idAutor;
-		this.titulo = titulo;
-		this.fechaPublicacion = fechaPublicacion;
-		this.isbn = isbn;
-		this.tipoDocumento = tipoDocumento;
-		this.estadoVisualizacion = estadoVisualizacion;
-		this.congreso = congreso;
-	}
-
 	public PonenciaDTO() {
 		
 	}
@@ -89,16 +79,26 @@ public class PonenciaDTO implements Serializable{
 		this.tipoDocumento = tipoDocumento;
 	}
 
-	public String getEstadoVisualizacion() {
-		return estadoVisualizacion;
-	}
-
-	public void setEstadoVisualizacion(String estadoVisualizacion) {
-		this.estadoVisualizacion = estadoVisualizacion;
-	}
+//	public String getEstadoVisualizacion() {
+//		return estadoVisualizacion;
+//	}
+//
+//	public void setEstadoVisualizacion(String estadoVisualizacion) {
+//		this.estadoVisualizacion = estadoVisualizacion;
+//	}
+	
+	
 
 	public String getCongreso() {
 		return congreso;
+	}
+
+	public VisualizacionState getEstadoVisualizacion() {
+		return estadoVisualizacion;
+	}
+
+	public void setEstadoVisualizacion(VisualizacionState estadoVisualizacion) {
+		this.estadoVisualizacion = estadoVisualizacion;
 	}
 
 	public void setCongreso(String congreso) {

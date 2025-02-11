@@ -38,6 +38,14 @@ public class Controlador {
 		}
 	}
 	
+	public AutorDTO autorEnSesion(int id) {
+		return buscarAutor(id);
+	}
+	
+	public UsuarioDTO usuarioEnSesion(int id) {
+		return buscarUsuario(id);
+	}
+	
 	public UsuarioDTO buscarUsuario(int id) {
 		Usuario usuario = usuarioDao.getOne(id);
 		if(usuario==null) {
@@ -57,45 +65,29 @@ public class Controlador {
 		usuarioDao.add(us);
 	}
 	
-	public void mostrarDocumento() {
+	public ArrayList<Documento> traerDocumento() {
 		System.out.println("hola");
-//		ArrayList<Documento> documentos = documentoDao.getAll();
-		documentoDao.getAll();
+		ArrayList<Documento> documentos = documentoDao.getAllVisible();
+//		documentoDao.getAllVisible();
 //		if(documentos==null) {
 //			System.out.println("es nulo");
 //		}else {
 //			System.out.println("tamaño: " + documentos.size());
 //		}
-//		
-//		for(Documento doc : documentos) {
-//			System.out.println("titulo " + doc.getTitulo());
-//		}
-//		
-//		String titulo;
-//		
 //		if(!documentos.isEmpty()) {
 //			System.out.println("chao: " + documentos.toString());
 //			System.out.println("ok");
 //		}else {
 //			System.out.println("paila");
 //		}
-//		for(Documento doc : documentos) {
-//			
-//			titulo = doc.getTitulo();
-//			System.out.println("titulooooooooooo: "+titulo);
-//		}
+		
 //		System.out.println("documentos: "+ documentos);
+		return documentos;
 	}
 
-//	public void consultar () {
-//		UsuarioDAO usuario = new UsuarioDAO();
-//		String res = usuario.getAll();
-//		if (res == "") {
-//			System.out.println("paila");
-//		} else {
-//			vista.mostrarMensaje(res);
-//		}
-//	}
+	public void documentoActual() {
+		
+	}
 	
 	public void consultar () {
 		UsuarioDAO usuario = new UsuarioDAO();
