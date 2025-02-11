@@ -56,7 +56,7 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			while (rs.next()) {
 				int idDocumento = rs.getInt("id_documento");
 				int idEditorial = rs.getInt("id_editorial");
-				int idAutor = rs2.getInt("id_autor");
+				int idAutor = rs.getInt(id);
 				String titulo = rs.getString("titulo");
 				LocalDate fechaPublicacion = rs.getDate("fecha_publicacion").toLocalDate();
 				String isbn = rs.getString("ISBN");
