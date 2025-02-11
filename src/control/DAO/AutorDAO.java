@@ -21,31 +21,6 @@ public class AutorDAO implements InterfaceDAO<Autor> {
 		rs = null;
 	}
 
-	@Override
-	public ArrayList<Autor> getAll() {
-		ArrayList<Autor> autores = new ArrayList<Autor>();
-		try {
-			cn = ConexionBD.getConexion();
-			pst = (PreparedStatement) cn.prepareStatement("select * from autor");
-			rs = pst.executeQuery();
-			while (rs.next()) {
-				Autor aut = new Autor();
-				aut.setIdAutor(rs.getInt("id_autor"));
-				aut.setNombre(rs.getString("nombre"));
-				aut.setCorreo(rs.getString("correo"));
-				aut.setContrasena(rs.getString("contrasena"));
-				aut.setDireccion(rs.getString("direccion"));
-				aut.setTelefono(rs.getString("telefono"));
-				autores.add(aut);
-			}
-			pst.close();
-			ConexionBD.desconectar();
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		System.out.println(autores);
-		return autores;
-	}
 
 	@Override
 	public Autor getOne(int id) {

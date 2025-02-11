@@ -22,31 +22,7 @@ public class ReservaDAO implements InterfaceDAO<Reserva>{
 		rs = null;
 	}
 
-	//Función para obtener y listar todos los objetos
-	@Override
-	public ArrayList<Reserva> getAll() {
-//		ArrayList<Reserva> reservas  = new ArrayList<Reserva>();
-//		try {
-//			cn = ConexionBD.getConexion();
-//			pst = (PreparedStatement) cn.prepareStatement("select * from reserva");
-//			rs = pst.executeQuery();
-//			while (rs.next()) {
-//				Reserva res = new Reserva();
-//				res.setIdReserva(rs.getInt("id_reserva"));
-//				res.setIdUsuario(rs.getInt("id_usuario"));
-//				res.setIdDocumento(rs.getInt("id_documento"));
-//				res.setEstadoReserva(rs.getString("estado_reserva"));
-//				reservas.add(res);
-//			}
-//			pst.close();
-//			ConexionBD.desconectar();
-//		} catch (SQLException ex) {
-//			ex.printStackTrace();
-//		}
-//		System.err.println(reservas);
-//		return reservas;
-		return null;
-	}
+	
 
 	//Función para obtener uno directamente por el ID de la reserva
 	@Override

@@ -21,12 +21,7 @@ public class LibroDAO implements InterfaceDAO<Libro> {
 		pst = null;
 	}
 
-	@Override
-	public ArrayList<Libro> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public Libro getOne(int id) {
 		return null;

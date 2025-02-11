@@ -40,20 +40,22 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 
 	
 
-	@Override
-	public ArrayList<Documento> getAll() {
+	public ArrayList<Documento> getAllByAutor(int id) {
 		ArrayList<Documento> docs = new ArrayList<Documento>();
 		try {
 			cn = ConexionBD.getConexion();
-			pst = cn.prepareStatement("SELECT * FROM documento");
+			
+			String consulta = "SELECT d.* FROM documento d " +
+                    "INNER JOIN documento_autor da ON d.id_documento = da.id_documento " +
+                    "WHERE da.id_autor = ?";
+			
+			pst = cn.prepareStatement(consulta);
+			pst.setInt(1, id);
 			rs = pst.executeQuery();
-
-			pst2 = cn.prepareStatement("SELECT * FROM documento_autor");
-			rs2 = pst2.executeQuery();
-
+			
 			CreadorDocumento creador = new CreadorDocumento(); // Instancia del Factory
 
-			while (rs.next() && rs2.next()) {
+			while (rs.next()) {
 				int idDocumento = rs.getInt("id_documento");
 				int idEditorial = rs.getInt("id_editorial");
 				int idAutor = rs2.getInt("id_autor");
@@ -70,6 +72,7 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 						isbn, tipoDocumento, estadoVisualizacion);
 
 				docs.add(doc);
+				System.out.println(doc.getIdAutor() +" nombre: " + doc.getTitulo());
 			}
 			
 			System.out.println("MOSTRANDO LOS DOCUMENTOS....");
@@ -81,6 +84,7 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 		}
 		return docs;
 	}
+	
 
 	@Override
 	public Documento getOne(int id) {

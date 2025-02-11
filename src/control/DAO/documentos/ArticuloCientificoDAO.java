@@ -21,11 +21,6 @@ public class ArticuloCientificoDAO implements InterfaceDAO<ArticuloCientifico>{
 		pst = null;
 	}
 	
-	@Override
-	public ArrayList<ArticuloCientifico> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ArticuloCientifico getOne(int id) {

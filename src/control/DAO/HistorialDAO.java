@@ -27,10 +27,7 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 		rs = null;
 		accion = null;
 	}
-	public ArrayList<HistorialCambio> getAll() {
-		return null;
-	}
-
+	
 	@Override
 	public HistorialCambio getOne(int id) {
 		try {
