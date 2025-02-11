@@ -277,7 +277,7 @@ public class Gestor implements ActionListener {
 
 		} else {
 
-			ArrayList<Documento> documentos = controler.traerDocumento();
+			ArrayList<Documento> documentos = controler.traerDocumentoAutor(identificacion);
 			System.out.println("tamaño documentos: " + documentos.size());
 
 			int i = 0;
@@ -300,7 +300,7 @@ public class Gestor implements ActionListener {
 				biblioteca.dispose();
 			}
 
-			documentos = controler.traerDocumento();
+			documentos = controler.traerDocumentoAutor(identificacion);
 			modificarDocumento.getLblCampo4().setText("ISBN");
 			modificarDocumento.getLblBordeTxt6().setVisible(true);
 			modificarDocumento.getTxtCampo6().setVisible(true);

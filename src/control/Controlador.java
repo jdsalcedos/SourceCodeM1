@@ -33,30 +33,30 @@ public class Controlador {
 
 	public AutorDTO buscarAutor(int id) {
 		Autor autor = autorDao.getOne(id);
-		if(autor==null) {
+		if (autor == null) {
 			return null;
-		}else {
+		} else {
 			return Mapper.convertirToAutorDto(autor);
 		}
 	}
-	
+
 	public AutorDTO autorEnSesion(int id) {
 		return buscarAutor(id);
 	}
-	
+
 	public UsuarioDTO usuarioEnSesion(int id) {
 		return buscarUsuario(id);
 	}
-	
+
 	public UsuarioDTO buscarUsuario(int id) {
 		Usuario usuario = usuarioDao.getOne(id);
-		if(usuario==null) {
+		if (usuario == null) {
 			return null;
-		}else {
+		} else {
 			return Mapper.convertirToUsuarioDto(usuario);
 		}
 	}
-	
+
 	public void registrarAutor(AutorDTO dto) {
 		Autor aut = Mapper.convertirToAutor(dto);
 		autorDao.add(aut);
@@ -66,7 +66,12 @@ public class Controlador {
 		Usuario us = Mapper.convertirToUsuario(dto);
 		usuarioDao.add(us);
 	}
-	
+
+	public ArrayList<Documento> traerDocumentoAutor(int id) {
+		ArrayList<Documento> documentos = documentoDao.getAllByAutor(id);
+		return documentos;
+	}
+
 	public ArrayList<Documento> traerDocumento() {
 //		System.out.println("hola");
 		ArrayList<Documento> documentos = documentoDao.getAllVisible();
@@ -82,19 +87,18 @@ public class Controlador {
 //		}else {
 //			System.out.println("paila");
 //		}
-		
+
 //		System.out.println("documentos: "+ documentos);
 		return documentos;
 	}
 
 	public LibroDTO buscaLibro(int id) {
 		Libro libro = (Libro) documentoDao.getOne(id);
-		if(libro==null) {
+		if (libro == null) {
 			return null;
-		}else {
+		} else {
 			return Mapper.convertirToLibroDto(libro);
 		}
 	}
-	
 
 }
