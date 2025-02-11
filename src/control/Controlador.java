@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import control.DAO.AutorDAO;
 import control.DAO.UsuarioDAO;
+import control.DAO.documentos.ArticuloCientificoDAO;
 import control.DAO.documentos.DocumentoDAO;
 import control.DAO.documentos.LibroDAO;
 import control.DTO.AutorDTO;
@@ -23,6 +24,9 @@ public class Controlador {
 	private AutorDAO autorDao;
 	private UsuarioDAO usuarioDao;
 	private DocumentoDAO documentoDao;
+	private LibroDAO libroDao;
+	private ArticuloCientificoDAO articuloDao;
+	private PonenciaDAO ponenciaDao;
 	private Connection cone;
 
 	public Controlador() {
@@ -30,6 +34,9 @@ public class Controlador {
 		autorDao = new AutorDAO();
 		usuarioDao = new UsuarioDAO();
 		documentoDao = new DocumentoDAO();
+		libroDao = new LibroDAO();
+		articuloDao = new ArticuloCientificoDAO();
+		ponenciaDao = new PonenciaDAO();
 	}
 
 	public AutorDTO buscarAutor(int id) {

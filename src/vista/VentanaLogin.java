@@ -5,6 +5,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
@@ -24,6 +27,7 @@ public class VentanaLogin extends JFrame {
 	private JButton btnIngresarLector;
 	private JButton btnRegister;
 	private JButton btnCerrar;
+	private int mouseX, mouseY;
 	private JPanel contentPane;
 
 	public VentanaLogin() {
@@ -41,6 +45,24 @@ public class VentanaLogin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		// Metodos para que la ventana se pueda mover
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				mouseX = e.getX();
+				mouseY = e.getY();
+			}
+		});
+
+		addMouseMotionListener(new MouseAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				int x = e.getXOnScreen();
+				int y = e.getYOnScreen();
+				setLocation(x - mouseX, y - mouseY);
+			}
+		});
 
 		JPanel panelBarraSuperior = new JPanel();
 		panelBarraSuperior.setBounds(0, 0, 900, 40);
@@ -218,14 +240,13 @@ public class VentanaLogin extends JFrame {
 		contentPane.add(lblFondoLogin);
 	}
 
-	public void clear(){
+	public void clear() {
 		txtIdentificacionLector.setText("");
 		txtIdentificacionAutor.setText("");
 		passwordLector.setText("");
 		passwordAutor.setText("");
 	}
-	
-	
+
 	public boolean verifyAutor() {
 		String password = new String(passwordAutor.getPassword()).trim();
 		if (txtIdentificacionAutor.getText().trim().isEmpty()) {
