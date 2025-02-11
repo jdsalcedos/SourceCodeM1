@@ -6,6 +6,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -17,6 +20,7 @@ public class VentanaElegirDoc extends JFrame {
 	private JButton btnLibro;
 	private JButton btnPonencia;
 	private JButton btnArticulo;
+	private int mouseX, mouseY;
 	private JPanel contentPane;
 
 	public VentanaElegirDoc() {
@@ -32,20 +36,38 @@ public class VentanaElegirDoc extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
+		// Metodos para que la ventana se pueda mover
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				mouseX = e.getX();
+				mouseY = e.getY();
+			}
+		});
+
+		addMouseMotionListener(new MouseAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				int x = e.getXOnScreen();
+				int y = e.getYOnScreen();
+				setLocation(x - mouseX, y - mouseY);
+			}
+		});
+
 		JPanel panelBarraSuperior = new JPanel();
 		panelBarraSuperior.setLayout(null);
 		panelBarraSuperior.setBackground(new Color(255, 189, 89));
 		panelBarraSuperior.setBounds(0, 0, 900, 40);
 		contentPane.add(panelBarraSuperior);
-		
+
 		JLabel lblTitulo = new JLabel("Libreria Distrital");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setForeground(Color.WHITE);
 		lblTitulo.setFont(new Font("Roboto ExtraBold", Font.BOLD, 15));
 		lblTitulo.setBounds(375, 0, 158, 40);
 		panelBarraSuperior.add(lblTitulo);
-		
+
 		btnCerrar = new JButton("");
 		btnCerrar.setBounds(0, 0, 40, 40);
 		btnCerrar.setOpaque(false);
@@ -53,12 +75,12 @@ public class VentanaElegirDoc extends JFrame {
 		btnCerrar.setBorderPainted(false);
 		btnCerrar.setActionCommand("CERRAR");
 		panelBarraSuperior.add(btnCerrar);
-		
+
 		JLabel lblImagenCerrar = new JLabel("");
 		lblImagenCerrar.setIcon(new ImageIcon(VentanaElegirDoc.class.getResource("/imagenes/cerrar.png")));
 		lblImagenCerrar.setBounds(0, 0, 40, 40);
 		panelBarraSuperior.add(lblImagenCerrar);
-		
+
 		btnVolver = new JButton("Volver");
 		btnVolver.setOpaque(false);
 		btnVolver.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -69,7 +91,7 @@ public class VentanaElegirDoc extends JFrame {
 		btnVolver.setBounds(790, 0, 90, 40);
 		btnVolver.setActionCommand("VOLVER2");
 		panelBarraSuperior.add(btnVolver);
-		
+
 		btnLibro = new JButton("Libro");
 		btnLibro.setOpaque(false);
 		btnLibro.setHorizontalAlignment(SwingConstants.CENTER);
@@ -80,7 +102,7 @@ public class VentanaElegirDoc extends JFrame {
 		btnLibro.setBounds(388, 252, 125, 40);
 		btnLibro.setActionCommand("LIBRO");
 		contentPane.add(btnLibro);
-		
+
 		btnPonencia = new JButton("Ponencia");
 		btnPonencia.setOpaque(false);
 		btnPonencia.setHorizontalAlignment(SwingConstants.CENTER);
@@ -91,7 +113,7 @@ public class VentanaElegirDoc extends JFrame {
 		btnPonencia.setBounds(388, 309, 125, 40);
 		btnPonencia.setActionCommand("PONENCIA");
 		contentPane.add(btnPonencia);
-		
+
 		btnArticulo = new JButton("Articulo");
 		btnArticulo.setOpaque(false);
 		btnArticulo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -102,12 +124,12 @@ public class VentanaElegirDoc extends JFrame {
 		btnArticulo.setBounds(388, 365, 125, 40);
 		btnArticulo.setActionCommand("ARTICULO");
 		contentPane.add(btnArticulo);
-		
+
 		JLabel lblLibro = new JLabel("");
 		lblLibro.setIcon(new ImageIcon(VentanaElegirDoc.class.getResource("/imagenes/boton.png")));
 		lblLibro.setBounds(388, 252, 125, 40);
 		contentPane.add(lblLibro);
-		
+
 		JLabel lblPonencia = new JLabel("");
 		lblPonencia.setIcon(new ImageIcon(VentanaElegirDoc.class.getResource("/imagenes/boton.png")));
 		lblPonencia.setBounds(388, 309, 125, 40);
@@ -117,20 +139,19 @@ public class VentanaElegirDoc extends JFrame {
 		lblArticulo.setIcon(new ImageIcon(VentanaElegirDoc.class.getResource("/imagenes/boton.png")));
 		lblArticulo.setBounds(388, 365, 125, 40);
 		contentPane.add(lblArticulo);
-		
+
 		JLabel lblTxtElegir = new JLabel("Elija el tipo de documento");
 		lblTxtElegir.setFont(new Font("Roboto ExtraBold", Font.PLAIN, 13));
 		lblTxtElegir.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTxtElegir.setBounds(374, 186, 150, 51);
 		contentPane.add(lblTxtElegir);
-		
+
 		JLabel lblFondoElegir = new JLabel("");
 		lblFondoElegir.setIcon(new ImageIcon(VentanaElegirDoc.class.getResource("/imagenes/fondo_elegir_doc.png")));
 		lblFondoElegir.setBounds(337, 170, 225, 260);
 		contentPane.add(lblFondoElegir);
 	}
 
-	
 	public JButton getBtnCerrar() {
 		return btnCerrar;
 	}
@@ -170,6 +191,5 @@ public class VentanaElegirDoc extends JFrame {
 	public void setBtnArticulo(JButton btnArticulo) {
 		this.btnArticulo = btnArticulo;
 	}
-	
-	
+
 }

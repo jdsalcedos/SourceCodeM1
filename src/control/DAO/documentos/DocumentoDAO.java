@@ -117,7 +117,7 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 						estadoVisualizacion);
 			}
 			System.out.println("MOSTRANDO SOLO 1");
-			System.out.println(doc.toString());
+//			System.out.println(doc.toString());
 
 			pst.close();
 			ConexionBD.desconectar();

@@ -102,5 +102,13 @@ public class LibroDTO implements Serializable{
 	public void setNumPaginas(String numPaginas) {
 		this.numPaginas = numPaginas;
 	}
+
+	@Override
+	public String toString() {
+		return "LibroDTO [idDocumento=" + idDocumento + ", idEditorial=" + idEditorial + ", idAutor=" + idAutor
+				+ ", titulo=" + titulo + ", fechaPublicacion=" + fechaPublicacion + ", isbn=" + isbn
+				+ ", tipoDocumento=" + tipoDocumento + ", estadoVisualizacion=" + estadoVisualizacion + ", numPaginas="
+				+ numPaginas + "]";
+	}
 	
 }

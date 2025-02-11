@@ -50,6 +50,7 @@ public class AutorDAO implements InterfaceDAO<Autor> {
 	public void add(Autor aut) {
 
 		try {
+			System.out.println("ENTRO AL ADD AUTOR");
 			cn = ConexionBD.getConexion();
 
 			pst = (PreparedStatement) cn.prepareStatement("insert into autor values(?,?,?,?,?,?)");

@@ -2,9 +2,11 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import control.DAO.documentos.DocumentoDAO;
 import control.DTO.AutorDTO;
 import control.DTO.LibroDTO;
 import control.DTO.UsuarioDTO;
@@ -12,6 +14,7 @@ import modelo.factory.abstracto.Documento;
 import modelo.factory.documento.ArticuloCientifico;
 import modelo.factory.documento.Libro;
 import modelo.factory.documento.Ponencia;
+import modelo.state.EstadoVisible;
 import vista.VentanaBiblioteca;
 import vista.VentanaLogin;
 import vista.VentanaRegistro;
@@ -29,10 +32,9 @@ public class Gestor implements ActionListener {
 	private VentanaModDoc modificarDocumento;
 	private VentanaInfoDoc infoDocumento;
 	private Controlador controler;
+//	private ArrayList<Documento> documentos;
+//	private String comandoAux = "";
 	private int identificacion;
-	private int modDoc;
-	private int infoDoc;
-	private int indice;
 	private int user = 0;
 	private String doc = "";
 
@@ -107,6 +109,7 @@ public class Gestor implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
 		System.out.println(comando);
+
 		// Ventana login
 		if (comando.equals("CERRAR")) {
 			System.exit(0);
@@ -280,7 +283,7 @@ public class Gestor implements ActionListener {
 
 			biblioteca.bloquearCampos();
 
-		} else {
+		} else if (user == 2) {
 
 			ArrayList<Documento> documentos = controler.traerDocumentoAutor(identificacion);
 			System.out.println("tamaño documentos: " + documentos.size());
@@ -314,7 +317,7 @@ public class Gestor implements ActionListener {
 
 			for (int j = 0; j < documentos.size(); j++) {
 				if (comando.equals("MOD_LIBRO" + (j + 1))) {
-					modDoc = j + 1;
+//					modDoc = j + 1;
 					String tipoDoc = documentos.get(j).getTipoDocumento();
 					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
 					
@@ -341,7 +344,6 @@ public class Gestor implements ActionListener {
 						ArticuloCientifico ac = (ArticuloCientifico) doc;
 						modificarDocumento.getTxtCampo4().setText(ac.getSsn());
 					}
-					System.out.println("AIUDAAAAAAAAAAAA");
 					modificarDocumento.getTxtTituloDoc().setText(documentos.get(j).getTitulo());
 					modificarDocumento.getFmtTxtFechaPublicacion()
 							.setText(documentos.get(j).getFechaPublicacion().toString());
@@ -363,7 +365,7 @@ public class Gestor implements ActionListener {
 			for (int j = 0; j < documentos.size(); j++) {
 				if (comando.equals("INFO_DOC" + (j + 1))) {
 					infoDocumento.clear();
-					infoDoc = 1;
+//					infoDoc = j + 1;
 					String tipoDoc = documentos.get(j).getTipoDocumento();
 					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
 					
@@ -404,53 +406,102 @@ public class Gestor implements ActionListener {
 				biblioteca.setVisible(true);
 				elegirDocumento.dispose();
 			} else if (comando.equals("ARTICULO")) {
-				System.out.println("articulo gestion");
 				AutorDTO autor = controler.autorEnSesion(identificacion);
 				subirDocumento.getTxtNombreAutor().setText(autor.getNombre());
-				doc = "articulo";
+				doc = "Articulo cientifico";
 				subirDocumento.setVisible(true);
 				subirDocumento.clear();
 				elegirDocumento.dispose();
 			} else if (comando.equals("PONENCIA")) {
 				AutorDTO autor = controler.autorEnSesion(identificacion);
 				subirDocumento.getTxtNombreAutor().setText(autor.getNombre());
-				doc = "ponencia";
+				doc = "Ponencia";
 				subirDocumento.setVisible(true);
 				subirDocumento.clear();
 				elegirDocumento.dispose();
 			} else if (comando.equals("LIBRO")) {
 				AutorDTO autor = controler.autorEnSesion(identificacion);
 				subirDocumento.getTxtNombreAutor().setText(autor.getNombre());
-				doc = "libro";
+				doc = "Libro";
 				subirDocumento.setVisible(true);
 				subirDocumento.clear();
 				elegirDocumento.dispose();
 			}
 
-			// Ventana subirdocumento
-			if (comando.equals("SUBIR")) {
-				if (subirDocumento.verify()) {
-					biblioteca.setVisible(true);
-					subirDocumento.dispose();
-				}
-			} else if (comando.equals("VOLVER3")) {
-				elegirDocumento.setVisible(true);
-				subirDocumento.dispose();
-			}
+//			 Ventana subirdocumento
 			subirDocumento.getLblCampo4().setText("ISBN");
 			subirDocumento.getLblBordeTxt6().setVisible(true);
 			subirDocumento.getTxtCampo6().setVisible(true);
-			if (doc.equals("libro")) {
+			if (doc.equals("Libro")) {
 				subirDocumento.getLblCampo6().setText("Número de páginas");
 			}
-			if (doc.equals("ponencia")) {
+			if (doc.equals("Ponencia")) {
 				subirDocumento.getLblCampo6().setText("Congreso");
 			}
-			if (doc.equals("articulo")) {
+			if (doc.equals("Articulo cientifico")) {
 				subirDocumento.getLblCampo4().setText("SSN");
 				subirDocumento.getLblBordeTxt6().setVisible(false);
 				subirDocumento.getTxtCampo6().setVisible(false);
 				subirDocumento.getLblCampo6().setText("");
+			}
+			if (comando.equals("SUBIR")) {
+				if (subirDocumento.verify()) {
+					String titulo1 = subirDocumento.getTxtTituloDoc().getText();
+					LocalDate fecha = LocalDate.parse(subirDocumento.getFmtTxtFechaPublicacion().getText());
+					int idEditorial = Integer.valueOf(subirDocumento.getTxtIdEditorial().getText());
+					String campo4 = subirDocumento.getTxtCampo4().getText();
+					String campo6 = subirDocumento.getTxtCampo6().getText();
+					int idDoc = Integer.valueOf(subirDocumento.getTxtCampo4().getText());
+
+					if (doc.equals("Libro")) {
+						EstadoVisible est = new EstadoVisible();
+						est.getEstado();
+						LibroDTO libro = new LibroDTO();
+						libro.setTitulo(titulo1);
+						libro.setFechaPublicacion(fecha);
+						libro.setIdAutor(identificacion);
+						libro.setIsbn(campo4);
+						libro.setIdEditorial(idEditorial);
+						libro.setNumPaginas(campo6);
+						libro.setTipoDocumento(doc);
+						libro.setIdDocumento(idDoc);
+//						libro.setEstadoVisualizacion();
+						//EN PROCESO
+
+						System.out.println("Detras del tostring de libro");
+						System.out.println(libro.toString()); 
+
+//						para verificar si el libro ya existe
+						if (controler.buscarLibro(idDoc) != null) {
+							
+							System.out.println("\n"+1+"\n");
+							subirDocumento.avisoError();
+							System.out.println("⚠ Error: Ya existe un documento con ese ID.");
+//							subirDocumento.clear();
+						} else {
+							System.out.println("\n"+2+"\n");
+							subirDocumento.avisoExito();
+							controler.subirLibro(libro);
+
+							biblioteca.setVisible(true);
+							subirDocumento.dispose();
+							subirDocumento.clear();
+						}
+
+					}
+					if (doc.equals("Ponencia")) {
+						subirDocumento.getLblCampo6().setText("Congreso");
+					}
+					if (doc.equals("Articulo Cientifico")) {
+						subirDocumento.getLblCampo6().setText("");
+					}
+
+//					biblioteca.setVisible(true);
+//					subirDocumento.dispose();
+				}
+			} else if (comando.equals("VOLVER3")) {
+				elegirDocumento.setVisible(true);
+				subirDocumento.dispose();
 			}
 
 			// Ventana modificadocumento
@@ -494,4 +545,43 @@ public class Gestor implements ActionListener {
 
 		}
 	}
+
+//	public void botonesInfoDoc() {
+//		// Ventana biblioteca, botones INFORMACIÓN
+//		documentos = controler.traerDocumento();
+//		infoDocumento.getLblModificar4().setText("ISBN");
+//		infoDocumento.getLblBordeTxt6().setVisible(true);
+//		infoDocumento.getTxtInfo6().setVisible(true);
+//
+//		for (int j = 0; j < documentos.size(); j++) {
+//			if (comando.equals("INFO_DOC" + (j + 1))) {
+//				infoDocumento.clear();
+//				infoDoc = j + 1;
+//				String tipoDoc = documentos.get(j).getTipoDocumento();
+//				if (tipoDoc.equals("Libro")) {
+//					infoDocumento.getLblModificar6().setText("Número de páginas");
+//				}
+//				if (tipoDoc.equals("Ponencia")) {
+//					infoDocumento.getLblModificar6().setText("Congreso");
+//				}
+//				if (tipoDoc.equals("Articulo cientifico")) {
+//					infoDocumento.getLblModificar4().setText("SSN");
+//					infoDocumento.getLblBordeTxt6().setVisible(false);
+//					infoDocumento.getTxtInfo6().setVisible(false);
+//					infoDocumento.getLblModificar6().setText("");
+//				}
+//				infoDocumento.getTxtInfo1().setText(documentos.get(j).getTitulo());
+//				infoDocumento.getTxtInfo2().setText(documentos.get(j).getFechaPublicacion().toString());
+//				AutorDTO autor = controler.autorEnSesion(identificacion);
+//				infoDocumento.getTxtInfo3().setText(autor.getNombre());
+//
+////							infoDocumento.getTxtInfo4().setText(documentos.get(0).get);
+//				infoDocumento.getTxtInfo5().setText(String.valueOf(documentos.get(j).getIdEditorial()));
+////							infoDocumento.getTxtInfo6().setText(documentos.get(0).get);
+////							controler.buscaLibro(documentos.get(0).getIdDocumento());
+//				infoDocumento.setVisible(true);
+//				biblioteca.dispose();
+//			}
+//		}
+//	}
 }

@@ -28,6 +28,7 @@ public class LibroDAO implements InterfaceDAO<Libro> {
 	@Override
 	public void add(Libro lib) {
 		try {
+			System.out.println("\nAhora estoy en el metodo de add de libroDAO\n");
 			cn = ConexionBD.getConexion();
 
 			pst = (PreparedStatement) cn.prepareStatement("insert into documento values(?,?,?,?,?,?,?)");
@@ -39,7 +40,7 @@ public class LibroDAO implements InterfaceDAO<Libro> {
 			pst.setString(6, lib.getTipoDocumento().trim());
 			pst.setString(7, lib.getEstadoVisualizacion().getEstado());
 			pst.executeUpdate();
-
+			System.out.println("pst: "+pst);
 			pst = (PreparedStatement) cn.prepareStatement("insert into libro values(?,?)");
 			pst.setInt(1, lib.getIdDocumento());
 			pst.setString(2, lib.getNumPaginas());

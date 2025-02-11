@@ -6,16 +6,22 @@ import java.util.Iterator;
 
 import control.DAO.AutorDAO;
 import control.DAO.UsuarioDAO;
+import control.DAO.documentos.ArticuloCientificoDAO;
 import control.DAO.documentos.DocumentoDAO;
 import control.DAO.documentos.LibroDAO;
+import control.DAO.documentos.PonenciaDAO;
+import control.DTO.ArticuloCientificoDTO;
 import control.DTO.AutorDTO;
 import control.DTO.LibroDTO;
 import control.DTO.Mapper;
+import control.DTO.PonenciaDTO;
 import control.DTO.UsuarioDTO;
 import control.conexion.ConexionBD;
 import modelo.autor.Autor;
 import modelo.factory.abstracto.Documento;
+import modelo.factory.documento.ArticuloCientifico;
 import modelo.factory.documento.Libro;
+import modelo.factory.documento.Ponencia;
 import modelo.usuario.Usuario;
 
 public class Controlador {
@@ -23,6 +29,9 @@ public class Controlador {
 	private AutorDAO autorDao;
 	private UsuarioDAO usuarioDao;
 	private DocumentoDAO documentoDao;
+	private LibroDAO libroDao;
+	private ArticuloCientificoDAO articuloDao;
+	private PonenciaDAO ponenciaDao;
 	private Connection cone;
 
 	public Controlador() {
@@ -30,6 +39,9 @@ public class Controlador {
 		autorDao = new AutorDAO();
 		usuarioDao = new UsuarioDAO();
 		documentoDao = new DocumentoDAO();
+		libroDao = new LibroDAO();
+		articuloDao = new ArticuloCientificoDAO();
+		ponenciaDao = new PonenciaDAO();
 	}
 
 	public AutorDTO buscarAutor(int id) {
@@ -87,6 +99,65 @@ public class Controlador {
 		Libro libActual = Mapper.convertirToLibro(dto);
 		Libro libNuevo = Mapper.convertirToLibro(dto);
 		documentoDao.update(libActual, libNuevo);
+	public LibroDTO buscarLibro(int id) {
+//		Documento libro = documentoDao.getOne(id);
+		Libro libro = (Libro) documentoDao.getOne(id);
+		System.out.println("\nEstoy en Controlador en el metodo buscarLibro()\n");
+//		System.out.println("\nLibro encontrado: " + libro.toString());
+		
+		if(libro==null) {
+			System.out.println("\nDevolvio un null\n");
+			return null;
+		}else {
+//			return null;
+			System.out.println("\nDevolvio un libro\n");
+			return Mapper.convertirToLibroDto(libro);
+		}
 	}
+	
+	public PonenciaDTO buscarPonencia(int id) {
+		Ponencia ponencia = ponenciaDao.getOne(id);
+		if(ponencia==null) {
+			return null;
+		}else {
+			return Mapper.convertirToPonenciaDto(ponencia);
+		}
+	}
+	
+	public ArticuloCientificoDTO buscarArticuloCientifico(int id) {
+		ArticuloCientifico articulo = articuloDao.getOne(id);
+		if(articulo==null) {
+			return null;
+		}else {
+			return Mapper.convertirToArticuloCientificoDto(articulo);
+		}
+	}
+	
+	public void subirLibro(LibroDTO dto) {
+		System.out.println("\nEstoy en Controlador en el metodo subirLibro()\n");
+		Libro libro = Mapper.convertirToLibro(dto);
+		System.out.println("Libro a subir: "+libro.toString());
+		libroDao.add(libro);
+	}
+	
+	public void subirPonencia(PonenciaDTO dto) {
+		Ponencia ponencia = Mapper.convertirToPonencia(dto);
+		ponenciaDao.add(ponencia);
+	}
+	
+	public void subirArticuloCientifico(ArticuloCientificoDTO dto) {
+		ArticuloCientifico articuloCientifico = Mapper.convertirToArticuloCientifico(dto);
+		articuloDao.add(articuloCientifico);
+	}
+	
+//	public LibroDTO buscaLibro(int id) {
+//		Libro libro = (Libro) documentoDao.getOne(id);
+//		if(libro==null) {
+//			return null;
+//		}else {
+//			return Mapper.convertirToLibroDto(libro);
+//		}
+//	}
+	
 
 }

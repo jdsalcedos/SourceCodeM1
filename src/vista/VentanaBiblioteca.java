@@ -6,6 +6,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -55,9 +58,11 @@ public class VentanaBiblioteca extends JFrame {
 	private JButton btnModificarDoc7;
 	private JButton btnModificarDoc8;
 	private JButton btnModificarDoc9;
-	
+
+	private int mouseX, mouseY;
+
 	private JTextField[] campos;
-	
+
 	private JPanel contentPane;
 
 	public VentanaBiblioteca() {
@@ -73,6 +78,24 @@ public class VentanaBiblioteca extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		// Metodos para que la ventana se pueda mover
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				mouseX = e.getX();
+				mouseY = e.getY();
+			}
+		});
+
+		addMouseMotionListener(new MouseAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				int x = e.getXOnScreen();
+				int y = e.getYOnScreen();
+				setLocation(x - mouseX, y - mouseY);
+			}
+		});
 
 		JPanel panelBarraSuperior = new JPanel();
 		panelBarraSuperior.setLayout(null);
@@ -273,8 +296,8 @@ public class VentanaBiblioteca extends JFrame {
 		txtDoc9.setBounds(240, 521, 435, 40);
 		contentPane.add(txtDoc9);
 
-		campos = new JTextField[]{txtDoc1, txtDoc2, txtDoc3, txtDoc4, txtDoc5, txtDoc6, txtDoc7, txtDoc8, txtDoc9};
-		 
+		campos = new JTextField[] { txtDoc1, txtDoc2, txtDoc3, txtDoc4, txtDoc5, txtDoc6, txtDoc7, txtDoc8, txtDoc9 };
+
 		JLabel lblBordeDoc1 = new JLabel("");
 		lblBordeDoc1.setIcon(new ImageIcon(VentanaBiblioteca.class.getResource("/imagenes/borde_libros.png")));
 		lblBordeDoc1.setBounds(225, 70, 450, 40);
@@ -439,53 +462,53 @@ public class VentanaBiblioteca extends JFrame {
 	}
 
 	public void bloquearCampos() {
-		if(txtDoc1.getText().equals("")) {
+		if (txtDoc1.getText().equals("")) {
 			btnInfoDoc1.setVisible(false);
 			btnModificarDoc1.setVisible(false);
 			lblModificarDoc1.setVisible(false);
 		}
-		if(txtDoc2.getText().equals("")) {
+		if (txtDoc2.getText().equals("")) {
 			btnInfoDoc2.setVisible(false);
 			btnModificarDoc2.setVisible(false);
 			lblModificarDoc2.setVisible(false);
 		}
-		if(txtDoc3.getText().equals("")) {
+		if (txtDoc3.getText().equals("")) {
 			btnInfoDoc3.setVisible(false);
 			btnModificarDoc3.setVisible(false);
 			lblModificarDoc3.setVisible(false);
 		}
-		if(txtDoc4.getText().equals("")) {
+		if (txtDoc4.getText().equals("")) {
 			btnInfoDoc4.setVisible(false);
 			btnModificarDoc4.setVisible(false);
 			lblModificarDoc4.setVisible(false);
 		}
-		if(txtDoc5.getText().equals("")) {
+		if (txtDoc5.getText().equals("")) {
 			btnInfoDoc5.setVisible(false);
 			btnModificarDoc5.setVisible(false);
 			lblModificarDoc5.setVisible(false);
 		}
-		if(txtDoc6.getText().equals("")) {
+		if (txtDoc6.getText().equals("")) {
 			btnInfoDoc6.setVisible(false);
 			btnModificarDoc6.setVisible(false);
 			lblModificarDoc6.setVisible(false);
 		}
-		if(txtDoc7.getText().equals("")) {
+		if (txtDoc7.getText().equals("")) {
 			btnInfoDoc7.setVisible(false);
 			btnModificarDoc7.setVisible(false);
 			lblModificarDoc7.setVisible(false);
 		}
-		if(txtDoc8.getText().equals("")) {
+		if (txtDoc8.getText().equals("")) {
 			btnInfoDoc8.setVisible(false);
 			btnModificarDoc8.setVisible(false);
 			lblModificarDoc8.setVisible(false);
 		}
-		if(txtDoc9.getText().equals("")) {
+		if (txtDoc9.getText().equals("")) {
 			btnInfoDoc9.setVisible(false);
 			btnModificarDoc9.setVisible(false);
 			lblModificarDoc9.setVisible(false);
 		}
 	}
-	
+
 	public JButton getBtnCerrar() {
 		return btnCerrar;
 	}
@@ -797,5 +820,5 @@ public class VentanaBiblioteca extends JFrame {
 	public void setCampos(JTextField[] campos) {
 		this.campos = campos;
 	}
-	
+
 }

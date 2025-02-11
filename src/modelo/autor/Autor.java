@@ -8,14 +8,6 @@ public class Autor {
 	private String direccion;
 	private String telefono;
 	
-	public Autor(int idAutor, String nombre, String correo, String contrasena, String direccion, String telefono) {
-		this.idAutor = idAutor;
-		this.nombre = nombre;
-		this.correo = correo;
-		this.contrasena = contrasena;
-		this.direccion = direccion;
-		this.telefono = telefono;
-	}
 	public Autor() {
 		
 	}
