@@ -23,32 +23,7 @@ public class UsuarioDAO implements InterfaceDAO<Usuario> {
 		rs = null;
 	}
 
-	@Override
-	public ArrayList<Usuario> getAll() {
-		ArrayList<Usuario> users = new ArrayList<Usuario>();
-		try {
-			cn = ConexionBD.getConexion();
-			pst = (PreparedStatement) cn.prepareStatement("select * from usuario");
-			rs = pst.executeQuery();
-			while (rs.next()) {
-				Usuario user = new Usuario();
-				user.setIdUsuario(rs.getInt("id_usuario"));
-				user.setNombre(rs.getString("nombre"));
-				user.setCorreo(rs.getString("correo"));
-				user.setContrasena(rs.getString("contrasena"));
-				user.setDireccion(rs.getString("direccion"));
-				user.setTelefono(rs.getString("telefono"));
-				users.add(user);
-			}
-			pst.close();
-			ConexionBD.desconectar();
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		System.out.println(users);
-		return users;
-	}
-
+	
 	@Override
 	public Usuario getOne(int id) {
 		Usuario user = null;

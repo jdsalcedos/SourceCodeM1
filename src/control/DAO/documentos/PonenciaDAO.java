@@ -19,11 +19,7 @@ public class PonenciaDAO implements InterfaceDAO<Ponencia> {
 		pst = null;
 	}
 
-	@Override
-	public ArrayList<Ponencia> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public Ponencia getOne(int id) {
