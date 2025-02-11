@@ -8,11 +8,13 @@ import control.DAO.AutorDAO;
 import control.DAO.UsuarioDAO;
 import control.DAO.documentos.DocumentoDAO;
 import control.DTO.AutorDTO;
+import control.DTO.LibroDTO;
 import control.DTO.Mapper;
 import control.DTO.UsuarioDTO;
 import control.conexion.ConexionBD;
 import modelo.autor.Autor;
 import modelo.factory.abstracto.Documento;
+import modelo.factory.documento.Libro;
 import modelo.usuario.Usuario;
 
 public class Controlador {
@@ -85,19 +87,22 @@ public class Controlador {
 		return documentos;
 	}
 
-	public void documentoActual() {
-		
+	public LibroDTO buscaLibro(int id) {
+		Libro libro = (Libro) documentoDao.getOne(id);
+		if(libro==null) {
+			return null;
+		}else {
+			return Mapper.convertirToLibroDto(libro);
+		}
 	}
 	
-	public void consultar () {
-		UsuarioDAO usuario = new UsuarioDAO();
-		ArrayList<Usuario> res = usuario.getAll();
-		if (!res.isEmpty()) {
-			System.out.println("chao: " + res.toString());
-			System.out.println("ok");
-		} else {
-			System.out.println("paila");
-		}
-	}	
+//	public ArrayList<Documento> traerLibro(int id) {
+//		Libro libro = (Libro) documentoDao.getOne(id);
+//		if(libro==null) {
+//			return null;
+//		}else {
+//			return Mapper.convertirToLibroDto(libro);
+//		}
+//	}
 
 }

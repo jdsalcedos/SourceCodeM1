@@ -440,19 +440,43 @@ public class VentanaInfoDoc extends JFrame {
 		this.txtInfoTelefono = txtInfoTelefono;
 	}
 
-	public JTextField getTextInfoCorreo() {
+	public JTextField getTxtInfoCorreo() {
 		return txtInfoCorreo;
 	}
 
-	public void setTextInfoCorreo(JTextField textInfoCorreo) {
-		this.txtInfoCorreo = textInfoCorreo;
+	public void setTxtInfoCorreo(JTextField txtInfoCorreo) {
+		this.txtInfoCorreo = txtInfoCorreo;
 	}
 
-	public JTextField getTextInfoDireccion() {
+	public JTextField getTxtInfoDireccion() {
 		return txtInfoDireccion;
 	}
 
-	public void setTextInfoDireccion(JTextField textInfoDireccion) {
-		this.txtInfoDireccion = textInfoDireccion;
+	public void setTxtInfoDireccion(JTextField txtInfoDireccion) {
+		this.txtInfoDireccion = txtInfoDireccion;
+	}
+
+	public JLabel getLblModificar4() {
+		return lblModificar4;
+	}
+
+	public void setLblModificar4(JLabel lblModificar4) {
+		this.lblModificar4 = lblModificar4;
+	}
+
+	public JLabel getLblModificar6() {
+		return lblModificar6;
+	}
+
+	public void setLblModificar6(JLabel lblModificar6) {
+		this.lblModificar6 = lblModificar6;
+	}
+
+	public JLabel getLblBordeTxt6() {
+		return lblBordeTxt6;
+	}
+
+	public void setLblBordeTxt6(JLabel lblBordeTxt6) {
+		this.lblBordeTxt6 = lblBordeTxt6;
 	}
 }
