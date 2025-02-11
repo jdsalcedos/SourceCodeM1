@@ -152,7 +152,6 @@ public class VentanaLogin extends JFrame {
 		contentPane.add(passwordAutor);
 
 		txtIdentificacionAutor = new JTextField();
-		;
 		txtIdentificacionAutor.setFont(new Font("Roboto Medium", Font.PLAIN, 13));
 		txtIdentificacionAutor.setOpaque(false);
 		txtIdentificacionAutor.setForeground(Color.BLACK);
@@ -219,6 +218,14 @@ public class VentanaLogin extends JFrame {
 		contentPane.add(lblFondoLogin);
 	}
 
+	public void clear(){
+		txtIdentificacionLector.setText("");
+		txtIdentificacionAutor.setText("");
+		passwordLector.setText("");
+		passwordAutor.setText("");
+	}
+	
+	
 	public boolean verifyAutor() {
 		String password = new String(passwordAutor.getPassword()).trim();
 		if (txtIdentificacionAutor.getText().trim().isEmpty()) {

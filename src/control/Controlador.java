@@ -68,7 +68,7 @@ public class Controlador {
 	}
 	
 	public ArrayList<Documento> traerDocumento() {
-		System.out.println("hola");
+//		System.out.println("hola");
 		ArrayList<Documento> documentos = documentoDao.getAllVisible();
 //		documentoDao.getAllVisible();
 //		if(documentos==null) {
@@ -96,13 +96,5 @@ public class Controlador {
 		}
 	}
 	
-//	public ArrayList<Documento> traerLibro(int id) {
-//		Libro libro = (Libro) documentoDao.getOne(id);
-//		if(libro==null) {
-//			return null;
-//		}else {
-//			return Mapper.convertirToLibroDto(libro);
-//		}
-//	}
 
 }
