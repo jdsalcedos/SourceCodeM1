@@ -27,9 +27,9 @@ public class VentanaModDoc extends JFrame {
 	private JTextField txtTituloDoc;
 	private JTextField txtNombreAutor;
 	private JFormattedTextField fmtTxtFechaPublicacion;
-	private JTextField txtCampo4;
+	private JTextField txtCampo4;//isbn
 	private JTextField txtEditorial;
-	private JTextField txtCampo6;
+	private JTextField txtCampo6;//numpaginas, congreso
 	private JLabel lblCampo4;
 	private JLabel lblCampo6;
 	private JLabel lblBordeTxt6;
