@@ -28,6 +28,33 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 		accion = null;
 	}
 	
+	public ArrayList<HistorialCambio> getAll() {
+		
+		ArrayList<HistorialCambio> lista = new ArrayList<>();
+		try {
+			cn = ConexionBD.getConexion();
+			String consulta = "SELECT * from historial_cambio";
+			pst = cn.prepareStatement(consulta);
+			rs = pst.executeQuery();
+			System.out.println("Query hecho");
+			while(rs.next()) {
+				hc.setIdUsuario(rs.getInt("id_usuario"));
+				hc.setIdHistorial(rs.getInt("id_historial"));
+				hc.setFechaModificacion(rs.getDate("fecha_modificacion").toLocalDate());
+				hc.setIdAutor(rs.getInt("id_autor"));
+				hc.setAccion(rs.getString("accion"));
+				hc.setIdDocumento(rs.getInt("id_documento"));
+				lista.add(hc);
+			}
+			//modifcación añadida correctamente
+			pst.close();
+			ConexionBD.desconectar();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return lista;	
+	}
+	
 	@Override
 	public HistorialCambio getOne(int id) {
 		try {

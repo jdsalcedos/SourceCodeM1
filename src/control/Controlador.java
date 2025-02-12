@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import control.DAO.AutorDAO;
+import control.DAO.HistorialDAO;
 import control.DAO.UsuarioDAO;
 import control.DAO.documentos.ArticuloCientificoDAO;
 import control.DAO.documentos.DocumentoDAO;
@@ -18,6 +19,7 @@ import control.DTO.PonenciaDTO;
 import control.DTO.UsuarioDTO;
 import control.conexion.ConexionBD;
 import modelo.autor.Autor;
+import modelo.facade.historial.HistorialCambio;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.documento.ArticuloCientifico;
 import modelo.factory.documento.Libro;
@@ -33,6 +35,7 @@ public class Controlador {
 	private ArticuloCientificoDAO articuloDao;
 	private PonenciaDAO ponenciaDao;
 	private Connection cone;
+	private HistorialDAO histo;
 
 	public Controlador() {
 		cone = ConexionBD.getInstancia().getConexion();
@@ -42,6 +45,7 @@ public class Controlador {
 		libroDao = new LibroDAO();
 		articuloDao = new ArticuloCientificoDAO();
 		ponenciaDao = new PonenciaDAO();
+		histo = new HistorialDAO();
 	}
 
 	public AutorDTO buscarAutor(int id) {
@@ -160,6 +164,11 @@ public class Controlador {
 	public void subirArticuloCientifico(ArticuloCientificoDTO dto) {
 		ArticuloCientifico articuloCientifico = Mapper.convertirToArticuloCientifico(dto);
 		articuloDao.add(articuloCientifico);
+	}
+	
+	public ArrayList<HistorialCambio> traerCambios() {
+		ArrayList<HistorialCambio> cambios = histo.getAll();
+		return cambios;
 	}
 	
 //	public LibroDTO buscaLibro(int id) {
