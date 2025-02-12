@@ -50,14 +50,18 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			pst = cn.prepareStatement(consulta);
 			pst.setInt(1, id);
 			rs = pst.executeQuery();
+			System.out.println("query hecho");
 			
 			CreadorDocumento creador = new CreadorDocumento(); // Instancia del Factory
 
 			while (rs.next()) {
+				int idAutor = rs.getInt(id);
 				int idDocumento = rs.getInt("id_documento");
 				int idEditorial = rs.getInt("id_editorial");
-				int idAutor = rs.getInt(id);
+				
 				String titulo = rs.getString("titulo");
+				System.out.println("titulooooooooo : "+titulo);
+				
 				LocalDate fechaPublicacion = rs.getDate("fecha_publicacion").toLocalDate();
 				String isbn = rs.getString("ISBN");
 				String tipoDocumento = rs.getString("tipo_documento");

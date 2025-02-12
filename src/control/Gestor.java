@@ -21,6 +21,7 @@ import modelo.factory.abstracto.Documento;
 import modelo.factory.documento.ArticuloCientifico;
 import modelo.factory.documento.Libro;
 import modelo.factory.documento.Ponencia;
+import modelo.state.EstadoVisible;
 import vista.VentanaBiblioteca;
 import vista.VentanaLogin;
 import vista.VentanaRegistro;
@@ -292,7 +293,7 @@ public class Gestor implements ActionListener {
 			biblioteca.bloquearCampos();
 
 		} else if (user == 2) {
-
+			System.out.println("gestor...");
 			ArrayList<Documento> documentos = controler.traerDocumentoAutor(identificacion);
 			System.out.println("tamaño documentos: " + documentos.size());
 
@@ -446,25 +447,28 @@ public class Gestor implements ActionListener {
 					String titulo1 = subirDocumento.getTxtTituloDoc().getText();
 					LocalDate fecha = LocalDate.parse(subirDocumento.getFmtTxtFechaPublicacion().getText());
 					int idEditorial = Integer.valueOf(subirDocumento.getTxtIdEditorial().getText());
+					String campo4 = subirDocumento.getTxtCampo4().getText();
+					String campo6 = subirDocumento.getTxtCampo6().getText();
+					int idDoc = Integer.valueOf(subirDocumento.getTxtCampo4().getText());
 
-					if (registro.prueba() == 2) {
-						if (doc.equals("libro")) {
+					if (doc.equals("libro")) {
+						EstadoVisible est = new EstadoVisible();
 
-							String isbn = subirDocumento.getTxtCampo4().getText();
-							String numPaginas = subirDocumento.getTxtCampo6().getText();
+						LibroDTO libro = new LibroDTO();
+						libro.setTitulo(titulo1);
+						libro.setFechaPublicacion(fecha);
+						libro.setIdAutor(identificacion);
+						libro.setIsbn(campo4);
+						libro.setIdEditorial(idEditorial);
+						libro.setNumPaginas(campo6);
+						libro.setTipoDocumento(doc);
+						libro.setIdDocumento(idDoc);
+						libro.setEstadoVisualizacion(est);
 
-							LibroDTO libro = new LibroDTO();
-							libro.setTitulo(titulo1);
-							libro.setFechaPublicacion(fecha);
-							libro.setIdAutor(identificacion);
-							libro.setIsbn(isbn);
-							libro.setIdEditorial(idEditorial);
-							libro.setNumPaginas(numPaginas);
-
-							controler.subirLibro(libro);
+						controler.subirLibro(libro);
 //							biblioteca.setVisible(true);
 //							subirDocumento.dispose();
-							// para verificar si el libro ya existe
+						// para verificar si el libro ya existe
 //							if (controler.buscarAutor(id) != null) {
 //								registro.avisoError();
 //								System.out.println("⚠ Error: Ya existe un autor con ese ID.");
@@ -478,15 +482,15 @@ public class Gestor implements ActionListener {
 //								registro.clear();
 //							}
 
-						}
-						if (doc.equals("ponencia")) {
-							subirDocumento.getLblCampo6().setText("Congreso");
-						}
-						if (doc.equals("articulo")) {
-							subirDocumento.getLblCampo6().setText("");
-						}
-
 					}
+					if (doc.equals("ponencia")) {
+						subirDocumento.getLblCampo6().setText("Congreso");
+					}
+					if (doc.equals("articulo")) {
+						subirDocumento.getLblCampo6().setText("");
+					}
+
+					
 
 //					biblioteca.setVisible(true);
 //					subirDocumento.dispose();
