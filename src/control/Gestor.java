@@ -36,6 +36,7 @@ public class Gestor implements ActionListener {
 	private Controlador controler;
 	private int identificacion;
 	private int user = 0;
+	private int infoDoc = 0;
 	private String doc = "";
 
 	public Gestor() {
@@ -103,6 +104,8 @@ public class Gestor implements ActionListener {
 		infoDocumento.getBtnReservar().addActionListener(this);
 		infoDocumento.getBtnDevolver().addActionListener(this);
 		infoDocumento.getBtnVolver().addActionListener(this);
+		infoDocumento.getBtnDarDeAlta().addActionListener(this);
+		infoDocumento.getBtnDarDeBaja().addActionListener(this);
 	}
 
 	@Override
@@ -416,25 +419,29 @@ public class Gestor implements ActionListener {
 			}
 
 			documentos = controler.traerDocumentosAutor(identificacion);
-			infoDocumento.getLblModificar4().setText("ISBN");
-			infoDocumento.getLblBordeTxt6().setVisible(true);
-			infoDocumento.getTxtInfo6().setVisible(true);
+			// Obtener lista de documentos
 
 			for (int j = 0; j < documentos.size(); j++) {
 				if (comando.equals("INFO_DOC" + (j + 1))) {
 					infoDocumento.clear();
-//					infoDoc = 1;
+					infoDoc = j+1;
 					String tipoDoc = documentos.get(j).getTipoDocumento();
 					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
 
 					if (tipoDoc.equals("Libro")) {
+						infoDocumento.getLblModificar4().setText("ISBN");
+						infoDocumento.getLblBordeTxt6().setVisible(true);
+						infoDocumento.getTxtInfo6().setVisible(true);
 						infoDocumento.getLblModificar6().setText("Número de páginas");
 						Libro lib = (Libro) doc;
 						infoDocumento.getTxtInfo6().setText(lib.getNumPaginas());
-						System.out.println("cacorro: " + lib.getNumPaginas());
+//						System.out.println("cacorro: " + lib.getNumPaginas());
 						infoDocumento.getTxtInfo4().setText(doc.getIsbn());
 					}
 					if (tipoDoc.equals("Ponencia")) {
+						infoDocumento.getLblModificar4().setText("ISBN");
+						infoDocumento.getLblBordeTxt6().setVisible(true);
+						infoDocumento.getTxtInfo6().setVisible(true);
 						infoDocumento.getLblModificar6().setText("Congreso");
 						Ponencia pon = (Ponencia) doc;
 						infoDocumento.getTxtInfo6().setText(pon.getCongreso());
@@ -453,7 +460,6 @@ public class Gestor implements ActionListener {
 							infoDocumento.dispose();
 						}
 
-//						infoDocumento.getLblModificar6().setText(ac.getSsn());
 					}
 					infoDocumento.getTxtInfo1().setText(documentos.get(j).getTitulo());
 					infoDocumento.getTxtInfo2().setText(documentos.get(j).getFechaPublicacion().toString());
@@ -467,34 +473,13 @@ public class Gestor implements ActionListener {
 						infoDocumento.getLblDarDeBaja().setVisible(true);
 						infoDocumento.getBtnDarDeAlta().setVisible(false);
 						infoDocumento.getLblDarDeAlta().setVisible(false);
-						System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-						System.out.println(comando);
-						
-						if (comando.equals("DARDEBAJA")) {
-							System.out.println(comando);
-							EstadoOculto oculto = new EstadoOculto();
-							doc.cambiarEstado(oculto, docDao);
-							infoDocumento.avisoCambio();
-						}
-
 					} else if (doc.getEstadoVisualizacion().getEstado().equals("Dado de baja")) {
-						System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 						infoDocumento.getBtnDarDeAlta().setVisible(true);
 						infoDocumento.getLblDarDeAlta().setVisible(true);
 						infoDocumento.getBtnDarDeBaja().setVisible(false);
 						infoDocumento.getLblDarDeBaja().setVisible(false);
-						System.out.println(comando);
-
-						
-						if (comando.equals("DARDEALTA")) {
-							System.out.println(comando);
-							EstadoVisible visible = new EstadoVisible();
-							doc.cambiarEstado(visible, docDao);
-							infoDocumento.avisoCambio();
-						}
-
 					}
-
+					
 					infoDocumento.getBtnDevolver().setVisible(false);
 					infoDocumento.getLblDevolver().setVisible(false);
 					infoDocumento.getBtnReservar().setVisible(false);
@@ -504,6 +489,75 @@ public class Gestor implements ActionListener {
 				}
 			}
 
+			// ===================> MOVER LA LÓGICA DE CAMBIO DE ESTADO AQUÍ <===================
+
+			// Buscar el documento que estaba abierto
+			Documento docSeleccionado = null;
+			for (Documento d : documentos) {
+			    if (d.getEstadoVisualizacion().getEstado().equals("Dado de alta") && comando.equals("DARDEBAJA")) {
+			        docSeleccionado = d;
+			        break;
+			    } else if (d.getEstadoVisualizacion().getEstado().equals("Dado de baja") && comando.equals("DARDEALTA")) {
+			        docSeleccionado = d;
+			        break;
+			    }
+			}
+
+			// Si se encontró un documento para cambiar su estado, proceder
+			if (docSeleccionado != null) {
+			    System.out.println("Ejecutando " + comando + " para doc: " + docSeleccionado.getIdDocumento());
+
+			    if (comando.equals("DARDEBAJA")) {
+			    	System.out.println("Entra a dar de baja");
+			        EstadoOculto oculto = new EstadoOculto();
+			        System.out.println("lo dio de baja supuestamente");
+			        infoDocumento.getBtnDarDeAlta().setVisible(true);
+					infoDocumento.getLblDarDeAlta().setVisible(true);
+					infoDocumento.getBtnDarDeBaja().setVisible(false);
+					infoDocumento.getLblDarDeBaja().setVisible(false);
+//			        docSeleccionado.cambiarEstado(oculto, docDao);
+			    } else if (comando.equals("DARDEALTA")) {
+			    	System.out.println("Entra a dar de alta");
+			        EstadoVisible visible = new EstadoVisible();
+			        System.out.println("lo dio de alta supuestamente");
+			        infoDocumento.getBtnDarDeBaja().setVisible(true);
+					infoDocumento.getLblDarDeBaja().setVisible(true);
+					infoDocumento.getBtnDarDeAlta().setVisible(false);
+					infoDocumento.getLblDarDeAlta().setVisible(false);
+//			        docSeleccionado.cambiarEstado(visible, docDao);
+			    }
+
+			    // Mostrar mensaje de cambio
+			    infoDocumento.avisoCambio();
+			}
+//			if (comando.equals("DARDEALTA")) {
+//				for (int j = 0; j < documentos.size(); j++) {
+//					if(infoDoc==j+1) {
+//						System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+//						System.out.println(comando);
+//						EstadoVisible visible = new EstadoVisible();
+////						doc.cambiarEstado(visible, docDao);
+//						infoDocumento.avisoCambio();
+//					}
+//				}
+//			}
+//			if (comando.equals("DARDEBAJA")) {
+////				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+////				System.out.println(comando);
+////				EstadoOculto oculto = new EstadoOculto();
+//////				doc.cambiarEstado(oculto, docDao);
+////				infoDocumento.avisoCambio();
+//				for (int j = 0; j < documentos.size(); j++) {
+//					if(infoDoc==j+1) {
+//						System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+//						System.out.println(comando);
+//						EstadoOculto oculto = new EstadoOculto();
+////						doc.cambiarEstado(visible, docDao);
+//						infoDocumento.avisoCambio();
+//					}
+//				}
+//			}
+			
 			if (comando.equals("VOLVER5")) {
 				biblioteca.setVisible(true);
 				infoDocumento.dispose();
