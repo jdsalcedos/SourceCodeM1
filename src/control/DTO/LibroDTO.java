@@ -15,7 +15,6 @@ public class LibroDTO implements Serializable{
     private LocalDate fechaPublicacion;
     private String isbn;
     private String tipoDocumento;
-//    private String estadoVisualizacion;
     private VisualizacionState estadoVisualizacion;
 	private String numPaginas;
 

@@ -64,13 +64,11 @@ public class PonenciaDAO implements InterfaceDAO<Ponencia> {
 
 	@Override
 	public boolean update(Ponencia x, Ponencia y) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean delete(Ponencia x) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

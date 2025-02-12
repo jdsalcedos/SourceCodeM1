@@ -115,7 +115,6 @@ public class Gestor implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String comando = e.getActionCommand();
-		System.out.println(comando);
 
 		// Ventana login
 		if (comando.equals("CERRAR")) {
@@ -318,7 +317,6 @@ public class Gestor implements ActionListener {
 						ArticuloCientifico ac = (ArticuloCientifico) doc;
 						infoDocumento.getTxtInfo4().setText(ac.getSsn());
 
-//						infoDocumento.getLblModificar6().setText(ac.getSsn());
 					}
 					infoDocumento.getTxtInfo1().setText(documentos.get(j).getTitulo());
 					infoDocumento.getTxtInfo2().setText(documentos.get(j).getFechaPublicacion().toString());
@@ -355,7 +353,6 @@ public class Gestor implements ActionListener {
 				titulo = doc.getTitulo();
 				if (i < biblioteca.getCampos().length) { // Para evitar IndexOutOfBoundsException
 					biblioteca.getCampos()[i].setText(titulo);
-//					System.out.println("titulooooooooooo: " + titulo);
 					i++;
 				} else {
 					break; // Si hay más documentos que campos, evita errores
@@ -439,7 +436,6 @@ public class Gestor implements ActionListener {
 						infoDocumento.getLblModificar6().setText("Número de páginas");
 						Libro lib = (Libro) doc;
 						infoDocumento.getTxtInfo6().setText(lib.getNumPaginas());
-//						System.out.println("cacorro: " + lib.getNumPaginas());
 						infoDocumento.getTxtInfo4().setText(doc.getIsbn());
 					}
 					if (tipoDoc.equals("Ponencia")) {
@@ -493,8 +489,6 @@ public class Gestor implements ActionListener {
 				}
 			}
 
-			// ===================> MOVER LA LÓGICA DE CAMBIO DE ESTADO AQUÍ <===================
-
 			// Buscar el documento que estaba abierto
 			Documento docSeleccionado = null;
 			for (Documento d : documentos) {
@@ -528,40 +522,11 @@ public class Gestor implements ActionListener {
 					infoDocumento.getLblDarDeBaja().setVisible(true);
 					infoDocumento.getBtnDarDeAlta().setVisible(false);
 					infoDocumento.getLblDarDeAlta().setVisible(false);
-//			        docSeleccionado.cambiarEstado(visible, docDao);
 			    }
 
 			    // Mostrar mensaje de cambio
 			    infoDocumento.avisoCambio();
 			}
-//			if (comando.equals("DARDEALTA")) {
-//				for (int j = 0; j < documentos.size(); j++) {
-//					if(infoDoc==j+1) {
-//						System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-//						System.out.println(comando);
-//						EstadoVisible visible = new EstadoVisible();
-////						doc.cambiarEstado(visible, docDao);
-//						infoDocumento.avisoCambio();
-//					}
-//				}
-//			}
-//			if (comando.equals("DARDEBAJA")) {
-////				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-////				System.out.println(comando);
-////				EstadoOculto oculto = new EstadoOculto();
-//////				doc.cambiarEstado(oculto, docDao);
-////				infoDocumento.avisoCambio();
-//				for (int j = 0; j < documentos.size(); j++) {
-//					if(infoDoc==j+1) {
-//						System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-//						System.out.println(comando);
-//						EstadoOculto oculto = new EstadoOculto();
-////						doc.cambiarEstado(visible, docDao);
-//						infoDocumento.avisoCambio();
-//					}
-//				}
-//			}
-			
 			if (comando.equals("VOLVER5")) {
 				biblioteca.setVisible(true);
 				infoDocumento.dispose();
@@ -633,16 +598,12 @@ public class Gestor implements ActionListener {
 						libro.setIdDocumento(idDoc);
 						libro.setEstadoVisualizacion(est);
 
-//						System.out.println("\nDetras del tostring de libro\n");
-//						System.out.println(libro.toString()); 
-
 //						para verificar si el libro ya existe
 						if (controler.buscarLibro(idDoc) != null) {
 
 							System.out.println("\n" + 1 + "\n");
 							subirDocumento.avisoError();
 							System.out.println("⚠ Error: Ya existe un documento con ese ID.");
-//							subirDocumento.clear();
 						} else {
 							System.out.println("\n" + 2 + "\n");
 							subirDocumento.avisoExito();
@@ -666,15 +627,12 @@ public class Gestor implements ActionListener {
 						ponencia.setIdDocumento(idDoc);
 						ponencia.setEstadoVisualizacion(est);
 
-//						System.out.println("\nDetras del tostring de ponencia\n");
-//						System.out.println(ponencia.toString()); 
 
 						if (controler.buscarPonencia(idDoc) != null) {
 
 							System.out.println("\n" + 1 + "\n");
 							subirDocumento.avisoError();
 							System.out.println("⚠ Error: Ya existe un documento con ese ID.");
-//							subirDocumento.clear();
 						} else {
 							System.out.println("\n" + 2 + "\n");
 							subirDocumento.avisoExito();
@@ -697,15 +655,11 @@ public class Gestor implements ActionListener {
 						articulo.setIdDocumento(idDoc);
 						articulo.setEstadoVisualizacion(est);
 
-//						System.out.println("\nDetras del tostring de articulo cientifico\n");
-//						System.out.println(articulo.toString()); 
-
 						if (controler.buscarArticuloCientifico(idDoc) != null) {
 
 							System.out.println("\n" + 1 + "\n");
 							subirDocumento.avisoError();
 							System.out.println("⚠ Error: Ya existe un documento con ese ID.");
-//							subirDocumento.clear();
 						} else {
 							System.out.println("\n" + 2 + "\n");
 							subirDocumento.avisoExito();

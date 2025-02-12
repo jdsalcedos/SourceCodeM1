@@ -85,7 +85,6 @@ public class Controlador {
 	}
 
 	public ArrayList<Documento> traerDocumentosAutor(int id) {
-//		System.out.println("controlador...");
 		ArrayList<Documento> documentos = documentoDao.getAllByAutor(id);
 		return documentos;
 	}
@@ -119,16 +118,13 @@ public class Controlador {
 	}
 	
 	public LibroDTO buscarLibro(int id) {
-//		Documento libro = documentoDao.getOne(id);
 		Libro libro = (Libro) documentoDao.getOne(id);
 		System.out.println("\nEstoy en Controlador en el metodo buscarLibro()\n");
-//		System.out.println("\nLibro encontrado: " + libro.toString());
 		
 		if(libro==null) {
 			System.out.println("\nDevolvio un null\n");
 			return null;
 		}else {
-//			return null;
 			System.out.println("\nDevolvio un libro\n");
 			return Mapper.convertirToLibroDto(libro);
 		}
@@ -174,14 +170,4 @@ public class Controlador {
 		return cambios;
 	}
 	
-//	public LibroDTO buscaLibro(int id) {
-//		Libro libro = (Libro) documentoDao.getOne(id);
-//		if(libro==null) {
-//			return null;
-//		}else {
-//			return Mapper.convertirToLibroDto(libro);
-//		}
-//	}
-	
-
 }

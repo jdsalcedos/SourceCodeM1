@@ -101,12 +101,9 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 				}
 
 				docs.add(doc);
-//				System.out.println(doc.getIdAutor() +" nombre: " + doc.getTitulo());
 
 			}
 			
-//			System.out.println("MOSTRANDO LOS DOCUMENTOS....");
-//			System.out.println(docs.toString());
 			pst.close();
 
 			ConexionBD.desconectar();
@@ -197,7 +194,6 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 
 	@Override
 	public void add(Documento doc) {
-		// logica para mandar al DAO correspondiente para que se cree en la BD
 	}
 
 	@Override
@@ -301,10 +297,6 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			CreadorDocumento creador = new CreadorDocumento(); // Instancia del Factory
 
 			while (rs.next() && rs2.next()) {
-//				System.out.println("ya entro al primer while");
-//				while(rs2.next()) {
-//					System.out.println("ya entro al segundo while");
-//				}
 				int idDocumento = rs.getInt("id_documento");
 				int idEditorial = rs.getInt("id_editorial");
 				int idAutor = rs2.getInt("id_autor");
