@@ -99,6 +99,7 @@ public class Controlador {
 		Libro libActual = Mapper.convertirToLibro(dto);
 		Libro libNuevo = Mapper.convertirToLibro(dto);
 		documentoDao.update(libActual, libNuevo);
+	}
 	public LibroDTO buscarLibro(int id) {
 //		Documento libro = documentoDao.getOne(id);
 		Libro libro = (Libro) documentoDao.getOne(id);
