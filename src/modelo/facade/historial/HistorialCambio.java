@@ -61,6 +61,13 @@ public class HistorialCambio {
 	public void setFechaModificacion(LocalDate fechaModificacion) {
 		this.fechaModificacion = fechaModificacion;
 	}
+
+	@Override
+	public String toString() {
+		return "HistorialCambio [idHistorial=" + idHistorial + ",\n idUsuario=" + idUsuario + ",\n idDocumento="
+				+ idDocumento + ",\n idAutor=" + idAutor + ",\n accion=" + accion + ",\n fechaModificacion="
+				+ fechaModificacion + "]";
+	}
 	
 	
 	

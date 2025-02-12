@@ -28,13 +28,14 @@ public class HistorialDAO implements InterfaceDAO<HistorialCambio>{
 		accion = null;
 	}
 	
-	public ArrayList<HistorialCambio> getAll() {
+	public ArrayList<HistorialCambio> getAll(int id) {
 		
 		ArrayList<HistorialCambio> lista = new ArrayList<>();
 		try {
 			cn = ConexionBD.getConexion();
-			String consulta = "SELECT * from historial_cambio";
-			pst = cn.prepareStatement(consulta);
+//			String consulta = ;
+			pst = cn.prepareStatement("SELECT * FROM historial_cambio WHERE id_documento=?");
+			pst.setInt(1, id);
 			rs = pst.executeQuery();
 			System.out.println("Query hecho");
 			while(rs.next()) {

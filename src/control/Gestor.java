@@ -22,12 +22,13 @@ import modelo.factory.documento.Ponencia;
 import modelo.state.EstadoOculto;
 import modelo.state.EstadoVisible;
 import vista.VentanaBiblioteca;
-import vista.VentanaLogin;
-import vista.VentanaRegistro;
 import vista.VentanaElegirDoc;
 import vista.VentanaInfoDoc;
+import vista.VentanaLogin;
 import vista.VentanaModDoc;
+import vista.VentanaRegistro;
 import vista.VentanaSubirDoc;
+
 
 public class Gestor implements ActionListener {
 	private VentanaLogin login;
@@ -323,8 +324,13 @@ public class Gestor implements ActionListener {
 					infoDocumento.getTxtInfo1().setText(documentos.get(j).getTitulo());
 					infoDocumento.getTxtInfo2().setText(documentos.get(j).getFechaPublicacion().toString());
 					UsuarioDTO user = controler.usuarioEnSesion(identificacion);
-					infoDocumento.getTxtInfo3().setText(user.getNombre());
+					HistorialDAO hist = new HistorialDAO();
+					ArrayList<HistorialCambio> listaCambio = controler.traerCambios();
+					for (int k = 0; k < listaCambio.size(); k++) {
+						System.out.println(listaCambio.get(k).toString());
+					}
 
+					infoDocumento.getTxtInfo3().setText(user.getNombre());
 					infoDocumento.getTxtInfo5().setText(String.valueOf(documentos.get(j).getIdEditorial()));
 					infoDocumento.getBtnDarDeAlta().setVisible(false);
 					infoDocumento.getLblDarDeAlta().setVisible(false);
@@ -332,7 +338,9 @@ public class Gestor implements ActionListener {
 					infoDocumento.getLblDarDeBaja().setVisible(false);
 					infoDocumento.setVisible(true);
 					biblioteca.dispose();
+					
 				}
+				
 			}
 			// Ventana infodocumento
 			if (comando.equals("VOLVER5")) {
@@ -726,8 +734,6 @@ public class Gestor implements ActionListener {
 
 			// Ventana modificadocumento
 			if (comando.equals("MODIFICAR")) {
-				HistorialDAO hist = new HistorialDAO();
-				ArrayList<HistorialCambio> listaCambio = controler.traerCambios();
 				//codigo del boton modificar
 				String tituloNuevo = modificarDocumento.getTxtTituloDoc().getText();
 				String fechaPublicacion = modificarDocumento.getFmtTxtFechaPublicacion().getText();

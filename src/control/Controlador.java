@@ -36,6 +36,7 @@ public class Controlador {
 	private PonenciaDAO ponenciaDao;
 	private Connection cone;
 	private HistorialDAO histo;
+	private HistorialCambio hc;
 
 	public Controlador() {
 		cone = ConexionBD.getInstancia().getConexion();
@@ -170,7 +171,7 @@ public class Controlador {
 	}
 	
 	public ArrayList<HistorialCambio> traerCambios() {
-		ArrayList<HistorialCambio> cambios = histo.getAll();
+		ArrayList<HistorialCambio> cambios = histo.getAll(hc.getInstance().getIdDocumento());
 		return cambios;
 	}
 	
