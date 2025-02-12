@@ -95,11 +95,21 @@ public class Controlador {
 		return documentos;
 	}
 
+	//
 	public void modificarLibro(LibroDTO dto) {
-		Libro libActual = Mapper.convertirToLibro(dto);
+		Libro libActual = (Libro) documentoDao.getOne(dto.getIdDocumento());
 		Libro libNuevo = Mapper.convertirToLibro(dto);
 		documentoDao.update(libActual, libNuevo);
 	}
+	
+	public void modificarPonencia(PonenciaDTO dto) {
+		//editar el anterior y reescribir
+	}
+	
+	public void modificarArticulo(ArticuloCientificoDTO dto) {
+		//editar el anterior y reescribir
+	}
+	
 	public LibroDTO buscarLibro(int id) {
 //		Documento libro = documentoDao.getOne(id);
 		Libro libro = (Libro) documentoDao.getOne(id);

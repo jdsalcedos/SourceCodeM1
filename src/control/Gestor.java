@@ -5,10 +5,17 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
 
 import control.DAO.documentos.DocumentoDAO;
+import control.DAO.documentos.LibroDAO;
+import control.DTO.ArticuloCientificoDTO;
 import control.DTO.AutorDTO;
 import control.DTO.LibroDTO;
+import control.DTO.PonenciaDTO;
 import control.DTO.UsuarioDTO;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.documento.ArticuloCientifico;
@@ -37,6 +44,7 @@ public class Gestor implements ActionListener {
 	private int indice;
 	private int user = 0;
 	private String doc = "";
+	private DocumentoDAO docDao;
 
 	public Gestor() {
 		login = new VentanaLogin();
@@ -319,6 +327,7 @@ public class Gestor implements ActionListener {
 				if (comando.equals("MOD_LIBRO" + (j + 1))) {
 					modDoc = j + 1;
 					String tipoDoc = documentos.get(j).getTipoDocumento();
+					doc = tipoDoc;
 					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
 					
 					System.out.println(tipoDoc + " entro al modlibro2");
@@ -373,6 +382,7 @@ public class Gestor implements ActionListener {
 						infoDocumento.getLblModificar6().setText("Número de páginas");
 						Libro lib = (Libro) doc;
 						infoDocumento.getTxtInfo6().setText(lib.getNumPaginas());
+						System.out.println("cacorro: "+lib.getNumPaginas());
 						infoDocumento.getTxtInfo4().setText(doc.getIsbn());
 					}
 					if (tipoDoc.equals("Ponencia")) {
@@ -504,27 +514,49 @@ public class Gestor implements ActionListener {
 			// Ventana modificadocumento
 			if (comando.equals("MODIFICAR")) {
 				//codigo del boton modificar
-				String tituloNuevo = modificarDocumento.getTxtTituloDoc().getText();
-				String fechaPublicacionNueva = new String(modificarDocumento.getFmtTxtFechaPublicacion().getText());
-				
-				String contrasena = new String(registro.getPasswordRegistro().getPassword()).trim();
-				String nombre = registro.getTxtNombre().getText();
-				String telefono = registro.getTxtTelefono().getText();
-				String correo = registro.getTxtCorreo().getText();
-				String direccion = registro.getTxtDireccion().getText();
-				
-//				UsuarioDTO user = new UsuarioDTO();
-//				user.setIdUsuario(id);
-//				user.setNombre(nombre);
-//				user.setContrasena(contrasena);
-//				user.setTelefono(telefono);
-//				user.setCorreo(correo);
-//				user.setDireccion(direccion);
-				
-				LibroDTO libro = new LibroDTO();
-				libro.setTitulo(tituloNuevo);
-				
-				
+				if (doc.equals("Libro")) {
+					String tituloNuevo = modificarDocumento.getTxtTituloDoc().getText();
+					String fechaPublicacion = modificarDocumento.getFmtTxtFechaPublicacion().getText();
+					//DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+					LocalDate fechaNueva = LocalDate.parse(fechaPublicacion);
+					String isbn = modificarDocumento.getTxtCampo4().getText();
+					int idDoc = Integer.parseInt(isbn);
+					String numPaginas = modificarDocumento.getTxtCampo6().getText();
+					LibroDTO libro = new LibroDTO();
+					libro.setIdDocumento(idDoc);
+					libro.setTitulo(tituloNuevo);
+					libro.setFechaPublicacion(fechaNueva);
+					libro.setIsbn(isbn);
+					libro.setNumPaginas(numPaginas);
+					controler.modificarLibro(libro);
+	            }
+	            if (doc.equals("Ponencia")) {
+	            	String tituloNuevo = modificarDocumento.getTxtTituloDoc().getText();
+					String fechaPublicacion = modificarDocumento.getFmtTxtFechaPublicacion().getText();
+					DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+					LocalDate fechaNueva = LocalDate.parse(fechaPublicacion, formato);
+					String isbn = modificarDocumento.getTxtCampo4().getText();
+					String congreso = modificarDocumento.getTxtCampo6().getText();
+					PonenciaDTO ponencia = new PonenciaDTO();
+					ponencia.setTitulo(tituloNuevo);
+					ponencia.setFechaPublicacion(fechaNueva);
+					ponencia.setIsbn(isbn);
+					ponencia.setCongreso(congreso);
+					controler.modificarPonencia(ponencia);
+	            }
+	            if (doc.equals("Articulo cientifico")) {
+	            	String tituloNuevo = modificarDocumento.getTxtTituloDoc().getText();
+					String fechaPublicacion = modificarDocumento.getFmtTxtFechaPublicacion().getText();
+					DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+					LocalDate fechaNueva = LocalDate.parse(fechaPublicacion, formato);
+					String isbn = modificarDocumento.getTxtCampo4().getText();
+					ArticuloCientificoDTO articulo = new ArticuloCientificoDTO();
+					articulo.setTitulo(tituloNuevo);
+					articulo.setFechaPublicacion(fechaNueva);
+					articulo.setSsn(isbn);
+					controler.modificarArticulo(articulo);
+	            }
+
 			} else if (comando.equals("VOLVER4")) {
 				biblioteca.setVisible(true);
 				modificarDocumento.dispose();

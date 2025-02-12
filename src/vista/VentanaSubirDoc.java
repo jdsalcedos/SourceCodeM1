@@ -31,8 +31,8 @@ public class VentanaSubirDoc extends JFrame {
 	private JTextField txtIdEditorial;
 	private JLabel lblCampo4;
 	private JLabel lblCampo6;
-	private JTextField txtCampo4;
-	private JTextField txtCampo6;
+	private JTextField txtCampo4;// isbn
+	private JTextField txtCampo6;// campo diferente en las clases
 	private JLabel lblBordeTxt6;
 	private int mouseX, mouseY;
 	private JPanel contentPane;
