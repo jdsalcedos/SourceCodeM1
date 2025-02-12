@@ -184,7 +184,7 @@ public class Gestor implements ActionListener {
 		// Ventana registro
 		if (comando.equals("REGISTRARSE")) {
 			if (registro.verify()) {
-				
+
 				int id = Integer.parseInt(new String(registro.getTxtIdentificacion().getText().trim()));
 				String contrasena = new String(registro.getPasswordRegistro().getPassword()).trim();
 				String nombre = registro.getTxtNombre().getText().trim();
@@ -282,7 +282,62 @@ public class Gestor implements ActionListener {
 				}
 			}
 
-			biblioteca.bloquearCampos();
+			infoDocumento.getLblModificar4().setText("ISBN");
+			infoDocumento.getLblBordeTxt6().setVisible(true);
+			infoDocumento.getTxtInfo6().setVisible(true);
+
+			for (int j = 0; j < documentos.size(); j++) {
+				if (comando.equals("INFO_DOC" + (j + 1))) {
+					infoDocumento.clear();
+					infoDoc = 1;
+					String tipoDoc = documentos.get(j).getTipoDocumento();
+					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
+
+					if (tipoDoc.equals("Libro")) {
+						infoDocumento.getLblModificar6().setText("Número de páginas");
+						Libro lib = (Libro) doc;
+						infoDocumento.getTxtInfo6().setText(lib.getNumPaginas());
+						infoDocumento.getTxtInfo4().setText(doc.getIsbn());
+					}
+					if (tipoDoc.equals("Ponencia")) {
+						infoDocumento.getLblModificar6().setText("Congreso");
+						Ponencia pon = (Ponencia) doc;
+						infoDocumento.getTxtInfo6().setText(pon.getCongreso());
+						infoDocumento.getTxtInfo4().setText(doc.getIsbn());
+					}
+					if (tipoDoc.equals("Articulo cientifico")) {
+						infoDocumento.getLblModificar6().setText("");
+						infoDocumento.getLblModificar4().setText("SSN");
+						infoDocumento.getLblBordeTxt6().setVisible(false);
+						infoDocumento.getTxtInfo6().setVisible(false);
+						ArticuloCientifico ac = (ArticuloCientifico) doc;
+						infoDocumento.getTxtInfo4().setText(ac.getSsn());
+
+//						infoDocumento.getLblModificar6().setText(ac.getSsn());
+					}
+					infoDocumento.getTxtInfo1().setText(documentos.get(j).getTitulo());
+					infoDocumento.getTxtInfo2().setText(documentos.get(j).getFechaPublicacion().toString());
+					UsuarioDTO user = controler.usuarioEnSesion(identificacion);
+					infoDocumento.getTxtInfo3().setText(user.getNombre());
+
+					infoDocumento.getTxtInfo5().setText(String.valueOf(documentos.get(j).getIdEditorial()));
+					infoDocumento.getBtnDarDeAlta().setVisible(false);
+					infoDocumento.getLblDarDeAlta().setVisible(false);
+					infoDocumento.getBtnDarDeBaja().setVisible(false);
+					infoDocumento.getLblDarDeBaja().setVisible(false);
+					infoDocumento.setVisible(true);
+					biblioteca.dispose();
+				}
+			}
+			// Ventana infodocumento
+			if (comando.equals("VOLVER5")) {
+				biblioteca.setVisible(true);
+				infoDocumento.dispose();
+			} else if (comando.equals("RESERVAR")) {
+				// codigo del boton reservar
+			} else if (comando.equals("DEVOLVER")) {
+
+			}
 
 		} else if (user == 2) {
 			System.out.println("gestor...");
@@ -309,9 +364,8 @@ public class Gestor implements ActionListener {
 				biblioteca.dispose();
 			}
 
-			
 			documentos = controler.traerDocumentoAutor(identificacion);
-			
+
 			modificarDocumento.getLblCampo4().setText("ISBN");
 			modificarDocumento.getLblBordeTxt6().setVisible(true);
 			modificarDocumento.getTxtCampo6().setVisible(true);
@@ -321,14 +375,14 @@ public class Gestor implements ActionListener {
 					modDoc = j + 1;
 					String tipoDoc = documentos.get(j).getTipoDocumento();
 					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
-					
+
 					System.out.println(tipoDoc + " entro al modlibro2");
 					if (tipoDoc.equals("Libro")) {
 						modificarDocumento.getLblCampo6().setText("Número de páginas");
 						Libro lib = (Libro) doc;
 						modificarDocumento.getTxtCampo6().setText(lib.getNumPaginas());
 						modificarDocumento.getTxtCampo4().setText(doc.getIsbn());
-						
+
 					}
 					if (tipoDoc.equals("Ponencia")) {
 						modificarDocumento.getLblCampo6().setText("Congreso");
@@ -341,7 +395,7 @@ public class Gestor implements ActionListener {
 						modificarDocumento.getLblCampo6().setText("");
 						modificarDocumento.getLblBordeTxt6().setVisible(false);
 						modificarDocumento.getTxtCampo6().setVisible(false);
-						
+
 						ArticuloCientifico ac = (ArticuloCientifico) doc;
 						modificarDocumento.getTxtCampo4().setText(ac.getSsn());
 					}
@@ -350,7 +404,7 @@ public class Gestor implements ActionListener {
 							.setText(documentos.get(j).getFechaPublicacion().toString());
 					AutorDTO autor = controler.autorEnSesion(identificacion);
 					modificarDocumento.getTxtNombreAutor().setText(autor.getNombre());
-					
+
 					modificarDocumento.getTxtEditorial().setText(String.valueOf(documentos.get(j).getIdEditorial()));
 
 					modificarDocumento.setVisible(true);
@@ -369,7 +423,7 @@ public class Gestor implements ActionListener {
 					infoDoc = 1;
 					String tipoDoc = documentos.get(j).getTipoDocumento();
 					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
-					
+
 					if (tipoDoc.equals("Libro")) {
 						infoDocumento.getLblModificar6().setText("Número de páginas");
 						Libro lib = (Libro) doc;
@@ -396,8 +450,11 @@ public class Gestor implements ActionListener {
 					AutorDTO autor = controler.autorEnSesion(identificacion);
 					infoDocumento.getTxtInfo3().setText(autor.getNombre());
 
-					
 					infoDocumento.getTxtInfo5().setText(String.valueOf(documentos.get(j).getIdEditorial()));
+					infoDocumento.getBtnDevolver().setVisible(false);
+					infoDocumento.getLblDevolver().setVisible(false);
+					infoDocumento.getBtnReservar().setVisible(false);
+					infoDocumento.getLblReservar().setVisible(false);
 					infoDocumento.setVisible(true);
 					biblioteca.dispose();
 				}
@@ -480,8 +537,6 @@ public class Gestor implements ActionListener {
 						subirDocumento.getLblCampo6().setText("");
 					}
 
-					
-
 //					biblioteca.setVisible(true);
 //					subirDocumento.dispose();
 				}
@@ -507,16 +562,16 @@ public class Gestor implements ActionListener {
 
 			// Ventana modificadocumento
 			if (comando.equals("MODIFICAR")) {
-				//codigo del boton modificar
+				// codigo del boton modificar
 				String tituloNuevo = modificarDocumento.getTxtTituloDoc().getText();
 				String fechaPublicacionNueva = new String(modificarDocumento.getFmtTxtFechaPublicacion().getText());
-				
+
 				String contrasena = new String(registro.getPasswordRegistro().getPassword()).trim();
 				String nombre = registro.getTxtNombre().getText();
 				String telefono = registro.getTxtTelefono().getText();
 				String correo = registro.getTxtCorreo().getText();
 				String direccion = registro.getTxtDireccion().getText();
-				
+
 //				UsuarioDTO user = new UsuarioDTO();
 //				user.setIdUsuario(id);
 //				user.setNombre(nombre);
@@ -524,22 +579,20 @@ public class Gestor implements ActionListener {
 //				user.setTelefono(telefono);
 //				user.setCorreo(correo);
 //				user.setDireccion(direccion);
-				
+
 				LibroDTO libro = new LibroDTO();
 				libro.setTitulo(tituloNuevo);
-				
-				
+
 			} else if (comando.equals("VOLVER4")) {
 				biblioteca.setVisible(true);
 				modificarDocumento.dispose();
 			}
-
 			// Ventana infodocumento
-			if (comando.equals("RESERVAR")) {
-				//codigo del boton reservar
-			} else if (comando.equals("VOLVER5")) {
+			if (comando.equals("VOLVER5")) {
 				biblioteca.setVisible(true);
 				infoDocumento.dispose();
+			} else if (comando.equals("RESERVAR")) {
+				// codigo del boton reservar
 			} else if (comando.equals("DEVOLVER")) {
 
 			}
