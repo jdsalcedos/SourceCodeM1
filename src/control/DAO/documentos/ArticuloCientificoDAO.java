@@ -3,7 +3,6 @@ package control.DAO.documentos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import control.DAO.InterfaceDAO;
 import control.conexion.ConexionBD;

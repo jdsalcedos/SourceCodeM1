@@ -74,6 +74,7 @@ public class Mapper {
 		articulo.setIdAutor(dto.getIdAutor());
 		articulo.setTitulo(dto.getTitulo());
 		articulo.setFechaPublicacion(dto.getFechaPublicacion());
+		articulo.setIsbn(dto.getIsbn());
 		articulo.setSsn(dto.getSsn());
 		articulo.setTipoDocumento(dto.getTipoDocumento());
 		articulo.setEstadoVisualizacion(dto.getEstadoVisualizacion());

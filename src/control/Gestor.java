@@ -283,7 +283,6 @@ public class Gestor implements ActionListener {
 				titulo = doc.getTitulo();
 				if (i < biblioteca.getCampos().length) { // Para evitar IndexOutOfBoundsException
 					biblioteca.getCampos()[i].setText(titulo);
-//					System.out.println("titulooooooooooo: " + titulo);
 					i++;
 				} else {
 					break; // Si hay más documentos que campos, evita errores
@@ -365,7 +364,11 @@ public class Gestor implements ActionListener {
 				}
 			}
 
-			biblioteca.bloquearCampos();
+			
+
+			
+			traerDoc();
+			biblioteca.bloquearCamposAutor();
 
 			if (comando.equals("SUBIR_DOCUMENTO")) {
 				elegirDocumento.setVisible(true);
@@ -475,30 +478,44 @@ public class Gestor implements ActionListener {
 				biblioteca.setVisible(true);
 				elegirDocumento.dispose();
 			} else if (comando.equals("ARTICULO")) {
-				System.out.println("articulo gestion");
 				AutorDTO autor = controler.autorEnSesion(identificacion);
 				subirDocumento.getTxtNombreAutor().setText(autor.getNombre());
-				doc = "articulo";
+				doc = "Articulo cientifico";
 				subirDocumento.setVisible(true);
 				subirDocumento.clear();
 				elegirDocumento.dispose();
 			} else if (comando.equals("PONENCIA")) {
 				AutorDTO autor = controler.autorEnSesion(identificacion);
 				subirDocumento.getTxtNombreAutor().setText(autor.getNombre());
-				doc = "ponencia";
+				doc = "Ponencia";
 				subirDocumento.setVisible(true);
 				subirDocumento.clear();
 				elegirDocumento.dispose();
 			} else if (comando.equals("LIBRO")) {
 				AutorDTO autor = controler.autorEnSesion(identificacion);
 				subirDocumento.getTxtNombreAutor().setText(autor.getNombre());
-				doc = "libro";
+				doc = "Libro";
 				subirDocumento.setVisible(true);
 				subirDocumento.clear();
 				elegirDocumento.dispose();
 			}
-
+			
 			// Ventana subirdocumento
+			subirDocumento.getLblCampo4().setText("ISBN");
+			subirDocumento.getLblBordeTxt6().setVisible(true);
+			subirDocumento.getTxtCampo6().setVisible(true);
+			if (doc.equals("Libro")) {
+				subirDocumento.getLblCampo6().setText("Número de páginas");
+			}else if (doc.equals("Ponencia")) {
+				subirDocumento.getLblCampo6().setText("Congreso");
+			}else if (doc.equals("Articulo cientifico")) {
+				subirDocumento.getLblCampo4().setText("SSN");
+				subirDocumento.getLblBordeTxt6().setVisible(false);
+				subirDocumento.getTxtCampo6().setText("a");
+				subirDocumento.getTxtCampo6().setVisible(false);
+				subirDocumento.getLblCampo6().setText("");
+			}
+			
 			if (comando.equals("SUBIR")) {
 				if (subirDocumento.verify()) {
 					String titulo1 = subirDocumento.getTxtTituloDoc().getText();
@@ -507,10 +524,10 @@ public class Gestor implements ActionListener {
 					String campo4 = subirDocumento.getTxtCampo4().getText();
 					String campo6 = subirDocumento.getTxtCampo6().getText();
 					int idDoc = Integer.valueOf(subirDocumento.getTxtCampo4().getText());
-
-					if (doc.equals("libro")) {
-						EstadoVisible est = new EstadoVisible();
-
+					EstadoVisible est = new EstadoVisible();
+					
+					if (doc.equals("Libro")) {
+						
 						LibroDTO libro = new LibroDTO();
 						libro.setTitulo(titulo1);
 						libro.setFechaPublicacion(fecha);
@@ -522,52 +539,96 @@ public class Gestor implements ActionListener {
 						libro.setIdDocumento(idDoc);
 						libro.setEstadoVisualizacion(est);
 
-						controler.subirLibro(libro);
-//							biblioteca.setVisible(true);
-//							subirDocumento.dispose();
-						// para verificar si el libro ya existe
-//							if (controler.buscarAutor(id) != null) {
-//								registro.avisoError();
-//								System.out.println("⚠ Error: Ya existe un autor con ese ID.");
-//								registro.clear();
-//							} else {
-//								registro.avisoExito();
-//								controler.registrarAutor(autor);
-//
-//								login.setVisible(true);
-//								registro.dispose();
-//								registro.clear();
-//							}
+//						System.out.println("\nDetras del tostring de libro\n");
+//						System.out.println(libro.toString()); 
+
+//						para verificar si el libro ya existe
+						if (controler.buscarLibro(idDoc) != null) {
+							
+							System.out.println("\n"+1+"\n");
+							subirDocumento.avisoError();
+							System.out.println("⚠ Error: Ya existe un documento con ese ID.");
+//							subirDocumento.clear();
+						} else {
+							System.out.println("\n"+2+"\n");
+							subirDocumento.avisoExito();
+							controler.subirLibro(libro);
+
+							biblioteca.setVisible(true);
+							subirDocumento.dispose();
+							subirDocumento.clear();
+						}
 
 					}
-					if (doc.equals("ponencia")) {
-						subirDocumento.getLblCampo6().setText("Congreso");
-					}
-					if (doc.equals("articulo")) {
-						subirDocumento.getLblCampo6().setText("");
-					}
+					if (doc.equals("Ponencia")) {
+						PonenciaDTO ponencia = new PonenciaDTO();
+						ponencia.setTitulo(titulo1);
+						ponencia.setFechaPublicacion(fecha);
+						ponencia.setIdAutor(identificacion);
+						ponencia.setIsbn(campo4);
+						ponencia.setIdEditorial(idEditorial);
+						ponencia.setCongreso(campo6);
+						ponencia.setTipoDocumento(doc);
+						ponencia.setIdDocumento(idDoc);
+						ponencia.setEstadoVisualizacion(est);
 
-//					biblioteca.setVisible(true);
-//					subirDocumento.dispose();
+//						System.out.println("\nDetras del tostring de ponencia\n");
+//						System.out.println(ponencia.toString()); 
+
+						if (controler.buscarPonencia(idDoc) != null) {
+							
+							System.out.println("\n"+1+"\n");
+							subirDocumento.avisoError();
+							System.out.println("⚠ Error: Ya existe un documento con ese ID.");
+//							subirDocumento.clear();
+						} else {
+							System.out.println("\n"+2+"\n");
+							subirDocumento.avisoExito();
+							controler.subirPonencia(ponencia);
+
+							biblioteca.setVisible(true);
+							subirDocumento.dispose();
+							subirDocumento.clear();
+						}
+					}
+					if (doc.equals("Articulo cientifico")) {
+						ArticuloCientificoDTO articulo = new ArticuloCientificoDTO();
+						articulo.setTitulo(titulo1);
+						articulo.setFechaPublicacion(fecha);
+						articulo.setIdAutor(identificacion);
+						articulo.setIsbn(campo4);
+						articulo.setSsn(campo4);
+						articulo.setIdEditorial(idEditorial);
+						articulo.setTipoDocumento(doc);
+						articulo.setIdDocumento(idDoc);
+						articulo.setEstadoVisualizacion(est);
+
+//						System.out.println("\nDetras del tostring de articulo cientifico\n");
+//						System.out.println(articulo.toString()); 
+
+						if (controler.buscarArticuloCientifico(idDoc) != null) {
+							
+							System.out.println("\n"+1+"\n");
+							subirDocumento.avisoError();
+							System.out.println("⚠ Error: Ya existe un documento con ese ID.");
+//							subirDocumento.clear();
+						} else {
+							System.out.println("\n"+2+"\n");
+							subirDocumento.avisoExito();
+							controler.subirArticuloCientifico(articulo);
+
+							
+							biblioteca.setVisible(true);
+							subirDocumento.dispose();
+							subirDocumento.clear();
+						}
+					}
+					traerDoc();
+					biblioteca.bloquearCamposAutor();
 				}
 			} else if (comando.equals("VOLVER3")) {
 				elegirDocumento.setVisible(true);
 				subirDocumento.dispose();
-			}
-			subirDocumento.getLblCampo4().setText("ISBN");
-			subirDocumento.getLblBordeTxt6().setVisible(true);
-			subirDocumento.getTxtCampo6().setVisible(true);
-			if (doc.equals("libro")) {
-				subirDocumento.getLblCampo6().setText("Número de páginas");
-			}
-			if (doc.equals("ponencia")) {
-				subirDocumento.getLblCampo6().setText("Congreso");
-			}
-			if (doc.equals("articulo")) {
-				subirDocumento.getLblCampo4().setText("SSN");
-				subirDocumento.getLblBordeTxt6().setVisible(false);
-				subirDocumento.getTxtCampo6().setVisible(false);
-				subirDocumento.getLblCampo6().setText("");
 			}
 
 			// Ventana modificadocumento
@@ -634,6 +695,20 @@ public class Gestor implements ActionListener {
 	}
 
 	public void traerDoc() {
+		ArrayList<Documento> documentos = controler.traerDocumentoAutor(identificacion);
+		System.out.println("tamaño documentos: " + documentos.size());
 
+		int i = 0;
+		String titulo;
+		for (Documento doc : documentos) {
+			titulo = doc.getTitulo();
+			if (i < biblioteca.getCampos().length) { // Para evitar IndexOutOfBoundsException
+				biblioteca.getCampos()[i].setText(titulo);
+				i++;
+			} else {
+				break; // Si hay más documentos que campos, evita errores
+			}
+		}
+		
 	}
 }

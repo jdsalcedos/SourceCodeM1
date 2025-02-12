@@ -101,12 +101,12 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 				}
 
 				docs.add(doc);
-				System.out.println(doc.getIdAutor() + " nombre: " + doc.getTitulo());
+//				System.out.println(doc.getIdAutor() +" nombre: " + doc.getTitulo());
 
 			}
-
-			System.out.println("MOSTRANDO LOS DOCUMENTOS....");
-			System.out.println(docs.toString());
+			
+//			System.out.println("MOSTRANDO LOS DOCUMENTOS....");
+//			System.out.println(docs.toString());
 			pst.close();
 
 			ConexionBD.desconectar();

@@ -461,51 +461,87 @@ public class VentanaBiblioteca extends JFrame {
 		contentPane.add(lblModificarDoc9);
 	}
 
-	public void bloquearCampos() {
+	public void bloquearCamposAutor() {
 		if (txtDoc1.getText().equals("")) {
 			btnInfoDoc1.setVisible(false);
 			btnModificarDoc1.setVisible(false);
 			lblModificarDoc1.setVisible(false);
+		}else {
+			btnInfoDoc1.setVisible(true);
+			btnModificarDoc1.setVisible(true);
+			lblModificarDoc1.setVisible(true);
 		}
 		if (txtDoc2.getText().equals("")) {
 			btnInfoDoc2.setVisible(false);
 			btnModificarDoc2.setVisible(false);
 			lblModificarDoc2.setVisible(false);
+		}else {
+			btnInfoDoc2.setVisible(true);
+			btnModificarDoc2.setVisible(true);
+			lblModificarDoc2.setVisible(true);
 		}
 		if (txtDoc3.getText().equals("")) {
 			btnInfoDoc3.setVisible(false);
 			btnModificarDoc3.setVisible(false);
 			lblModificarDoc3.setVisible(false);
+		}else {
+			btnInfoDoc3.setVisible(true);
+			btnModificarDoc3.setVisible(true);
+			lblModificarDoc3.setVisible(true);
 		}
 		if (txtDoc4.getText().equals("")) {
 			btnInfoDoc4.setVisible(false);
 			btnModificarDoc4.setVisible(false);
 			lblModificarDoc4.setVisible(false);
+		}else {
+			btnInfoDoc4.setVisible(true);
+			btnModificarDoc4.setVisible(true);
+			lblModificarDoc4.setVisible(true);
 		}
 		if (txtDoc5.getText().equals("")) {
 			btnInfoDoc5.setVisible(false);
 			btnModificarDoc5.setVisible(false);
 			lblModificarDoc5.setVisible(false);
+		}else {
+			btnInfoDoc5.setVisible(true);
+			btnModificarDoc5.setVisible(true);
+			lblModificarDoc5.setVisible(true);
 		}
 		if (txtDoc6.getText().equals("")) {
 			btnInfoDoc6.setVisible(false);
 			btnModificarDoc6.setVisible(false);
 			lblModificarDoc6.setVisible(false);
+		}else {
+			btnInfoDoc6.setVisible(true);
+			btnModificarDoc6.setVisible(true);
+			lblModificarDoc6.setVisible(true);
 		}
 		if (txtDoc7.getText().equals("")) {
 			btnInfoDoc7.setVisible(false);
 			btnModificarDoc7.setVisible(false);
 			lblModificarDoc7.setVisible(false);
+		}else {
+			btnInfoDoc7.setVisible(true);
+			btnModificarDoc7.setVisible(true);
+			lblModificarDoc7.setVisible(true);
 		}
 		if (txtDoc8.getText().equals("")) {
 			btnInfoDoc8.setVisible(false);
 			btnModificarDoc8.setVisible(false);
 			lblModificarDoc8.setVisible(false);
+		}else {
+			btnInfoDoc8.setVisible(true);
+			btnModificarDoc8.setVisible(true);
+			lblModificarDoc8.setVisible(true);
 		}
 		if (txtDoc9.getText().equals("")) {
 			btnInfoDoc9.setVisible(false);
 			btnModificarDoc9.setVisible(false);
 			lblModificarDoc9.setVisible(false);
+		}else {
+			btnInfoDoc9.setVisible(true);
+			btnModificarDoc9.setVisible(true);
+			lblModificarDoc9.setVisible(true);
 		}
 	}
 

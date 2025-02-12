@@ -17,6 +17,7 @@ public class ArticuloCientificoDTO implements Serializable{
 //    private String estadoVisualizacion;
     private VisualizacionState estadoVisualizacion;
     private String ssn;
+    private String isbn;
 
     public ArticuloCientificoDTO() {
     	
@@ -77,13 +78,20 @@ public class ArticuloCientificoDTO implements Serializable{
 //    public void setEstadoVisualizacion(String estadoVisualizacion) {
 //        this.estadoVisualizacion = estadoVisualizacion;
 //    }
-
     
     public String getSsn() {
         return ssn;
     }
 
-    public VisualizacionState getEstadoVisualizacion() {
+    public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public VisualizacionState getEstadoVisualizacion() {
 		return estadoVisualizacion;
 	}
 
