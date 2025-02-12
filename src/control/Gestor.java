@@ -341,7 +341,7 @@ public class Gestor implements ActionListener {
 
 		} else if (user == 2) {
 			System.out.println("gestor...");
-			ArrayList<Documento> documentos = controler.traerDocumentoAutor(identificacion);
+			ArrayList<Documento> documentos = controler.traerDocumentosAutor(identificacion);
 			System.out.println("tamaño documentos: " + documentos.size());
 
 			int i = 0;
@@ -364,7 +364,7 @@ public class Gestor implements ActionListener {
 				biblioteca.dispose();
 			}
 
-			documentos = controler.traerDocumentoAutor(identificacion);
+			documentos = controler.traerDocumentosAutor(identificacion);
 
 			modificarDocumento.getLblCampo4().setText("ISBN");
 			modificarDocumento.getLblBordeTxt6().setVisible(true);
@@ -412,7 +412,7 @@ public class Gestor implements ActionListener {
 				}
 			}
 
-			documentos = controler.traerDocumentoAutor(identificacion);
+			documentos = controler.traerDocumentosAutor(identificacion);
 			infoDocumento.getLblModificar4().setText("ISBN");
 			infoDocumento.getLblBordeTxt6().setVisible(true);
 			infoDocumento.getTxtInfo6().setVisible(true);

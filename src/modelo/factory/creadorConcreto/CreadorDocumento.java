@@ -23,13 +23,13 @@ y decidir cual tipo de documento es el que se quiere crear.*/
 		switch (tipoDocumento) {
 			case "Libro":
 				//Ese 1400 toca traerlo de la vista
-				String numPaginas = "1400";
+				String numPaginas = "";
 				return crearLibro(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion, numPaginas);
 			case "Ponencia":
-				String congreso = "COP16";
+				String congreso = "";
 				return crearPonencia(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion, congreso);
 			case "Articulo cientifico":
-				String ssn = "1234684";
+				String ssn = "";
 				return crearArticulo(idDocumento, idEditorial, idAutor, titulo, fechaPublicacion, isbn, tipoDocumento, estadoVisualizacion, ssn);
 			default:
 				throw new IllegalArgumentException("Tipo de documento no válido: "+ tipoDocumento);

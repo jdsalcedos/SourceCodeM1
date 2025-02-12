@@ -80,7 +80,7 @@ public class Controlador {
 		usuarioDao.add(us);
 	}
 
-	public ArrayList<Documento> traerDocumentoAutor(int id) {
+	public ArrayList<Documento> traerDocumentosAutor(int id) {
 		System.out.println("controlador...");
 		ArrayList<Documento> documentos = documentoDao.getAllByAutor(id);
 		return documentos;
