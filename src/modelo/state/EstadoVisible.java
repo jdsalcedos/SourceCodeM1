@@ -8,7 +8,6 @@ public class EstadoVisible extends VisualizacionState{
 
 	public static final String ESTADO = "Dado de alta";
 		
-	
 	@Override
 	public
 	void actualizarEstado(DocumentoDAO dao, Documento doc) {
