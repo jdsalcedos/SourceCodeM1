@@ -259,6 +259,38 @@ public class VentanaModDoc extends JFrame {
 		txtCampo6.setText("");
 	}
 
+	public boolean verify() {
+
+		String fecha = fmtTxtFechaPublicacion.getText().trim();
+		if (txtTituloDoc.getText().trim().isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de título", "Advertencia",
+					JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
+
+		if (fecha.contains(" ")) {
+			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de fecha de publicación", "Advertencia",
+					JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
+
+		if (txtCampo6.getText().trim().isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Hace falta llenar el campo de ...", "Advertencia",
+					JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
+		return true;
+	}
+
+	public void avisoError() {
+		JOptionPane.showMessageDialog(this, "Ya existe un documento con ese ISBN, ingrese otro.", "Error",
+				JOptionPane.ERROR_MESSAGE);
+	}
+
+	public void avisoExito() {
+		JOptionPane.showMessageDialog(this, "Documento modificado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
 //	public boolean verify() {
 //		
 //		String fecha = fmtTxtFechaPublicacion.getText().trim();

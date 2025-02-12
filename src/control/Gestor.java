@@ -4,14 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.DateTimeParseException;
 
-import control.DAO.documentos.DocumentoDAO;
-import control.DAO.documentos.LibroDAO;
 import control.DTO.ArticuloCientificoDTO;
 import control.DTO.AutorDTO;
 import control.DTO.LibroDTO;
@@ -40,12 +34,8 @@ public class Gestor implements ActionListener {
 	private VentanaInfoDoc infoDocumento;
 	private Controlador controler;
 	private int identificacion;
-	private int modDoc;
-	private int infoDoc;
-	private int indice;
 	private int user = 0;
 	private String doc = "";
-	private DocumentoDAO docDao;
 
 	public Gestor() {
 		login = new VentanaLogin();
@@ -296,7 +286,7 @@ public class Gestor implements ActionListener {
 			for (int j = 0; j < documentos.size(); j++) {
 				if (comando.equals("INFO_DOC" + (j + 1))) {
 					infoDocumento.clear();
-					infoDoc = 1;
+//					infoDoc = 1;
 					String tipoDoc = documentos.get(j).getTipoDocumento();
 					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
 
@@ -365,8 +355,6 @@ public class Gestor implements ActionListener {
 			}
 
 			
-
-			
 			traerDoc();
 			biblioteca.bloquearCamposAutor();
 
@@ -377,19 +365,18 @@ public class Gestor implements ActionListener {
 
 			documentos = controler.traerDocumentosAutor(identificacion);
 
-			modificarDocumento.getLblCampo4().setText("ISBN");
-			modificarDocumento.getLblBordeTxt6().setVisible(true);
-			modificarDocumento.getTxtCampo6().setVisible(true);
-
 			for (int j = 0; j < documentos.size(); j++) {
 				if (comando.equals("MOD_LIBRO" + (j + 1))) {
-					modDoc = j + 1;
+//					modDoc = j + 1;
 					String tipoDoc = documentos.get(j).getTipoDocumento();
 					doc = tipoDoc;
 					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
 
 					System.out.println(tipoDoc + " entro al modlibro2");
 					if (tipoDoc.equals("Libro")) {
+						modificarDocumento.getTxtCampo6().setVisible(true);
+						modificarDocumento.getLblBordeTxt6().setVisible(true);
+						modificarDocumento.getLblCampo4().setText("ISBN");
 						modificarDocumento.getLblCampo6().setText("Número de páginas");
 						Libro lib = (Libro) doc;
 						modificarDocumento.getTxtCampo6().setText(lib.getNumPaginas());
@@ -397,6 +384,9 @@ public class Gestor implements ActionListener {
 
 					}
 					if (tipoDoc.equals("Ponencia")) {
+						modificarDocumento.getTxtCampo6().setVisible(true);
+						modificarDocumento.getLblBordeTxt6().setVisible(true);
+						modificarDocumento.getLblCampo4().setText("ISBN");
 						modificarDocumento.getLblCampo6().setText("Congreso");
 						Ponencia pon = (Ponencia) doc;
 						modificarDocumento.getTxtCampo6().setText(pon.getCongreso());
@@ -432,7 +422,7 @@ public class Gestor implements ActionListener {
 			for (int j = 0; j < documentos.size(); j++) {
 				if (comando.equals("INFO_DOC" + (j + 1))) {
 					infoDocumento.clear();
-					infoDoc = 1;
+//					infoDoc = 1;
 					String tipoDoc = documentos.get(j).getTipoDocumento();
 					Documento doc = controler.traerDocumento(documentos.get(j).getIdDocumento());
 
@@ -634,12 +624,11 @@ public class Gestor implements ActionListener {
 			// Ventana modificadocumento
 			if (comando.equals("MODIFICAR")) {
 				//codigo del boton modificar
+				String tituloNuevo = modificarDocumento.getTxtTituloDoc().getText();
+				String fechaPublicacion = modificarDocumento.getFmtTxtFechaPublicacion().getText();
+				LocalDate fechaNueva = LocalDate.parse(fechaPublicacion);
+				String isbn = modificarDocumento.getTxtCampo4().getText();
 				if (doc.equals("Libro")) {
-					String tituloNuevo = modificarDocumento.getTxtTituloDoc().getText();
-					String fechaPublicacion = modificarDocumento.getFmtTxtFechaPublicacion().getText();
-					//DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-					LocalDate fechaNueva = LocalDate.parse(fechaPublicacion);
-					String isbn = modificarDocumento.getTxtCampo4().getText();
 					int idDoc = Integer.parseInt(isbn);
 					String numPaginas = modificarDocumento.getTxtCampo6().getText();
 					LibroDTO libro = new LibroDTO();
@@ -649,34 +638,48 @@ public class Gestor implements ActionListener {
 					libro.setIsbn(isbn);
 					libro.setNumPaginas(numPaginas);
 					controler.modificarLibro(libro);
+					
+					modificarDocumento.avisoExito();
+
+					biblioteca.setVisible(true);
+					modificarDocumento.dispose();
+					modificarDocumento.clear();
 	            }
 	            if (doc.equals("Ponencia")) {
-	            	String tituloNuevo = modificarDocumento.getTxtTituloDoc().getText();
-					String fechaPublicacion = modificarDocumento.getFmtTxtFechaPublicacion().getText();
-					DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-					LocalDate fechaNueva = LocalDate.parse(fechaPublicacion, formato);
-					String isbn = modificarDocumento.getTxtCampo4().getText();
+	            	int idDoc = Integer.parseInt(isbn);
 					String congreso = modificarDocumento.getTxtCampo6().getText();
 					PonenciaDTO ponencia = new PonenciaDTO();
+					ponencia.setIdDocumento(idDoc);
 					ponencia.setTitulo(tituloNuevo);
 					ponencia.setFechaPublicacion(fechaNueva);
 					ponencia.setIsbn(isbn);
 					ponencia.setCongreso(congreso);
 					controler.modificarPonencia(ponencia);
+					
+					modificarDocumento.avisoExito();
+
+					biblioteca.setVisible(true);
+					modificarDocumento.dispose();
+					modificarDocumento.clear();
 	            }
 	            if (doc.equals("Articulo cientifico")) {
-	            	String tituloNuevo = modificarDocumento.getTxtTituloDoc().getText();
-					String fechaPublicacion = modificarDocumento.getFmtTxtFechaPublicacion().getText();
-					DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-					LocalDate fechaNueva = LocalDate.parse(fechaPublicacion, formato);
-					String isbn = modificarDocumento.getTxtCampo4().getText();
 					ArticuloCientificoDTO articulo = new ArticuloCientificoDTO();
+					int idDoc = Integer.parseInt(isbn);
+					articulo.setIdDocumento(idDoc);
 					articulo.setTitulo(tituloNuevo);
 					articulo.setFechaPublicacion(fechaNueva);
+					articulo.setIsbn(isbn);
 					articulo.setSsn(isbn);
 					controler.modificarArticulo(articulo);
-	            }
+					
+					modificarDocumento.avisoExito();
 
+					biblioteca.setVisible(true);
+					modificarDocumento.dispose();
+					modificarDocumento.clear();
+	            }
+	            traerDoc();
+				biblioteca.bloquearCamposAutor();
 			} else if (comando.equals("VOLVER4")) {
 				biblioteca.setVisible(true);
 				modificarDocumento.dispose();
@@ -695,7 +698,7 @@ public class Gestor implements ActionListener {
 	}
 
 	public void traerDoc() {
-		ArrayList<Documento> documentos = controler.traerDocumentoAutor(identificacion);
+		ArrayList<Documento> documentos = controler.traerDocumentosAutor(identificacion);
 		System.out.println("tamaño documentos: " + documentos.size());
 
 		int i = 0;
