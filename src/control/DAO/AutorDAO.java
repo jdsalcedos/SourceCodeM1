@@ -36,7 +36,7 @@ public class AutorDAO implements InterfaceDAO<Autor> {
 				aut.setDireccion(rs.getString("direccion"));
 				aut.setTelefono(rs.getString("telefono"));
 			}
-//			System.out.println("Metodo getOne: " + aut);
+			
 			pst.close();
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {

@@ -14,7 +14,6 @@ public class ArticuloCientificoDTO implements Serializable{
     private String titulo;
     private LocalDate fechaPublicacion;
     private String tipoDocumento;
-//    private String estadoVisualizacion;
     private VisualizacionState estadoVisualizacion;
     private String ssn;
     private String isbn;
@@ -71,14 +70,6 @@ public class ArticuloCientificoDTO implements Serializable{
         this.tipoDocumento = tipoDocumento;
     }
 
-//    public String getEstadoVisualizacion() {
-//        return estadoVisualizacion;
-//    }
-//
-//    public void setEstadoVisualizacion(String estadoVisualizacion) {
-//        this.estadoVisualizacion = estadoVisualizacion;
-//    }
-    
     public String getSsn() {
         return ssn;
     }

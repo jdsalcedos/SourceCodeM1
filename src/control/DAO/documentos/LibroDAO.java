@@ -64,13 +64,11 @@ public class LibroDAO implements InterfaceDAO<Libro> {
 
 	@Override
 	public boolean update(Libro x, Libro y) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean delete(Libro x) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

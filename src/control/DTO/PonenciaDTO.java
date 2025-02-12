@@ -16,7 +16,6 @@ public class PonenciaDTO implements Serializable{
     private String isbn;
     private String tipoDocumento;
     private VisualizacionState estadoVisualizacion;
-//    private String estadoVisualizacion;
 	private String congreso;
 	
 	public PonenciaDTO() {
@@ -78,16 +77,6 @@ public class PonenciaDTO implements Serializable{
 	public void setTipoDocumento(String tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}
-
-//	public String getEstadoVisualizacion() {
-//		return estadoVisualizacion;
-//	}
-//
-//	public void setEstadoVisualizacion(String estadoVisualizacion) {
-//		this.estadoVisualizacion = estadoVisualizacion;
-//	}
-	
-	
 
 	public String getCongreso() {
 		return congreso;

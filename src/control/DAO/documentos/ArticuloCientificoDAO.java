@@ -20,7 +20,6 @@ public class ArticuloCientificoDAO implements InterfaceDAO<ArticuloCientifico> {
 
 	@Override
 	public ArticuloCientifico getOne(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -61,13 +60,11 @@ public class ArticuloCientificoDAO implements InterfaceDAO<ArticuloCientifico> {
 
 	@Override
 	public boolean update(ArticuloCientifico x, ArticuloCientifico y) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean delete(ArticuloCientifico x) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

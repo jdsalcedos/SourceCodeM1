@@ -14,7 +14,7 @@ public class ReservaDAO implements InterfaceDAO<Reserva>{
 	private Connection cn;
 	private PreparedStatement pst;
 	private ResultSet rs;
-	//constructor que inicializa variables
+	
 	public ReservaDAO() {
 		// gestor
 		cn = null;
