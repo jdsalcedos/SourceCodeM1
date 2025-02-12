@@ -55,7 +55,7 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 			CreadorDocumento creador = new CreadorDocumento(); // Instancia del Factory
 
 			while (rs.next()) {
-				int idAutor = rs.getInt(id);
+				int idAutor = id;
 				int idDocumento = rs.getInt("id_documento");
 				int idEditorial = rs.getInt("id_editorial");
 				
