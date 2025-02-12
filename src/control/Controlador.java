@@ -81,6 +81,7 @@ public class Controlador {
 	}
 
 	public ArrayList<Documento> traerDocumentoAutor(int id) {
+		System.out.println("controlador...");
 		ArrayList<Documento> documentos = documentoDao.getAllByAutor(id);
 		return documentos;
 	}
