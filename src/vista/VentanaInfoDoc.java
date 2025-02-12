@@ -41,6 +41,7 @@ public class VentanaInfoDoc extends JFrame {
 	private JLabel lblDarDeAlta;
 	private JLabel lblReservar;
 	private JLabel lblDevolver;
+	private JTextPane txtModificaciones;
 
 	public JLabel getLblReservar() {
 		return lblReservar;
@@ -373,7 +374,7 @@ public class VentanaInfoDoc extends JFrame {
 		lblFondoInfoContacto.setBounds(571, 74, 269, 114);
 		contentPane.add(lblFondoInfoContacto);
 
-		JTextPane txtModificaciones = new JTextPane();
+		txtModificaciones = new JTextPane();
 		txtModificaciones.setFont(new Font("Roboto Light", Font.PLAIN, 11));
 		txtModificaciones.setEditable(false);
 		txtModificaciones.setBounds(587, 223, 234, 220);
@@ -545,4 +546,13 @@ public class VentanaInfoDoc extends JFrame {
 	public void setLblBordeTxt6(JLabel lblBordeTxt6) {
 		this.lblBordeTxt6 = lblBordeTxt6;
 	}
+
+	public JTextPane getTxtModificaciones() {
+		return txtModificaciones;
+	}
+
+	public void setTxtModificaciones(JTextPane txtModificaciones) {
+		this.txtModificaciones = txtModificaciones;
+	}
+	
 }

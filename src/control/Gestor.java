@@ -6,11 +6,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.time.format.DateTimeFormatter;
 
+import control.DAO.HistorialDAO;
+import control.DAO.documentos.DocumentoDAO;
+import control.DAO.documentos.LibroDAO;
 import control.DTO.ArticuloCientificoDTO;
 import control.DTO.AutorDTO;
 import control.DTO.LibroDTO;
 import control.DTO.PonenciaDTO;
 import control.DTO.UsuarioDTO;
+import modelo.facade.historial.HistorialCambio;
 import modelo.factory.abstracto.Documento;
 import modelo.factory.documento.ArticuloCientifico;
 import modelo.factory.documento.Libro;
@@ -722,6 +726,8 @@ public class Gestor implements ActionListener {
 
 			// Ventana modificadocumento
 			if (comando.equals("MODIFICAR")) {
+				HistorialDAO hist = new HistorialDAO();
+				ArrayList<HistorialCambio> listaCambio = controler.traerCambios();
 				//codigo del boton modificar
 				String tituloNuevo = modificarDocumento.getTxtTituloDoc().getText();
 				String fechaPublicacion = modificarDocumento.getFmtTxtFechaPublicacion().getText();
