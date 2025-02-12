@@ -85,7 +85,7 @@ public class Controlador {
 	}
 
 	public ArrayList<Documento> traerDocumentosAutor(int id) {
-		System.out.println("controlador...");
+//		System.out.println("controlador...");
 		ArrayList<Documento> documentos = documentoDao.getAllByAutor(id);
 		return documentos;
 	}
@@ -100,7 +100,6 @@ public class Controlador {
 		return documentos;
 	}
 
-	//
 	public void modificarLibro(LibroDTO dto) {
 		Libro libActual = (Libro) documentoDao.getOne(dto.getIdDocumento());
 		Libro libNuevo = Mapper.convertirToLibro(dto);
@@ -108,11 +107,15 @@ public class Controlador {
 	}
 	
 	public void modificarPonencia(PonenciaDTO dto) {
-		//editar el anterior y reescribir
+		Ponencia ponActual = (Ponencia) documentoDao.getOne(dto.getIdDocumento());
+		Ponencia ponNuevo = Mapper.convertirToPonencia(dto);
+		documentoDao.update(ponActual, ponNuevo);
 	}
 	
 	public void modificarArticulo(ArticuloCientificoDTO dto) {
-		//editar el anterior y reescribir
+		ArticuloCientifico artActual = (ArticuloCientifico) documentoDao.getOne(dto.getIdDocumento());
+		ArticuloCientifico artNuevo = Mapper.convertirToArticuloCientifico(dto);
+		documentoDao.update(artActual, artNuevo);
 	}
 	
 	public LibroDTO buscarLibro(int id) {
