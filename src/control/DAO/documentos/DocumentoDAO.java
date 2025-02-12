@@ -323,29 +323,8 @@ public class DocumentoDAO implements InterfaceDAO<Documento> {
 						isbn, tipoDocumento, estadoVisualizacion);
 
 				docs.add(doc);
-//				System.out.println("holaaaaaaaaaaaaaa");
-//				System.out.println(doc.getClass());
 			}
-
-//			System.out.println("MOSTRANDO LOS DOCUMENTOS VISIBLES....");
-//			System.out.println("TOSTRING" + docs.toString());
-
-//			if(docs==null) {
-//				System.out.println("es nulo");
-//			}else {
-//				System.out.println("tamaño: " + docs.size());
-//			}
-//			
-//			if(!docs.isEmpty()) {
-//				System.out.println("chao: " + docs.toString());
-//				System.out.println("lista no vacia");
-//			}else {
-//				System.out.println("lista vacia");
-//			}
-//				
-//			for(Documento doc : docs) {
-//				System.out.println("titulo " + doc.getTitulo());
-//			}
+			
 			pst.close();
 			ConexionBD.desconectar();
 		} catch (SQLException ex) {
